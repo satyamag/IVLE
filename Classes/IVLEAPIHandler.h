@@ -15,7 +15,7 @@
 #define kDebugReceivedData 0
 #define kDebugURL 0
 
-#define kAPIKey @"UILgPrXmi3K3FY8vyb2Zq"
+#define kAPIKey @"Xi6BSlJ5TeMKFi95VF9B9"
 #define kAPICacheMinutes 10
 
 @interface IVLEAPIHandler : NSObject {

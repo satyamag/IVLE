@@ -44,20 +44,34 @@ static IVLE *sharedSingleton;
 	
 	return authenticationToken;
 }
--(NSDictionary*)login:(NSString*)user withPassword:(NSString*)password withDomain:(NSString*)domain{
+
+/*
+-(NSDictionary*)login:(NSString*)user{
 	
-	NSDictionary *dict = [handler postURL:@"https://ivle.nus.edu.sg/api/Lapi.svc/Login_JSON" withParameters:[NSString stringWithFormat:@"APIKey=%@&UserID=%@&Password=%@&Domain=%@", kAPIKey, user, password, domain]];
+	NSDictionary *dict = [handler postURL:@"https://ivle.nus.edu.sg/api/login/" withParameters:[NSString stringWithFormat:@"apiKey=%@", kAPIKey]];
 	//NSLog(@"%@", [[dict valueForKey:@"Login_JSONResult"] valueForKey:@"Token"]);
 	self.authenticationToken = [[dict valueForKey:@"Login_JSONResult"] valueForKey:@"Token"];
-/*	if (self.authenticationToken == nil || [self.authenticationToken isEqualToString:@""]) {
-		NSAssert(0, @"Problem logging in");
-	}*/
+//	if (self.authenticationToken == nil || [self.authenticationToken isEqualToString:@""]) {
+//		NSAssert(0, @"Problem logging in");
+//	}
 	self.userId = [user uppercaseString];
 	return 	dict;
+}*/
+
+-(void) setAuthToken:(NSString *)authToken {
+    self.authenticationToken = authToken;
+}
+
+-(void) getAndSetUserID {
+    
+    NSDictionary *d = [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/UserName_Get?APIKey=%@&Token=%@", kAPIKey, authenticationToken]];
+    NSLog(@"%@",d);
+    
 }
 
 -(NSDictionary*)announcements:(NSString*)courseID withDuration:(NSInteger)duration withTitle:(BOOL)title{	
 	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Announcements?APIKey=%@&AuthToken=%@&CourseID=%@&Duration=%d&TitleOnly=%@&output=json", kAPIKey, authenticationToken, courseID, duration, [self booleanToSystemBoolean:title]]];
+    
 }
 
 -(NSDictionary*)classRoster:(NSString*)courseID{

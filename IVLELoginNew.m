@@ -82,7 +82,7 @@
 - (IBAction)loginClicked{
 	
 	//Logs in the user
-	
+/*	
 	NSString *domainTrimmed = [domain.text stringByReplacingOccurrencesOfString:@" " withString:@""];
 	NSString *nusnetIDTrimmed = [nusnetID.text stringByReplacingOccurrencesOfString:@" " withString:@""];
 	NSString *passwordTrimmed = [password.text stringByReplacingOccurrencesOfString:@" " withString:@""];
@@ -135,7 +135,7 @@
 		[self dismissModalViewControllerAnimated:YES];
 	}
 
-	
+*/	
 	
 }
 

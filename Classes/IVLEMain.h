@@ -10,6 +10,7 @@
 #import "ModulesWorkbin.h"
 #import "IVLE.h"
 #import "IVLESideBar.h"
+#import "IVLELoginWebViewController.h"
 #import "CAP.h"
 #import "CAPCalculator.h"
 #import "ForumViewController.h"
@@ -19,6 +20,7 @@
 #import "IVLEBottomBar.h"
 #import "Constants.h"
 #import "HomePageModuleAnnouncementCell.h"
+
 
 #define kIVLEMainNumberOfIcons 6
 @interface IVLEMain : UIViewController <UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate, UIScrollViewDelegate>{

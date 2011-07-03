@@ -43,6 +43,7 @@ static IVLEBottomBar *bottomBarNavigator;
 		
 		splitVC = [[UISplitViewController alloc] init];
     }
+
     return self;
 }
 
@@ -385,14 +386,14 @@ static IVLEBottomBar *bottomBarNavigator;
 
 - (void)displayLogin{
 	
-	IVLELoginNew *login = [[IVLELoginNew alloc]init];
+	IVLELoginWebViewController *login = [[IVLELoginWebViewController alloc]init];
 	
 	
 	[self memoryManagementOfViewControllers:login];
 //	login.view.frame= CGRectMake(0, 50, 1024, 718);
 	login.wantsFullScreenLayout = YES;
 	login.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-	login.modalPresentationStyle = UIModalPresentationCurrentContext;
+	login.modalPresentationStyle = UIModalPresentationFormSheet;
 	[self presentModalViewController:login animated:NO];
 }
 

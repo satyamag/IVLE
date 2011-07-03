@@ -35,13 +35,16 @@
 + (IVLE *)instance;
 
 /* Return the authetication token */
--(NSString *)authenticationToken;
 
 /*Login into ivle. 
  user: username
  password: password
  domain: NUSSTU/NUSSTF*/
 -(NSDictionary*)login:(NSString*)user withPassword:(NSString*)password withDomain:(NSString*)domain;
+
+-(void) setAuthToken:(NSString *)authToken;
+
+-(void) getAndSetUserID;
 
 /*Display announcements for certain courseID
  courseID: from modules

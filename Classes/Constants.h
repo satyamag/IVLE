@@ -18,6 +18,9 @@ const int kSemPopoverX = 0;
 const int kSemPopoverY = -50;
 */
 
+#define kAPIKey @"Xi6BSlJ5TeMKFi95VF9B9"
+#define kAPICacheMinutes 10
+
 #define kNotificationSetTopBarButtons @"setTopBarButtons"
 #define kHomePageAnnouncementsViewTag 1
 #define kHomePageTimetableViewTag 2
