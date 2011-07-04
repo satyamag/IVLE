@@ -72,7 +72,6 @@ NSMutableArray *announcements;
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshScreen:) name:kNotificationRefreshScreen object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setUpHomePageComponents:) name:kNotificationSetupHomePageComponents object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backToLogin:) name:kNotificationLoginScreen object:nil];
-//	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(relogin:) name:kNotificationReLoginSuccessful object:nil];
 	
 	if ([IVLE instance].authenticationToken == nil) {
 		[self performSelector:@selector(displayLogin) withObject:nil afterDelay:0.0];
@@ -80,22 +79,7 @@ NSMutableArray *announcements;
 
 }
 
-//-(void) relogin:(NSNotification *)notification {
-//	
-//	[self setUpEventsView];
-//	
-////	[self.view addSubview:topBar.view];
-//	[self.view addSubview:recentAnnouncements];
-//	
-//	[self.view addSubview:timetable];
-//	[pageControlView addSubview:eventsPageControl];
-//	[rightHandSideView addSubview:pageControlView];
-//	[rightHandSideView addSubview:eventsScrollView];
-//	[self.view addSubview:rightHandSideView];
-//
-//
-//	
-//}
+
 	
 
 - (void) memoryManagementOfViewControllers: (id) mainScreen  {
@@ -118,7 +102,7 @@ NSMutableArray *announcements;
 
 -(void) setUpHomePageComponents:(NSNotification*)notification {
     
-    [self setUpAnnouncementsView];
+//    [self setUpAnnouncementsView];
 	[self setUpEventsView];
     
     [self.view addSubview:recentAnnouncements];

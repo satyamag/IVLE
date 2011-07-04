@@ -621,20 +621,9 @@
     
     modulesTableView.backgroundColor = [UIColor clearColor];
     
-    //add "addButton" to top bar
-    addModuleButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    addModuleButton.frame = CGRectMake(10, 5, 40, 40);
+
+	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:[self retain] action:@selector(addNewModuleButtonPressed:)];
     
-    [addModuleButton setImage:[UIImage imageNamed:@"add.png"] forState:UIControlStateNormal];
-    [addModuleButton addTarget:[self retain] action:@selector(addNewModuleButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [addModuleButton setHidden:NO];
-    //[addModuleButton1 setOpaque:YES];
-    
-    buttonsArray = [[NSArray alloc] initWithObjects:addModuleButton, nil];
-    
-    // Send Notification
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"setTopBarButtons" object:buttonsArray];
-	
     [super viewDidLoad];
 }
 

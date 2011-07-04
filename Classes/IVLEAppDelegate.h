@@ -33,7 +33,7 @@
 
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 	
-- (void)restartApplication;
+-(void)restartApplication;
 
 -(void) switchToTab:(int)index;
 

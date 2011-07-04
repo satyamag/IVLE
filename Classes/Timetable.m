@@ -78,20 +78,8 @@
 	managedObjectContext = [[[ModulesFetcher sharedInstance] managedObjectContext] retain];
 	timetableDays = [[NSMutableArray alloc] initWithArray:[[ModulesFetcher sharedInstance] fetchManagedObjectsForEntity:@"CoreDataTimetableDay" withPredicate:nil]];
 	timetableClasses = [[NSMutableArray alloc] initWithArray:[[ModulesFetcher sharedInstance] fetchManagedObjectsForEntity:@"CoreDataTimetableClassInfo" withPredicate:nil]];
-	
-	//add "addButton" to top bar
-	addModuleButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	addModuleButton.frame = CGRectMake(10,5,40 , 40);
-	
-	[addModuleButton setImage:[UIImage imageNamed:@"add.png"] forState:UIControlStateNormal];
-	[addModuleButton addTarget:[self retain] action:@selector(addNewClass:) forControlEvents:UIControlEventTouchUpInside];
-	[addModuleButton setHidden:NO];
-	[addModuleButton setOpaque:YES];
-	
-	buttonsArray = [[NSArray alloc] initWithObjects:addModuleButton, nil];
-	
-	// Send Notification
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"setTopBarButtons" object:buttonsArray];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:[self retain] action:@selector(addNewClass:)];
 }
 
 #pragma mark Core data 

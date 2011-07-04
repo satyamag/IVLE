@@ -27,10 +27,7 @@
 		4A17101D13531EB400EF11E1 /* IVLELoginNew.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A17101513531EB400EF11E1 /* IVLELoginNew.m */; };
 		4A17101E13531EB400EF11E1 /* IVLELoginNew.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A17101613531EB400EF11E1 /* IVLELoginNew.xib */; };
 		4A17102013531EB400EF11E1 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A17101913531EB400EF11E1 /* SplashViewController.m */; };
-		4A17164F1355473400EF11E1 /* IVLEBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A17164C1355473400EF11E1 /* IVLEBottomBar.m */; };
-		4A1716501355473400EF11E1 /* IVLETopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A17164E1355473400EF11E1 /* IVLETopBar.m */; };
 		4A1716541355474F00EF11E1 /* IVLESideBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A1716511355474E00EF11E1 /* IVLESideBar.xib */; };
-		4A1716551355474F00EF11E1 /* IVLETopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A1716521355474E00EF11E1 /* IVLETopBar.xib */; };
 		4A1716561355474F00EF11E1 /* SideNavigation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A1716531355474F00EF11E1 /* SideNavigation.xib */; };
 		4A1716581355476400EF11E1 /* Events.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A1716571355476400EF11E1 /* Events.xib */; };
 		4A2924A11357A97700635DD2 /* HomePageModuleAnnouncementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2924A01357A97700635DD2 /* HomePageModuleAnnouncementCell.m */; };
@@ -62,7 +59,6 @@
 		4A30654713AE4AFB00A29872 /* EventsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A30654613AE4AFB00A29872 /* EventsView.m */; };
 		4A8A676C13BBA2DD003DEDDB /* IVLELoginWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8A676B13BBA2DD003DEDDB /* IVLELoginWebViewController.m */; };
 		4A8A676E13BBA567003DEDDB /* IVLELoginWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A8A676D13BBA567003DEDDB /* IVLELoginWebViewController.xib */; };
-		4A8B1FCB13560AC600716C9B /* IVLEBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A8B1FCA13560AC600716C9B /* IVLEBottomBar.xib */; };
 		4AD36BD61349602A00EBB733 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AD36BCF1349602A00EBB733 /* TableViewCell.xib */; };
 		4AD36BD71349602A00EBB733 /* LeftSideBarCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD36BD01349602A00EBB733 /* LeftSideBarCellView.m */; };
 		4AD36D3413499A2A00EBB733 /* ModulesInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AD36D3313499A2A00EBB733 /* ModulesInfoCell.xib */; };
@@ -181,12 +177,7 @@
 		4A17101613531EB400EF11E1 /* IVLELoginNew.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IVLELoginNew.xib; sourceTree = "<group>"; };
 		4A17101813531EB400EF11E1 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SplashViewController.h; path = ../SplashViewController.h; sourceTree = "<group>"; };
 		4A17101913531EB400EF11E1 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SplashViewController.m; path = ../SplashViewController.m; sourceTree = "<group>"; };
-		4A17164B1355473400EF11E1 /* IVLEBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IVLEBottomBar.h; sourceTree = "<group>"; };
-		4A17164C1355473400EF11E1 /* IVLEBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IVLEBottomBar.m; sourceTree = "<group>"; };
-		4A17164D1355473400EF11E1 /* IVLETopBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IVLETopBar.h; sourceTree = "<group>"; };
-		4A17164E1355473400EF11E1 /* IVLETopBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IVLETopBar.m; sourceTree = "<group>"; };
 		4A1716511355474E00EF11E1 /* IVLESideBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IVLESideBar.xib; sourceTree = "<group>"; };
-		4A1716521355474E00EF11E1 /* IVLETopBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IVLETopBar.xib; sourceTree = "<group>"; };
 		4A1716531355474F00EF11E1 /* SideNavigation.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideNavigation.xib; sourceTree = "<group>"; };
 		4A1716571355476400EF11E1 /* Events.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Events.xib; sourceTree = "<group>"; };
 		4A29249F1357A97700635DD2 /* HomePageModuleAnnouncementCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageModuleAnnouncementCell.h; sourceTree = "<group>"; };
@@ -221,7 +212,6 @@
 		4A8A676A13BBA2DD003DEDDB /* IVLELoginWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IVLELoginWebViewController.h; sourceTree = "<group>"; };
 		4A8A676B13BBA2DD003DEDDB /* IVLELoginWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IVLELoginWebViewController.m; sourceTree = "<group>"; };
 		4A8A676D13BBA567003DEDDB /* IVLELoginWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IVLELoginWebViewController.xib; sourceTree = "<group>"; };
-		4A8B1FCA13560AC600716C9B /* IVLEBottomBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IVLEBottomBar.xib; sourceTree = "<group>"; };
 		4AD36BCF1349602A00EBB733 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		4AD36BD01349602A00EBB733 /* LeftSideBarCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeftSideBarCellView.m; path = ../LeftSideBarCellView.m; sourceTree = "<group>"; };
 		4AD36BD11349602A00EBB733 /* LeftSideBarCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftSideBarCellView.h; path = ../LeftSideBarCellView.h; sourceTree = "<group>"; };
@@ -492,6 +482,98 @@
 			name = "Tab Bar Icons";
 			sourceTree = "<group>";
 		};
+		4AC6370913C1A2D100E4E6CE /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				4A8A676A13BBA2DD003DEDDB /* IVLELoginWebViewController.h */,
+				4A8A676B13BBA2DD003DEDDB /* IVLELoginWebViewController.m */,
+				4A17101413531EB400EF11E1 /* IVLELoginNew.h */,
+				4A17101513531EB400EF11E1 /* IVLELoginNew.m */,
+				4A17101813531EB400EF11E1 /* SplashViewController.h */,
+				4A17101913531EB400EF11E1 /* SplashViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		4AC6370A13C1A2F200E4E6CE /* API */ = {
+			isa = PBXGroup;
+			children = (
+				58983AC1133747510094E17A /* IVLE.h */,
+				58983AC2133747510094E17A /* IVLE.m */,
+				58595652132FBE1100F4DDFF /* IVLEAPIHandler.h */,
+				58595653132FBE1100F4DDFF /* IVLEAPIHandler.m */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		4AC6370B13C1A31F00E4E6CE /* Homepage */ = {
+			isa = PBXGroup;
+			children = (
+				A51E189313436A42006D7B5D /* IVLEMain.h */,
+				A51E189413436A42006D7B5D /* IVLEMain.m */,
+				4A29249F1357A97700635DD2 /* HomePageModuleAnnouncementCell.h */,
+				4A2924A01357A97700635DD2 /* HomePageModuleAnnouncementCell.m */,
+			);
+			name = Homepage;
+			sourceTree = "<group>";
+		};
+		4AC6370C13C1A36700E4E6CE /* SideBar */ = {
+			isa = PBXGroup;
+			children = (
+				4AD36BD11349602A00EBB733 /* LeftSideBarCellView.h */,
+				4AD36BD01349602A00EBB733 /* LeftSideBarCellView.m */,
+				A50ADDD5134DD0E900BAB8C7 /* ModuleHeader.h */,
+				A50ADDD6134DD0E900BAB8C7 /* ModuleHeader.m */,
+				A50ADDD7134DD0E900BAB8C7 /* ModuleHeaderInfo.h */,
+				A50ADDD8134DD0E900BAB8C7 /* ModuleHeaderInfo.m */,
+				A5D3F2A2133C451C001B33BB /* IVLESideBar.h */,
+				A5D3F2A3133C451C001B33BB /* IVLESideBar.m */,
+			);
+			name = SideBar;
+			sourceTree = "<group>";
+		};
+		4AC6370D13C1A38300E4E6CE /* Workbin */ = {
+			isa = PBXGroup;
+			children = (
+				4A00F00113C0CCEE002D6C4E /* Workbin.h */,
+				4A00F00213C0CCEE002D6C4E /* Workbin.m */,
+				A5D3F10A1338733D001B33BB /* ModulesWorkbin.h */,
+				A5D3F10B1338733D001B33BB /* ModulesWorkbin.m */,
+				A5E3D44F1356B49B00C0A15A /* ModulesWorkbinWebview.h */,
+				A5E3D4501356B49B00C0A15A /* ModulesWorkbinWebview.m */,
+			);
+			name = Workbin;
+			sourceTree = "<group>";
+		};
+		4AC6370E13C1A39B00E4E6CE /* Announcements */ = {
+			isa = PBXGroup;
+			children = (
+				A57D0BC61347AE7B00449B3C /* ModulesAnnouncements.h */,
+				A57D0BC71347AE7B00449B3C /* ModulesAnnouncements.m */,
+				A57D0C8B1347B66A00449B3C /* ModulesAnnouncementsCell.h */,
+				A57D0C8C1347B66A00449B3C /* ModulesAnnouncementsCell.m */,
+			);
+			name = Announcements;
+			sourceTree = "<group>";
+		};
+		4AC6370F13C1A3A700E4E6CE /* Module Information */ = {
+			isa = PBXGroup;
+			children = (
+				4AD36D3813499D3900EBB733 /* ModulesInfoCell.h */,
+				4AD36D3913499D3900EBB733 /* ModulesInfoCell.m */,
+				A57D0E5F1347CE8A00449B3C /* ModulesInfo.h */,
+				A57D0E601347CE8A00449B3C /* ModulesInfo.m */,
+			);
+			name = "Module Information";
+			sourceTree = "<group>";
+		};
+		4AC6371013C1A3B100E4E6CE /* Webcasts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Webcasts;
+			sourceTree = "<group>";
+		};
 		585955F4132FB83900F4DDFF /* TouchJson */ = {
 			isa = PBXGroup;
 			children = (
@@ -662,23 +744,12 @@
 		A57D0E641347CE9300449B3C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				4AC6371013C1A3B100E4E6CE /* Webcasts */,
+				4AC6370F13C1A3A700E4E6CE /* Module Information */,
+				4AC6370E13C1A39B00E4E6CE /* Announcements */,
+				4AC6370D13C1A38300E4E6CE /* Workbin */,
+				4AC6370C13C1A36700E4E6CE /* SideBar */,
 				BF35E7ED1340D0B8000E7F05 /* Forum */,
-				A50ADDD5134DD0E900BAB8C7 /* ModuleHeader.h */,
-				A50ADDD6134DD0E900BAB8C7 /* ModuleHeader.m */,
-				A50ADDD7134DD0E900BAB8C7 /* ModuleHeaderInfo.h */,
-				A50ADDD8134DD0E900BAB8C7 /* ModuleHeaderInfo.m */,
-				A57D0BC61347AE7B00449B3C /* ModulesAnnouncements.h */,
-				A57D0BC71347AE7B00449B3C /* ModulesAnnouncements.m */,
-				A57D0C8B1347B66A00449B3C /* ModulesAnnouncementsCell.h */,
-				A57D0C8C1347B66A00449B3C /* ModulesAnnouncementsCell.m */,
-				4AD36D3813499D3900EBB733 /* ModulesInfoCell.h */,
-				4AD36D3913499D3900EBB733 /* ModulesInfoCell.m */,
-				A57D0E5F1347CE8A00449B3C /* ModulesInfo.h */,
-				A57D0E601347CE8A00449B3C /* ModulesInfo.m */,
-				A5D3F10A1338733D001B33BB /* ModulesWorkbin.h */,
-				A5D3F10B1338733D001B33BB /* ModulesWorkbin.m */,
-				A5E3D44F1356B49B00C0A15A /* ModulesWorkbinWebview.h */,
-				A5E3D4501356B49B00C0A15A /* ModulesWorkbinWebview.m */,
 			);
 			name = Modules;
 			sourceTree = "<group>";
@@ -686,32 +757,11 @@
 		A5E3CBEC1352BA9700C0A15A /* IVLEMains */ = {
 			isa = PBXGroup;
 			children = (
-				4A8A676A13BBA2DD003DEDDB /* IVLELoginWebViewController.h */,
-				4A8A676B13BBA2DD003DEDDB /* IVLELoginWebViewController.m */,
-				4A17164B1355473400EF11E1 /* IVLEBottomBar.h */,
-				4A17164C1355473400EF11E1 /* IVLEBottomBar.m */,
-				4A17164D1355473400EF11E1 /* IVLETopBar.h */,
-				4A17164E1355473400EF11E1 /* IVLETopBar.m */,
-				58983AC1133747510094E17A /* IVLE.h */,
-				58983AC2133747510094E17A /* IVLE.m */,
-				A5D3F2A2133C451C001B33BB /* IVLESideBar.h */,
-				A5D3F2A3133C451C001B33BB /* IVLESideBar.m */,
-				4AD36BD11349602A00EBB733 /* LeftSideBarCellView.h */,
-				4AD36BD01349602A00EBB733 /* LeftSideBarCellView.m */,
 				1D3623240D0F684500981E51 /* IVLEAppDelegate.h */,
 				1D3623250D0F684500981E51 /* IVLEAppDelegate.m */,
-				58595652132FBE1100F4DDFF /* IVLEAPIHandler.h */,
-				58595653132FBE1100F4DDFF /* IVLEAPIHandler.m */,
-				A51E189313436A42006D7B5D /* IVLEMain.h */,
-				A51E189413436A42006D7B5D /* IVLEMain.m */,
-				4A17101413531EB400EF11E1 /* IVLELoginNew.h */,
-				4A17101513531EB400EF11E1 /* IVLELoginNew.m */,
-				4A17101813531EB400EF11E1 /* SplashViewController.h */,
-				4A17101913531EB400EF11E1 /* SplashViewController.m */,
-				4A29249F1357A97700635DD2 /* HomePageModuleAnnouncementCell.h */,
-				4A2924A01357A97700635DD2 /* HomePageModuleAnnouncementCell.m */,
-				4A00F00113C0CCEE002D6C4E /* Workbin.h */,
-				4A00F00213C0CCEE002D6C4E /* Workbin.m */,
+				4AC6370B13C1A31F00E4E6CE /* Homepage */,
+				4AC6370A13C1A2F200E4E6CE /* API */,
+				4AC6370913C1A2D100E4E6CE /* Login */,
 			);
 			name = IVLEMains;
 			sourceTree = "<group>";
@@ -731,14 +781,12 @@
 				4A8A676D13BBA567003DEDDB /* IVLELoginWebViewController.xib */,
 				A57D09C21347725A00449B3C /* Map.xib */,
 				4A1716511355474E00EF11E1 /* IVLESideBar.xib */,
-				4A1716521355474E00EF11E1 /* IVLETopBar.xib */,
 				4A1716531355474F00EF11E1 /* SideNavigation.xib */,
 				4AD36BCF1349602A00EBB733 /* TableViewCell.xib */,
 				4A17101613531EB400EF11E1 /* IVLELoginNew.xib */,
 				A5E3C8B5135180C600C0A15A /* IVLELogin.xib */,
 				A51E189513436A42006D7B5D /* IVLEMain.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
-				4A8B1FCA13560AC600716C9B /* IVLEBottomBar.xib */,
 			);
 			name = IVLEMains;
 			sourceTree = "<group>";
@@ -881,10 +929,8 @@
 				4A17101E13531EB400EF11E1 /* IVLELoginNew.xib in Resources */,
 				5C6976D61353702F006F6BC5 /* NewEvent.xib in Resources */,
 				4A1716541355474F00EF11E1 /* IVLESideBar.xib in Resources */,
-				4A1716551355474F00EF11E1 /* IVLETopBar.xib in Resources */,
 				4A1716561355474F00EF11E1 /* SideNavigation.xib in Resources */,
 				4A1716581355476400EF11E1 /* Events.xib in Resources */,
-				4A8B1FCB13560AC600716C9B /* IVLEBottomBar.xib in Resources */,
 				A5E3D4531356B49B00C0A15A /* ModulesWorkbinWebview.xib in Resources */,
 				4A2924A31357A9E800635DD2 /* HomePageModuleAnnouncementCell.xib in Resources */,
 				4A30650313AE4A7000A29872 /* add_events.png in Resources */,
@@ -996,8 +1042,6 @@
 				5CF0A2991352E2360053E9F1 /* EventsData.m in Sources */,
 				4A17101D13531EB400EF11E1 /* IVLELoginNew.m in Sources */,
 				4A17102013531EB400EF11E1 /* SplashViewController.m in Sources */,
-				4A17164F1355473400EF11E1 /* IVLEBottomBar.m in Sources */,
-				4A1716501355473400EF11E1 /* IVLETopBar.m in Sources */,
 				A5E3D1FE1355848700C0A15A /* IVLEAPICache.m in Sources */,
 				A5E3D4521356B49B00C0A15A /* ModulesWorkbinWebview.m in Sources */,
 				4A2924A11357A97700635DD2 /* HomePageModuleAnnouncementCell.m in Sources */,

@@ -16,8 +16,6 @@
 #import "ForumViewController.h"
 #import "Timetable.h"
 #import "IVLELoginNew.h"
-#import "IVLETopBar.h"
-#import "IVLEBottomBar.h"
 #import "Constants.h"
 #import "HomePageModuleAnnouncementCell.h"
 #import "IVLEAppDelegate.h"

@@ -20,20 +20,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization.
-		
-		//add "Add events" button to top bar
-		
-		UIButton *addEventsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-		addEventsButton.frame = CGRectMake(0,5, 100, 40);
-		
-		[addEventsButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal]  ;
-		[addEventsButton setImage:[UIImage imageNamed:@"new_event_button.png"] forState:UIControlStateNormal];
-		[addEventsButton addTarget:[self retain] action:@selector(addEventButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-		
-		buttonsArray = [[NSArray alloc] initWithObjects:addEventsButton, nil];
-		
-		// Send Notification
-		[[NSNotificationCenter defaultCenter] postNotificationName:@"setTopBarButtons" object:buttonsArray];
+		self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:[self retain] action:@selector(addEventButtonClicked)];
 		
 	}
     return self;
