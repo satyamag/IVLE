@@ -74,7 +74,7 @@
     //add ivle events
     eventsArray = [[[ivleInterface studentEvents:NO] objectForKey:@"Results"] retain];
     eventsViewControllerArray = [[NSMutableArray alloc] init];
-    
+	
     for (int i = 0; i < [eventsArray count]; i++) {
         
         NSDictionary *currentEvent = [eventsArray objectAtIndex:i];

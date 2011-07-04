@@ -143,6 +143,9 @@
  REQUIRES: Valid token*/
 - (NSDictionary *)studentEvents:(BOOL)title;
 
+/*Gets webcasts
+ REQUIRES: Valid token, valid courseID*/
+- (NSDictionary *)webcasts:(NSString *)courseID withDuration:(NSInteger)duration withMediaID:(NSString *)mediaID withTitle:(BOOL)title;
 
 /* Create user events in server
  REQUIRES: nil*/

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface HomePageModuleAnnouncementCell : UITableViewCell {
+@interface HomePageModuleAnnouncementCell : UITableViewCell <UIWebViewDelegate, UITextFieldDelegate>{
 	IBOutlet UILabel *moduleCode;
 	IBOutlet UILabel *postDate;
 	IBOutlet UILabel *postTitle;

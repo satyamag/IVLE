@@ -26,6 +26,7 @@
 	self.finishedLoading = NO;
 	self.descriptionText.backgroundColor = [UIColor clearColor];
 	self.backgroundColor = [UIColor clearColor];
+	
     return self;
 }
 
@@ -37,17 +38,27 @@
     // Configure the view for the selected state.
 }
 
-
 - (void)dealloc {
     [super dealloc];
 }
-- (void)webViewDidFinishLoad:(UIWebView *)aWebView {
-	NSString *output = [aWebView stringByEvaluatingJavaScriptFromString:@"document.getElementById(\"foo\").offsetHeight;"];
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+
+	NSLog(@"!@#$");
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+	
+	NSLog(@"Webview loading!");
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+	NSString *output = [webView stringByEvaluatingJavaScriptFromString:@"document.getElementById(\"foo\").offsetHeight;"];
 	CGRect frame;
-	frame = aWebView.frame;
+	frame = webView.frame;
 	frame.size.height = [output floatValue]+15;
 	
-	aWebView.frame = frame;
+	webView.frame = frame;
 	self.finishedLoading = YES;
 }
 
