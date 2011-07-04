@@ -440,7 +440,6 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4A2924A21357A9E800635DD2 /* HomePageModuleAnnouncementCell.xib */,
 				BF854E49135766BB00010479 /* Timetable */,
 				A57D0BCB1347AE8900449B3C /* Modules */,
 				5CCBA73B1345A211002D38A5 /* CAP calculator */,
@@ -784,6 +783,7 @@
 				4A1716531355474F00EF11E1 /* SideNavigation.xib */,
 				4AD36BCF1349602A00EBB733 /* TableViewCell.xib */,
 				4A17101613531EB400EF11E1 /* IVLELoginNew.xib */,
+				4A2924A21357A9E800635DD2 /* HomePageModuleAnnouncementCell.xib */,
 				A5E3C8B5135180C600C0A15A /* IVLELogin.xib */,
 				A51E189513436A42006D7B5D /* IVLEMain.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,

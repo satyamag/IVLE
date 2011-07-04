@@ -203,6 +203,10 @@ static IVLE *sharedSingleton;
 	return [NSURLRequest requestWithURL:[NSURL URLWithString:pathToTempFile]];
 }
 
+- (NSDictionary *)webcasts:(NSString *)courseID withDuration:(NSInteger)duration withMediaID:(NSString *)mediaID withTitle:(BOOL)title {
+	
+	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Webcasts?APIKey=%@&AuthToken=%@&CourseID=%@&Duration=%d&MediaChannelID=%@&TitleOnly=%@", kAPIKey, authenticationToken, courseID, duration, mediaID, [self booleanToSystemBoolean:title]]];
+}
 
 -(NSString*)booleanToSystemBoolean:(BOOL)boolean{
 	if (boolean) {

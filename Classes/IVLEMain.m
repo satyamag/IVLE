@@ -291,6 +291,8 @@ NSMutableArray *announcements;
 			[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
 		} while (!cell.finishedLoading);
 		NSAssert(cell.finishedLoading, @"cell not finish loading");
+		 
+		 
 		//		NSLog(@"%d, %f, %f", cell.finishedLoading, cell.frame.size.width, cell.frame.size.height);
 		cell.descriptionText.backgroundColor = [UIColor clearColor];
 		[announcementCells addObject:cell];

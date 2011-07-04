@@ -39,6 +39,8 @@
 
 	UILabel *eventTitle, *organization, *agenda, *contact, *dateTime, *price, *venue;
 	
+	//UILabel *eventTitle, *createdDate, *expiryDate, *ID, *URL, *isRead, *creatorName, *creatorGUID, *creatorID, *creatorEmail;
+	
 	UIWebView *description;
 	
 	NSDictionary *event;
