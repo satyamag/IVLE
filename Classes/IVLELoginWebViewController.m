@@ -91,12 +91,12 @@
 				NSLog(@"token: %@", token);
                 [ivleInstance setAuthToken:token];
                 
-                [ivleInstance getAndSetUserID];
- //               [[ModulesFetcher sharedInstance] setUserID:nusnetIDTrimmed];
                 
-                [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetWelcomeMessage object:[[NSString stringWithString:@"Welcome "] stringByAppendingString:@"HOOGO"]];
-                [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationReLoginSuccessful object:nil];
-				[self dismissModalViewControllerAnimated:YES];
+                [[ModulesFetcher sharedInstance] setUserID:[ivleInstance getAndSetUserName]];
+                [self dismissModalViewControllerAnimated:YES];
+                [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetupHomePageComponents object:nil];
+//                [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationReLoginSuccessful object:nil];
+				
 				
 				
 

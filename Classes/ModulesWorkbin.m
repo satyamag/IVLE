@@ -18,34 +18,7 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-		managedObjectContext = [[[ModulesFetcher sharedInstance] managedObjectContext] retain];
-		
-		IVLE *ivle = [IVLE instance];
-		
-		stack = [[NSMutableArray array] retain];
-		
-		if ([IVLE instance].selectedCourseID) {
-			NSDictionary *workbin = [ivle workbin:[IVLE instance].selectedCourseID withDuration:0 withWorkbinID:nil withTitle:NO];
-			selectedFolderID = 0;
-			
-			if ([[[workbin valueForKey:@"Results"] valueForKey:@"Folders"] count] > 0) {
-				
-				workbinDatasource = [[[[workbin valueForKey:@"Results"] valueForKey:@"Folders"] objectAtIndex:0] retain];
-				
-				currentDirectoryName = [[[[workbin valueForKey:@"Results"] valueForKey:@"Title"] objectAtIndex:0] retain];
-			}
-		}
-		
-		UIImage *bgImage = [UIImage imageNamed:@"IVLE_second_bar_modules_workbin_bg.png"];
-		
-		
-		buttons = [[NSMutableArray array] retain];
-		[self redrawButtons];
-		self.view.backgroundColor = [UIColor clearColor] ;
-		directoryStructure.backgroundColor = [UIColor colorWithPatternImage:bgImage] ;
-		table.backgroundColor = [UIColor clearColor];
-		
-		supportedExtOfFiles = [[NSSet setWithObjects:@"ppt", @"pptx", @"docx", @"doc", @"pdf", @"xls", @"xlsx", nil] retain];
+
     }
 	
 	
@@ -56,11 +29,43 @@
     return self;
 }
 
+-(void) viewDidAppear:(BOOL)animated {
+    
+}
+
 
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[super viewDidLoad];
+    managedObjectContext = [[[ModulesFetcher sharedInstance] managedObjectContext] retain];
+    
+    IVLE *ivle = [IVLE instance];
+    
+    stack = [[NSMutableArray array] retain];
+    
+    if ([IVLE instance].selectedCourseID) {
+        NSDictionary *workbin = [ivle workbin:[IVLE instance].selectedCourseID withDuration:0 withWorkbinID:nil withTitle:NO];
+        selectedFolderID = 0;
+        
+        if ([[[workbin valueForKey:@"Results"] valueForKey:@"Folders"] count] > 0) {
+            
+            workbinDatasource = [[[[workbin valueForKey:@"Results"] valueForKey:@"Folders"] objectAtIndex:0] retain];
+            
+            currentDirectoryName = [[[[workbin valueForKey:@"Results"] valueForKey:@"Title"] objectAtIndex:0] retain];
+        }
+    }
+    
+    UIImage *bgImage = [UIImage imageNamed:@"IVLE_second_bar_modules_workbin_bg.png"];
+    
+    
+    buttons = [[NSMutableArray array] retain];
+    [self redrawButtons];
+    self.view.backgroundColor = [UIColor clearColor] ;
+    directoryStructure.backgroundColor = [UIColor colorWithPatternImage:bgImage] ;
+    table.backgroundColor = [UIColor clearColor];
+    
+    supportedExtOfFiles = [[NSSet setWithObjects:@"ppt", @"pptx", @"docx", @"doc", @"pdf", @"xls", @"xlsx", nil] retain];
 }
 
 - (void)redrawButtons{

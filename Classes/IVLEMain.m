@@ -17,6 +17,7 @@
 - (void) setUpTimeTableView;
 - (void) setUpEventsView;
 - (void) setUpAnnouncementsView;
+- (void) setUpHomePageComponents;
 
 @end
 
@@ -26,8 +27,7 @@
 NSMutableArray *announcements;
 @synthesize announcementCells;
 
-static IVLETopBar *topBar;
-static IVLEBottomBar *bottomBarNavigator;
+
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 
@@ -42,6 +42,7 @@ static IVLEBottomBar *bottomBarNavigator;
 		currentActiveMainViewController = nil;
 		
 		splitVC = [[UISplitViewController alloc] init];
+        
     }
 
     return self;
@@ -55,14 +56,6 @@ static IVLEBottomBar *bottomBarNavigator;
     [super viewDidLoad];
     // Override point for customization after application launch.
 	
-	if (!topBar) {
-		topBar = [[IVLETopBar alloc] init];
-	}
-	
-	if (!bottomBarNavigator) {
-		bottomBarNavigator = [[IVLEBottomBar alloc] init];
-	}
-	
 	
 	
 	UIImage *bgImage = [UIImage imageNamed:@"IVLE_white_bg.png"];
@@ -70,11 +63,6 @@ static IVLEBottomBar *bottomBarNavigator;
 	timetable.tag = kHomePageTimetableViewTag;
 	recentAnnouncements.tag = kHomePageAnnouncementsViewTag;
 	
-	
-	
-	[self.view addSubview:topBar.view];
-	[self.view addSubview:bottomBarNavigator.view];
-	//bottomBarNavigator.view.frame = 
 	[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetPageTitle object:[NSString stringWithString:@"Home Screen"]];
 	
 	self.view.frame = CGRectMake(0,0,1024, 768);
@@ -82,33 +70,32 @@ static IVLEBottomBar *bottomBarNavigator;
 	
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshScreen:) name:kNotificationRefreshScreen object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshRightScreen:) name:kNotificationRefreshRightScreen object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setUpHomePageComponents:) name:kNotificationSetupHomePageComponents object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backToLogin:) name:kNotificationLoginScreen object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(relogin:) name:kNotificationReLoginSuccessful object:nil];
+//	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(relogin:) name:kNotificationReLoginSuccessful object:nil];
 	
 	if ([IVLE instance].authenticationToken == nil) {
-		//	[self displayLogin];
-		[self performSelector:@selector(displayLogin) withObject:nil afterDelay:2.95];
+		[self performSelector:@selector(displayLogin) withObject:nil afterDelay:0.0];
 	}
+
 }
 
--(void) relogin:(NSNotification *)notification {
-	
-	[self setUpEventsView];
-	
-	[self.view addSubview:topBar.view];
-	[self.view addSubview:recentAnnouncements];
-	
-	[self.view addSubview:timetable];
-	[pageControlView addSubview:eventsPageControl];
-	[rightHandSideView addSubview:pageControlView];
-	[rightHandSideView addSubview:eventsScrollView];
-	[self.view addSubview:rightHandSideView];
-	[self.view addSubview:bottomBarNavigator.view];
-	[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetPageTitle object:[NSString stringWithString:@"Home Screen"]];
-
-	
-}
+//-(void) relogin:(NSNotification *)notification {
+//	
+//	[self setUpEventsView];
+//	
+////	[self.view addSubview:topBar.view];
+//	[self.view addSubview:recentAnnouncements];
+//	
+//	[self.view addSubview:timetable];
+//	[pageControlView addSubview:eventsPageControl];
+//	[rightHandSideView addSubview:pageControlView];
+//	[rightHandSideView addSubview:eventsScrollView];
+//	[self.view addSubview:rightHandSideView];
+//
+//
+//	
+//}
 	
 
 - (void) memoryManagementOfViewControllers: (id) mainScreen  {
@@ -127,6 +114,21 @@ static IVLEBottomBar *bottomBarNavigator;
 	}
 	currentActiveMainViewController = mainScreen;
 	
+}
+
+-(void) setUpHomePageComponents:(NSNotification*)notification {
+    
+    [self setUpAnnouncementsView];
+	[self setUpEventsView];
+    
+    [self.view addSubview:recentAnnouncements];
+	
+	[self.view addSubview:timetable];
+	[pageControlView addSubview:eventsPageControl];
+	[rightHandSideView addSubview:pageControlView];
+	[rightHandSideView addSubview:eventsScrollView];
+	[self.view addSubview:rightHandSideView];
+//	[self setUpTimeTableView];
 }
 - (void) setUpEventsView {
 	
@@ -174,10 +176,9 @@ static IVLEBottomBar *bottomBarNavigator;
 }
 
 - (void)eventsSummaryClicked:(UITapGestureRecognizer *)gesture {
-	
-	Events *eventsVC = [[Events alloc] init];
-	[self refreshMainScreenWith:eventsVC];
-	[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetPageTitle object:[NSString stringWithString:@"Events"]];
+
+	IVLEAppDelegate *appDelegate = (IVLEAppDelegate*) [[UIApplication sharedApplication] delegate];
+    [appDelegate switchToTab:3];
 }
 
 #pragma mark -
@@ -245,10 +246,6 @@ static IVLEBottomBar *bottomBarNavigator;
 	[spinner startAnimating];
 	[[self.view superview] addSubview:spinner];
 	self.view.userInteractionEnabled = NO;
-	
-	[self setUpAnnouncementsView];
-	[self setUpEventsView];
-	[self setUpTimeTableView];
 	
 	self.view.userInteractionEnabled = YES;
 	[spinner removeFromSuperview];
@@ -397,146 +394,6 @@ static IVLEBottomBar *bottomBarNavigator;
 	[self presentModalViewController:login animated:NO];
 }
 
-
-
-
-- (IBAction)modulesClicked{
-	//REFACTOR NEEDED.
-	IVLESideBar* leftBar = [[IVLESideBar alloc] init];
-	
-	
-	ModulesWorkbin* rightBar = [[ModulesWorkbin alloc] init];
-	
-	[self refreshMainScreenWith:leftBar withRight:rightBar];
-	
-	[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetPageTitle object:[NSString stringWithString:@"Modules"]];
-	
-}
-- (IBAction)timetableClicked{
-	
-	Timetable * mainScreen = [[Timetable alloc] init];
-	[self refreshMainScreenWith:mainScreen];
-	[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetPageTitle object:[NSString stringWithString:@"Timetable"]];
-}
-
-- (IBAction)mapClicked{
-	Map * mainScreen = [[Map alloc] init];
-	[self refreshMainScreenWith:mainScreen];
-	[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetPageTitle object:[NSString stringWithString:@"Campus Map"]];
-}
-
-- (IBAction)capClicked{
-	CAPCalculator * mainScreen = [[CAPCalculator alloc] init];
-	[self refreshMainScreenWith:mainScreen];
-	[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetPageTitle object:[NSString stringWithString:@"CAP Calculator"]];
-}
-
-- (IBAction)eventsClicked {
-	
-	Events *eventsVC = [[Events alloc] init];
-	[self refreshMainScreenWith:eventsVC];
-	[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetPageTitle object:[NSString stringWithString:@"Events"]];
-}
-- (void)refreshMainScreenWith:(UIViewController*)mainScreen{
-	//memory management by SJ
-	[self memoryManagementOfViewControllers: mainScreen];
-
-	
-	
-	mainScreen.view.frame = CGRectMake(0,topBar.view.frame.size.height,1024, 748-topBar.view.frame.size.height-bottomBarNavigator.view.frame.size.height);
-	//	bottomBarNavigator.view.frame = CGRectMake(0, 748-bottomBarNavigator.view.frame.size.height,  bottomBarNavigator.view.frame.size.width, bottomBarNavigator.view.frame.size.height);
-	
-	UIImage *backgroundImage = [UIImage imageNamed:@"IVLE_white_bg.png"];
-	[mainScreen.view setBackgroundColor:[UIColor colorWithPatternImage:backgroundImage]];
-	
-	for (UIView *view in self.view.subviews) {
-		[view removeFromSuperview];
-	}
-	
-	[self.view addSubview:topBar.view];
-	[self.view addSubview:mainScreen.view];
-	[self.view addSubview:bottomBarNavigator.view];
-	//[self.view addSubview:topBar.view];
-}
-
-- (void)refreshMainScreenWith:(id)leftBar withRight:(id)rightBar{
-	splitVC.viewControllers = [NSArray arrayWithObjects:leftBar, rightBar, nil];
-	
-	//memory management by SJ, leftBar is singleton.
-	[self memoryManagementOfViewControllers: rightBar];
-
-	//load background image for split view
-	UIImage *backgroundImage = [UIImage imageNamed:@"IVLE_white_bg.png"];
-	splitVC.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
-	
-	[splitVC setValue:[NSNumber numberWithFloat:200.0] forKey:@"_masterColumnWidth"];
-	splitVC.view.frame = CGRectMake(0,topBar.view.frame.size.height,1024, 748-topBar.view.frame.size.height-bottomBarNavigator.view.frame.size.height);
-	//	bottomBarNavigator.view.frame = CGRectMake(0, 648, 1024, 110);
-	
-	for (UIView *view in self.view.subviews) {
-		[view removeFromSuperview];
-	}
-	
-	[self.view addSubview:splitVC.view];
-	[self.view addSubview:topBar.view];
-	[self.view addSubview:bottomBarNavigator.view];
-}
-
--(void) resetToHomeScreen:(NSArray*)viewArray {
-	
-	//NSLog(@"resetToHomeScreen");
-	self.view.frame = CGRectMake(0,0,1024, 748);
-	
-	UIImage *bgImage = [UIImage imageNamed:@"IVLE_white_bg.png"];
-	[timetable setBackgroundColor:[UIColor colorWithPatternImage:bgImage]];
-	
-	for (UIView *view in self.view.subviews) {
-		[view removeFromSuperview];
-	}
-	
-	[self setUpEventsView];
-	
-	[self.view addSubview:topBar.view];
-	[self.view addSubview:recentAnnouncements];
-	
-	[self.view addSubview:timetable];
-	[pageControlView addSubview:eventsPageControl];
-	[rightHandSideView addSubview:pageControlView];
-	[rightHandSideView addSubview:eventsScrollView];
-	[self.view addSubview:rightHandSideView];
-	[self.view addSubview:bottomBarNavigator.view];
-	[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetPageTitle object:[NSString stringWithString:@"Home Screen"]];
-	
-	
-	
-	
-	//	self.view.frame = CGRectMake(0,0,1024, 768);
-	/*
-	 [self.view addSubview:[viewArray objectAtIndex:0]];
-	 //	mainScreen.view.frame = CGRectMake(0,0,1024, 768);
-	 //	[self.view addSubview:mainScreen.view];
-	 */	
-}
-
-- (void)refreshScreen:(NSNotification*)notification{
-	//REFACTOR. REMOVE RELIANCE ON ARRAY.
-	if ([[notification object] count] == 0) {
-		[self resetToHomeScreen:[[NSBundle mainBundle] loadNibNamed:@"IVLEMain" owner:self options:nil]];
-	} else if([[notification object] count] == 1){
-		[self refreshMainScreenWith:[[notification object] lastObject]];
-	} else {
-		NSAssert(0,@"Notification object count is wrong la!");
-	}
-}
-
-- (void)refreshRightScreen:(NSNotification*)notification{
-	if ([[notification object] count] == 1) {
-		IVLESideBar* leftBar= [[IVLESideBar alloc] init];
-		[self refreshMainScreenWith:leftBar withRight:[[notification object] objectAtIndex:0]];
-	}
-	
-}
-
 - (void)refreshScreenToSplashScreen{
 	while ([[self.view subviews] count] > kIVLEMainNumberOfIcons) {
 		[[[self.view subviews] lastObject] removeFromSuperview]; 
@@ -564,7 +421,7 @@ static IVLEBottomBar *bottomBarNavigator;
 	
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:kNotificationRefreshRightScreen object:nil];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:kNotificationRefreshScreen object:nil];
-	[bottomBarNavigator.view removeFromSuperview];
+
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -574,8 +431,7 @@ static IVLEBottomBar *bottomBarNavigator;
 	NSLog(@"main dealloc");
 	[timetable release];
 	[recentAnnouncements release];
-	[topBar release];
-	[bottomBarNavigator release];
+
     [super dealloc];
 }
 

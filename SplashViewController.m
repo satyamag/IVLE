@@ -11,7 +11,7 @@
 
 @implementation SplashViewController
 
-@synthesize timer,splashImageView,viewController;
+@synthesize timer,splashImageView;
 
 
 
@@ -33,9 +33,7 @@
 	//splashImageView.frame = CGRectMake(0, 0, 1024, 748);
 	[self.view addSubview:splashImageView];
 	
-	viewController = [[IVLEMain alloc] init];
-	viewController.view.alpha = 0.0;
-	[self.view addSubview:viewController.view];
+
 	
 	timer = [NSTimer scheduledTimerWithTimeInterval:2.5 target:self selector:@selector(fadeScreen) userInfo:nil repeats:NO];
 }
@@ -61,7 +59,6 @@
 	[UIView beginAnimations:nil context:nil]; // begins animation block
 	[UIView setAnimationDuration:0.15];        // sets animation duration
 	self.view.alpha = 1.0;   // fades the view to 1.0 alpha over 0.75 seconds
-	viewController.view.alpha = 1.0;
 	[UIView commitAnimations];   // commits the animation block.  This Block is done.
 	[splashImageView removeFromSuperview];
 }

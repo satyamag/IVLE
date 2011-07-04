@@ -58,58 +58,7 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // intialize moduleObjects
-		ivleInterface = [IVLE instance];
-		managedObjectContext = [[[ModulesFetcher sharedInstance] managedObjectContext] retain];
-		moduleObjects = [[NSMutableArray alloc] initWithArray:[[ModulesFetcher sharedInstance] fetchManagedObjectsForEntity:@"CAPModule" withPredicate:nil]];
-		semesterObjects = [[NSMutableArray alloc] initWithArray:[[ModulesFetcher sharedInstance] fetchManagedObjectsForEntity:@"Semester" withPredicate:nil]];
-		
-		self.view.backgroundColor = [UIColor clearColor];
-		
-		//add graph
-		graphRect = CGRectMake(kGraphViewX, kGraphViewY, kGraphViewWidth, kGraphViewHeight);
-		graphView = [[S7GraphView alloc] initWithFrame:graphRect];
-		[graphView setDataSource:self];
-		
-		graphView.backgroundColor = [UIColor clearColor];
         
-		graphView.drawAxisX = YES;
-		graphView.drawAxisY = YES;
-		graphView.drawGridX = YES;
-		graphView.drawGridY = YES;
-        
-		graphView.xValuesColor = [UIColor blackColor];
-		graphView.yValuesColor = [UIColor blackColor];
-        
-		graphView.gridXColor = [UIColor blackColor];
-		graphView.gridYColor = [UIColor blackColor];
-		
-		graphView.drawInfo = YES;
-		graphView.info = @"SAP Graph";
-		graphView.infoColor = [UIColor blackColor];
-		
-		//clear color added by SJ
-		SAPGraphView.backgroundColor = [UIColor clearColor];
-		[SAPGraphView addSubview:graphView];
-		
-		//modulesTableView.backgroundView = nil;
-		[modulesTableView setBackgroundView:nil];
-
-		modulesTableView.backgroundColor = [UIColor clearColor];
-		
-		//add "addButton" to top bar
-		addModuleButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-		addModuleButton.frame = CGRectMake(10, 5, 40, 40);
-		
-		[addModuleButton setImage:[UIImage imageNamed:@"add.png"] forState:UIControlStateNormal];
-		[addModuleButton addTarget:[self retain] action:@selector(addNewModuleButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-		[addModuleButton setHidden:NO];
-		//[addModuleButton1 setOpaque:YES];
-		
-		buttonsArray = [[NSArray alloc] initWithObjects:addModuleButton, nil];
-		
-		// Send Notification
-		[[NSNotificationCenter defaultCenter] postNotificationName:@"setTopBarButtons" object:buttonsArray];
 		
 	}
     return self;
@@ -633,6 +582,58 @@
 - (void)viewDidLoad {
 	
 	[self updateHeader];
+    // intialize moduleObjects
+    ivleInterface = [IVLE instance];
+    managedObjectContext = [[[ModulesFetcher sharedInstance] managedObjectContext] retain];
+    moduleObjects = [[NSMutableArray alloc] initWithArray:[[ModulesFetcher sharedInstance] fetchManagedObjectsForEntity:@"CAPModule" withPredicate:nil]];
+    semesterObjects = [[NSMutableArray alloc] initWithArray:[[ModulesFetcher sharedInstance] fetchManagedObjectsForEntity:@"Semester" withPredicate:nil]];
+    
+    self.view.backgroundColor = [UIColor clearColor];
+    
+    //add graph
+    graphRect = CGRectMake(kGraphViewX, kGraphViewY, kGraphViewWidth, kGraphViewHeight);
+    graphView = [[S7GraphView alloc] initWithFrame:graphRect];
+    [graphView setDataSource:self];
+    
+    graphView.backgroundColor = [UIColor clearColor];
+    
+    graphView.drawAxisX = YES;
+    graphView.drawAxisY = YES;
+    graphView.drawGridX = YES;
+    graphView.drawGridY = YES;
+    
+    graphView.xValuesColor = [UIColor blackColor];
+    graphView.yValuesColor = [UIColor blackColor];
+    
+    graphView.gridXColor = [UIColor blackColor];
+    graphView.gridYColor = [UIColor blackColor];
+    
+    graphView.drawInfo = YES;
+    graphView.info = @"SAP Graph";
+    graphView.infoColor = [UIColor blackColor];
+    
+    //clear color added by SJ
+    SAPGraphView.backgroundColor = [UIColor clearColor];
+    [SAPGraphView addSubview:graphView];
+    
+    //modulesTableView.backgroundView = nil;
+    [modulesTableView setBackgroundView:nil];
+    
+    modulesTableView.backgroundColor = [UIColor clearColor];
+    
+    //add "addButton" to top bar
+    addModuleButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    addModuleButton.frame = CGRectMake(10, 5, 40, 40);
+    
+    [addModuleButton setImage:[UIImage imageNamed:@"add.png"] forState:UIControlStateNormal];
+    [addModuleButton addTarget:[self retain] action:@selector(addNewModuleButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [addModuleButton setHidden:NO];
+    //[addModuleButton1 setOpaque:YES];
+    
+    buttonsArray = [[NSArray alloc] initWithObjects:addModuleButton, nil];
+    
+    // Send Notification
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"setTopBarButtons" object:buttonsArray];
 	
     [super viewDidLoad];
 }

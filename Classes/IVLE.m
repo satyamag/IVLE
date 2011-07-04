@@ -13,7 +13,7 @@
 static IVLE *sharedSingleton;
 
 @synthesize authenticationToken;
-@synthesize userId;
+@synthesize userName;
 @synthesize selectedWorkbinID;
 @synthesize selectedCourseID;
 
@@ -62,10 +62,12 @@ static IVLE *sharedSingleton;
     self.authenticationToken = authToken;
 }
 
--(void) getAndSetUserID {
+-(NSString*) getAndSetUserName {
     
-    NSDictionary *d = [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/UserName_Get?APIKey=%@&Token=%@", kAPIKey, authenticationToken]];
-    NSLog(@"%@",d);
+    NSString *user = [handler getUserName:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/UserName_Get?APIKey=%@&Token=%@&output=json", kAPIKey, authenticationToken]];
+    self.userName = [NSString stringWithString:user];
+    return [user stringByReplacingOccurrencesOfString:@" " withString:@""];
+
     
 }
 

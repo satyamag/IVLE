@@ -7,20 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "IVLEMain.h"
 
 
 @interface SplashViewController : UIViewController {
 	
 	NSTimer *timer;
 	UIImageView *splashImageView;
-	
-	IVLEMain *viewController;
+
 }
 
 @property(nonatomic,retain) NSTimer *timer;
 @property(nonatomic,retain) UIImageView *splashImageView;
-@property(nonatomic,retain) IVLEMain *viewController;
 
 
 @end

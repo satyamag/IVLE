@@ -12,10 +12,16 @@
 #import "IVLEMain.h"
 #import "SplashViewController.h"
 #import "Constants.h"
+#import "CAPCalculator.h"
+#import "Events.h"
+#import "Workbin.h"
+#import "Timetable.h"
+#import "Map.h"
+#import "CAPCalculator.h"
 
 #define CoreDataSJNo
 #define CoreDataWriteNo
-@interface IVLEAppDelegate : NSObject <UIApplicationDelegate> {
+@interface IVLEAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
     
     UIWindow *window;
 	
@@ -24,8 +30,12 @@
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
+
+@property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 	
 - (void)restartApplication;
+
+-(void) switchToTab:(int)index;
 
 @end
 

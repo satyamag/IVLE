@@ -29,6 +29,9 @@ const int kSemPopoverY = -50;
 #define kNotificationLoginScreen @"displayLoginScreen"
 #define kNotificationClearTopBarButtons @"clearTopBarButtons"
 #define kNotificationReLoginSuccessful @"reloginSuccessful"
+#define kNotificationSetupHomePageComponents @"setupHomePageComponents"
+
+#define kNavBarColor [UIColor colorWithRed:0.0/255.0 green:51.0/255.0 blue:153.0/255.0 alpha:1.0]
 
 @interface Constants : NSObject {
 

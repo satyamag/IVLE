@@ -13,6 +13,7 @@
 #import "CoreDataWorkbinObject.h"
 #import "ModulesFetcher.h"
 #import "ModulesWorkbinWebview.h"
+#import "IVLESideBar.h"
 
 #define kDebugWorkbinData 0
 #define kWorkbinButtonWidth 235
@@ -31,6 +32,8 @@
 	@private
 	NSMutableArray *stack;
 	NSSet *supportedExtOfFiles;
+    
+    UISplitViewController* splitVC;
 }
 
 /*drawing workbin leftnavi buttons*/

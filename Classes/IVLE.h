@@ -18,7 +18,7 @@
 	IVLEAPIHandler *handler;
 	NSString *authenticationToken;
 	
-	NSString *userId;
+	NSString *username;
 	
 	NSString *selectedCourseID;
 	NSString *selectedWorkbinID;
@@ -26,7 +26,7 @@
 }
 
 @property (nonatomic, retain) NSString *authenticationToken;
-@property (nonatomic, retain) NSString *userId;
+@property (nonatomic, retain) NSString *userName;
 
 @property (nonatomic, retain) NSString *selectedCourseID;
 
@@ -44,7 +44,7 @@
 
 -(void) setAuthToken:(NSString *)authToken;
 
--(void) getAndSetUserID;
+-(NSString*) getAndSetUserName;
 
 /*Display announcements for certain courseID
  courseID: from modules

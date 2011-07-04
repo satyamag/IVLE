@@ -15,6 +15,7 @@
 @synthesize incomingData;
 @synthesize dataIsFromCoreData;
 @synthesize allowCoreDataCache;
+@synthesize userName;
 @synthesize cache;
 - (id)init{
 	self = [super init];
@@ -117,6 +118,15 @@
 	return incomingData; 
 }
 
+- (NSString*) getUserName:(NSString*)url {
+   
+    self.incomingData = nil;
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    NSURLConnection *connection = [[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
+    [self checkForWriteInDictionary:connection];
+    return self.userName; 
+}
+
 - (NSDictionary*)getURL:(NSString*)url{
 	
 	self.incomingData = nil;
@@ -129,19 +139,19 @@
 	if ([array count]) {
 		IVLEAPICache *cacheGet = [array lastObject];
 		NSError *error;
-		//NSLog(@"cache date%f", [cacheGet.date timeIntervalSinceNow]*-1);
+		NSLog(@"cache date%f", [cacheGet.date timeIntervalSinceNow]*-1);
 		if (cacheGet.data == nil) {
-			//NSLog(@"clear invalid cache");
+			NSLog(@"clear invalid cache");
 			[[[ModulesFetcher sharedInstance] managedObjectContext] deleteObject:cacheGet];
 		
 		} else if([cacheGet.date timeIntervalSinceNow]*-1 > 60*kAPICacheMinutes){
 			
-			//NSLog(@"clear expired cache");
+			NSLog(@"clear expired cache");
 			[[[ModulesFetcher sharedInstance] managedObjectContext] deleteObject:cacheGet];
 		}
 		else{
 			
-			//NSLog(@"LOADED FROM COREDATA");
+			NSLog(@"LOADED FROM COREDATA");
 			return [[CJSONDeserializer deserializer] deserializeAsDictionary:cacheGet.data error:&error];
 		}
 	}
@@ -201,6 +211,7 @@
 		}
 	} else {
 		NSString *jsonString = [[NSString alloc] initWithData:self.incomingData encoding:NSASCIIStringEncoding];
+        self.userName = [NSString stringWithString:jsonString];
 		NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
 		NSError *error = nil;
 		self.dictionary = [[CJSONDeserializer deserializer] deserializeAsDictionary:jsonData error:&error];

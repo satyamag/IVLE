@@ -8,6 +8,9 @@
 
 #import "Events.h"
 
+@interface Events (PrivateMethods)
+-(void) initializeEventsArray;
+@end
 
 @implementation Events
 
@@ -32,31 +35,6 @@
 		// Send Notification
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"setTopBarButtons" object:buttonsArray];
 		
-		int viewX = 0, viewY = 0;
-		//UIBarButtonItem *addUserEvent = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addEventButtonClicked)];
-		
-		ivleInterface = [[IVLE instance] retain];
-		
-		//add ivle events
-		eventsArray = [[[ivleInterface studentEvents:NO] objectForKey:@"Results"] retain];
-		eventsViewControllerArray = [[NSMutableArray alloc] init];
-		
-		for (int i = 0; i < [eventsArray count]; i++) {
-			
-			NSDictionary *currentEvent = [eventsArray objectAtIndex:i];
-			
-			EventsView *eventsVC = [[EventsView alloc] initWithEvent:currentEvent];
-			[eventsVC setDelegate:self];
-			[eventsVC.view setFrame:CGRectMake(viewX, viewY, 256, 240)];
-			[eventsViewControllerArray addObject:eventsVC];
-			[eventsVC release];
-			
-			viewX += 256;
-			if (viewX == 256 * 4) {
-				viewX = 0;
-				viewY += 240;
-			}
-		}
 	}
     return self;
 }
@@ -67,6 +45,7 @@
 - (void)viewDidLoad {
 	
 	//setup scroll view
+    [self initializeEventsArray];
 	[scrollView setContentSize:CGSizeMake(600, 240 * ([eventsArray count] / 4) + 240)];
 	[scrollView setDirectionalLockEnabled:YES];
 	[scrollView setClipsToBounds:YES];
@@ -86,6 +65,33 @@
     [super viewDidLoad];
 }
 
+-(void) initializeEventsArray {
+    int viewX = 0, viewY = 0;
+    //UIBarButtonItem *addUserEvent = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addEventButtonClicked)];
+    
+    ivleInterface = [[IVLE instance] retain];
+    
+    //add ivle events
+    eventsArray = [[[ivleInterface studentEvents:NO] objectForKey:@"Results"] retain];
+    eventsViewControllerArray = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < [eventsArray count]; i++) {
+        
+        NSDictionary *currentEvent = [eventsArray objectAtIndex:i];
+        
+        EventsView *eventsVC = [[EventsView alloc] initWithEvent:currentEvent];
+        [eventsVC setDelegate:self];
+        [eventsVC.view setFrame:CGRectMake(viewX, viewY, 256, 240)];
+        [eventsViewControllerArray addObject:eventsVC];
+        [eventsVC release];
+        
+        viewX += 256;
+        if (viewX == 256 * 4) {
+            viewX = 0;
+            viewY += 240;
+        }
+    }
+}
 - (IBAction)homeButtonClicked {
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRefreshScreen object:[NSArray array]];

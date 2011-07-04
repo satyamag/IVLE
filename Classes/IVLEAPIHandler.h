@@ -25,6 +25,7 @@
 	BOOL requestIsData;
 	BOOL dataIsFromCoreData;
 	BOOL allowCoreDataCache;
+    NSString *userName;
 	IVLEAPICache *cache;
 }
 
@@ -32,6 +33,7 @@
 @property (nonatomic, retain) NSMutableData *incomingData;
 @property (nonatomic, assign) BOOL dataIsFromCoreData;
 @property (nonatomic, assign) BOOL allowCoreDataCache;
+@property (nonatomic, retain) NSString* userName;
 @property (nonatomic, retain) IVLEAPICache *cache;
 
 /* Post URL with a string of parameters denoted by p1=value&p2=value2
@@ -41,6 +43,8 @@
 /* Get URL with parameters denoted by p1=value&p2=value2
  REQUIRES: valid url*/
 - (NSDictionary*)getURL:(NSString*)url;
+
+- (NSString*) getUserName:(NSString*)url;
 
 /* Get File directly from URL. Caches permanently
  REQUIRES: valid url*/
