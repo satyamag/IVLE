@@ -17,17 +17,18 @@
 
 - (NSDictionary *)getWebcastsForModule:(NSString *)courseID {
 
-	NSDictionary *stubDict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Webcast blah blah blah", @"some media ID key"] forKeys:[NSArray arrayWithObjects:@"Webcast name", @"Media ID"]];
+	NSDictionary *stubDict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Webcast blah blah blah", @"some media ID key", nil] forKeys:[NSArray arrayWithObjects:@"Webcast name", @"Media ID", nil]];
 	
 	return stubDict;
 }
 
-- (void)getWebcastVideoForModule:(NSString *)courseID AndMediaID:(NSString *)mediaID {
-	 
-	 MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:webcastLink];
-	 player.view.frame = CGRectMake(100, 100, 500, 300);
-	 [self.view addSubview:player.view];
-	 [player play];
+- (UIView *)getWebcastVideoForModule:(NSString *)courseID AndMediaID:(NSString *)mediaID {
+	
+	MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:kWebcastLink]];
+	player.view.frame = CGRectMake(100, 100, 500, 300);
+	[player play];
+	
+	return player.view;
 }
 
 @end

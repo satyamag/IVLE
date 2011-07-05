@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface StubWebcast : NSObject {
 
@@ -15,6 +15,6 @@
 
 - (NSDictionary *)getWebcastsForModule:(NSString *)courseID;
 
-- (void)getWebcastVideoForModule:(NSString *)courseID AndMediaID:(NSString *)mediaID;
+- (UIView *)getWebcastVideoForModule:(NSString *)courseID AndMediaID:(NSString *)mediaID;
 
 @end
