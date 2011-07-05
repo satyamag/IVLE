@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04CEC4B013C2A7280057CEDB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04CEC4AF13C2A7280057CEDB /* MediaPlayer.framework */; };
+		04CEC4DB13C2ABE00057CEDB /* Webcast.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CEC4DA13C2ABE00057CEDB /* Webcast.m */; };
+		04CEC4DE13C2AC8D0057CEDB /* StubWebcast.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CEC4DD13C2AC8D0057CEDB /* StubWebcast.m */; };
 		1D3623260D0F684500981E51 /* IVLEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* IVLEAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -150,6 +153,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04CEC4AF13C2A7280057CEDB /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		04CEC4D913C2ABE00057CEDB /* Webcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Webcast.h; sourceTree = "<group>"; };
+		04CEC4DA13C2ABE00057CEDB /* Webcast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Webcast.m; sourceTree = "<group>"; };
+		04CEC4DC13C2AC8D0057CEDB /* StubWebcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StubWebcast.h; sourceTree = "<group>"; };
+		04CEC4DD13C2AC8D0057CEDB /* StubWebcast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StubWebcast.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* IVLEAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IVLEAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* IVLEAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IVLEAppDelegate.m; sourceTree = "<group>"; };
@@ -383,6 +391,7 @@
 				A57D09EB1347737B00449B3C /* MapKit.framework in Frameworks */,
 				A5E3CAB61351A32300C0A15A /* CoreLocation.framework in Frameworks */,
 				BF484B7B1352556B0074F299 /* EventKit.framework in Frameworks */,
+				04CEC4B013C2A7280057CEDB /* MediaPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,6 +464,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04CEC4AF13C2A7280057CEDB /* MediaPlayer.framework */,
 				5C636BA613443165009D5BB8 /* QuartzCore.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -569,6 +579,10 @@
 		4AC6371013C1A3B100E4E6CE /* Webcasts */ = {
 			isa = PBXGroup;
 			children = (
+				04CEC4D913C2ABE00057CEDB /* Webcast.h */,
+				04CEC4DA13C2ABE00057CEDB /* Webcast.m */,
+				04CEC4DC13C2AC8D0057CEDB /* StubWebcast.h */,
+				04CEC4DD13C2AC8D0057CEDB /* StubWebcast.m */,
 			);
 			name = Webcasts;
 			sourceTree = "<group>";
@@ -1048,6 +1062,8 @@
 				4A30654713AE4AFB00A29872 /* EventsView.m in Sources */,
 				4A8A676C13BBA2DD003DEDDB /* IVLELoginWebViewController.m in Sources */,
 				4A00F00313C0CCEF002D6C4E /* Workbin.m in Sources */,
+				04CEC4DB13C2ABE00057CEDB /* Webcast.m in Sources */,
+				04CEC4DE13C2AC8D0057CEDB /* StubWebcast.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

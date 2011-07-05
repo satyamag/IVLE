@@ -145,7 +145,9 @@
 
 /*Gets webcasts
  REQUIRES: Valid token, valid courseID*/
-- (NSDictionary *)webcasts:(NSString *)courseID withDuration:(NSInteger)duration withMediaID:(NSString *)mediaID withTitle:(BOOL)title;
+- (NSDictionary *)webcasts:(NSString *)courseID withDuration:(NSInteger)duration withTitleOnly:(BOOL)title;
+
+- (NSDictionary *)webcasts:(NSString *)courseID withDuration:(NSInteger)duration withMediaID:(NSString *)mediaID withTitleOnly:(BOOL)title;
 
 /* Create user events in server
  REQUIRES: nil*/

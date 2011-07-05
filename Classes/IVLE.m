@@ -203,9 +203,17 @@ static IVLE *sharedSingleton;
 	return [NSURLRequest requestWithURL:[NSURL URLWithString:pathToTempFile]];
 }
 
-- (NSDictionary *)webcasts:(NSString *)courseID withDuration:(NSInteger)duration withMediaID:(NSString *)mediaID withTitle:(BOOL)title {
+- (NSDictionary *)webcasts:(NSString *)courseID withDuration:(NSInteger)duration withTitleOnly:(BOOL)title {
 	
-	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Webcasts?APIKey=%@&AuthToken=%@&CourseID=%@&Duration=%d&MediaChannelID=%@&TitleOnly=%@", kAPIKey, authenticationToken, courseID, duration, mediaID, [self booleanToSystemBoolean:title]]];
+/*	NSString *temp = [NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Webcasts?APIKey=%@&AuthToken=%@&CourseID=%@&Duration=%d&MediaChannelID=%@&TitleOnly=%@&output=json", kAPIKey, authenticationToken, courseID, duration, mediaID, [self booleanToSystemBoolean:title]];
+	NSLog(@"%@", temp);*/
+	
+	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Webcasts?APIKey=%@&AuthToken=%@&CourseID=%@&Duration=%d&TitleOnly=%@&output=json", kAPIKey, authenticationToken, courseID, duration, [self booleanToSystemBoolean:title]]];
+}
+
+- (NSDictionary *)webcasts:(NSString *)courseID withDuration:(NSInteger)duration withMediaID:(NSString *)mediaID withTitleOnly:(BOOL)title {
+	
+	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Webcasts?APIKey=%@&AuthToken=%@&CourseID=%@&Duration=%d&MediaChannelID=%@&TitleOnly=%@&output=json", kAPIKey, authenticationToken, courseID, duration, mediaID, [self booleanToSystemBoolean:title]]];
 }
 
 -(NSString*)booleanToSystemBoolean:(BOOL)boolean{
