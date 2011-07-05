@@ -64,17 +64,6 @@ NSInteger openSectionIndex;
 	
 	IVLE *ivle = [IVLE instance];
 	
-	//************TRIAL*************
-	/*NSDictionary *webcastList = [ivle webcasts:kCourseID withDuration:0 withMediaID:kMediaID withTitleOnly:NO];
-	NSLog(@"%@", webcastList);
-	
-	NSURL *webcastLink = [NSURL URLWithString:kWebcastLink];
-	
-	MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:webcastLink];
-	player.view.frame = CGRectMake(100, 100, 100, 100);
-	[self.view addSubview:player.view];
-	[player play];*/
-	
 	openSectionIndex = -1;
 	
 	moduleStrings = [[[NSMutableArray alloc] init] retain];
