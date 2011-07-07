@@ -85,22 +85,16 @@
 }
 
 - (IBAction)addEventButtonClicked {
-	/*
-	 NewEvent *newEventVC = [[NewEvent alloc] init];
-	 newEventVC.wantsFullScreenLayout = NO;
-	 newEventVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-	 newEventVC.modalPresentationStyle = UIModalPresentationPageSheet;
-	 newEventVC.delegate = self;
-	 [self presentModalViewController:newEventVC animated:YES];
-	 */
-	
-	//present map modal view controller
+
+	//Popover view controller
 	Map *mapVC = [[Map alloc] initWithAddEventMode:YES];
-	mapVC.wantsFullScreenLayout = YES;
-	mapVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-	mapVC.modalPresentationStyle = UIModalPresentationPageSheet;
-	[self presentModalViewController:mapVC animated:YES]; 
-	//[mapVC release];
+	
+	if (mapPopover == nil) {
+		mapPopover = [[UIPopoverController alloc] initWithContentViewController:mapVC];
+		[mapPopover setPopoverContentSize:CGSizeMake(950, 600) animated:YES];
+	}
+	
+	[mapPopover presentPopoverFromBarButtonItem:self.navigationItem.leftBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
 #pragma mark -
@@ -155,6 +149,7 @@
 	[eventsArray release];
 	[ivleInterface release];
 	[buttonsArray release];
+	[mapPopover release];
 	
     [super dealloc];
 }

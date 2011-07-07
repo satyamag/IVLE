@@ -20,6 +20,8 @@
 	
 	IBOutlet UIScrollView *scrollView;
 	
+	UIPopoverController *mapPopover;
+	
 	NSArray *eventsArray, *buttonsArray;
 	NSMutableArray *eventsViewControllerArray;
 	NSManagedObjectContext *managedObjectContext;

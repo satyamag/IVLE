@@ -69,7 +69,7 @@
 }
 
 - (IBAction)closeModal{
-	[self dismissModalViewControllerAnimated:YES];
+	//[self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)longPress:(UILongPressGestureRecognizer*)gesture{

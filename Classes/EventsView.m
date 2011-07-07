@@ -165,7 +165,7 @@
 
 - (BOOL)isValidString:(NSString *)aString {
 	
-	if ([aString isEqualToString:@""] ) {
+	if ([aString isKindOfClass:[NSNull class]] || [aString length] == 0 ) {
 		
 		return NO;
 	}

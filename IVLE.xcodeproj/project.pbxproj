@@ -398,6 +398,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0482CD7913C5DB82006CD1D9 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				A57D09C21347725A00449B3C /* Map.xib */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -452,6 +460,7 @@
 				BF854E49135766BB00010479 /* Timetable */,
 				A57D0BCB1347AE8900449B3C /* Modules */,
 				5CCBA73B1345A211002D38A5 /* CAP calculator */,
+				0482CD7913C5DB82006CD1D9 /* Map */,
 				A5E3CBEF1352BBCB00C0A15A /* IVLEMains */,
 				5CDA9C681352BDCB00D00AC8 /* Events */,
 				5CDA9CA81352BF9B00D00AC8 /* ModuleList.plist */,
@@ -792,7 +801,6 @@
 			isa = PBXGroup;
 			children = (
 				4A8A676D13BBA567003DEDDB /* IVLELoginWebViewController.xib */,
-				A57D09C21347725A00449B3C /* Map.xib */,
 				4A1716511355474E00EF11E1 /* IVLESideBar.xib */,
 				4A1716531355474F00EF11E1 /* SideNavigation.xib */,
 				4AD36BCF1349602A00EBB733 /* TableViewCell.xib */,

@@ -300,7 +300,6 @@ NSMutableArray *announcements;
 		
 	}
 	[recentAnnouncements reloadData];
-	
 }
 
 -(void) setUpTimeTableView {
