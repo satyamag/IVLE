@@ -18,6 +18,7 @@
 #import "Timetable.h"
 #import "Map.h"
 #import "CAPCalculator.h"
+#import "TimetableNew.h"
 
 #define CoreDataSJNo
 #define CoreDataWriteNo

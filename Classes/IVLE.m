@@ -111,7 +111,6 @@ static IVLE *sharedSingleton;
 	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Module_ReadingFormatted?APIKey=%@&AuthToken=%@&CourseID=%@&Duration=%d&output=json", kAPIKey, authenticationToken, courseID, duration]];
 }
 
-
 -(NSDictionary*)moduleReadingFormattedCoop:(NSString*)courseID withDuration:(NSInteger)duration{
 	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Module_ReadingsFormatted_Coop?APIKey=%@&AuthToken=%@&CourseID=%@&Duration=%d&output=json", kAPIKey, authenticationToken, courseID, duration]];
 }
@@ -214,6 +213,36 @@ static IVLE *sharedSingleton;
 - (NSDictionary *)webcasts:(NSString *)courseID withDuration:(NSInteger)duration withMediaID:(NSString *)mediaID withTitleOnly:(BOOL)title {
 	
 	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Webcasts?APIKey=%@&AuthToken=%@&CourseID=%@&Duration=%d&MediaChannelID=%@&TitleOnly=%@&output=json", kAPIKey, authenticationToken, courseID, duration, mediaID, [self booleanToSystemBoolean:title]]];
+}
+
+- (NSDictionary *)timetableStudentModule:(NSString *)courseID
+{
+	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Timetable_Student_Module?APIKey=%@&AuthToken=%@&CourseID=%@&output=json", kAPIKey, authenticationToken, courseID]];
+}
+
+- (NSDictionary *)timetableStudent:(NSString *)academicYear forSemester:(NSString *)semester
+{
+	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Timetable_Student?APIKey=%@&AuthToken=%@&AcadYear=%@&Semester=%@&output=json", kAPIKey, authenticationToken, academicYear, semester]];
+}
+
+- (NSDictionary *)timetableModule:(NSString *)courseID {
+
+	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Timetable_Module?APIKey=%@&AuthToken=%@&CourseID=%@&output=json", kAPIKey, authenticationToken, courseID]];
+}
+
+- (NSDictionary *)gradebookViewItems:(NSString *)courseID {
+		
+	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Gradebook_ViewItems?APIKey=%@&AuthToken=%@&CourseID=%@&output=json", kAPIKey, authenticationToken, courseID]];
+}
+
+- (NSDictionary *)libEreserves:(NSString *)courseID withTitleOnly:(BOOL)title {
+	
+	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/LibEreserves?APIKey=%@&AuthToken=%@&CourseID=%@&TitleOnly=%@&output=json", kAPIKey, authenticationToken, courseID, [self booleanToSystemBoolean:title]]];
+}
+
+- (NSDictionary *)libEreserveFiles:(NSString *)folderID {
+
+	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/LibEreserveFiles?APIKey=%@&AuthToken=%@&FolderID=%@&output=json", kAPIKey, authenticationToken, folderID]];
 }
 
 -(NSString*)booleanToSystemBoolean:(BOOL)boolean{

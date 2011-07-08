@@ -40,7 +40,7 @@
  user: username
  password: password
  domain: NUSSTU/NUSSTF*/
--(NSDictionary*)login:(NSString*)user withPassword:(NSString*)password withDomain:(NSString*)domain;
+//-(NSDictionary*)login:(NSString*)user withPassword:(NSString*)password withDomain:(NSString*)domain;
 
 -(void) setAuthToken:(NSString *)authToken;
 
@@ -156,6 +156,29 @@
 /* Get user events in the last 'duration'
  REQUIRES: positive duration*/
 - (NSDictionary *)userEventsGet:(NSInteger)duration;
+
+/* Gets the related module timetable 
+ information for the student. */
+- (NSDictionary *)timetableStudentModule:(NSString *)courseID;
+
+/* Gets the related student timetable 
+ information for the academic semester year. */
+- (NSDictionary *)timetableStudent:(NSString *)academicYear forSemester:(NSString *)semester;
+
+/* Gets the related module timetable 
+ information. */
+- (NSDictionary *)timetableModule:(NSString *)courseID;
+
+/* Gets the list of gradebook items 
+ for the Module ID */
+- (NSDictionary *)gradebookViewItems:(NSString *)courseID;
+
+/* Gets the related Library E-reserve folders for the Module by CourseID. */
+- (NSDictionary *)libEreserves:(NSString *)courseID withTitleOnly:(BOOL)title;
+
+/* Gets the related Library E-reserve Files by Folder ID. */
+- (NSDictionary *)libEreserveFiles:(NSString *)folderID;
+
 /*	Converts boolean to System boolean. YES => @"true", NO => @"false"*/
 -(NSString*)booleanToSystemBoolean:(BOOL)boolean;
 @end

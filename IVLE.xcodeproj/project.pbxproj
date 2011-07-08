@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		047F5F8413C753E9007C1B64 /* TimetableNew.m in Sources */ = {isa = PBXBuildFile; fileRef = 047F5F8213C753E9007C1B64 /* TimetableNew.m */; };
+		047F5F8513C753E9007C1B64 /* TimetableNew.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047F5F8313C753E9007C1B64 /* TimetableNew.xib */; };
+		047F5F8813C75A59007C1B64 /* ModuleEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 047F5F8713C75A59007C1B64 /* ModuleEvent.m */; };
 		04CEC4B013C2A7280057CEDB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04CEC4AF13C2A7280057CEDB /* MediaPlayer.framework */; };
 		04CEC4DB13C2ABE00057CEDB /* Webcast.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CEC4DA13C2ABE00057CEDB /* Webcast.m */; };
 		04CEC4DE13C2AC8D0057CEDB /* StubWebcast.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CEC4DD13C2AC8D0057CEDB /* StubWebcast.m */; };
@@ -153,6 +156,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		047F5F8113C753E8007C1B64 /* TimetableNew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimetableNew.h; sourceTree = "<group>"; };
+		047F5F8213C753E9007C1B64 /* TimetableNew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimetableNew.m; sourceTree = "<group>"; };
+		047F5F8313C753E9007C1B64 /* TimetableNew.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TimetableNew.xib; path = Classes/TimetableNew.xib; sourceTree = "<group>"; };
+		047F5F8613C75A59007C1B64 /* ModuleEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleEvent.h; sourceTree = "<group>"; };
+		047F5F8713C75A59007C1B64 /* ModuleEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModuleEvent.m; sourceTree = "<group>"; };
 		04CEC4AF13C2A7280057CEDB /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		04CEC4D913C2ABE00057CEDB /* Webcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Webcast.h; sourceTree = "<group>"; };
 		04CEC4DA13C2ABE00057CEDB /* Webcast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Webcast.m; sourceTree = "<group>"; };
@@ -859,6 +867,10 @@
 		BF779AEF1348777000CC2119 /* Timetable */ = {
 			isa = PBXGroup;
 			children = (
+				047F5F8113C753E8007C1B64 /* TimetableNew.h */,
+				047F5F8213C753E9007C1B64 /* TimetableNew.m */,
+				047F5F8613C75A59007C1B64 /* ModuleEvent.h */,
+				047F5F8713C75A59007C1B64 /* ModuleEvent.m */,
 				BFC65CF1133E7C5500F4C7F2 /* Timetable.h */,
 				BFC65CF2133E7C5500F4C7F2 /* Timetable.m */,
 				BF779AF81348783C00CC2119 /* TimetableAddClassViewController.h */,
@@ -872,6 +884,7 @@
 		BF854E49135766BB00010479 /* Timetable */ = {
 			isa = PBXGroup;
 			children = (
+				047F5F8313C753E9007C1B64 /* TimetableNew.xib */,
 				BFC65D86133E99CD00F4C7F2 /* Timetable.xib */,
 				BF779AFA1348783C00CC2119 /* TimetableAddClassViewController.xib */,
 				BF779AFF1348783C00CC2119 /* TimetablePickerViewController.xib */,
@@ -987,6 +1000,7 @@
 				4A00F00F13C0DD83002D6C4E /* forums.png in Resources */,
 				4A00F01013C0DD83002D6C4E /* map.png in Resources */,
 				4A00F01213C0DDE1002D6C4E /* calculator.png in Resources */,
+				047F5F8513C753E9007C1B64 /* TimetableNew.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1072,6 +1086,8 @@
 				4A00F00313C0CCEF002D6C4E /* Workbin.m in Sources */,
 				04CEC4DB13C2ABE00057CEDB /* Webcast.m in Sources */,
 				04CEC4DE13C2AC8D0057CEDB /* StubWebcast.m in Sources */,
+				047F5F8413C753E9007C1B64 /* TimetableNew.m in Sources */,
+				047F5F8813C75A59007C1B64 /* ModuleEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
