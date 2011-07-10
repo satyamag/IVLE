@@ -26,9 +26,10 @@
 		
 		self.cells = [NSMutableArray array];
 		
+            
 		for (int i=0; i<[info count]; i++) {
 			
-			ModulesInfoCell *cell;
+			ModulesAnnouncementsCell *cell;
 			
 			
 			NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ModulesAnnouncementsCell" 
@@ -46,7 +47,9 @@
 			} while (!cell.finishedLoading);
 			NSAssert(cell.finishedLoading, @"cell not finish loading");
 			//	NSLog(@"%d, %f, %f", cell.finishedLoading, cell.frame.size.width, cell.frame.size.height);
+            cell.descriptionText.contentMode = UIViewContentModeScaleAspectFit;
 			cell.descriptionText.backgroundColor = [UIColor clearColor];
+            cell.backgroundImage.image = [UIImage imageNamed:@"modules_workbin_2nd_column_button.png"];
 			[self.cells addObject:cell];
 			//	NSLog(@"added");
 			
@@ -120,9 +123,15 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	
-	ModulesInfoCell *cell = [cells objectAtIndex:[indexPath row]];
-	
-	return cell.descriptionText.frame.size.height + (cell.descriptionText.frame.origin.y-cell.titleText.frame.origin.y);
+	ModulesAnnouncementsCell *cell = [cells objectAtIndex:[indexPath row]];
+	CGFloat height = cell.descriptionText.frame.size.height + (cell.descriptionText.frame.origin.y-cell.titleText.frame.origin.y);
+    CGFloat x = cell.backgroundImage.frame.origin.x;
+    CGFloat y = cell.backgroundImage.frame.origin.y;
+    CGFloat width = cell.backgroundImage.frame.size.width;
+    
+    
+    cell.backgroundImage.frame = CGRectMake(x, y, width, cell.descriptionText.frame.size.height);
+	return height;
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{

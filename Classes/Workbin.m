@@ -20,11 +20,13 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
     if (self) {
         splitVC = [[UISplitViewController alloc] init];
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshRightScreen:) name:kNotificationRefreshRightScreen object:nil];
+    
     leftBar = [[IVLESideBar alloc] init];
     return self;
 }
@@ -36,14 +38,16 @@
 }
 
 - (void) viewDidLoad {
-    
-    
+
+    self.view.frame = CGRectMake(0, 0, 748, 1024);
+    splitVC.view.frame = CGRectMake(0, 0, 748, 1024);
+
 	ModulesWorkbin* rightBar = [[ModulesWorkbin alloc] init];
     
     splitVC.viewControllers = [NSArray arrayWithObjects:leftBar, rightBar, nil];
 	
 	//load background image for split view
-	UIImage *backgroundImage = [UIImage imageNamed:@"IVLE_white_bg.png"];
+	UIImage *backgroundImage = [UIImage imageNamed:@"modules_workbin_3rd_column.png"];
 	splitVC.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
 	
 	[splitVC setValue:[NSNumber numberWithFloat:200.0] forKey:@"_masterColumnWidth"];
@@ -52,6 +56,8 @@
 
 - (void)dealloc
 {
+    [splitVC release];
+    [leftBar release];
     [super dealloc];
 }
 

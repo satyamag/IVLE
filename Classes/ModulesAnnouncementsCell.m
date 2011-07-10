@@ -14,6 +14,8 @@
 @synthesize titleText;
 @synthesize finishedLoading;
 @synthesize descriptionText;
+@synthesize backgroundImage;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -39,6 +41,12 @@
 - (void)dealloc {
     [super dealloc];
 }
+
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+	
+	NSLog(@"Webview loading!");
+}
+
 - (void)webViewDidFinishLoad:(UIWebView *)aWebView {
 
 	NSString *output = [aWebView stringByEvaluatingJavaScriptFromString:@"document.getElementById(\"foo\").offsetHeight;"];

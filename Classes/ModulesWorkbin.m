@@ -9,7 +9,11 @@
 
 
 #import "ModulesWorkbin.h"
+@interface ModulesWorkbin (PrivateMethods)
 
+-(NSString*) formatterFileSize:(NSString*)fileSize;
+
+@end
 
 @implementation ModulesWorkbin
 
@@ -56,14 +60,15 @@
         }
     }
     
-    UIImage *bgImage = [UIImage imageNamed:@"IVLE_second_bar_modules_workbin_bg.png"];
+    UIImage *bgImage_2nd_column = [UIImage imageNamed:@"modules_workbin_2nd_column.png"];
+    UIImage *bgImage_3rd_column = [UIImage imageNamed:@"modules_workbin_3rd_column.png"];
     
     
     buttons = [[NSMutableArray array] retain];
     [self redrawButtons];
     self.view.backgroundColor = [UIColor clearColor] ;
-    directoryStructure.backgroundColor = [UIColor colorWithPatternImage:bgImage] ;
-    table.backgroundColor = [UIColor clearColor];
+    directoryStructure.backgroundColor = [UIColor colorWithPatternImage:bgImage_2nd_column] ;
+    table.backgroundColor = [UIColor colorWithPatternImage:bgImage_3rd_column];
     
     supportedExtOfFiles = [[NSSet setWithObjects:@"ppt", @"pptx", @"docx", @"doc", @"pdf", @"xls", @"xlsx", nil] retain];
 }
@@ -77,29 +82,11 @@
 	
 	UIButton *currentDirectoryButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	
-	
-	
-	UIImage *bgImage = [UIImage imageNamed:@"IVLE_white_bg.png"];
-	
+	UIImage *bgImage_2nd_column_cell_border = [UIImage imageNamed:@"modules_workbin_2nd_column_button.png"];
+	UIImage *bgImage_2nd_colum_cell_no_border = [UIImage imageNamed:@"modules_workbin_cell_no_border.png"];
 	
 	currentDirectoryButton.tag = -1;
-	
-	if ([stack count] == 0) {
-		currentDirectoryButton.frame = CGRectMake(0,200, kWorkbinButtonWidth, kWorkbinButtonHeight);
-		currentDirectoryButton.titleLabel.font = [UIFont boldSystemFontOfSize:15.0];
-		currentDirectoryButton.titleLabel.alpha = 0.5;
-		//		[currentDirectoryButton setTitleColor:[UIColor colorWithRed:0 green:51.0/255.0 blue:153.0/255.0 alpha:1.0] forState:UIControlStateNormal];
-		[currentDirectoryButton setTitle:@"← Please select a module" forState:UIControlStateNormal];
-		[currentDirectoryButton setBackgroundImage:bgImage forState:UIControlStateDisabled];
-		[currentDirectoryButton setEnabled:NO];
-	} else{
-		currentDirectoryButton.frame = CGRectMake(0,5, kWorkbinButtonWidth, kWorkbinButtonHeight);
-		currentDirectoryButton.titleLabel.font = [UIFont boldSystemFontOfSize:22.0];
-		//		[currentDirectoryButton setTitleColor:[UIColor colorWithRed:0 green:51.0/255.0 blue:153.0/255.0 alpha:1.0] forState:UIControlStateNormal];
-		[currentDirectoryButton setTitle:currentDirectoryName forState:UIControlStateNormal];
-		[currentDirectoryButton setBackgroundImage:bgImage forState:UIControlStateNormal];
-	}
-	
+	[currentDirectoryButton setTitleColor:kWorkbinFontColor forState:UIControlStateNormal];
 	[currentDirectoryButton addTarget:[self retain] action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
 	
 	[self.view addSubview:currentDirectoryButton];
@@ -111,21 +98,45 @@
 	for(int i=0;i< [workbinDatasource count];i++){
 		UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 		
-		btn.frame = CGRectMake(0,45+i*40, kWorkbinButtonWidth, kWorkbinButtonHeight);
+		btn.frame = CGRectMake(1,kWorkbinButtonHeight+i*kWorkbinButtonHeight, kWorkbinButtonWidth, kWorkbinButtonHeight);
 		
 		btn.tag = i;
 		
-		[btn setBackgroundImage:bgImage forState:UIControlStateNormal];
-		//		[btn setTitleColor:[UIColor colorWithRed:0 green:51.0/255.0 blue:153.0/255.0 alpha:1.0] forState:UIControlStateNormal];
+		[btn setBackgroundImage:bgImage_2nd_column_cell_border forState:UIControlStateNormal];
+        [btn setTitleColor:kWorkbinFontColor forState:UIControlStateNormal];
+        //[[btn titleLabel] setFrame: CGRectMake(205.0, btn.titleLabel.frame.origin.y, btn.titleLabel.frame.size.width,btn.titleLabel.frame.size.height)];
 		[btn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+        [btn setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 10.0, 0.0, 0.0)];
 		[btn setTitle:[[workbinDatasource objectAtIndex:i] valueForKey:@"FolderName"] forState:UIControlStateNormal];
-		btn.titleLabel.font = [UIFont systemFontOfSize:16];
+		btn.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0];
 		
 		[btn addTarget:[self retain] action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
 		[self.view addSubview:btn];
 		[buttons addObject:btn];
 		
-	}	
+	}
+	
+    if ([stack count] == 0 && [buttons count] == 0 ) {
+		currentDirectoryButton.frame = CGRectMake(1,200, kWorkbinButtonWidth, kWorkbinButtonHeight);
+		currentDirectoryButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0];
+		currentDirectoryButton.titleLabel.alpha = 0.5;
+		//		[currentDirectoryButton setTitleColor:[UIColor colorWithRed:0 green:51.0/255.0 blue:153.0/255.0 alpha:1.0] forState:UIControlStateNormal];
+		[currentDirectoryButton setTitle:@"← Please select a module" forState:UIControlStateNormal];
+		[currentDirectoryButton setBackgroundImage:bgImage_2nd_colum_cell_no_border forState:UIControlStateDisabled];
+		[currentDirectoryButton setEnabled:NO];
+        [UIView animateWithDuration:3.0
+                              delay:3.0
+                            options: UIViewAnimationCurveEaseInOut
+                         animations:^{currentDirectoryButton.alpha = 0.0;} completion:nil];
+        
+	} else{
+		currentDirectoryButton.frame = CGRectMake(1,0, kWorkbinButtonWidth, kWorkbinButtonHeight);
+		currentDirectoryButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0];
+        
+		//		[currentDirectoryButton setTitleColor:[UIColor colorWithRed:0 green:51.0/255.0 blue:153.0/255.0 alpha:1.0] forState:UIControlStateNormal];
+		[currentDirectoryButton setTitle:currentDirectoryName forState:UIControlStateNormal];
+		[currentDirectoryButton setBackgroundImage:bgImage_2nd_column_cell_border forState:UIControlStateNormal];
+	}
 }
 
 - (void)removeAllButtons{
@@ -180,29 +191,54 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	static NSString *CellIdentifier = @"Cell";
+
+    UIImage *bgImage_2nd_column_cell_border = [UIImage imageNamed:@"modules_workbin_2nd_column_button.png"];
 	
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-    }
-	if ([indexPath row] >= [[[workbinDatasource objectAtIndex:selectedFolderID] valueForKey:@"Files"] count]) {
+    ModulesWorkbinCell *cell;
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ModulesWorkbinCell" 
+                                                 owner:self
+                                               options:nil];
+    cell = [[nib objectAtIndex:0] retain];
+    
+    cell.backgroundColor = [UIColor colorWithPatternImage:bgImage_2nd_column_cell_border];
+	
+    if ([indexPath row] >= [[[workbinDatasource objectAtIndex:selectedFolderID] valueForKey:@"Files"] count]) {
 		int filesCount = [[[workbinDatasource objectAtIndex:selectedFolderID] valueForKey:@"Files"] count];
 		//display folders
-		cell.textLabel.text = [[[[workbinDatasource objectAtIndex:selectedFolderID] valueForKey:@"Folders"] objectAtIndex:[indexPath row]-filesCount] valueForKey:@"FolderName"];
-		//		cell.textLabel.textColor = [UIColor colorWithRed:0 green:51.0/255.0 blue:153.0/255.0 alpha:1.0] ;
-		cell.detailTextLabel.text = @"Folder";
-		
+		cell.fileName.text = [[[[workbinDatasource objectAtIndex:selectedFolderID] valueForKey:@"Folders"] objectAtIndex:[indexPath row]-filesCount] valueForKey:@"FolderName"];
+		cell.fileSize.text = @"Folder";
+        cell.fileType.image = [UIImage imageNamed:@"folder.png"];
+        
 	} else {
 		//display files
-		cell.textLabel.text = [[[[workbinDatasource objectAtIndex:selectedFolderID] valueForKey:@"Files"] objectAtIndex:[indexPath row]] valueForKey:@"FileName"];
-		//		cell.textLabel.textColor = [UIColor colorWithRed:0 green:51.0/255.0 blue:153.0/255.0 alpha:1.0];
-		cell.textLabel.font = [UIFont systemFontOfSize:16];
-		cell.detailTextLabel.text = [[[[[workbinDatasource objectAtIndex:selectedFolderID] valueForKey:@"Files"] objectAtIndex:[indexPath row]] valueForKey:@"FileName"] pathExtension];
-		
+		cell.fileName.text = [[[[workbinDatasource objectAtIndex:selectedFolderID] valueForKey:@"Files"] objectAtIndex:[indexPath row]] valueForKey:@"FileName"];
+        NSString *fileSize = [[[[workbinDatasource objectAtIndex:selectedFolderID] valueForKey:@"Files"] objectAtIndex:[indexPath row]] valueForKey:@"FileSize"];
+		cell.fileSize.text = [self formatterFileSize:fileSize];
+        NSString *fileType = [[[[workbinDatasource objectAtIndex:selectedFolderID] valueForKey:@"Files"] objectAtIndex:[indexPath row]] valueForKey:@"FileType"];
+        cell.fileType.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", fileType]];
+    
 	}
+    cell.fileName.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0];
+    cell.fileName.textColor = kWorkbinFontColor;
+    cell.fileSize.textColor = kWorkbinFontColor;
 	
     return cell;
+}
+
+-(NSString*) formatterFileSize:(NSString*)fileSize {
+    
+    
+    float floatSize =  [fileSize floatValue];
+    if ([fileSize floatValue]<1023)
+		return([NSString stringWithFormat:@"%i bytes",[fileSize floatValue]]);
+	floatSize = floatSize / 1024;
+	if (floatSize<1023)
+		return([NSString stringWithFormat:@"%1.1f KB",floatSize]);
+	floatSize = floatSize / 1024;
+	if (floatSize<1023)
+		return([NSString stringWithFormat:@"%1.1f MB",floatSize]);
+	floatSize = floatSize / 1024;
+	return([NSString stringWithFormat:@"%1.1f GB",floatSize]);
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -259,7 +295,11 @@
 	webVC.wantsFullScreenLayout = YES;
 	webVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
 	webVC.modalPresentationStyle = UIModalPresentationPageSheet;
-	[self presentModalViewController:webVC animated:YES];
+    [self presentModalViewController:webVC animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 50.0;
 }
 
 - (void)stackPush:(NSArray*)arrayData{

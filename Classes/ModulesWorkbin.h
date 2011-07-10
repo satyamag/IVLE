@@ -14,10 +14,11 @@
 #import "ModulesFetcher.h"
 #import "ModulesWorkbinWebview.h"
 #import "IVLESideBar.h"
+#import "ModulesWorkbinCell.h"
 
 #define kDebugWorkbinData 0
-#define kWorkbinButtonWidth 235
-#define kWorkbinButtonHeight 40
+#define kWorkbinButtonWidth 240
+#define kWorkbinButtonHeight 50
 
 
 @interface ModulesWorkbin : UIViewController {

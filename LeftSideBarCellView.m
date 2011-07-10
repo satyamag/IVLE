@@ -14,7 +14,7 @@
 @synthesize cellButtonLeft,cellButtonRight;
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super initWithFrame:frame]) {
+    if ((self = [super initWithFrame:frame])) {
         // Initialization code
     }
     return self;

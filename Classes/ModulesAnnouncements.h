@@ -10,6 +10,7 @@
 
 #import "IVLE.h"
 #import "ModulesAnnouncementsCell.h"
+#import "HomePageModuleAnnouncementCell.h"
 
 @interface ModulesAnnouncements : UIViewController <UITableViewDelegate, UIWebViewDelegate> {
 	NSArray *announcements;

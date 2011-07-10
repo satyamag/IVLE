@@ -23,10 +23,10 @@
     if (self) {
         // Initialization code.
     }
-	self.finishedLoading = NO;
+    
+    self.finishedLoading = NO;
 	self.descriptionText.backgroundColor = [UIColor clearColor];
 	self.backgroundColor = [UIColor clearColor];
-	
     return self;
 }
 
@@ -38,18 +38,21 @@
     // Configure the view for the selected state.
 }
 
+
 - (void)dealloc {
     [super dealloc];
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
 
-	NSLog(@"!@#$");
+-(void) webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+
+    NSLog(@"%@",@"OH NOEZ I HAZ FAIL");
 }
+
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
 	
-	NSLog(@"Webview loading!");
+	NSLog(@"%@",@"OH KAY I HAZ STARTAD LOAZING");
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {

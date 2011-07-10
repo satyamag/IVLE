@@ -40,19 +40,20 @@ static UIImage *backgroundImageSelected;
         self.userInteractionEnabled = YES;
         
 		openHeader = nil;
-        backgroundImage = [UIImage imageNamed:@"IVLE_white_bg.png"];
-		backgroundImageSelected= [UIImage imageNamed:@"IVLE_white_bg_selected_dark.png"];
+        backgroundImage = [UIImage imageNamed:@"cell_background.png"];
+		backgroundImageSelected= [UIImage imageNamed:@"cell_background.png"];
 		
         // Create and configure the title label.
         module = moduleNumber;
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, 50.0);
         CGRect titleLabelFrame = self.bounds;
-        titleLabelFrame.origin.x += 35.0;
+        titleLabelFrame.origin.x += 10.0;
         titleLabelFrame.size.width -= 45.0;
         CGRectInset(titleLabelFrame, 0.0, 5.0);
         titleLabel = [[UILabel alloc] initWithFrame:titleLabelFrame];
         titleLabel.text = title;
-        titleLabel.font = [UIFont boldSystemFontOfSize:14.0];
-		titleLabel.textColor = [UIColor colorWithRed:0 green:51.0/255.0 blue:153.0/255.0 alpha:1.0];
+        titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0];
+		titleLabel.textColor = kWorkbinFontColor;
 		
         
 
@@ -62,13 +63,14 @@ static UIImage *backgroundImageSelected;
         
         // Create and configure the disclosure button.
         disclosureButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
-        disclosureButton.frame = CGRectMake(0.0, 3.0, 35.0, 35.0);
-        [disclosureButton setImage:[UIImage imageNamed:@"carat_1.png"] forState:UIControlStateNormal];
-        [disclosureButton setImage:[UIImage imageNamed:@"carat_1_selected.png"] forState:UIControlStateSelected];
+        disclosureButton.frame = CGRectMake(170.0, 10.0, 30.0, 30.0);
+        [disclosureButton setImage:[UIImage imageNamed:@"disclosure_indicator_closed.png"] forState:UIControlStateNormal];
+        [disclosureButton setImage:[UIImage imageNamed:@"disclosure_indicator_open.png"] forState:UIControlStateSelected];
         [disclosureButton addTarget:self action:@selector(toggleOpen:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:disclosureButton];
 		
 		titleLabel.backgroundColor = [UIColor clearColor];
+        NSLog(@"%f",self.frame.size.height);
 		self.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
              
     }
@@ -96,10 +98,10 @@ static UIImage *backgroundImageSelected;
                 [delegate moduleHeader:self moduleOpened:module];
 				
 				self.backgroundColor = [UIColor colorWithPatternImage:backgroundImageSelected];
-				titleLabel.textColor = [UIColor colorWithRed:36.0/255.0 green:113.0/255.0 blue:237.0/255.0 alpha:1.0];
+				titleLabel.textColor = kWorkbinFontCompColor;
 				
 				if (openHeader) {
-					openHeader.titleLabel.textColor = [UIColor colorWithRed:0 green:51.0/255.0 blue:153.0/255.0 alpha:1.0];
+					openHeader.titleLabel.textColor = kWorkbinFontColor;
 
 					openHeader.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
 					
@@ -115,7 +117,7 @@ static UIImage *backgroundImageSelected;
             if ([delegate respondsToSelector:@selector(moduleHeader:moduleClosed:)]) {
                 [delegate moduleHeader:self moduleClosed:module];
 				self.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
-				titleLabel.textColor = [UIColor colorWithRed:0 green:51.0/255.0 blue:153.0/255.0 alpha:1.0];
+				titleLabel.textColor = kWorkbinFontColor;
 
 				openHeader = nil;
             }

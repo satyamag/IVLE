@@ -50,7 +50,7 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
 	
     NSString *urlString = request.URL.absoluteString;
-	NSLog(@"urlString: %@", urlString);
+//	NSLog(@"urlString: %@", urlString);
 	
     [self checkForAccessToken:urlString];  	
 
@@ -63,7 +63,7 @@
 
 	NSError *error;
 	IVLE *ivleInstance = ivleInstance = [IVLE instance];	
-	NSLog(@"checkForAccessToken: %@", urlString);
+//	NSLog(@"checkForAccessToken: %@", urlString);
 	NSRegularExpression *regex = [NSRegularExpression 
 								  regularExpressionWithPattern:@"r=(.*)" 
 								  options:0 error:&error];
@@ -78,7 +78,7 @@
 						   stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 			
 			//check for r=0
-			NSLog(@"success: %@", success);
+//			NSLog(@"success: %@", success);
 			
 			if ([success isEqualToString:@"0"]) {
 				NSURL *responseURL = [NSURL URLWithString:urlString];
@@ -88,7 +88,7 @@
 															  error:&error];
 				
 				//print out the token or save for next logon or to navigate to next API call.
-				NSLog(@"token: %@", token);
+//				NSLog(@"token: %@", token);
                 [ivleInstance setAuthToken:token];
                 
                 

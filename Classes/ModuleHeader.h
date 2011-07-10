@@ -7,6 +7,7 @@
 //  DONT DELETE THIS ONE
 
 #import <UIKit/UIKit.h>
+#import "Constants.h"
 
 @protocol ModuleHeaderDelegate;
 

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface HomePageModuleAnnouncementCell : UITableViewCell <UIWebViewDelegate, UITextFieldDelegate>{
+@interface HomePageModuleAnnouncementCell : UITableViewCell {
 	IBOutlet UILabel *moduleCode;
 	IBOutlet UILabel *postDate;
 	IBOutlet UILabel *postTitle;
@@ -22,4 +22,5 @@
 @property (nonatomic, retain) UILabel *postTitle;
 @property (nonatomic, retain) UIWebView *descriptionText;
 @property (nonatomic, assign) BOOL finishedLoading;
+
 @end

@@ -39,6 +39,7 @@
 			cell.titleText.text = [[announcements objectAtIndex:i] valueForKeyPath:@"Creator.Name"];
 			
 			NSString *formatedContent = [NSString stringWithFormat:@"<div id='foo'>%@</div>",[[announcements objectAtIndex:i] valueForKey:@"Description"]];
+            
 			[cell.descriptionText loadHTMLString:formatedContent baseURL:nil];
 			
 			do {
@@ -46,6 +47,7 @@
 			} while (!cell.finishedLoading);
 			NSAssert(cell.finishedLoading, @"cell not finish loading");
 			cell.descriptionText.backgroundColor = [UIColor clearColor];
+            cell.backgroundImage.image = [UIImage imageNamed:@"modules_workbin_2nd_column_button.png"];
 			[self.cells addObject:cell];
 			
 		}
@@ -119,8 +121,15 @@
 {
 	
 	ModulesAnnouncementsCell *cell = [cells objectAtIndex:[indexPath row]];
-	
-	return cell.descriptionText.frame.size.height + (cell.descriptionText.frame.origin.y-cell.titleText.frame.origin.y);
+	CGFloat height = cell.descriptionText.frame.size.height + (cell.descriptionText.frame.origin.y-cell.titleText.frame.origin.y);
+    CGFloat x = cell.backgroundImage.frame.origin.x;
+    CGFloat y = cell.backgroundImage.frame.origin.y;
+    CGFloat width = cell.backgroundImage.frame.size.width;
+    
+    
+    cell.backgroundImage.frame = CGRectMake(x, y, width, cell.descriptionText.frame.size.height);
+	return height;
+
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{

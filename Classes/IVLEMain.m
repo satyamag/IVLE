@@ -18,14 +18,16 @@
 - (void) setUpEventsView;
 - (void) setUpAnnouncementsView;
 - (void) setUpHomePageComponents;
+- (void) updateAnnouncementsTable;
 
 @end
 
 
 @implementation IVLEMain
 
-NSMutableArray *announcements;
+
 @synthesize announcementCells;
+@synthesize announcements;
 
 
 
@@ -71,38 +73,35 @@ NSMutableArray *announcements;
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshScreen:) name:kNotificationRefreshScreen object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setUpHomePageComponents:) name:kNotificationSetupHomePageComponents object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backToLogin:) name:kNotificationLoginScreen object:nil];
+//	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backToLogin:) name:kNotificationLoginScreen object:nil];
 	
 	if ([IVLE instance].authenticationToken == nil) {
 		[self performSelector:@selector(displayLogin) withObject:nil afterDelay:0.0];
 	}
 
 }
-
-
 	
-
-- (void) memoryManagementOfViewControllers: (id) mainScreen  {
-	//return;
-	NSLog(@"inmemoryManagementOfViewControllers");
-	//memory management by SJ
-	if (currentActiveMainViewController != nil) {
-		if (kDebugMemoryManagement) {
-			NSLog(@"released %@", currentActiveMainViewController);
-		}
-		[currentActiveMainViewController release];
-		currentActiveMainViewController = nil;
-	} 
-	if (kDebugMemoryManagement){
-		NSLog(@"assigning %@", mainScreen);
-	}
-	currentActiveMainViewController = mainScreen;
-	
-}
+//- (void) memoryManagementOfViewControllers: (id) mainScreen  {
+//	//return;
+//	NSLog(@"inmemoryManagementOfViewControllers");
+//	//memory management by SJ
+//	if (currentActiveMainViewController != nil) {
+//		if (kDebugMemoryManagement) {
+//			NSLog(@"released %@", currentActiveMainViewController);
+//		}
+//		[currentActiveMainViewController release];
+//		currentActiveMainViewController = nil;
+//	} 
+//	if (kDebugMemoryManagement){
+//		NSLog(@"assigning %@", mainScreen);
+//	}
+//	currentActiveMainViewController = mainScreen;
+//	
+//}
 
 -(void) setUpHomePageComponents:(NSNotification*)notification {
-    
-//    [self setUpAnnouncementsView];
+
+    [self setUpAnnouncementsView];
 	[self setUpEventsView];
     
     [self.view addSubview:recentAnnouncements];
@@ -206,22 +205,22 @@ NSMutableArray *announcements;
     pageControlIsChangingPage = YES;
 }
 
--(void)backToLogin:(NSNotification*)notification {
-	
-	while ([[self.view subviews] count]) {
-		[[[self.view subviews] lastObject] removeFromSuperview];
-	}
-	
-	
-	IVLELoginNew *login = [[IVLELoginNew alloc] init];
-	
-	[self memoryManagementOfViewControllers:login];
-	login.view.frame= CGRectMake(0, 50, 1024, 718);
-	login.wantsFullScreenLayout = YES;
-	login.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-	login.modalPresentationStyle = UIModalPresentationCurrentContext;
-	[self presentModalViewController:login animated:NO];
-}
+//-(void)backToLogin:(NSNotification*)notification {
+//	
+//	while ([[self.view subviews] count]) {
+//		[[[self.view subviews] lastObject] removeFromSuperview];
+//	}
+//	
+//	
+//	IVLELoginNew *login = [[IVLELoginNew alloc] init];
+//	
+//	[self memoryManagementOfViewControllers:login];
+//	login.view.frame= CGRectMake(0, 50, 1024, 718);
+//	login.wantsFullScreenLayout = YES;
+//	login.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//	login.modalPresentationStyle = UIModalPresentationCurrentContext;
+//	[self presentModalViewController:login animated:NO];
+//}
 
 -(void) viewDidAppear:(BOOL)animated {
 	
@@ -238,11 +237,11 @@ NSMutableArray *announcements;
 }
 
 -(void) setUpAnnouncementsView {
-	
+
 	IVLE *ivle = [IVLE instance];
 	
 	NSMutableArray* moduleIDs = [[[NSMutableArray alloc] init] retain];
-	announcements = [[[NSMutableArray alloc] init] retain];
+	announcements = [[NSMutableArray alloc] init];
 	
 	NSDictionary *moduleDict = [ivle modules:0 withAllInfo:NO];
 	
@@ -264,7 +263,8 @@ NSMutableArray *announcements;
 		NSRange range = NSMakeRange(20, [announcements count]-20);
 		[announcements removeObjectsInRange:range];
 	}
-
+    
+    
 	announcementCells = [[[NSMutableArray alloc] init] retain];
 	
 	for (int i=0; i<[announcements count]; i++) {
@@ -278,29 +278,27 @@ NSMutableArray *announcements;
 		
 		NSRange range = NSMakeRange (6, 10);
 		NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[[[announcements objectAtIndex:i] valueForKey:@"CreatedDate"] substringWithRange:range] intValue]];
+        NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+        [formatter setDateStyle:kCFDateFormatterMediumStyle];
 		
 		
 		cell.postTitle.text = [[announcements objectAtIndex:i] valueForKeyPath:@"Title"];
-		cell.postDate.text = [date description];
+		cell.postDate.text = [formatter stringFromDate:date];
 		cell.moduleCode.text = [[announcements objectAtIndex:i] valueForKeyPath:@"Creator.Name"];
 		
 		NSString *formatedContent = [NSString stringWithFormat:@"<div id='foo'>%@</div>",[[announcements objectAtIndex:i] valueForKey:@"Description"]];
 		[cell.descriptionText loadHTMLString:formatedContent baseURL:nil];
-		
-		do {
-			[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
-		} while (!cell.finishedLoading);
-		NSAssert(cell.finishedLoading, @"cell not finish loading");
-		 
-		 
-		//		NSLog(@"%d, %f, %f", cell.finishedLoading, cell.frame.size.width, cell.frame.size.height);
 		cell.descriptionText.backgroundColor = [UIColor clearColor];
-		[announcementCells addObject:cell];
-		//		NSLog(@"added");
-		
+		[announcementCells addObject:cell];		
 	}
-	[recentAnnouncements reloadData];
+    
+    [NSTimer scheduledTimerWithTimeInterval:2.5 target:self selector:@selector(updateAnnouncementsTable) userInfo:nil repeats:NO];
+
 	
+}
+
+-(void) updateAnnouncementsTable {
+   [recentAnnouncements reloadData]; 
 }
 
 -(void) setUpTimeTableView {
@@ -325,6 +323,7 @@ NSMutableArray *announcements;
 		return 1;
 	}
 	else {
+        NSLog(@"Announcement count - %d",[announcements count]);
 		return [announcements count];
 	}
 	
@@ -335,6 +334,7 @@ NSMutableArray *announcements;
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    NSLog(@"Announcement cells count - %d",[announcementCells count]);
 	if (tableView.tag == kHomePageTimetableViewTag) {
 		return [announcementCells objectAtIndex:[indexPath row]];
 	}
@@ -372,18 +372,12 @@ NSMutableArray *announcements;
 	IVLELoginWebViewController *login = [[IVLELoginWebViewController alloc]init];
 	
 	
-	[self memoryManagementOfViewControllers:login];
+//	[self memoryManagementOfViewControllers:login];
 //	login.view.frame= CGRectMake(0, 50, 1024, 718);
 	login.wantsFullScreenLayout = YES;
 	login.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 	login.modalPresentationStyle = UIModalPresentationFormSheet;
 	[self presentModalViewController:login animated:NO];
-}
-
-- (void)refreshScreenToSplashScreen{
-	while ([[self.view subviews] count] > kIVLEMainNumberOfIcons) {
-		[[[self.view subviews] lastObject] removeFromSuperview]; 
-	}
 }
 
 

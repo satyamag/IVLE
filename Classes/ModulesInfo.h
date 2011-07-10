@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "IVLE.h"
-#import "ModulesInfoCell.h"
+#import "ModulesAnnouncementsCell.h"
 
 @interface ModulesInfo : UIViewController <UITableViewDelegate, UIWebViewDelegate> {
 	NSArray *info;

@@ -9,8 +9,8 @@
 #import "IVLESideBar.h"
 
 @implementation IVLESideBar
-#define HEADER_HEIGHT 40
-#define ROW_HEIGHT 110.0
+#define HEADER_HEIGHT 50.0
+#define ROW_HEIGHT 80.0
 #define kNotificationSetWelcomeMessage @"setWelcomeMessage"
 #define kNotificationSetPageTitle @"setPageTitle"
 
@@ -89,7 +89,9 @@ NSInteger openSectionIndex;
 			[moduleHeaderInfoArray addObject:moduleHeaderInfo];
 			[moduleHeaderInfo release];
 			
-			[moduleActiveLinks addObject:[[NSArray alloc] initWithObjects:@"Information",@"Announcements",@"Forum",@"Workbin",nil]];
+            NSArray *links = [[NSArray alloc] initWithObjects:@"Information",@"Announcements",@"Forum",@"Workbin",nil];
+			[moduleActiveLinks addObject:links];
+            [links release];
 
 		}
 	}
@@ -98,7 +100,7 @@ NSInteger openSectionIndex;
 	moduleActiveLinksAssociation = [[[NSDictionary alloc] initWithObjectsAndKeys: @"ModulesInfo",@"Information",@"ModulesAnnouncements",@"Announcements",@"ForumViewController",@"Forum",@"ModulesWorkbin",@"Workbin",nil] retain];
 	moduleActiveLinksImageAssociation =[[[NSDictionary alloc] initWithObjectsAndKeys: @"information.png",@"Information",@"announcements.png",@"Announcements",@"forum.png",@"Forum",@"workbin.png",@"Workbin",nil] retain];
 	
-	UIImage *backgroundImage = [UIImage imageNamed:@"IVLE_side_bar_bg.png"];
+	UIImage *backgroundImage = [UIImage imageNamed:@"modules_workbin_3rd_column.png"];
 	[self.view setBackgroundColor:[UIColor colorWithPatternImage:backgroundImage]];
 	moduleList.backgroundColor = [UIColor clearColor];
 }
@@ -227,6 +229,7 @@ NSInteger openSectionIndex;
 	if ([nibName compare:@"ModulesInfo"] == NSOrderedSame) {
 		leftBar = [NSArray arrayWithObject:[[ModulesInfo alloc] initWithNibName:nibName bundle:nil]];
 		[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetPageTitle object:[NSString stringWithString:@"Modules | Information"]];
+        
 	}
 	
 	else if ([nibName compare:@"ModulesAnnouncements"] == NSOrderedSame) {
@@ -250,6 +253,7 @@ NSInteger openSectionIndex;
 	[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRefreshRightScreen object:leftBar];
 	[spinner removeFromSuperview];
 	self.view.userInteractionEnabled = YES;
+
 	[spinner release];
 	
 }

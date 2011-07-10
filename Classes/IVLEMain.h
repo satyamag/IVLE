@@ -19,10 +19,10 @@
 #import "Constants.h"
 #import "HomePageModuleAnnouncementCell.h"
 #import "IVLEAppDelegate.h"
+#import "ModulesAnnouncementsCell.h"
 
 
-#define kIVLEMainNumberOfIcons 6
-@interface IVLEMain : UIViewController <UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate, UIScrollViewDelegate>{
+@interface IVLEMain : UIViewController <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>{
 	
 	
 	
@@ -30,6 +30,7 @@
 	IBOutlet UIView *timetable;
 	NSMutableArray *announcementCells;
 	NSMutableArray *timetableCells;
+    NSMutableArray *announcements;
 	
 	IBOutlet UIScrollView *eventsScrollView;
 	IBOutlet UIPageControl *eventsPageControl;
@@ -42,7 +43,7 @@
 	
 	IBOutlet UIView *rightHandSideView, *pageControlView;
 }
-
+@property (nonatomic, retain) NSMutableArray *announcements;
 @property (nonatomic, retain) NSMutableArray *announcementCells;
 //
 //- (IBAction)modulesClicked;
