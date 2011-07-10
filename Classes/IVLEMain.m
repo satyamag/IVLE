@@ -10,7 +10,7 @@
 
 #define kNotificationSetWelcomeMessage @"setWelcomeMessage"
 #define kNotificationSetPageTitle @"setPageTitle"
-
+#define kCourseID @"aefeaca4-f40a-4c82-9c8e-95f92c7ed0da"
 
 @interface IVLEMain (PrivateMethods)
 
@@ -57,8 +57,6 @@
 	
     [super viewDidLoad];
     // Override point for customization after application launch.
-	
-	
 	
 	UIImage *bgImage = [UIImage imageNamed:@"IVLE_white_bg.png"];
 	
@@ -119,6 +117,12 @@
 	eventsScrollView.delegate = self;
 	
 	IVLE *ivleInterface = [IVLE instance];
+	
+	//***********TEMP************
+	/*NSLog(@"%@", [ivleInterface timetableStudentModule:kCourseID]); 
+	NSLog(@"%@", [ivleInterface timetableModule:kCourseID]);
+	NSLog(@"%@", [ivleInterface timetableStudent:@"2010/2011" forSemester:@"3"]);*/
+	
 	NSArray *eventsArray = [[ivleInterface studentEvents:YES] objectForKey:@"Results"];
 	
 	[eventsScrollView setBackgroundColor:[UIColor blackColor]];
@@ -291,10 +295,8 @@
 		cell.descriptionText.backgroundColor = [UIColor clearColor];
 		[announcementCells addObject:cell];		
 	}
-    
-    [NSTimer scheduledTimerWithTimeInterval:2.5 target:self selector:@selector(updateAnnouncementsTable) userInfo:nil repeats:NO];
-
 	
+    [NSTimer scheduledTimerWithTimeInterval:2.5 target:self selector:@selector(updateAnnouncementsTable) userInfo:nil repeats:NO];
 }
 
 -(void) updateAnnouncementsTable {

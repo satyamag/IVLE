@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 #import "IVLE.h"
 #import "ModuleHeader.h"
 #import "ModuleHeaderInfo.h"

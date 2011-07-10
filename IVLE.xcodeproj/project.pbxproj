@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		047F5F8413C753E9007C1B64 /* TimetableNew.m in Sources */ = {isa = PBXBuildFile; fileRef = 047F5F8213C753E9007C1B64 /* TimetableNew.m */; };
+		047F5F8513C753E9007C1B64 /* TimetableNew.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047F5F8313C753E9007C1B64 /* TimetableNew.xib */; };
+		047F5F8813C75A59007C1B64 /* ModuleEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 047F5F8713C75A59007C1B64 /* ModuleEvent.m */; };
+		04CEC4B013C2A7280057CEDB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04CEC4AF13C2A7280057CEDB /* MediaPlayer.framework */; };
+		04CEC4DB13C2ABE00057CEDB /* Webcast.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CEC4DA13C2ABE00057CEDB /* Webcast.m */; };
+		04CEC4DE13C2AC8D0057CEDB /* StubWebcast.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CEC4DD13C2AC8D0057CEDB /* StubWebcast.m */; };
 		1D3623260D0F684500981E51 /* IVLEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* IVLEAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -166,6 +172,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		047F5F8113C753E8007C1B64 /* TimetableNew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimetableNew.h; sourceTree = "<group>"; };
+		047F5F8213C753E9007C1B64 /* TimetableNew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimetableNew.m; sourceTree = "<group>"; };
+		047F5F8313C753E9007C1B64 /* TimetableNew.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TimetableNew.xib; path = Classes/TimetableNew.xib; sourceTree = "<group>"; };
+		047F5F8613C75A59007C1B64 /* ModuleEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleEvent.h; sourceTree = "<group>"; };
+		047F5F8713C75A59007C1B64 /* ModuleEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModuleEvent.m; sourceTree = "<group>"; };
+		04CEC4AF13C2A7280057CEDB /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		04CEC4D913C2ABE00057CEDB /* Webcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Webcast.h; sourceTree = "<group>"; };
+		04CEC4DA13C2ABE00057CEDB /* Webcast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Webcast.m; sourceTree = "<group>"; };
+		04CEC4DC13C2AC8D0057CEDB /* StubWebcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StubWebcast.h; sourceTree = "<group>"; };
+		04CEC4DD13C2AC8D0057CEDB /* StubWebcast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StubWebcast.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* IVLEAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IVLEAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* IVLEAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IVLEAppDelegate.m; sourceTree = "<group>"; };
@@ -416,12 +432,21 @@
 				A57D09EB1347737B00449B3C /* MapKit.framework in Frameworks */,
 				A5E3CAB61351A32300C0A15A /* CoreLocation.framework in Frameworks */,
 				BF484B7B1352556B0074F299 /* EventKit.framework in Frameworks */,
+				04CEC4B013C2A7280057CEDB /* MediaPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0482CD7913C5DB82006CD1D9 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				A57D09C21347725A00449B3C /* Map.xib */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -476,6 +501,7 @@
 				BF854E49135766BB00010479 /* Timetable */,
 				A57D0BCB1347AE8900449B3C /* Modules */,
 				5CCBA73B1345A211002D38A5 /* CAP calculator */,
+				0482CD7913C5DB82006CD1D9 /* Map */,
 				A5E3CBEF1352BBCB00C0A15A /* IVLEMains */,
 				5CDA9C681352BDCB00D00AC8 /* Events */,
 				5CDA9CA81352BF9B00D00AC8 /* ModuleList.plist */,
@@ -488,6 +514,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04CEC4AF13C2A7280057CEDB /* MediaPlayer.framework */,
 				5C636BA613443165009D5BB8 /* QuartzCore.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -620,6 +647,10 @@
 		4AC6371013C1A3B100E4E6CE /* Webcasts */ = {
 			isa = PBXGroup;
 			children = (
+				04CEC4D913C2ABE00057CEDB /* Webcast.h */,
+				04CEC4DA13C2ABE00057CEDB /* Webcast.m */,
+				04CEC4DC13C2AC8D0057CEDB /* StubWebcast.h */,
+				04CEC4DD13C2AC8D0057CEDB /* StubWebcast.m */,
 			);
 			name = Webcasts;
 			sourceTree = "<group>";
@@ -840,7 +871,6 @@
 			isa = PBXGroup;
 			children = (
 				4A8A676D13BBA567003DEDDB /* IVLELoginWebViewController.xib */,
-				A57D09C21347725A00449B3C /* Map.xib */,
 				4A1716511355474E00EF11E1 /* IVLESideBar.xib */,
 				4AD36BCF1349602A00EBB733 /* TableViewCell.xib */,
 				4A2924A21357A9E800635DD2 /* HomePageModuleAnnouncementCell.xib */,
@@ -903,6 +933,10 @@
 		BF779AEF1348777000CC2119 /* Timetable */ = {
 			isa = PBXGroup;
 			children = (
+				047F5F8113C753E8007C1B64 /* TimetableNew.h */,
+				047F5F8213C753E9007C1B64 /* TimetableNew.m */,
+				047F5F8613C75A59007C1B64 /* ModuleEvent.h */,
+				047F5F8713C75A59007C1B64 /* ModuleEvent.m */,
 				BFC65CF1133E7C5500F4C7F2 /* Timetable.h */,
 				BFC65CF2133E7C5500F4C7F2 /* Timetable.m */,
 				BF779AF81348783C00CC2119 /* TimetableAddClassViewController.h */,
@@ -916,6 +950,7 @@
 		BF854E49135766BB00010479 /* Timetable */ = {
 			isa = PBXGroup;
 			children = (
+				047F5F8313C753E9007C1B64 /* TimetableNew.xib */,
 				BFC65D86133E99CD00F4C7F2 /* Timetable.xib */,
 				BF779AFA1348783C00CC2119 /* TimetableAddClassViewController.xib */,
 				BF779AFF1348783C00CC2119 /* TimetablePickerViewController.xib */,
@@ -1046,6 +1081,7 @@
 				4AF4D1E313CA2C630064ACBD /* workbin.png in Resources */,
 				4AF4D1E513CA2D170064ACBD /* announcements.png in Resources */,
 				4AF4D1E713CA2F4F0064ACBD /* information.png in Resources */,
+				047F5F8513C753E9007C1B64 /* TimetableNew.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1130,6 +1166,10 @@
 				4A8A676C13BBA2DD003DEDDB /* IVLELoginWebViewController.m in Sources */,
 				4A00F00313C0CCEF002D6C4E /* Workbin.m in Sources */,
 				4A996E9513C62B3B00DA8BC5 /* ModulesWorkbinCell.m in Sources */,
+				04CEC4DB13C2ABE00057CEDB /* Webcast.m in Sources */,
+				04CEC4DE13C2AC8D0057CEDB /* StubWebcast.m in Sources */,
+				047F5F8413C753E9007C1B64 /* TimetableNew.m in Sources */,
+				047F5F8813C75A59007C1B64 /* ModuleEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

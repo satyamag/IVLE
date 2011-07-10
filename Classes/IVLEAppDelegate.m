@@ -47,6 +47,12 @@
     timeTableNavigator.navigationBar.tintColor = kNavBarColor;
     timeTableController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Calendar" image:[UIImage imageNamed:@"timetable.png"] tag:4];
     timeTableController.title = @"Calendar";
+	 
+	TimetableNew *timeTableControllerNew = [[[TimetableNew alloc] init] autorelease];
+	UINavigationController *timeTableNavigatorNew = [[[UINavigationController alloc] initWithRootViewController:timeTableControllerNew] autorelease];
+	timeTableNavigatorNew.navigationBar.tintColor = kNavBarColor;
+	timeTableControllerNew.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Calendar" image:[UIImage imageNamed:@"timetable.png"] tag:4];
+	timeTableControllerNew.title = @"Calendar";
     
     Map *mapController = [[[Map alloc] init] autorelease];
     UINavigationController *mapNavigator = [[[UINavigationController alloc] initWithRootViewController:mapController] autorelease];
@@ -60,7 +66,7 @@
     capController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Cap Calculator" image:[UIImage imageNamed:@"calculator.png"] tag:6];
     capController.title = @"CAP System";
     
-    NSArray *arrayOfViewControllers = [NSArray arrayWithObjects:IVLEHomeNavigator, workbinNavigator, eventsNavigator, timeTableNavigator, mapNavigator, capNavigator, nil];
+    NSArray *arrayOfViewControllers = [NSArray arrayWithObjects:IVLEHomeNavigator, workbinNavigator, eventsNavigator, timeTableNavigatorNew, mapNavigator, capNavigator, nil];
     
     [self.tabBarController setViewControllers:arrayOfViewControllers];
     [self.window addSubview:self.tabBarController.view];

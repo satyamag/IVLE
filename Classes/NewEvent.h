@@ -33,7 +33,8 @@
 	
 	id <NewEventDelegate> delegate;
 	
-	IBOutlet UITextField *eventTitle, *contact, *dateTime, *organizer, *price, *venue, *description, *agenda;
+	IBOutlet UITextField *eventTitle, *contact, *dateTime, *organizer, *price, *venue, *agenda;
+	IBOutlet UITextView *description;
 }
 
 @property (nonatomic, assign) id <NewEventDelegate> delegate;
