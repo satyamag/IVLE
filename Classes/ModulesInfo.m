@@ -23,6 +23,7 @@
 													  ascending:NO] autorelease];
 		NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
 		info = [[info sortedArrayUsingDescriptors:sortDescriptors] retain];
+        UIImage *bgImage_announcements = [UIImage imageNamed:@"module_info_announcement_bg.png"];
 		
 		self.cells = [NSMutableArray array];
 		
@@ -35,9 +36,11 @@
 			NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ModulesAnnouncementsCell" 
 														 owner:self
 													   options:nil];
-			cell = [[nib objectAtIndex:0] retain];
+			cell = [nib objectAtIndex:0];
 			
 			cell.titleText.text = [[info objectAtIndex:i] valueForKeyPath:@"Title"];
+            cell.titleText.textColor = kWorkbinFontColor;
+            cell.meta.text = @"";
 			
 			NSString *formatedContent = [NSString stringWithFormat:@"<div id='foo'>%@</div>",[[info objectAtIndex:i] valueForKey:@"Description"]];
 			[cell.descriptionText loadHTMLString:formatedContent baseURL:nil];
@@ -49,13 +52,13 @@
 			//	NSLog(@"%d, %f, %f", cell.finishedLoading, cell.frame.size.width, cell.frame.size.height);
             cell.descriptionText.contentMode = UIViewContentModeScaleAspectFit;
 			cell.descriptionText.backgroundColor = [UIColor clearColor];
-            cell.backgroundImage.image = [UIImage imageNamed:@"modules_workbin_2nd_column_button.png"];
+            //cell.backgroundImage.image = [UIImage imageNamed:@"modules_workbin_2nd_column_button.png"];
 			[self.cells addObject:cell];
 			//	NSLog(@"added");
 			
 		}
 		
-		self.view.backgroundColor = [UIColor clearColor];
+		self.view.backgroundColor = [UIColor colorWithPatternImage:bgImage_announcements];
 		
     }
     return self;

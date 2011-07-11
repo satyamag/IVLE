@@ -9,7 +9,6 @@
 #import "IVLEMain.h"
 
 #define kNotificationSetWelcomeMessage @"setWelcomeMessage"
-#define kNotificationSetPageTitle @"setPageTitle"
 #define kCourseID @"aefeaca4-f40a-4c82-9c8e-95f92c7ed0da"
 
 @interface IVLEMain (PrivateMethods)
@@ -62,8 +61,6 @@
 	
 	timetable.tag = kHomePageTimetableViewTag;
 	recentAnnouncements.tag = kHomePageAnnouncementsViewTag;
-	
-	[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetPageTitle object:[NSString stringWithString:@"Home Screen"]];
 	
 	self.view.frame = CGRectMake(0,0,1024, 768);
 	[timetable setBackgroundColor:[UIColor colorWithPatternImage:bgImage]];
@@ -244,7 +241,7 @@
 
 	IVLE *ivle = [IVLE instance];
 	
-	NSMutableArray* moduleIDs = [[[NSMutableArray alloc] init] retain];
+	NSMutableArray* moduleIDs = [[[NSMutableArray alloc] init] autorelease];
 	announcements = [[NSMutableArray alloc] init];
 	
 	NSDictionary *moduleDict = [ivle modules:0 withAllInfo:NO];
@@ -278,7 +275,7 @@
 		NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"HomePageModuleAnnouncementCell" 
 													 owner:self
 												   options:nil];
-		cell = [[nib objectAtIndex:0] retain];
+		cell = [nib objectAtIndex:0];
 		
 		NSRange range = NSMakeRange (6, 10);
 		NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[[[announcements objectAtIndex:i] valueForKey:@"CreatedDate"] substringWithRange:range] intValue]];

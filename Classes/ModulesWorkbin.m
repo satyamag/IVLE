@@ -198,7 +198,7 @@
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ModulesWorkbinCell" 
                                                  owner:self
                                                options:nil];
-    cell = [[nib objectAtIndex:0] retain];
+    cell = [nib objectAtIndex:0];
     
     cell.backgroundColor = [UIColor colorWithPatternImage:bgImage_2nd_column_cell_border];
 	

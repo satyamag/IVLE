@@ -24,6 +24,7 @@
 		NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
 		announcements = [[announcements sortedArrayUsingDescriptors:sortDescriptors] retain];
 		
+        UIImage *bgImage_announcements = [UIImage imageNamed:@"module_info_announcement_bg.png"];
 		self.cells = [NSMutableArray array];
 		
 		for (int i=0; i<[announcements count]; i++) {
@@ -34,9 +35,19 @@
 			NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ModulesAnnouncementsCell" 
 														 owner:self
 													   options:nil];
-			cell = [[nib objectAtIndex:0] retain];
+			cell = [nib objectAtIndex:0];
 			
-			cell.titleText.text = [[announcements objectAtIndex:i] valueForKeyPath:@"Creator.Name"];
+			cell.titleText.text = [[announcements objectAtIndex:i] valueForKeyPath:@"Title"];
+            
+            NSRange range = NSMakeRange (6, 10);
+            NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[[[announcements objectAtIndex:i] valueForKey:@"CreatedDate"] substringWithRange:range] intValue]];
+            NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+            [formatter setDateStyle:kCFDateFormatterMediumStyle];
+            
+            cell.meta.text = [NSString stringWithFormat:@"%@, %@", [[announcements objectAtIndex:i] valueForKeyPath:@"Creator.Name"], [formatter stringFromDate:date]];
+            
+            cell.titleText.textColor = kWorkbinFontColor;
+            cell.meta.textColor = kWorkbinFontColor;
 			
 			NSString *formatedContent = [NSString stringWithFormat:@"<div id='foo'>%@</div>",[[announcements objectAtIndex:i] valueForKey:@"Description"]];
             
@@ -47,12 +58,12 @@
 			} while (!cell.finishedLoading);
 			NSAssert(cell.finishedLoading, @"cell not finish loading");
 			cell.descriptionText.backgroundColor = [UIColor clearColor];
-            cell.backgroundImage.image = [UIImage imageNamed:@"modules_workbin_2nd_column_button.png"];
+            //cell.backgroundImage.image = [UIImage imageNamed:@"modules_workbin_2nd_column_button.png"];
 			[self.cells addObject:cell];
 			
 		}
-		
-		self.view.backgroundColor = [UIColor clearColor];
+		//tableView.backgroundColor = [UIColor colorWithPatternImage:bgImage_announcements];
+		self.view.backgroundColor = [UIColor colorWithPatternImage:bgImage_announcements];
 		
     }
     return self;

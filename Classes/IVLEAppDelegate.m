@@ -33,8 +33,8 @@
     Workbin *workbinController = [[[Workbin alloc] init] autorelease];
     UINavigationController *workbinNavigator = [[[UINavigationController alloc] initWithRootViewController:workbinController] autorelease];
     workbinNavigator.navigationBar.tintColor = kNavBarColor;
-    workbinController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Workbin" image:[UIImage imageNamed:@"modules.png"] tag:2];
-    workbinController.title = @"Workbin";
+    workbinController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Modules" image:[UIImage imageNamed:@"modules.png"] tag:2];
+    workbinController.title = @"Modules";
     
     Events *eventController = [[[Events alloc] init] autorelease];
     UINavigationController *eventsNavigator = [[[UINavigationController alloc] initWithRootViewController:eventController] autorelease];

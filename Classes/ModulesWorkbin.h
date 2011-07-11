@@ -34,7 +34,6 @@
 	NSMutableArray *stack;
 	NSSet *supportedExtOfFiles;
     
-    UISplitViewController* splitVC;
 }
 
 /*drawing workbin leftnavi buttons*/

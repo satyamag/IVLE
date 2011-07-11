@@ -63,6 +63,8 @@
 		4A39DB5213C5B27500306066 /* modules_workbin_2nd_column_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A39DB5113C5B27500306066 /* modules_workbin_2nd_column_button.png */; };
 		4A39DB5413C5B32300306066 /* modules_workbin_cell_no_border.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A39DB5313C5B32300306066 /* modules_workbin_cell_no_border.png */; };
 		4A781C4013C2A5E800B2B4AC /* topbar_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A781C3F13C2A5E800B2B4AC /* topbar_black.png */; };
+		4A7D12DC13CA53A7009E8BE3 /* webcasts.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A7D12DB13CA53A7009E8BE3 /* webcasts.png */; };
+		4A7D12DE13CA65B2009E8BE3 /* module_info_announcement_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A7D12DD13CA65B2009E8BE3 /* module_info_announcement_bg.png */; };
 		4A8A676C13BBA2DD003DEDDB /* IVLELoginWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8A676B13BBA2DD003DEDDB /* IVLELoginWebViewController.m */; };
 		4A8A676E13BBA567003DEDDB /* IVLELoginWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A8A676D13BBA567003DEDDB /* IVLELoginWebViewController.xib */; };
 		4A996E9513C62B3B00DA8BC5 /* ModulesWorkbinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A996E9413C62B3B00DA8BC5 /* ModulesWorkbinCell.m */; };
@@ -77,7 +79,6 @@
 		4AA3EAA313C74C7200B39A97 /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA3EAA213C74C7100B39A97 /* folder.png */; };
 		4AD36BD61349602A00EBB733 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AD36BCF1349602A00EBB733 /* TableViewCell.xib */; };
 		4AD36BD71349602A00EBB733 /* LeftSideBarCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD36BD01349602A00EBB733 /* LeftSideBarCellView.m */; };
-		4AD36D3413499A2A00EBB733 /* ModulesInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AD36D3313499A2A00EBB733 /* ModulesInfoCell.xib */; };
 		4AD36D3A13499D3900EBB733 /* ModulesInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD36D3913499D3900EBB733 /* ModulesInfoCell.m */; };
 		4AE260ED13C9FC3D0094C541 /* cell_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AE260EC13C9FC3D0094C541 /* cell_background.png */; };
 		4AE260F013CA016C0094C541 /* disclosure_indicator_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AE260EE13CA016C0094C541 /* disclosure_indicator_open.png */; };
@@ -241,6 +242,8 @@
 		4A39DB5113C5B27500306066 /* modules_workbin_2nd_column_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modules_workbin_2nd_column_button.png; sourceTree = "<group>"; };
 		4A39DB5313C5B32300306066 /* modules_workbin_cell_no_border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modules_workbin_cell_no_border.png; sourceTree = "<group>"; };
 		4A781C3F13C2A5E800B2B4AC /* topbar_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topbar_black.png; sourceTree = "<group>"; };
+		4A7D12DB13CA53A7009E8BE3 /* webcasts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = webcasts.png; sourceTree = "<group>"; };
+		4A7D12DD13CA65B2009E8BE3 /* module_info_announcement_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = module_info_announcement_bg.png; sourceTree = "<group>"; };
 		4A8A676A13BBA2DD003DEDDB /* IVLELoginWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IVLELoginWebViewController.h; sourceTree = "<group>"; };
 		4A8A676B13BBA2DD003DEDDB /* IVLELoginWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IVLELoginWebViewController.m; sourceTree = "<group>"; };
 		4A8A676D13BBA567003DEDDB /* IVLELoginWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IVLELoginWebViewController.xib; sourceTree = "<group>"; };
@@ -258,7 +261,6 @@
 		4AD36BCF1349602A00EBB733 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		4AD36BD01349602A00EBB733 /* LeftSideBarCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeftSideBarCellView.m; path = ../LeftSideBarCellView.m; sourceTree = "<group>"; };
 		4AD36BD11349602A00EBB733 /* LeftSideBarCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftSideBarCellView.h; path = ../LeftSideBarCellView.h; sourceTree = "<group>"; };
-		4AD36D3313499A2A00EBB733 /* ModulesInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModulesInfoCell.xib; sourceTree = "<group>"; };
 		4AD36D3813499D3900EBB733 /* ModulesInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModulesInfoCell.h; sourceTree = "<group>"; };
 		4AD36D3913499D3900EBB733 /* ModulesInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModulesInfoCell.m; sourceTree = "<group>"; };
 		4AE260EC13C9FC3D0094C541 /* cell_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cell_background.png; sourceTree = "<group>"; };
@@ -658,6 +660,7 @@
 		4AF4D1DD13CA2C070064ACBD /* Workbin Icons */ = {
 			isa = PBXGroup;
 			children = (
+				4A7D12DB13CA53A7009E8BE3 /* webcasts.png */,
 				4AF4D1E613CA2F4F0064ACBD /* information.png */,
 				4AF4D1E413CA2D170064ACBD /* announcements.png */,
 				4AF4D1DF13CA2C630064ACBD /* forum.png */,
@@ -824,7 +827,6 @@
 			children = (
 				BF0CC2FA1340462F00010800 /* ForumViewController.xib */,
 				A57D0E611347CE8A00449B3C /* ModulesInfo.xib */,
-				4AD36D3313499A2A00EBB733 /* ModulesInfoCell.xib */,
 				A57D0CBC1347B7AD00449B3C /* ModulesAnnouncementsCell.xib */,
 				A57D0BC81347AE7B00449B3C /* ModulesAnnouncements.xib */,
 				A5D3F10C1338733D001B33BB /* ModulesWorkbin.xib */,
@@ -883,6 +885,7 @@
 		BF28D7E5133E6AD300EE060D /* Art Set */ = {
 			isa = PBXGroup;
 			children = (
+				4A7D12DD13CA65B2009E8BE3 /* module_info_announcement_bg.png */,
 				4AF4D1DD13CA2C070064ACBD /* Workbin Icons */,
 				4AE260EE13CA016C0094C541 /* disclosure_indicator_open.png */,
 				4AE260EF13CA016C0094C541 /* disclosure_indicator_closed.png */,
@@ -1023,7 +1026,6 @@
 				BF779B011348783C00CC2119 /* TimetableAddClassViewController.xib in Resources */,
 				BF779B041348783C00CC2119 /* TimetablePickerViewController.xib in Resources */,
 				4AD36BD61349602A00EBB733 /* TableViewCell.xib in Resources */,
-				4AD36D3413499A2A00EBB733 /* ModulesInfoCell.xib in Resources */,
 				5CD4A57C134EDB7000A1CE41 /* EventsView.xib in Resources */,
 				5CDA9CA91352BF9B00D00AC8 /* ModuleList.plist in Resources */,
 				5C6976D61353702F006F6BC5 /* NewEvent.xib in Resources */,
@@ -1082,6 +1084,8 @@
 				4AF4D1E513CA2D170064ACBD /* announcements.png in Resources */,
 				4AF4D1E713CA2F4F0064ACBD /* information.png in Resources */,
 				047F5F8513C753E9007C1B64 /* TimetableNew.xib in Resources */,
+				4A7D12DC13CA53A7009E8BE3 /* webcasts.png in Resources */,
+				4A7D12DE13CA65B2009E8BE3 /* module_info_announcement_bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

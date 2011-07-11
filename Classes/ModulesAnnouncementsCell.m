@@ -12,6 +12,7 @@
 @implementation ModulesAnnouncementsCell
 
 @synthesize titleText;
+@synthesize meta;
 @synthesize finishedLoading;
 @synthesize descriptionText;
 @synthesize backgroundImage;

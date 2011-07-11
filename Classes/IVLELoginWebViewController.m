@@ -62,7 +62,7 @@
 	
 
 	NSError *error;
-	IVLE *ivleInstance = ivleInstance = [IVLE instance];	
+	IVLE *ivleInstance = [IVLE instance];	
 //	NSLog(@"checkForAccessToken: %@", urlString);
 	NSRegularExpression *regex = [NSRegularExpression 
 								  regularExpressionWithPattern:@"r=(.*)" 

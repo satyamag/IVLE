@@ -45,7 +45,7 @@
 					<object class="IBUITableView" id="581034050">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrameSize">{704, 748}</string>
+						<string key="NSFrame">{{1, 0}, {704, 748}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
 						<object class="NSColor" key="IBUIBackgroundColor">

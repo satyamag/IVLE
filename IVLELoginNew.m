@@ -9,7 +9,6 @@
 #import "IVLELoginNew.h"
 
 #define kNotificationSetWelcomeMessage @"setWelcomeMessage"
-#define kNotificationSetPageTitle @"setPageTitle"
 
 
 @implementation IVLELoginNew

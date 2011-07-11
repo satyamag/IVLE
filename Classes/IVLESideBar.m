@@ -214,14 +214,8 @@ NSInteger openSectionIndex;
 	
 	NSInteger sectionNumber = tag/10;
 	NSInteger linkNumber = tag%10;
-	
-	//	NSLog(@"Section Number %d\n",button.state);
-	//	NSLog(@"Link Number %d\n",linkNumber);
-	
+
 	NSString *nibName = [moduleActiveLinksAssociation objectForKey:[[moduleActiveLinks objectAtIndex:sectionNumber] objectAtIndex:linkNumber]];
-	
-//	NSLog(@"NIB NAME %@ \n",nibName);
-	
 	
 	UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
 	spinner.frame = CGRectMake(1024/2-spinner.frame.size.width/2, 768/2-spinner.frame.size.height/2, spinner.frame.size.width, spinner.frame.size.height);
@@ -231,27 +225,31 @@ NSInteger openSectionIndex;
 	
 	NSArray *leftBar;
 	if ([nibName compare:@"ModulesInfo"] == NSOrderedSame) {
-		leftBar = [NSArray arrayWithObject:[[ModulesInfo alloc] initWithNibName:nibName bundle:nil]];
-		[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetPageTitle object:[NSString stringWithString:@"Modules | Information"]];
+        ModulesInfo *info = [[ModulesInfo alloc] initWithNibName:nibName bundle:nil];
+		leftBar = [NSArray arrayWithObject:info];
+        [info release];
         
 	}
 	
 	else if ([nibName compare:@"ModulesAnnouncements"] == NSOrderedSame) {
 		
-		leftBar = [NSArray arrayWithObject:[[ModulesAnnouncements alloc] initWithNibName:nibName bundle:nil]];
-		[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetPageTitle object:[NSString stringWithString:@"Modules | Announcements"]];
+        ModulesAnnouncements *announcements = [[ModulesAnnouncements alloc] initWithNibName:nibName bundle:nil]; 
+		leftBar = [NSArray arrayWithObject:announcements];
+        [announcements release];
 	}
 	
 	else if ([nibName compare:@"ForumViewController"] == NSOrderedSame) {
-		
-		leftBar = [NSArray arrayWithObject:[[ForumViewController alloc] initWithNibName:nibName bundle:nil]];
-		[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetPageTitle object:[NSString stringWithString:@"Modules | Forum"]];
+        
+		ForumViewController *fvc = [[ForumViewController alloc] initWithNibName:nibName bundle:nil];
+		leftBar = [NSArray arrayWithObject:fvc];
+        [fvc release];
 	}
 	
 	else if ([nibName compare:@"ModulesWorkbin"] == NSOrderedSame) {
 		
-		leftBar = [NSArray arrayWithObject:[[ModulesWorkbin alloc] initWithNibName:nibName bundle:nil]];	
-		[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetPageTitle object:[NSString stringWithString:@"Modules | Workbin"]];
+        ModulesWorkbin *workbin = [[ModulesWorkbin alloc] initWithNibName:nibName bundle:nil];
+		leftBar = [NSArray arrayWithObject:workbin];	
+        [workbin release];           
 	}
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRefreshRightScreen object:leftBar];
@@ -268,8 +266,6 @@ NSInteger openSectionIndex;
 	ModuleHeaderInfo *moduleHeaderInfo = [moduleHeaderInfoArray objectAtIndex:sectionOpened];
 	moduleHeaderInfo.open = YES;
 	[IVLE instance].selectedCourseID = moduleHeaderInfo.moduleID;
-//	NSLog(@"%@", [IVLE instance].selectedCourseID);
-    
     /*
      Create an array containing the index paths of the rows to insert: These correspond to the rows for each quotation in the current section.
      */
@@ -317,8 +313,6 @@ NSInteger openSectionIndex;
     [moduleList insertRowsAtIndexPaths:indexPathsToInsert withRowAnimation:insertAnimation];
     [moduleList endUpdates];
     openSectionIndex = sectionOpened;
-	
-	//NSLog(@"%@", moduleList);
     
     [indexPathsToInsert release];
     [indexPathsToDelete release];
