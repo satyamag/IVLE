@@ -85,6 +85,7 @@
 							<bytes key="NSWhite">MQA</bytes>
 						</object>
 						<int key="IBUIBaselineAdjustment">1</int>
+						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUITextAlignment">1</int>
 					</object>
@@ -94,7 +95,6 @@
 						<string key="NSFrame">{{20, 24}, {784, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -109,6 +109,7 @@
 						<reference key="IBUITextColor" ref="264724932"/>
 						<reference key="IBUIHighlightedColor" ref="218865772"/>
 						<int key="IBUIBaselineAdjustment">1</int>
+						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUITextAlignment">1</int>
 					</object>
@@ -128,7 +129,6 @@
 						<string key="NSFrame">{{0, 51}, {824, 138}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MSAxIDEAA</bytes>
@@ -327,6 +327,7 @@
 							<string>backgroundImage</string>
 							<string>descriptionText</string>
 							<string>meta</string>
+							<string>readIndicator</string>
 							<string>titleText</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -334,6 +335,7 @@
 							<string>UIImageView</string>
 							<string>UIWebView</string>
 							<string>UILabel</string>
+							<string>UIImageView</string>
 							<string>UILabel</string>
 						</object>
 					</object>
@@ -344,6 +346,7 @@
 							<string>backgroundImage</string>
 							<string>descriptionText</string>
 							<string>meta</string>
+							<string>readIndicator</string>
 							<string>titleText</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -359,6 +362,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">meta</string>
 								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">readIndicator</string>
+								<string key="candidateClassName">UIImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">titleText</string>

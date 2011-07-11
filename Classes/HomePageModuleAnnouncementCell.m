@@ -11,11 +11,12 @@
 
 @implementation HomePageModuleAnnouncementCell
 
-@synthesize moduleCode;
-@synthesize postDate;
-@synthesize postTitle;
+@synthesize titleText;
+@synthesize meta;
 @synthesize finishedLoading;
 @synthesize descriptionText;
+@synthesize backgroundImage;
+@synthesize readIndicator;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     

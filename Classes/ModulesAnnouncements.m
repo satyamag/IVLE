@@ -49,16 +49,29 @@
             cell.titleText.textColor = kWorkbinFontColor;
             cell.meta.textColor = kWorkbinFontColor;
 			
-			NSString *formatedContent = [NSString stringWithFormat:@"<div id='foo'>%@</div>",[[announcements objectAtIndex:i] valueForKey:@"Description"]];
+			NSString *formatedContent = [NSString stringWithFormat:@"<html> \n"
+                                         "<head> \n"
+                                         "<style type=\"text/css\"> \n"
+                                         "body {font-family: \"%@\"; font-size: %@; text-align: %@}\n"
+                                         "</style> \n"
+                                         "</head> \n"
+                                         "<body><div id='foo'>%@</div></body> \n"
+                                         "</html>", @"HelveticaNeue", [NSNumber numberWithInt:kWebViewFontSize],@"justify",[[announcements objectAtIndex:i] valueForKey:@"Description"]];
             
 			[cell.descriptionText loadHTMLString:formatedContent baseURL:nil];
+            
+            if ([[announcements objectAtIndex:i] valueForKey:@"isRead"]) {
+                cell.readIndicator.image = [UIImage imageNamed:@"read.png"];
+            }
+            else
+                cell.readIndicator.image = [UIImage imageNamed:@"new.png"];
 			
 			do {
 				[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
 			} while (!cell.finishedLoading);
 			NSAssert(cell.finishedLoading, @"cell not finish loading");
 			cell.descriptionText.backgroundColor = [UIColor clearColor];
-            //cell.backgroundImage.image = [UIImage imageNamed:@"modules_workbin_2nd_column_button.png"];
+            //cell.backgroundImage.image = [UIImage imageNamed:@"module_info_announcement_cell_bg.png"];
 			[self.cells addObject:cell];
 			
 		}

@@ -35,7 +35,7 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-		UIImage *blackboardImage = [UIImage imageNamed:@"IVLE_white_bg.png"];
+		UIImage *blackboardImage = [UIImage imageNamed:@"home_page_announcements_bg.png"];
 		[self.view setBackgroundColor:[UIColor colorWithPatternImage:blackboardImage]];
 		
 		//added by SJ, memory managemment
@@ -57,7 +57,7 @@
     [super viewDidLoad];
     // Override point for customization after application launch.
 	
-	UIImage *bgImage = [UIImage imageNamed:@"IVLE_white_bg.png"];
+	UIImage *bgImage = [UIImage imageNamed:@"modules_workbin_3rd_column.png"];
 	
 	timetable.tag = kHomePageTimetableViewTag;
 	recentAnnouncements.tag = kHomePageAnnouncementsViewTag;
@@ -282,13 +282,29 @@
         NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
         [formatter setDateStyle:kCFDateFormatterMediumStyle];
 		
+		cell.titleText.text = [[announcements objectAtIndex:i] valueForKeyPath:@"Title"];
+		cell.meta.text = [NSString stringWithFormat:@"%@, %@", [[announcements objectAtIndex:i] valueForKeyPath:@"Creator.Name"], [formatter stringFromDate:date]];
+        
+        cell.titleText.textColor = kWorkbinFontColor;
+        cell.meta.textColor = kWorkbinFontColor;
+
 		
-		cell.postTitle.text = [[announcements objectAtIndex:i] valueForKeyPath:@"Title"];
-		cell.postDate.text = [formatter stringFromDate:date];
-		cell.moduleCode.text = [[announcements objectAtIndex:i] valueForKeyPath:@"Creator.Name"];
+		NSString *formatedContent = [NSString stringWithFormat:@"<html> \n"
+                                     "<head> \n"
+                                     "<style type=\"text/css\"> \n"
+                                     "body {font-family: \"%@\"; font-size: %@; text-align: %@}\n"
+                                     "</style> \n"
+                                     "</head> \n"
+                                     "<body><div id='foo'>%@</div></body> \n"
+                                     "</html>", @"HelveticaNeue", [NSNumber numberWithInt:kWebViewFontSize],@"justify",[[announcements objectAtIndex:i] valueForKey:@"Description"]];
+        
+        if ([[announcements objectAtIndex:i] valueForKey:@"isRead"]) {
+            cell.readIndicator.image = [UIImage imageNamed:@"read.png"];
+        }
+        else
+            cell.readIndicator.image = [UIImage imageNamed:@"new.png"];
 		
-		NSString *formatedContent = [NSString stringWithFormat:@"<div id='foo'>%@</div>",[[announcements objectAtIndex:i] valueForKey:@"Description"]];
-		[cell.descriptionText loadHTMLString:formatedContent baseURL:nil];
+        [cell.descriptionText loadHTMLString:formatedContent baseURL:nil];
 		cell.descriptionText.backgroundColor = [UIColor clearColor];
 		[announcementCells addObject:cell];		
 	}
@@ -309,7 +325,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
 	tableView.allowsSelection = NO;
-	tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"IVLE_white_bg.png"]];
+	tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"modules_workbin_3rd_column.png"]];
     return 1;
 }
 
@@ -351,12 +367,12 @@
 {
 	if (tableView.tag == kHomePageTimetableViewTag) {
 		HomePageModuleAnnouncementCell *cell = [announcementCells objectAtIndex:[indexPath row]];
-		return cell.descriptionText.frame.size.height + (cell.descriptionText.frame.origin.y-cell.postTitle.frame.origin.y);
+		return cell.descriptionText.frame.size.height + (cell.descriptionText.frame.origin.y-cell.titleText.frame.origin.y);
 	}
 	else {
 		
 		HomePageModuleAnnouncementCell *cell = [announcementCells objectAtIndex:[indexPath row]];
-		return cell.descriptionText.frame.size.height + (cell.descriptionText.frame.origin.y-cell.postTitle.frame.origin.y);
+		return cell.descriptionText.frame.size.height + (cell.descriptionText.frame.origin.y-cell.titleText.frame.origin.y);
 	}
 	
 }

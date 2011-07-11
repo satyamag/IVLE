@@ -20,3 +20,4 @@ build/
 .svn
 WebcastTest.h
 WebcastTest.m
+psds/

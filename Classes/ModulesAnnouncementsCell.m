@@ -16,6 +16,7 @@
 @synthesize finishedLoading;
 @synthesize descriptionText;
 @synthesize backgroundImage;
+@synthesize readIndicator;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     
