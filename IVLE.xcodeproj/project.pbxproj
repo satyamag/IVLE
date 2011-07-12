@@ -12,26 +12,6 @@
 		04CEC4B013C2A7280057CEDB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04CEC4AF13C2A7280057CEDB /* MediaPlayer.framework */; };
 		04CEC4DB13C2ABE00057CEDB /* WebcastController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CEC4DA13C2ABE00057CEDB /* WebcastController.m */; };
 		04CEC4DE13C2AC8D0057CEDB /* StubWebcast.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CEC4DD13C2AC8D0057CEDB /* StubWebcast.m */; };
-		04E167E513CC971700492C48 /* datecell.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E167D113CC971600492C48 /* datecell.png */; };
-		04E167E613CC971700492C48 /* datecellselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E167D213CC971600492C48 /* datecellselected.png */; };
-		04E167E713CC971700492C48 /* leftarrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E167D313CC971600492C48 /* leftarrow.png */; };
-		04E167E813CC971700492C48 /* Month Calendar Date Tile Gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E167D413CC971600492C48 /* Month Calendar Date Tile Gray.png */; };
-		04E167E913CC971700492C48 /* Month Calendar Date Tile Selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E167D513CC971600492C48 /* Month Calendar Date Tile Selected.png */; };
-		04E167EA13CC971700492C48 /* Month Calendar Date Tile Selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E167D613CC971600492C48 /* Month Calendar Date Tile Selected@2x.png */; };
-		04E167EB13CC971700492C48 /* Month Calendar Date Tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E167D713CC971600492C48 /* Month Calendar Date Tile.png */; };
-		04E167EC13CC971700492C48 /* Month Calendar Left Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E167D813CC971600492C48 /* Month Calendar Left Arrow.png */; };
-		04E167ED13CC971700492C48 /* Month Calendar Left Arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E167D913CC971700492C48 /* Month Calendar Left Arrow@2x.png */; };
-		04E167EE13CC971700492C48 /* Month Calendar Right Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E167DA13CC971700492C48 /* Month Calendar Right Arrow.png */; };
-		04E167EF13CC971700492C48 /* Month Calendar Right Arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E167DB13CC971700492C48 /* Month Calendar Right Arrow@2x.png */; };
-		04E167F013CC971700492C48 /* Month Calendar Shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E167DC13CC971700492C48 /* Month Calendar Shadow.png */; };
-		04E167F113CC971700492C48 /* Month Calendar Today Selected Tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E167DD13CC971700492C48 /* Month Calendar Today Selected Tile.png */; };
-		04E167F213CC971700492C48 /* Month Calendar Today Tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E167DE13CC971700492C48 /* Month Calendar Today Tile.png */; };
-		04E167F313CC971700492C48 /* Month Grid Top Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E167DF13CC971700492C48 /* Month Grid Top Bar.png */; };
-		04E167F413CC971700492C48 /* rightarrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E167E013CC971700492C48 /* rightarrow.png */; };
-		04E167F513CC971700492C48 /* shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E167E113CC971700492C48 /* shadow.png */; };
-		04E167F613CC971700492C48 /* today.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E167E213CC971700492C48 /* today.png */; };
-		04E167F713CC971700492C48 /* todayselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E167E313CC971700492C48 /* todayselected.png */; };
-		04E167F813CC971700492C48 /* topbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E167E413CC971700492C48 /* topbar.png */; };
 		04E1685F13CC972F00492C48 /* NSArray+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E167FB13CC972D00492C48 /* NSArray+TKCategory.m */; };
 		04E1686013CC972F00492C48 /* NSDate+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E167FD13CC972D00492C48 /* NSDate+TKCategory.m */; };
 		04E1686113CC972F00492C48 /* NSDictionary+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E167FF13CC972D00492C48 /* NSDictionary+TKCategory.m */; };
@@ -86,6 +66,7 @@
 		04E1689913CC97EA00492C48 /* IVLEAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E1689713CC97EA00492C48 /* IVLEAPIHandler.m */; };
 		04E168A713CC98C200492C48 /* TimetableNew.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E168A613CC98C200492C48 /* TimetableNew.xib */; };
 		04E168A913CC98EE00492C48 /* CAPCalculator.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E168A813CC98EE00492C48 /* CAPCalculator.xib */; };
+		04E1692813CC9F9000492C48 /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 04E1692713CC9F9000492C48 /* TapkuLibrary.bundle */; };
 		1D3623260D0F684500981E51 /* IVLEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* IVLEAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -250,26 +231,6 @@
 		04CEC4DA13C2ABE00057CEDB /* WebcastController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebcastController.m; sourceTree = "<group>"; };
 		04CEC4DC13C2AC8D0057CEDB /* StubWebcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StubWebcast.h; sourceTree = "<group>"; };
 		04CEC4DD13C2AC8D0057CEDB /* StubWebcast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StubWebcast.m; sourceTree = "<group>"; };
-		04E167D113CC971600492C48 /* datecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = datecell.png; sourceTree = "<group>"; };
-		04E167D213CC971600492C48 /* datecellselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = datecellselected.png; sourceTree = "<group>"; };
-		04E167D313CC971600492C48 /* leftarrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftarrow.png; sourceTree = "<group>"; };
-		04E167D413CC971600492C48 /* Month Calendar Date Tile Gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Month Calendar Date Tile Gray.png"; sourceTree = "<group>"; };
-		04E167D513CC971600492C48 /* Month Calendar Date Tile Selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Month Calendar Date Tile Selected.png"; sourceTree = "<group>"; };
-		04E167D613CC971600492C48 /* Month Calendar Date Tile Selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Month Calendar Date Tile Selected@2x.png"; sourceTree = "<group>"; };
-		04E167D713CC971600492C48 /* Month Calendar Date Tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Month Calendar Date Tile.png"; sourceTree = "<group>"; };
-		04E167D813CC971600492C48 /* Month Calendar Left Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Month Calendar Left Arrow.png"; sourceTree = "<group>"; };
-		04E167D913CC971700492C48 /* Month Calendar Left Arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Month Calendar Left Arrow@2x.png"; sourceTree = "<group>"; };
-		04E167DA13CC971700492C48 /* Month Calendar Right Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Month Calendar Right Arrow.png"; sourceTree = "<group>"; };
-		04E167DB13CC971700492C48 /* Month Calendar Right Arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Month Calendar Right Arrow@2x.png"; sourceTree = "<group>"; };
-		04E167DC13CC971700492C48 /* Month Calendar Shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Month Calendar Shadow.png"; sourceTree = "<group>"; };
-		04E167DD13CC971700492C48 /* Month Calendar Today Selected Tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Month Calendar Today Selected Tile.png"; sourceTree = "<group>"; };
-		04E167DE13CC971700492C48 /* Month Calendar Today Tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Month Calendar Today Tile.png"; sourceTree = "<group>"; };
-		04E167DF13CC971700492C48 /* Month Grid Top Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Month Grid Top Bar.png"; sourceTree = "<group>"; };
-		04E167E013CC971700492C48 /* rightarrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightarrow.png; sourceTree = "<group>"; };
-		04E167E113CC971700492C48 /* shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shadow.png; sourceTree = "<group>"; };
-		04E167E213CC971700492C48 /* today.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = today.png; sourceTree = "<group>"; };
-		04E167E313CC971700492C48 /* todayselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = todayselected.png; sourceTree = "<group>"; };
-		04E167E413CC971700492C48 /* topbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topbar.png; sourceTree = "<group>"; };
 		04E167FA13CC972C00492C48 /* NSArray+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+TKCategory.h"; sourceTree = "<group>"; };
 		04E167FB13CC972D00492C48 /* NSArray+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+TKCategory.m"; sourceTree = "<group>"; };
 		04E167FC13CC972D00492C48 /* NSDate+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TKCategory.h"; sourceTree = "<group>"; };
@@ -377,6 +338,7 @@
 		04E1689713CC97EA00492C48 /* IVLEAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IVLEAPIHandler.m; sourceTree = "<group>"; };
 		04E168A613CC98C200492C48 /* TimetableNew.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimetableNew.xib; sourceTree = "<group>"; };
 		04E168A813CC98EE00492C48 /* CAPCalculator.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CAPCalculator.xib; sourceTree = "<group>"; };
+		04E1692713CC9F9000492C48 /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TapkuLibrary.bundle; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* IVLEAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IVLEAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* IVLEAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IVLEAppDelegate.m; sourceTree = "<group>"; };
@@ -639,33 +601,6 @@
 			name = Map;
 			sourceTree = "<group>";
 		};
-		04E167D013CC971600492C48 /* Tapku images */ = {
-			isa = PBXGroup;
-			children = (
-				04E167D113CC971600492C48 /* datecell.png */,
-				04E167D213CC971600492C48 /* datecellselected.png */,
-				04E167D313CC971600492C48 /* leftarrow.png */,
-				04E167D413CC971600492C48 /* Month Calendar Date Tile Gray.png */,
-				04E167D513CC971600492C48 /* Month Calendar Date Tile Selected.png */,
-				04E167D613CC971600492C48 /* Month Calendar Date Tile Selected@2x.png */,
-				04E167D713CC971600492C48 /* Month Calendar Date Tile.png */,
-				04E167D813CC971600492C48 /* Month Calendar Left Arrow.png */,
-				04E167D913CC971700492C48 /* Month Calendar Left Arrow@2x.png */,
-				04E167DA13CC971700492C48 /* Month Calendar Right Arrow.png */,
-				04E167DB13CC971700492C48 /* Month Calendar Right Arrow@2x.png */,
-				04E167DC13CC971700492C48 /* Month Calendar Shadow.png */,
-				04E167DD13CC971700492C48 /* Month Calendar Today Selected Tile.png */,
-				04E167DE13CC971700492C48 /* Month Calendar Today Tile.png */,
-				04E167DF13CC971700492C48 /* Month Grid Top Bar.png */,
-				04E167E013CC971700492C48 /* rightarrow.png */,
-				04E167E113CC971700492C48 /* shadow.png */,
-				04E167E213CC971700492C48 /* today.png */,
-				04E167E313CC971700492C48 /* todayselected.png */,
-				04E167E413CC971700492C48 /* topbar.png */,
-			);
-			name = "Tapku images";
-			sourceTree = "<group>";
-		};
 		04E167F913CC972C00492C48 /* Tapku */ = {
 			isa = PBXGroup;
 			children = (
@@ -826,7 +761,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				04E167D013CC971600492C48 /* Tapku images */,
+				04E1692713CC9F9000492C48 /* TapkuLibrary.bundle */,
 				04E167F913CC972C00492C48 /* Tapku */,
 				585955F4132FB83900F4DDFF /* TouchJson */,
 				32CA4F630368D1EE00C91783 /* IVLE_Prefix.pch */,
@@ -1415,28 +1350,9 @@
 				4A0999B913CB80A3001DA864 /* GradeBookController.xib in Resources */,
 				4A0999BB13CB80BC001DA864 /* GradeBookCell.xib in Resources */,
 				4A0999C013CB811A001DA864 /* WebcastsCell.xib in Resources */,
-				04E167E513CC971700492C48 /* datecell.png in Resources */,
-				04E167E613CC971700492C48 /* datecellselected.png in Resources */,
-				04E167E713CC971700492C48 /* leftarrow.png in Resources */,
-				04E167E813CC971700492C48 /* Month Calendar Date Tile Gray.png in Resources */,
-				04E167E913CC971700492C48 /* Month Calendar Date Tile Selected.png in Resources */,
-				04E167EA13CC971700492C48 /* Month Calendar Date Tile Selected@2x.png in Resources */,
-				04E167EB13CC971700492C48 /* Month Calendar Date Tile.png in Resources */,
-				04E167EC13CC971700492C48 /* Month Calendar Left Arrow.png in Resources */,
-				04E167ED13CC971700492C48 /* Month Calendar Left Arrow@2x.png in Resources */,
-				04E167EE13CC971700492C48 /* Month Calendar Right Arrow.png in Resources */,
-				04E167EF13CC971700492C48 /* Month Calendar Right Arrow@2x.png in Resources */,
-				04E167F013CC971700492C48 /* Month Calendar Shadow.png in Resources */,
-				04E167F113CC971700492C48 /* Month Calendar Today Selected Tile.png in Resources */,
-				04E167F213CC971700492C48 /* Month Calendar Today Tile.png in Resources */,
-				04E167F313CC971700492C48 /* Month Grid Top Bar.png in Resources */,
-				04E167F413CC971700492C48 /* rightarrow.png in Resources */,
-				04E167F513CC971700492C48 /* shadow.png in Resources */,
-				04E167F613CC971700492C48 /* today.png in Resources */,
-				04E167F713CC971700492C48 /* todayselected.png in Resources */,
-				04E167F813CC971700492C48 /* topbar.png in Resources */,
 				04E168A713CC98C200492C48 /* TimetableNew.xib in Resources */,
 				04E168A913CC98EE00492C48 /* CAPCalculator.xib in Resources */,
+				04E1692813CC9F9000492C48 /* TapkuLibrary.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
