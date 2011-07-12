@@ -28,7 +28,8 @@
 	
 	//this block of code basically initializes all the module events in IVLE into the array "moduleEventsList"
 	IVLE *ivleInstance = [IVLE instance];
-	
+	UIImage *bgImage_announcements = [UIImage imageNamed:@"module_info_announcement_bg.png"];
+    
 	if (!moduleEventsList) {
 		
 		moduleEventsList = [[NSMutableArray alloc] init];
@@ -84,6 +85,8 @@
 	calendar.delegate = self;
 	calendar.dataSource = self;
 	[self.view addSubview:calendar];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"modules_workbin_3rd_column.png"]];
+    currentEventsTable.backgroundColor = [UIColor colorWithPatternImage:bgImage_announcements];
 	[calendar reload];
 }
 
@@ -222,18 +225,42 @@
 	return [currentDisplayEvents count];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 50.0;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-	static NSString *CellIdentifier = @"Cell";
+    TimeTableCell *cell;
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"TimeTableCell" 
+                                                 owner:self
+                                               options:nil];
+    cell = [nib objectAtIndex:0];
+    
+    cell.eventTitle.text = [[currentDisplayEvents objectAtIndex:indexPath.row] title];
+    
+    NSString *eventType = [[currentDisplayEvents objectAtIndex:indexPath.row] eventType];
+    if ( [eventType compare:@"IVLE"] == NSOrderedSame) {
+        cell.eventType.image = [UIImage imageNamed:@"ivle_events.png"];
     }
+    else if([eventType compare:@"Personal"] == NSOrderedSame) {
+        cell.eventType.image = [UIImage imageNamed:@"personal_events"];
+    }
+    else {
+        cell.eventType.image = [UIImage imageNamed:@"timetable_events.png"];
+    }
+
     
-    // Configure the cell...
-	[cell.textLabel setText:[[currentDisplayEvents objectAtIndex:indexPath.row] title]];
-	
+    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+    [formatter setDateStyle:kCFDateFormatterMediumStyle];
+    cell.eventDate.text = [formatter stringFromDate:[[currentDisplayEvents objectAtIndex:indexPath.row] date]];
+    
+    cell.eventTitle.textColor = kWorkbinFontColor;
+    cell.eventDate.textColor = kWorkbinFontColor;
+//    cell.eventType.textColor = kWorkbinFontColor;
+    
 	return cell;
 }
 

@@ -13,7 +13,7 @@
 #define kWebcastWindowWidth 500
 #define kWebcastWindowHeight 300
 
-@implementation Webcast
+@implementation WebcastController
 
 // MODIFIES:  none
 // REQUIRES: valid courseID
