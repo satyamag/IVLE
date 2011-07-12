@@ -179,6 +179,9 @@
 /* Gets the related Library E-reserve Files by Folder ID. */
 - (NSDictionary *)libEreserveFiles:(NSString *)folderID;
 
+/* Gets the related My Organizer IVLE Events for the indicated period for the user */
+- (NSDictionary *)MyOrganizerIVLE:(NSString *)startDate withEndDate:(NSString *)endDate;
+
 /*	Converts boolean to System boolean. YES => @"true", NO => @"false"*/
 -(NSString*)booleanToSystemBoolean:(BOOL)boolean;
 @end

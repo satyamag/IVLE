@@ -34,7 +34,7 @@
 #pragma mark Accessors
 
 - (int)modulesCompleted {
-
+	
 	return [moduleObjects count];
 }
 
@@ -53,7 +53,7 @@
 #pragma mark -
 #pragma mark View lifecycle
 
- // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
+// The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -197,78 +197,78 @@
 	
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
-/*	//get module data from web
-	NSURL *gemModulesURL = [NSURL URLWithString:@"https://aces01.nus.edu.sg/cors/jsp/report/GEMInfoListing.jsp"];
-	NSURL *facultyModulesURL = [NSURL URLWithString:@"https://aces01.nus.edu.sg/cors/jsp/report/ModuleInfoListing.jsp"];
-	NSURL *singaporeStudiesModulesURL = [NSURL URLWithString:@"https://aces01.nus.edu.sg/cors/jsp/report/SSMInfoListing.jsp"];
-	NSURL *breadthModulesURL = [NSURL URLWithString:@"https://aces01.nus.edu.sg/cors/jsp/report/UEMInfoListing.jsp"];
-	NSURL *crossFacultyModulesURL = [NSURL URLWithString:@"https://aces01.nus.edu.sg/cors/jsp/report/CFMInfoListing.jsp"];
-	
-	NSArray *URLArray = [NSArray arrayWithObjects:gemModulesURL, facultyModulesURL, singaporeStudiesModulesURL, breadthModulesURL, crossFacultyModulesURL, nil];
-	
-	NSStringEncoding encoding;
-	
-	NSMutableArray *moduleListArray = [NSMutableArray array];
-	
-	for (int i = 0; i < [URLArray count]; i++) {
-		
-		NSString *source = [NSString stringWithContentsOfURL:[URLArray objectAtIndex:i] usedEncoding:&encoding error:NULL];
-		NSString *pattern = @"tr a";
-		
-		DocumentRoot* document = [Element parseHTML: source];
-		NSArray* elements = [document selectElements: pattern];
-		
-		for (Element* element in elements){
-			
-			NSString *moduleCode = [element contentsSource];
-			NSString *moduleName = [[[element nextElement] nextElement] contentsSource];
-			NSString *moduleMC = [[[[[element nextElement] nextElement] nextElement] nextElement] contentsSource];
-			
-			if (![moduleCode isEqual:@"Tutorial Time Table"]) {
-				//NSLog(@"Code: %@ Name: %@ MC: %@", moduleCode, moduleName, moduleMC);
-				
-				//first delete all previous stored modules
-				//[managedObjectContext deleteObject:ModuleList];
-				
-				//add modules and mcs to core data
-				ModuleList *newModule = [NSEntityDescription insertNewObjectForEntityForName:@"ModuleList" inManagedObjectContext:managedObjectContext];
-				[newModule setCode:moduleCode];
-				[newModule setName:moduleName];
-				[newModule setCredit:[NSNumber numberWithInt:[moduleMC intValue]]];
-				
-				NSError *error = nil;
-				if (managedObjectContext != nil) {
-					
-					if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-						
-						NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-						abort();
-					} 
-				}
-				
-				
-				//create an array out of the modules
-				NSDictionary *moduleInfos = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:moduleCode, moduleName, moduleMC, nil] forKeys:[NSArray arrayWithObjects:@"Code", @"Name", @"MC", nil]];
-				[moduleListArray addObject:moduleInfos];
-			}
-		}
-	}
-	
-	//write this array to file
-	NSString *error;
-	NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-	NSString *plistPath = [rootPath stringByAppendingPathComponent:@"ModuleList.plist"];
-	NSData *plistData = [NSPropertyListSerialization dataFromPropertyList:moduleListArray
-																   format:NSPropertyListXMLFormat_v1_0
-														 errorDescription:&error];
-	if(moduleListArray) {
-		[plistData writeToFile:plistPath atomically:YES];
-	}
-	else {
-		NSLog(@"%@", error);
-		[error release];
-	}
-	*/
+	/*	//get module data from web
+	 NSURL *gemModulesURL = [NSURL URLWithString:@"https://aces01.nus.edu.sg/cors/jsp/report/GEMInfoListing.jsp"];
+	 NSURL *facultyModulesURL = [NSURL URLWithString:@"https://aces01.nus.edu.sg/cors/jsp/report/ModuleInfoListing.jsp"];
+	 NSURL *singaporeStudiesModulesURL = [NSURL URLWithString:@"https://aces01.nus.edu.sg/cors/jsp/report/SSMInfoListing.jsp"];
+	 NSURL *breadthModulesURL = [NSURL URLWithString:@"https://aces01.nus.edu.sg/cors/jsp/report/UEMInfoListing.jsp"];
+	 NSURL *crossFacultyModulesURL = [NSURL URLWithString:@"https://aces01.nus.edu.sg/cors/jsp/report/CFMInfoListing.jsp"];
+	 
+	 NSArray *URLArray = [NSArray arrayWithObjects:gemModulesURL, facultyModulesURL, singaporeStudiesModulesURL, breadthModulesURL, crossFacultyModulesURL, nil];
+	 
+	 NSStringEncoding encoding;
+	 
+	 NSMutableArray *moduleListArray = [NSMutableArray array];
+	 
+	 for (int i = 0; i < [URLArray count]; i++) {
+	 
+	 NSString *source = [NSString stringWithContentsOfURL:[URLArray objectAtIndex:i] usedEncoding:&encoding error:NULL];
+	 NSString *pattern = @"tr a";
+	 
+	 DocumentRoot* document = [Element parseHTML: source];
+	 NSArray* elements = [document selectElements: pattern];
+	 
+	 for (Element* element in elements){
+	 
+	 NSString *moduleCode = [element contentsSource];
+	 NSString *moduleName = [[[element nextElement] nextElement] contentsSource];
+	 NSString *moduleMC = [[[[[element nextElement] nextElement] nextElement] nextElement] contentsSource];
+	 
+	 if (![moduleCode isEqual:@"Tutorial Time Table"]) {
+	 //NSLog(@"Code: %@ Name: %@ MC: %@", moduleCode, moduleName, moduleMC);
+	 
+	 //first delete all previous stored modules
+	 //[managedObjectContext deleteObject:ModuleList];
+	 
+	 //add modules and mcs to core data
+	 ModuleList *newModule = [NSEntityDescription insertNewObjectForEntityForName:@"ModuleList" inManagedObjectContext:managedObjectContext];
+	 [newModule setCode:moduleCode];
+	 [newModule setName:moduleName];
+	 [newModule setCredit:[NSNumber numberWithInt:[moduleMC intValue]]];
+	 
+	 NSError *error = nil;
+	 if (managedObjectContext != nil) {
+	 
+	 if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
+	 
+	 NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+	 abort();
+	 } 
+	 }
+	 
+	 
+	 //create an array out of the modules
+	 NSDictionary *moduleInfos = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:moduleCode, moduleName, moduleMC, nil] forKeys:[NSArray arrayWithObjects:@"Code", @"Name", @"MC", nil]];
+	 [moduleListArray addObject:moduleInfos];
+	 }
+	 }
+	 }
+	 
+	 //write this array to file
+	 NSString *error;
+	 NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+	 NSString *plistPath = [rootPath stringByAppendingPathComponent:@"ModuleList.plist"];
+	 NSData *plistData = [NSPropertyListSerialization dataFromPropertyList:moduleListArray
+	 format:NSPropertyListXMLFormat_v1_0
+	 errorDescription:&error];
+	 if(moduleListArray) {
+	 [plistData writeToFile:plistPath atomically:YES];
+	 }
+	 else {
+	 NSLog(@"%@", error);
+	 [error release];
+	 }
+	 */
 	[pool release];
 }
 
@@ -372,7 +372,15 @@
 	
 	float numerator = 0;
 	float denominator = 0;
-
+	
+	//set values for CAP offset
+	NSLog(@"%@ %@", [capOffset text], [numberOfMCsCompleted text]);
+	if ([capOffset text] != @"" && [numberOfMCsCompleted text] != @"") {
+		
+		numerator = [[capOffset text] floatValue] * [[numberOfMCsCompleted text] floatValue];
+		denominator = [[numberOfMCsCompleted text] floatValue];
+	}
+	
 	for (int i = 0; i < [moduleObjects count]; i++) {
 		
 		CAPModule *currentModule = [moduleObjects objectAtIndex:i];
@@ -424,7 +432,7 @@
 			}
 		}
 	}
-
+	
 	return numerator/denominator;
 }
 
@@ -453,7 +461,7 @@
 	
 	NSArray *semesters = [NSArray arrayWithArray:temp];
 	[temp release];
-
+	
 	return semesters;
 }
 
@@ -565,14 +573,14 @@
 }
 
 /*- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section 
-{
-	UIView *headerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 30)] autorelease];
-	if (section == 0)
-		[headerView setBackgroundColor:[UIColor redColor]];
-	else 
-		[headerView setBackgroundColor:[UIColor clearColor]];
-	return headerView;
-}
+ {
+ UIView *headerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 30)] autorelease];
+ if (section == 0)
+ [headerView setBackgroundColor:[UIColor redColor]];
+ else 
+ [headerView setBackgroundColor:[UIColor clearColor]];
+ return headerView;
+ }
  */
 
 #pragma mark -
@@ -621,7 +629,7 @@
     
     modulesTableView.backgroundColor = [UIColor clearColor];
     
-
+	
 	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:[self retain] action:@selector(addNewModuleButtonPressed:)];
     
     [super viewDidLoad];

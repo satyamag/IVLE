@@ -47,6 +47,7 @@
 	IBOutlet UITableView *modulesTableView;
 	UIButton *addModuleButton;
 	IBOutlet UILabel *capLabel;
+	IBOutlet UITextField *capOffset, *numberOfMCsCompleted;
 	
 	S7GraphView *graphView;
 	IBOutlet UIView *SAPGraphView;	//holder for S7GraphView

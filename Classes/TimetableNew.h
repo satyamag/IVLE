@@ -10,11 +10,16 @@
 #import <EventKit/EventKit.h>
 #import "IVLE.h"
 #import "ModuleEvent.h"
+#import "TapkuLibrary.h"
 
 
-@interface TimetableNew : UIViewController {
+@interface TimetableNew : UIViewController <TKCalendarMonthViewDelegate, TKCalendarMonthViewDataSource, UITableViewDelegate, UITableViewDataSource>{
 	
 	NSMutableArray *moduleEventsList;
+	NSArray *currentDisplayEvents;
+	TKCalendarMonthView *calendar;
+	
+	IBOutlet UITableView *currentEventsTable;
 }
 
 @end

@@ -245,6 +245,13 @@ static IVLE *sharedSingleton;
 	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/LibEreserveFiles?APIKey=%@&AuthToken=%@&FolderID=%@&output=json", kAPIKey, authenticationToken, folderID]];
 }
 
+- (NSDictionary *)MyOrganizerIVLE:(NSString *)startDate withEndDate:(NSString *)endDate {
+	
+	NSDictionary *temp = [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/MyOrganizer_IVLE?APIKey=%@&AuthToken=%@&StartDate=%@&EndDate=%@&output=json", kAPIKey, authenticationToken, startDate, endDate]];
+	NSLog(@"%@", temp);
+	return temp; 
+}
+
 -(NSString*)booleanToSystemBoolean:(BOOL)boolean{
 	if (boolean) {
 		return @"true";
