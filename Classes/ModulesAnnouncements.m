@@ -48,14 +48,14 @@
             
             cell.titleText.textColor = kWorkbinFontColor;
             cell.meta.textColor = kWorkbinFontColor;
-			
+
 			NSString *formatedContent = [NSString stringWithFormat:@"<html> \n"
                                          "<head> \n"
                                          "<style type=\"text/css\"> \n"
-                                         "body {font-family: \"%@\"; font-size: %@; text-align: %@}\n"
+                                         "body {font-family: \"%@\"; font-size: %@; text-align: %@; overflow: hidden}\n"
                                          "</style> \n"
                                          "</head> \n"
-                                         "<body><div id='foo'>%@</div></body> \n"
+                                         "<body><div id='foo'>%@ </div> </body> \n"
                                          "</html>", @"HelveticaNeue", [NSNumber numberWithInt:kWebViewFontSize],@"justify",[[announcements objectAtIndex:i] valueForKey:@"Description"]];
             
 			[cell.descriptionText loadHTMLString:formatedContent baseURL:nil];

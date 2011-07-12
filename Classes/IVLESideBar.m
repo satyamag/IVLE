@@ -8,6 +8,12 @@
 
 #import "IVLESideBar.h"
 
+@interface IVLESideBar (PrivateMethods)
+
+-(NSArray*)determineActiveLinksForModule:(NSString*)courseID;
+
+@end
+
 @implementation IVLESideBar
 #define HEADER_HEIGHT 50.0
 #define ROW_HEIGHT 80.0
@@ -46,7 +52,6 @@ NSInteger openSectionIndex;
 	@synchronized(self)
     {
 		if (sharedSingleton == NULL) {
-			NSLog(@"I AM HERE");
 			sharedSingleton = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 		}
     }
@@ -93,7 +98,7 @@ NSInteger openSectionIndex;
 			[moduleHeaderInfoArray addObject:moduleHeaderInfo];
 			[moduleHeaderInfo release];
 			
-            NSArray *links = [[NSArray alloc] initWithObjects:@"Information",@"Announcements",@"Forum",@"Workbin",nil];
+            NSArray *links = [[self determineActiveLinksForModule:[module valueForKey:@"ID"]] retain];
 			[moduleActiveLinks addObject:links];
             [links release];
 
@@ -101,9 +106,20 @@ NSInteger openSectionIndex;
 	}
 	
 	
-	moduleActiveLinksAssociation = [[[NSDictionary alloc] initWithObjectsAndKeys: @"ModulesInfo",@"Information",@"ModulesAnnouncements",@"Announcements",@"ForumViewController",@"Forum",@"ModulesWorkbin",@"Workbin",nil] retain];
-	moduleActiveLinksImageAssociation =[[[NSDictionary alloc] initWithObjectsAndKeys: @"information.png",@"Information",@"announcements.png",@"Announcements",@"forum.png",@"Forum",@"workbin.png",@"Workbin",nil] retain];
-	
+	moduleActiveLinksAssociation = [[[NSDictionary alloc] initWithObjectsAndKeys: @"ModulesInfo",@"Information",
+                                                                                  @"ModulesAnnouncements",@"Announcements",
+                                                                                  @"ForumViewController",@"Forum",
+                                                                                  @"ModulesWorkbin",@"Workbin",
+                                                                                  @"WebcastsController",@"Webcasts",
+                                                                                  @"GradebookController", @"Gradebook",nil] retain];
+    
+	moduleActiveLinksImageAssociation =[[[NSDictionary alloc] initWithObjectsAndKeys: @"information.png",@"Information",
+                                                                                      @"announcements.png",@"Announcements",
+                                                                                      @"forum.png",@"Forum",
+                                                                                      @"workbin.png",@"Workbin",
+                                                                                      @"webcasts.png",@"Webcasts",
+                                                                                      @"gradebook.png",@"Gradebook",nil] retain];
+
 	UIImage *backgroundImage = [UIImage imageNamed:@"modules_workbin_3rd_column.png"];
 	[self.view setBackgroundColor:[UIColor colorWithPatternImage:backgroundImage]];
 	moduleList.backgroundColor = [UIColor clearColor];
@@ -115,6 +131,57 @@ NSInteger openSectionIndex;
 -(NSInteger)numberOfSectionsInTableView:(UITableView*)tableView {
     
     return [moduleStrings count];
+}
+
+-(NSArray*)determineActiveLinksForModule:(NSString*)courseID {
+    
+    IVLE *ivle = [IVLE instance];
+    NSMutableArray *activeLinks = [[[NSMutableArray alloc] init] autorelease];
+    
+    //check for information
+    
+    NSArray* courseInfo = [[ivle moduleInfo:courseID withDuration:0] valueForKey:@"Results"];
+    if ([courseInfo count] > 0) {
+        [activeLinks addObject:@"Information"];
+    }
+    
+    //check for announcements
+    
+    NSArray* announcements = [[ivle announcements:courseID withDuration:0 withTitle:NO] valueForKey:@"Results"];
+    if ([announcements count] > 0) {
+        [activeLinks addObject:@"Announcements"];
+    }
+    
+    //check for forum
+    
+    NSDictionary* forums = [ivle forums:courseID withDuration:0 withThreads:NO withTitle:NO];
+    if ([forums count] > 0) {
+        [activeLinks addObject:@"Forum"];
+    }
+    
+    //check for workbin
+    
+    NSDictionary* workbin = [ivle workbin:courseID withDuration:0 withWorkbinID:nil withTitle:NO];
+    if ([workbin count] > 0) {
+        [activeLinks addObject:@"Workbin"];
+    }
+    
+    //check for webcasts
+    
+    NSDictionary* webcasts = [[ivle webcasts:courseID withDuration:0 withTitleOnly:YES] objectForKey:@"Results"];
+    if ([webcasts count] > 0) {
+        [activeLinks addObject:@"Webcasts"];
+    }
+    
+    //check for gradebook
+    
+    NSDictionary* gradebook = [[ivle gradebookViewItems:courseID] objectForKey:@"Results"];
+    if ([gradebook count] > 0) {
+        [activeLinks addObject:@"Gradebook"];
+    }
+    
+    return activeLinks;
+    
 }
 
 

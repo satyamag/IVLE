@@ -6,7 +6,7 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "Webcast.h"
+#import "WebcastController.h"
 
 #define kWebcastWindowX 100
 #define kWebcastWindowY 100 

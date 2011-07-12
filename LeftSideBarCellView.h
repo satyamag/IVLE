@@ -16,8 +16,8 @@
 	IBOutlet UIButton *cellButtonRight;
 }
 
-@property (nonatomic, retain, readonly) IBOutlet UIButton *cellButtonRight;
-@property (nonatomic, retain, readonly) IBOutlet UIButton *cellButtonLeft;
+@property (nonatomic, retain) IBOutlet UIButton *cellButtonRight;
+@property (nonatomic, retain) IBOutlet UIButton *cellButtonLeft;
 
 /*Set button label for left button
  text: button label*/

@@ -21,15 +21,7 @@
 }
 
 
--(UIButton*) getCellButtonRight {
-	
-	return cellButtonRight;
-}
 
--(UIButton*) getCellButtonLeft {
-	
-	return cellButtonLeft;
-}
 
 /*
 -(void) setCellButtonRightTag:(NSInteger)buttonTag {
@@ -94,6 +86,16 @@
 }
 - (void)removeButtonRight {
 	[cellButtonRight removeFromSuperview];
+}
+
+-(UIButton*) getCellButtonRight {
+	
+	return cellButtonRight;
+}
+
+-(UIButton*) getCellButtonLeft {
+	
+	return cellButtonLeft;
 }
 
 @end

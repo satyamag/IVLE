@@ -132,7 +132,7 @@ static IVLE *sharedSingleton;
 }
 
 -(NSDictionary*)forumHeadingMainThreads:(NSString*)headingID withDuration:(NSInteger)duration{
-	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Forum_HeadingMainThreads?APIKey=%@&AuthToken=%@&HeadingID=%@&Duration=%d&output=json", kAPIKey, authenticationToken, headingID, duration]];
+	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Forum_HeadingThreads?APIKey=%@&AuthToken=%@&HeadingID=%@&Duration=%d&output=json", kAPIKey, authenticationToken, headingID, duration]];
 }
 
 -(NSDictionary*)forumHeadings:(NSString*)forumID withDuration:(NSInteger)duration withThreads:(BOOL)thread{

@@ -10,7 +10,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "IVLE.h"
 
-@interface Webcast : NSObject {
+@interface WebcastController : NSObject {
 
 }
 

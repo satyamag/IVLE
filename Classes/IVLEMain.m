@@ -288,7 +288,7 @@
         cell.titleText.textColor = kWorkbinFontColor;
         cell.meta.textColor = kWorkbinFontColor;
 
-		
+
 		NSString *formatedContent = [NSString stringWithFormat:@"<html> \n"
                                      "<head> \n"
                                      "<style type=\"text/css\"> \n"
