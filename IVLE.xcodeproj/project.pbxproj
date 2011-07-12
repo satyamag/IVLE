@@ -11,7 +11,6 @@
 		047F5F8813C75A59007C1B64 /* ModuleEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 047F5F8713C75A59007C1B64 /* ModuleEvent.m */; };
 		04CEC4B013C2A7280057CEDB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04CEC4AF13C2A7280057CEDB /* MediaPlayer.framework */; };
 		04CEC4DB13C2ABE00057CEDB /* WebcastController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CEC4DA13C2ABE00057CEDB /* WebcastController.m */; };
-		04CEC4DE13C2AC8D0057CEDB /* StubWebcast.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CEC4DD13C2AC8D0057CEDB /* StubWebcast.m */; };
 		04E1685F13CC972F00492C48 /* NSArray+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E167FB13CC972D00492C48 /* NSArray+TKCategory.m */; };
 		04E1686013CC972F00492C48 /* NSDate+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E167FD13CC972D00492C48 /* NSDate+TKCategory.m */; };
 		04E1686113CC972F00492C48 /* NSDictionary+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E167FF13CC972D00492C48 /* NSDictionary+TKCategory.m */; };
@@ -234,8 +233,6 @@
 		04CEC4AF13C2A7280057CEDB /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		04CEC4D913C2ABE00057CEDB /* WebcastController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebcastController.h; sourceTree = "<group>"; };
 		04CEC4DA13C2ABE00057CEDB /* WebcastController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebcastController.m; sourceTree = "<group>"; };
-		04CEC4DC13C2AC8D0057CEDB /* StubWebcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StubWebcast.h; sourceTree = "<group>"; };
-		04CEC4DD13C2AC8D0057CEDB /* StubWebcast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StubWebcast.m; sourceTree = "<group>"; };
 		04E167FA13CC972C00492C48 /* NSArray+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+TKCategory.h"; sourceTree = "<group>"; };
 		04E167FB13CC972D00492C48 /* NSArray+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+TKCategory.m"; sourceTree = "<group>"; };
 		04E167FC13CC972D00492C48 /* NSDate+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TKCategory.h"; sourceTree = "<group>"; };
@@ -937,8 +934,6 @@
 			children = (
 				04CEC4D913C2ABE00057CEDB /* WebcastController.h */,
 				04CEC4DA13C2ABE00057CEDB /* WebcastController.m */,
-				04CEC4DC13C2AC8D0057CEDB /* StubWebcast.h */,
-				04CEC4DD13C2AC8D0057CEDB /* StubWebcast.m */,
 				4A0999BC13CB80FD001DA864 /* WebcastsCell.h */,
 				4A0999BD13CB80FD001DA864 /* WebcastsCell.m */,
 				4A0999BF13CB811A001DA864 /* WebcastsCell.xib */,
@@ -1457,7 +1452,6 @@
 				4A00F00313C0CCEF002D6C4E /* Workbin.m in Sources */,
 				4A996E9513C62B3B00DA8BC5 /* ModulesWorkbinCell.m in Sources */,
 				04CEC4DB13C2ABE00057CEDB /* WebcastController.m in Sources */,
-				04CEC4DE13C2AC8D0057CEDB /* StubWebcast.m in Sources */,
 				047F5F8413C753E9007C1B64 /* TimetableNew.m in Sources */,
 				047F5F8813C75A59007C1B64 /* ModuleEvent.m in Sources */,
 				4A0999B413CB8084001DA864 /* GradeBookCell.m in Sources */,
