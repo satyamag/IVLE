@@ -116,9 +116,6 @@
 	IVLE *ivleInterface = [IVLE instance];
 	
 	//***********TEMP************
-	/*NSLog(@"%@", [ivleInterface timetableStudentModule:kCourseID]); 
-	NSLog(@"%@", [ivleInterface timetableModule:kCourseID]);
-	NSLog(@"%@", [ivleInterface timetableStudent:@"2010/2011" forSemester:@"3"]);*/
 	
 	NSArray *eventsArray = [[ivleInterface studentEvents:YES] objectForKey:@"Results"];
 	

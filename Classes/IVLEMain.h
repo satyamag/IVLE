@@ -20,6 +20,7 @@
 #import "HomePageModuleAnnouncementCell.h"
 #import "IVLEAppDelegate.h"
 #import "ModulesAnnouncementsCell.h"
+#import "WebcastController.h"
 
 
 @interface IVLEMain : UIViewController <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>{
