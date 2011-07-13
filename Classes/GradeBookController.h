@@ -7,10 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ModulesAnnouncementsCell.h"
+#import "IVLE.h"
+#import "GradeBookCell.h"
 
-
-@interface GradeBookController : UIViewController {
+@interface GradeBookController : UIViewController <UITableViewDelegate, UITableViewDataSource>{
     
+	NSArray *gradebookResults;
+	NSMutableArray *cells;
 }
+
+@property (nonatomic, retain) NSMutableArray *cells;
 
 @end

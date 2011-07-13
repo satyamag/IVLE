@@ -319,6 +319,13 @@ NSInteger openSectionIndex;
         [workbin release];           
 	}
 	
+	else if ([nibName compare:@"GradebookController"] == NSOrderedSame) {
+		
+		GradeBookController *gradeBook = [[GradeBookController alloc] initWithNibName:nibName bundle:nil];
+		leftBar = [NSArray arrayWithObject:gradeBook];
+		[gradeBook release];
+	}
+	
 	[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRefreshRightScreen object:leftBar];
 	[spinner removeFromSuperview];
 	self.view.userInteractionEnabled = YES;

@@ -17,8 +17,6 @@
 
 @implementation ModuleEvent
 
-//@synthesize courseID, academicYear, dayText, startTime, endTime, venue, lessonType, weekText, weekCode;
-//@synthesize semester, classNumber, dayCode;
 @synthesize date, moduleDescription, eventType, ID, location, title;
 
 - (id)init {
@@ -142,18 +140,6 @@
 
 - (void)dealloc {
 	
-	/*[courseID release];
-	 [academicYear release];
-	 [dayText release];
-	 [startTime release];
-	 [endTime release];
-	 [venue release];
-	 [lessonType release];
-	 [weekCode release];
-	 [semester release];
-	 [classNumber release];
-	 [dayCode release];
-	 */
 	[date release];
 	[moduleDescription release];
 	[eventType release];

@@ -21,6 +21,7 @@
 #import "CAPCalculator.h"
 #import "Events.h"
 #import "Constants.h"
+#import "GradeBookController.h"
 
 #import "Map.h"
 

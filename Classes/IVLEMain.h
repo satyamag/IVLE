@@ -21,13 +21,14 @@
 #import "IVLEAppDelegate.h"
 #import "ModulesAnnouncementsCell.h"
 #import "WebcastController.h"
+#import "TimeTableCell.h"
 
 
 @interface IVLEMain : UIViewController <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>{
 	
 	
 	
-	IBOutlet UITableView *recentAnnouncements;
+	IBOutlet UITableView *recentAnnouncements, *recentTimetable;
 	IBOutlet UIView *timetable;
 	NSMutableArray *announcementCells;
 	NSMutableArray *timetableCells;

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		047E23C513CD65A500AE6185 /* GradeBookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047E23C413CD65A500AE6185 /* GradeBookCell.xib */; };
+		047E247413CDACDD00AE6185 /* ModuleEvent2.m in Sources */ = {isa = PBXBuildFile; fileRef = 047E247313CDACDD00AE6185 /* ModuleEvent2.m */; };
 		047F5F8413C753E9007C1B64 /* TimetableNew.m in Sources */ = {isa = PBXBuildFile; fileRef = 047F5F8213C753E9007C1B64 /* TimetableNew.m */; };
 		047F5F8813C75A59007C1B64 /* ModuleEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 047F5F8713C75A59007C1B64 /* ModuleEvent.m */; };
 		04CEC4B013C2A7280057CEDB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04CEC4AF13C2A7280057CEDB /* MediaPlayer.framework */; };
@@ -86,7 +88,6 @@
 		4A0999B413CB8084001DA864 /* GradeBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0999B313CB8084001DA864 /* GradeBookCell.m */; };
 		4A0999B813CB80A3001DA864 /* GradeBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0999B613CB80A3001DA864 /* GradeBookController.m */; };
 		4A0999B913CB80A3001DA864 /* GradeBookController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0999B713CB80A3001DA864 /* GradeBookController.xib */; };
-		4A0999BB13CB80BC001DA864 /* GradeBookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0999BA13CB80BC001DA864 /* GradeBookCell.xib */; };
 		4A0999BE13CB80FD001DA864 /* WebcastsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0999BD13CB80FD001DA864 /* WebcastsCell.m */; };
 		4A0999C013CB811A001DA864 /* WebcastsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0999BF13CB811A001DA864 /* WebcastsCell.xib */; };
 		4A17101D13531EB400EF11E1 /* IVLELoginNew.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A17101513531EB400EF11E1 /* IVLELoginNew.m */; };
@@ -226,6 +227,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		047E23C413CD65A500AE6185 /* GradeBookCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GradeBookCell.xib; sourceTree = "<group>"; };
+		047E247213CDACDD00AE6185 /* ModuleEvent2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleEvent2.h; sourceTree = "<group>"; };
+		047E247313CDACDD00AE6185 /* ModuleEvent2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModuleEvent2.m; sourceTree = "<group>"; };
 		047F5F8113C753E8007C1B64 /* TimetableNew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimetableNew.h; sourceTree = "<group>"; };
 		047F5F8213C753E9007C1B64 /* TimetableNew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimetableNew.m; sourceTree = "<group>"; };
 		047F5F8613C75A59007C1B64 /* ModuleEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleEvent.h; sourceTree = "<group>"; };
@@ -368,7 +372,6 @@
 		4A0999B513CB80A3001DA864 /* GradeBookController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeBookController.h; sourceTree = "<group>"; };
 		4A0999B613CB80A3001DA864 /* GradeBookController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeBookController.m; sourceTree = "<group>"; };
 		4A0999B713CB80A3001DA864 /* GradeBookController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GradeBookController.xib; sourceTree = "<group>"; };
-		4A0999BA13CB80BC001DA864 /* GradeBookCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GradeBookCell.xib; sourceTree = "<group>"; };
 		4A0999BC13CB80FD001DA864 /* WebcastsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebcastsCell.h; sourceTree = "<group>"; };
 		4A0999BD13CB80FD001DA864 /* WebcastsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebcastsCell.m; sourceTree = "<group>"; };
 		4A0999BF13CB811A001DA864 /* WebcastsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebcastsCell.xib; sourceTree = "<group>"; };
@@ -832,7 +835,7 @@
 				4A0999B513CB80A3001DA864 /* GradeBookController.h */,
 				4A0999B613CB80A3001DA864 /* GradeBookController.m */,
 				4A0999B713CB80A3001DA864 /* GradeBookController.xib */,
-				4A0999BA13CB80BC001DA864 /* GradeBookCell.xib */,
+				047E23C413CD65A500AE6185 /* GradeBookCell.xib */,
 			);
 			name = GradeBook;
 			sourceTree = "<group>";
@@ -1220,6 +1223,8 @@
 				047F5F8213C753E9007C1B64 /* TimetableNew.m */,
 				047F5F8613C75A59007C1B64 /* ModuleEvent.h */,
 				047F5F8713C75A59007C1B64 /* ModuleEvent.m */,
+				047E247213CDACDD00AE6185 /* ModuleEvent2.h */,
+				047E247313CDACDD00AE6185 /* ModuleEvent2.m */,
 				BFC65CF1133E7C5500F4C7F2 /* Timetable.h */,
 				BFC65CF2133E7C5500F4C7F2 /* Timetable.m */,
 				BF779AF81348783C00CC2119 /* TimetableAddClassViewController.h */,
@@ -1360,7 +1365,6 @@
 				4AAA711A13CB28CB00CB0E91 /* home_page_announcements_bg.png in Resources */,
 				4AAA711C13CB6AA400CB0E91 /* gradebook.png in Resources */,
 				4A0999B913CB80A3001DA864 /* GradeBookController.xib in Resources */,
-				4A0999BB13CB80BC001DA864 /* GradeBookCell.xib in Resources */,
 				4A0999C013CB811A001DA864 /* WebcastsCell.xib in Resources */,
 				04E168A713CC98C200492C48 /* TimetableNew.xib in Resources */,
 				04E168A913CC98EE00492C48 /* CAPCalculator.xib in Resources */,
@@ -1369,6 +1373,7 @@
 				4A3F117613CCC27A0052002F /* ivle_events.png in Resources */,
 				4A3F117813CCC28B0052002F /* personal_events.png in Resources */,
 				4A3F117A13CCC2A30052002F /* timetable_events.png in Resources */,
+				047E23C513CD65A500AE6185 /* GradeBookCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1510,12 +1515,45 @@
 				04E1689813CC97EA00492C48 /* IVLE.m in Sources */,
 				04E1689913CC97EA00492C48 /* IVLEAPIHandler.m in Sources */,
 				4A3F117213CCAD690052002F /* TimeTableCell.m in Sources */,
+				047E247413CDACDD00AE6185 /* ModuleEvent2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		048B805113CD38B4007BAB0F /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ADDITIONAL_SDKS = "";
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = "Ad Hoc";
+		};
+		048B805213CD38B4007BAB0F /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = IVLE_Prefix.pch;
+				INFOPLIST_FILE = "IVLE-Info.plist";
+				PRODUCT_NAME = IVLE;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Ad Hoc";
+		};
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1588,6 +1626,7 @@
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
+				048B805213CD38B4007BAB0F /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1597,6 +1636,7 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
+				048B805113CD38B4007BAB0F /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

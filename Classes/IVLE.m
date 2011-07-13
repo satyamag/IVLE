@@ -71,6 +71,11 @@ static IVLE *sharedSingleton;
     
 }
 
+- (NSDictionary *)validate {
+	
+	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Validate?APIKey=%@&Token=%@", kAPIKey, authenticationToken]];
+}
+
 -(NSDictionary*)announcements:(NSString*)courseID withDuration:(NSInteger)duration withTitle:(BOOL)title{	
 	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Announcements?APIKey=%@&AuthToken=%@&CourseID=%@&Duration=%d&TitleOnly=%@&output=json", kAPIKey, authenticationToken, courseID, duration, [self booleanToSystemBoolean:title]]];
     
@@ -248,8 +253,17 @@ static IVLE *sharedSingleton;
 - (NSDictionary *)MyOrganizerIVLE:(NSString *)startDate withEndDate:(NSString *)endDate {
 	
 	NSDictionary *temp = [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/MyOrganizer_IVLE?APIKey=%@&AuthToken=%@&StartDate=%@&EndDate=%@&output=json", kAPIKey, authenticationToken, startDate, endDate]];
-	NSLog(@"%@", temp);
 	return temp; 
+}
+
+- (NSDictionary *)MyOrganizerAcadSemesterInfo:(NSString *)acadYear ForSem:(NSString *)semester {
+	
+	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/MyOrganizer_AcadSemesterInfo?APIKey=%@&AuthToken=%@&AcadYear=%@&Semester=%@&output=json", kAPIKey, authenticationToken, acadYear, semester]];
+}
+
+- (NSDictionary *)CodeTableWeekTypes {
+	
+	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/CodeTable_WeekTypes?APIKey=%@&output=json", kAPIKey]];
 }
 
 -(NSString*)booleanToSystemBoolean:(BOOL)boolean{

@@ -7,7 +7,7 @@
 //
 
 #import "TimetableNew.h"
-
+#define kCourseID @"aefeaca4-f40a-4c82-9c8e-95f92c7ed0da"
 
 @implementation TimetableNew
 
@@ -41,6 +41,7 @@
 	
 	NSArray *tempEventsList = [[ivleInstance MyOrganizerIVLE:@"1/1/2011" withEndDate:@"20/12/2011"] objectForKey:@"Results"];
 	
+	//first add events from MyOrganizer
 	for (int i = 0; i < tempEventsList.count; i++) {
 		
 		ModuleEvent *newModuleEvent = [[ModuleEvent alloc] init];
@@ -49,37 +50,29 @@
 		[newModuleEvent release];
 	}
 	
-	//NSLog(@"%@", moduleEventsList);
+	//NSLog(@"%@", [ivleInstance timetableStudent:@"2010/2011" forSemester:@"3"]);
 	
+	//then add stuff from course timetable
 	/*NSArray *modulesList = [NSArray arrayWithArray:[[ivleInstance modules:0 withAllInfo:NO] objectForKey:@"Results"]];
-	 
-	 if (!moduleEventsList) {
-	 
-	 moduleEventsList = [[NSMutableArray alloc] init];
-	 }
-	 else {
-	 
-	 [moduleEventsList removeAllObjects];
-	 }
-	 
-	 NSMutableArray *moduleIDsList = [NSMutableArray arrayWithObjects:nil];
-	 
-	 for (int i = 0; i < [modulesList count]; i++) {
-	 
-	 [moduleIDsList addObject:[[modulesList objectAtIndex:i] objectForKey:@"ID"]];
-	 NSArray *moduleEvents = [[ivleInstance timetableStudentModule:[moduleIDsList objectAtIndex:i]] objectForKey:@"Results"];
-	 
-	 for (int j = 0; j < moduleEvents.count; j++) {
-	 
-	 ModuleEvent *newModuleEvent = [[ModuleEvent alloc] init];
-	 [newModuleEvent createModuleEvent:[moduleEvents objectAtIndex:j]];
-	 [moduleEventsList addObject:newModuleEvent];
-	 [newModuleEvent release];
-	 }
-	 }
-	 
-	 NSLog(@"%@", moduleEventsList);
-	 */
+	
+	NSMutableArray *moduleIDsList = [NSMutableArray arrayWithObjects:nil];
+	
+	for (int i = 0; i < [modulesList count]; i++) {
+		
+		[moduleIDsList addObject:[[modulesList objectAtIndex:i] objectForKey:@"ID"]];
+		NSArray *moduleEvents = [[ivleInstance timetableStudentModule:[moduleIDsList objectAtIndex:i]] objectForKey:@"Results"];
+		
+		for (int j = 0; j < moduleEvents.count; j++) {
+			
+			ModuleEvent2 *newModuleEvent = [[ModuleEvent2 alloc] init];
+			[newModuleEvent createModuleEvent:[moduleEvents objectAtIndex:j]];
+			[moduleEventsList addObject:newModuleEvent];
+			[newModuleEvent release];
+		}
+	}
+	*/
+	NSLog(@"%@", moduleEventsList);
+	
 	//create a calendar (Tapku)
 	calendar = [[TKCalendarMonthView alloc] init];
 	calendar.delegate = self;
@@ -251,7 +244,7 @@
     else {
         cell.eventType.image = [UIImage imageNamed:@"timetable_events.png"];
     }
-
+	
     
     NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
     [formatter setDateStyle:kCFDateFormatterMediumStyle];
@@ -259,7 +252,7 @@
     
     cell.eventTitle.textColor = kWorkbinFontColor;
     cell.eventDate.textColor = kWorkbinFontColor;
-//    cell.eventType.textColor = kWorkbinFontColor;
+	//    cell.eventType.textColor = kWorkbinFontColor;
     
 	return cell;
 }

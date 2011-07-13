@@ -106,7 +106,7 @@
 	[rightHandSideView addSubview:pageControlView];
 	[rightHandSideView addSubview:eventsScrollView];
 	[self.view addSubview:rightHandSideView];
-//	[self setUpTimeTableView];
+	[self setUpTimeTableView];
 }
 - (void) setUpEventsView {
 	
@@ -115,7 +115,7 @@
 	
 	IVLE *ivleInterface = [IVLE instance];
 	
-	//***********TEMP************
+	NSLog(@"%@", [ivleInterface validate]);
 	
 	NSArray *eventsArray = [[ivleInterface studentEvents:YES] objectForKey:@"Results"];
 	
@@ -314,46 +314,121 @@
 }
 
 -(void) setUpTimeTableView {
+	
+	NSMutableArray *moduleEventsList = [NSMutableArray array];
+	NSArray *tempEventsList = [[[IVLE instance] MyOrganizerIVLE:@"1/1/2011" withEndDate:@"20/12/2011"] objectForKey:@"Results"];
+	
+	for (int i = 0; i < tempEventsList.count; i++) {
+		
+		ModuleEvent *newModuleEvent = [[ModuleEvent alloc] init];
+		[newModuleEvent createModuleEvent:[tempEventsList objectAtIndex:i]];
+		[moduleEventsList addObject:newModuleEvent];
+		[newModuleEvent release];
+	}
+	
+	NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+	[dateFormat setDateFormat:@"yyyy-MM-dd"];
+	
+	NSString *date = [dateFormat stringFromDate:[NSDate date]];
+	
+	//get events on the current date
+	NSMutableArray *eventsOnThisDate = [NSMutableArray array];
+	
+	for (int i = 0; i < moduleEventsList.count; i++) {
+		
+		NSString *currentDate = [dateFormat stringFromDate:[[moduleEventsList objectAtIndex:i] date]];
+		
+		if ([currentDate isEqualToString:date]) {
+			
+			[eventsOnThisDate addObject:[moduleEventsList objectAtIndex:i]];
+		}
+	}
+	
+	timetableCells = [eventsOnThisDate retain];
+	[recentTimetable reloadData];
 }
 
-
-
+#pragma mark -
+#pragma mark Table view datasource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
-	tableView.allowsSelection = NO;
-	tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"modules_workbin_3rd_column.png"]];
-    return 1;
+    
+	if (tableView == recentAnnouncements) {
+		// Return the number of sections.
+		tableView.allowsSelection = NO;
+		tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"modules_workbin_3rd_column.png"]];
+		return 1;
+	}
+	
+	return 1;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
 	
-	
-	if (tableView.tag == kHomePageTimetableViewTag) {
-		return 1;
+	if (tableView == recentAnnouncements) {
+		if (tableView.tag == kHomePageTimetableViewTag) {
+			return 1;
+		}
+		else {
+			return [announcements count];
+		}
 	}
 	else {
-        NSLog(@"Announcement count - %d",[announcements count]);
-		return [announcements count];
+		return [timetableCells count];
 	}
-	
-    
+
+	return 0;
 }
 
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    NSLog(@"Announcement cells count - %d",[announcementCells count]);
-	if (tableView.tag == kHomePageTimetableViewTag) {
-		return [announcementCells objectAtIndex:[indexPath row]];
+
+	if (tableView == recentAnnouncements) {
+		if (tableView.tag == kHomePageTimetableViewTag) {
+			return [announcementCells objectAtIndex:[indexPath row]];
+		}
+		else {
+			return [announcementCells objectAtIndex:[indexPath row]];
+		}
 	}
 	else {
-		return [announcementCells objectAtIndex:[indexPath row]];
+		TimeTableCell *cell;
+		
+		
+		NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"TimeTableCell" 
+													 owner:self
+												   options:nil];
+		cell = [nib objectAtIndex:0];
+		
+		cell.eventTitle.text = [[timetableCells objectAtIndex:indexPath.row] title];
+		
+		NSString *eventType = [[timetableCells objectAtIndex:indexPath.row] eventType];
+		if ( [eventType compare:@"IVLE"] == NSOrderedSame) {
+			cell.eventType.image = [UIImage imageNamed:@"ivle_events.png"];
+		}
+		else if([eventType compare:@"Personal"] == NSOrderedSame) {
+			cell.eventType.image = [UIImage imageNamed:@"personal_events"];
+		}
+		else {
+			cell.eventType.image = [UIImage imageNamed:@"timetable_events.png"];
+		}
+		
+		
+		NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+		[formatter setDateStyle:kCFDateFormatterMediumStyle];
+		cell.eventDate.text = [formatter stringFromDate:[[timetableCells objectAtIndex:indexPath.row] date]];
+		
+		cell.eventTitle.textColor = kWorkbinFontColor;
+		cell.eventDate.textColor = kWorkbinFontColor;
+		//    cell.eventType.textColor = kWorkbinFontColor;
+		cell.backgroundColor = [UIColor clearColor];
+		return cell;
 	}
-    
+
+	return nil;
 }
 
 - (void)loadContent:(NSString*)string{
@@ -362,16 +437,18 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if (tableView.tag == kHomePageTimetableViewTag) {
-		HomePageModuleAnnouncementCell *cell = [announcementCells objectAtIndex:[indexPath row]];
-		return cell.descriptionText.frame.size.height + (cell.descriptionText.frame.origin.y-cell.titleText.frame.origin.y);
+	if (tableView == recentAnnouncements) {
+		if (tableView.tag == kHomePageTimetableViewTag) {
+			HomePageModuleAnnouncementCell *cell = [announcementCells objectAtIndex:[indexPath row]];
+			return cell.descriptionText.frame.size.height + (cell.descriptionText.frame.origin.y-cell.titleText.frame.origin.y);
+		}
+		else {
+			
+			HomePageModuleAnnouncementCell *cell = [announcementCells objectAtIndex:[indexPath row]];
+			return cell.descriptionText.frame.size.height + (cell.descriptionText.frame.origin.y-cell.titleText.frame.origin.y);
+		}
 	}
-	else {
-		
-		HomePageModuleAnnouncementCell *cell = [announcementCells objectAtIndex:[indexPath row]];
-		return cell.descriptionText.frame.size.height + (cell.descriptionText.frame.origin.y-cell.titleText.frame.origin.y);
-	}
-	
+	return 50;
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -423,6 +500,7 @@
 	NSLog(@"main dealloc");
 	[timetable release];
 	[recentAnnouncements release];
+	[timetableCells release];
 
     [super dealloc];
 }

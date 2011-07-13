@@ -46,6 +46,8 @@
 
 -(NSString*) getAndSetUserName;
 
+- (NSDictionary *)validate;
+
 /*Display announcements for certain courseID
  courseID: from modules
  title: title only*/
@@ -181,6 +183,10 @@
 
 /* Gets the related My Organizer IVLE Events for the indicated period for the user */
 - (NSDictionary *)MyOrganizerIVLE:(NSString *)startDate withEndDate:(NSString *)endDate;
+
+- (NSDictionary *)MyOrganizerAcadSemesterInfo:(NSString *)acadYear ForSem:(NSString *)semester;
+
+- (NSDictionary *)CodeTableWeekTypes;
 
 /*	Converts boolean to System boolean. YES => @"true", NO => @"false"*/
 -(NSString*)booleanToSystemBoolean:(BOOL)boolean;

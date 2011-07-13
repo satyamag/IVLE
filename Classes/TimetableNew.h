@@ -12,6 +12,7 @@
 #import "ModuleEvent.h"
 #import "TapkuLibrary.h"
 #import "TimeTableCell.h"
+#import "ModuleEvent2.h"
 
 @interface TimetableNew : UIViewController <TKCalendarMonthViewDelegate, TKCalendarMonthViewDataSource, UITableViewDelegate, UITableViewDataSource>{
 	
