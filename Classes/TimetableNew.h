@@ -11,7 +11,7 @@
 #import "IVLE.h"
 #import "ModuleEvent.h"
 #import "TapkuLibrary.h"
-
+#import "TimeTableCell.h"
 
 @interface TimetableNew : UIViewController <TKCalendarMonthViewDelegate, TKCalendarMonthViewDataSource, UITableViewDelegate, UITableViewDataSource>{
 	

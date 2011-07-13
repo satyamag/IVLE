@@ -11,7 +11,6 @@
 		047F5F8813C75A59007C1B64 /* ModuleEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 047F5F8713C75A59007C1B64 /* ModuleEvent.m */; };
 		04CEC4B013C2A7280057CEDB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04CEC4AF13C2A7280057CEDB /* MediaPlayer.framework */; };
 		04CEC4DB13C2ABE00057CEDB /* WebcastController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CEC4DA13C2ABE00057CEDB /* WebcastController.m */; };
-		04CEC4DE13C2AC8D0057CEDB /* StubWebcast.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CEC4DD13C2AC8D0057CEDB /* StubWebcast.m */; };
 		04E1685F13CC972F00492C48 /* NSArray+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E167FB13CC972D00492C48 /* NSArray+TKCategory.m */; };
 		04E1686013CC972F00492C48 /* NSDate+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E167FD13CC972D00492C48 /* NSDate+TKCategory.m */; };
 		04E1686113CC972F00492C48 /* NSDictionary+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E167FF13CC972D00492C48 /* NSDictionary+TKCategory.m */; };
@@ -111,6 +110,11 @@
 		4A39DB5013C5AEFA00306066 /* modules_workbin_2nd_column.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A39DB4F13C5AEFA00306066 /* modules_workbin_2nd_column.png */; };
 		4A39DB5213C5B27500306066 /* modules_workbin_2nd_column_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A39DB5113C5B27500306066 /* modules_workbin_2nd_column_button.png */; };
 		4A39DB5413C5B32300306066 /* modules_workbin_cell_no_border.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A39DB5313C5B32300306066 /* modules_workbin_cell_no_border.png */; };
+		4A3F117213CCAD690052002F /* TimeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3F117113CCAD680052002F /* TimeTableCell.m */; };
+		4A3F117413CCAD7F0052002F /* TimeTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A3F117313CCAD7F0052002F /* TimeTableCell.xib */; };
+		4A3F117613CCC27A0052002F /* ivle_events.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A3F117513CCC2790052002F /* ivle_events.png */; };
+		4A3F117813CCC28B0052002F /* personal_events.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A3F117713CCC28A0052002F /* personal_events.png */; };
+		4A3F117A13CCC2A30052002F /* timetable_events.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A3F117913CCC2A20052002F /* timetable_events.png */; };
 		4A7D12DC13CA53A7009E8BE3 /* webcasts.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A7D12DB13CA53A7009E8BE3 /* webcasts.png */; };
 		4A7D12DE13CA65B2009E8BE3 /* module_info_announcement_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A7D12DD13CA65B2009E8BE3 /* module_info_announcement_bg.png */; };
 		4A8A676C13BBA2DD003DEDDB /* IVLELoginWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8A676B13BBA2DD003DEDDB /* IVLELoginWebViewController.m */; };
@@ -229,8 +233,6 @@
 		04CEC4AF13C2A7280057CEDB /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		04CEC4D913C2ABE00057CEDB /* WebcastController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebcastController.h; sourceTree = "<group>"; };
 		04CEC4DA13C2ABE00057CEDB /* WebcastController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebcastController.m; sourceTree = "<group>"; };
-		04CEC4DC13C2AC8D0057CEDB /* StubWebcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StubWebcast.h; sourceTree = "<group>"; };
-		04CEC4DD13C2AC8D0057CEDB /* StubWebcast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StubWebcast.m; sourceTree = "<group>"; };
 		04E167FA13CC972C00492C48 /* NSArray+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+TKCategory.h"; sourceTree = "<group>"; };
 		04E167FB13CC972D00492C48 /* NSArray+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+TKCategory.m"; sourceTree = "<group>"; };
 		04E167FC13CC972D00492C48 /* NSDate+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TKCategory.h"; sourceTree = "<group>"; };
@@ -395,6 +397,12 @@
 		4A39DB4F13C5AEFA00306066 /* modules_workbin_2nd_column.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modules_workbin_2nd_column.png; sourceTree = "<group>"; };
 		4A39DB5113C5B27500306066 /* modules_workbin_2nd_column_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modules_workbin_2nd_column_button.png; sourceTree = "<group>"; };
 		4A39DB5313C5B32300306066 /* modules_workbin_cell_no_border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modules_workbin_cell_no_border.png; sourceTree = "<group>"; };
+		4A3F117013CCAD680052002F /* TimeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTableCell.h; sourceTree = "<group>"; };
+		4A3F117113CCAD680052002F /* TimeTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeTableCell.m; sourceTree = "<group>"; };
+		4A3F117313CCAD7F0052002F /* TimeTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeTableCell.xib; sourceTree = "<group>"; };
+		4A3F117513CCC2790052002F /* ivle_events.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ivle_events.png; sourceTree = "<group>"; };
+		4A3F117713CCC28A0052002F /* personal_events.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal_events.png; sourceTree = "<group>"; };
+		4A3F117913CCC2A20052002F /* timetable_events.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timetable_events.png; sourceTree = "<group>"; };
 		4A7D12DB13CA53A7009E8BE3 /* webcasts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = webcasts.png; sourceTree = "<group>"; };
 		4A7D12DD13CA65B2009E8BE3 /* module_info_announcement_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = module_info_announcement_bg.png; sourceTree = "<group>"; };
 		4A8A676A13BBA2DD003DEDDB /* IVLELoginWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IVLELoginWebViewController.h; sourceTree = "<group>"; };
@@ -926,8 +934,6 @@
 			children = (
 				04CEC4D913C2ABE00057CEDB /* WebcastController.h */,
 				04CEC4DA13C2ABE00057CEDB /* WebcastController.m */,
-				04CEC4DC13C2AC8D0057CEDB /* StubWebcast.h */,
-				04CEC4DD13C2AC8D0057CEDB /* StubWebcast.m */,
 				4A0999BC13CB80FD001DA864 /* WebcastsCell.h */,
 				4A0999BD13CB80FD001DA864 /* WebcastsCell.m */,
 				4A0999BF13CB811A001DA864 /* WebcastsCell.xib */,
@@ -1165,6 +1171,9 @@
 		BF28D7E5133E6AD300EE060D /* Art Set */ = {
 			isa = PBXGroup;
 			children = (
+				4A3F117913CCC2A20052002F /* timetable_events.png */,
+				4A3F117713CCC28A0052002F /* personal_events.png */,
+				4A3F117513CCC2790052002F /* ivle_events.png */,
 				4AAA711913CB28CB00CB0E91 /* home_page_announcements_bg.png */,
 				4AAA711513CB1AB300CB0E91 /* read.png */,
 				4AAA711613CB1AB300CB0E91 /* new.png */,
@@ -1217,6 +1226,8 @@
 				BF779AF91348783C00CC2119 /* TimetableAddClassViewController.m */,
 				BF779AFD1348783C00CC2119 /* TimetablePickerViewController.h */,
 				BF779AFE1348783C00CC2119 /* TimetablePickerViewController.m */,
+				4A3F117013CCAD680052002F /* TimeTableCell.h */,
+				4A3F117113CCAD680052002F /* TimeTableCell.m */,
 			);
 			name = Timetable;
 			sourceTree = "<group>";
@@ -1228,6 +1239,7 @@
 				BFC65D86133E99CD00F4C7F2 /* Timetable.xib */,
 				BF779AFA1348783C00CC2119 /* TimetableAddClassViewController.xib */,
 				BF779AFF1348783C00CC2119 /* TimetablePickerViewController.xib */,
+				4A3F117313CCAD7F0052002F /* TimeTableCell.xib */,
 			);
 			name = Timetable;
 			sourceTree = "<group>";
@@ -1353,6 +1365,10 @@
 				04E168A713CC98C200492C48 /* TimetableNew.xib in Resources */,
 				04E168A913CC98EE00492C48 /* CAPCalculator.xib in Resources */,
 				04E1692813CC9F9000492C48 /* TapkuLibrary.bundle in Resources */,
+				4A3F117413CCAD7F0052002F /* TimeTableCell.xib in Resources */,
+				4A3F117613CCC27A0052002F /* ivle_events.png in Resources */,
+				4A3F117813CCC28B0052002F /* personal_events.png in Resources */,
+				4A3F117A13CCC2A30052002F /* timetable_events.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1436,7 +1452,6 @@
 				4A00F00313C0CCEF002D6C4E /* Workbin.m in Sources */,
 				4A996E9513C62B3B00DA8BC5 /* ModulesWorkbinCell.m in Sources */,
 				04CEC4DB13C2ABE00057CEDB /* WebcastController.m in Sources */,
-				04CEC4DE13C2AC8D0057CEDB /* StubWebcast.m in Sources */,
 				047F5F8413C753E9007C1B64 /* TimetableNew.m in Sources */,
 				047F5F8813C75A59007C1B64 /* ModuleEvent.m in Sources */,
 				4A0999B413CB8084001DA864 /* GradeBookCell.m in Sources */,
@@ -1494,6 +1509,7 @@
 				04E1689013CC972F00492C48 /* UIView+TKCategory.m in Sources */,
 				04E1689813CC97EA00492C48 /* IVLE.m in Sources */,
 				04E1689913CC97EA00492C48 /* IVLEAPIHandler.m in Sources */,
+				4A3F117213CCAD690052002F /* TimeTableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
