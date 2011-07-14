@@ -21,6 +21,7 @@
 }
 
 @property (nonatomic, retain) NSMutableArray *cells;
+//@property (nonatomic, retain) NSArray *webcasts;
 
 //// MODIFIES:  none
 //// REQUIRES: valid courseID

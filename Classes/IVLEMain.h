@@ -29,7 +29,6 @@
 	
 	
 	IBOutlet UITableView *recentAnnouncements, *recentTimetable;
-	IBOutlet UIView *timetable;
 	NSMutableArray *announcementCells;
 	NSMutableArray *timetableCells;
     NSMutableArray *announcements;

@@ -35,7 +35,14 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-		UIImage *blackboardImage = [UIImage imageNamed:@"home_page_announcements_bg.png"];
+        
+        NSString *imageName;
+        if ([UIDevice currentDevice].orientation!=UIDeviceOrientationLandscapeLeft && [UIDevice currentDevice].orientation!=UIDeviceOrientationLandscapeRight) {
+            imageName= @"home_page_announcements_bg_portrait.png";
+        }
+        else imageName= @"home_page_announcements_bg.png";
+        
+		UIImage *blackboardImage = [UIImage imageNamed:imageName];
 		[self.view setBackgroundColor:[UIColor colorWithPatternImage:blackboardImage]];
 		
 		//added by SJ, memory managemment
@@ -49,6 +56,8 @@
     return self;
 }
 
+
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	
@@ -57,11 +66,11 @@
 	
 	UIImage *bgImage = [UIImage imageNamed:@"modules_workbin_3rd_column.png"];
 	
-	timetable.tag = kHomePageTimetableViewTag;
+	recentTimetable.tag = kHomePageTimetableViewTag;
 	recentAnnouncements.tag = kHomePageAnnouncementsViewTag;
 	
 	self.view.frame = CGRectMake(0,0,1024, 768);
-	[timetable setBackgroundColor:[UIColor colorWithPatternImage:bgImage]];
+	[recentTimetable setBackgroundColor:[UIColor colorWithPatternImage:bgImage]];
 	
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshScreen:) name:kNotificationRefreshScreen object:nil];
@@ -90,30 +99,12 @@
 		}
 		[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetupHomePageComponents object:nil];
 	}
-
-	
+	[self.view setAutoresizesSubviews:YES];
 	/*if ([IVLE instance].authenticationToken == nil) {
 		[self performSelector:@selector(displayLogin) withObject:nil afterDelay:0.0];
 	}*/
 }
-	
-//- (void) memoryManagementOfViewControllers: (id) mainScreen  {
-//	//return;
-//	NSLog(@"inmemoryManagementOfViewControllers");
-//	//memory management by SJ
-//	if (currentActiveMainViewController != nil) {
-//		if (kDebugMemoryManagement) {
-//			NSLog(@"released %@", currentActiveMainViewController);
-//		}
-//		[currentActiveMainViewController release];
-//		currentActiveMainViewController = nil;
-//	} 
-//	if (kDebugMemoryManagement){
-//		NSLog(@"assigning %@", mainScreen);
-//	}
-//	currentActiveMainViewController = mainScreen;
-//	
-//}
+
 
 -(void) setUpHomePageComponents:(NSNotification*)notification {
 
@@ -122,7 +113,6 @@
     
     [self.view addSubview:recentAnnouncements];
 	
-	[self.view addSubview:timetable];
 	[pageControlView addSubview:eventsPageControl];
 	[rightHandSideView addSubview:pageControlView];
 	[rightHandSideView addSubview:eventsScrollView];
@@ -131,6 +121,7 @@
 }
 - (void) setUpEventsView {
 	
+    NSLog(@"%f,%f",eventsScrollView.frame.size.width,eventsScrollView.frame.size.height);
 	//setting up events
 	eventsScrollView.delegate = self;
 	
@@ -224,22 +215,6 @@
     pageControlIsChangingPage = YES;
 }
 
-//-(void)backToLogin:(NSNotification*)notification {
-//	
-//	while ([[self.view subviews] count]) {
-//		[[[self.view subviews] lastObject] removeFromSuperview];
-//	}
-//	
-//	
-//	IVLELoginNew *login = [[IVLELoginNew alloc] init];
-//	
-//	[self memoryManagementOfViewControllers:login];
-//	login.view.frame= CGRectMake(0, 50, 1024, 718);
-//	login.wantsFullScreenLayout = YES;
-//	login.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-//	login.modalPresentationStyle = UIModalPresentationCurrentContext;
-//	[self presentModalViewController:login animated:NO];
-//}
 
 -(void) viewDidAppear:(BOOL)animated {
 	
@@ -290,8 +265,15 @@
 	for (int i=0; i<[announcements count]; i++) {
 		
 		HomePageModuleAnnouncementCell *cell;
+        
+        NSString *orientationIdentifier;
+        if ([UIDevice currentDevice].orientation!=UIDeviceOrientationLandscapeLeft && [UIDevice currentDevice].orientation!=UIDeviceOrientationLandscapeRight) {
+            orientationIdentifier= @"HomePageModuleAnnouncementCellPortrait";
+        }
+        else orientationIdentifier= @"HomePageModuleAnnouncementCell";
+        
 		
-		NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"HomePageModuleAnnouncementCell" 
+		NSArray *nib = [[NSBundle mainBundle] loadNibNamed:orientationIdentifier 
 													 owner:self
 												   options:nil];
 		cell = [nib objectAtIndex:0];
@@ -328,7 +310,7 @@
 		[announcementCells addObject:cell];		
 	}
 	
-    [NSTimer scheduledTimerWithTimeInterval:2.5 target:self selector:@selector(updateAnnouncementsTable) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(updateAnnouncementsTable) userInfo:nil repeats:NO];
 }
 
 -(void) updateAnnouncementsTable {
@@ -447,6 +429,7 @@
 		cell.eventDate.textColor = kWorkbinFontColor;
 		//    cell.eventType.textColor = kWorkbinFontColor;
 		cell.backgroundColor = [UIColor clearColor];
+        
 		return cell;
 	}
 
@@ -491,6 +474,13 @@
 	[self presentModalViewController:login animated:NO];
 }
 
+-(void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    if (fromInterfaceOrientation == UIInterfaceOrientationPortrait || fromInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"home_page_announcements_bg.png"]]];
+    }
+    else
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"home_page_announcements_bg_portrait.png"]]];
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Overriden to allow any orientation.
@@ -521,7 +511,7 @@
 
 - (void)dealloc {
 	//NSLog(@"main dealloc");
-	[timetable release];
+	[recentTimetable release];
 	[recentAnnouncements release];
 	[timetableCells release];
 

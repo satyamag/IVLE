@@ -20,6 +20,7 @@
 // EFFECTS:  returns a dictionary of webcasts for particular module
 
 @synthesize cells;
+//@synthesize webcasts;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,7 +29,7 @@
 	if (self) {
 		
         
-		webcasts = [[[[[[[IVLE instance] webcasts:[IVLE instance].selectedCourseID withDuration:0 withTitleOnly:NO] objectForKey:@"Results"] objectAtIndex:0] objectForKey:@"ItemGroups"] objectAtIndex:0] objectForKey:@"Files"];
+		webcasts = [[[[[[[[IVLE instance] webcasts:[IVLE instance].selectedCourseID withDuration:0 withTitleOnly:NO] objectForKey:@"Results"] objectAtIndex:0] objectForKey:@"ItemGroups"] objectAtIndex:0] objectForKey:@"Files"] retain];
         
 		UIImage *bgImage_announcements = [UIImage imageNamed:@"module_info_announcement_bg.png"];
 		//NSLog(@"%@", webcasts);
@@ -44,6 +45,10 @@
 			cell = [nib objectAtIndex:0];
 			
             MPMoviePlayerController *player_meta = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:[[webcasts objectAtIndex:i] valueForKeyPath:@"MP4"]]];
+//            [self.view addSubview:player.view];
+//            [player_meta setFullscreen:YES animated:YES];
+//            [player_meta play];
+            
             [player_meta setShouldAutoplay:NO];
             [player_meta stop];
             
@@ -100,7 +105,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return ([webcasts count]);
+    return ([cells count]);
 }
 
 
@@ -115,17 +120,17 @@
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
     NSString *videoURL = [[webcasts objectAtIndex:[indexPath row]] valueForKeyPath:@"MP4"];
-    player = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:videoURL]] ;
+    player = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:videoURL]] ;
     
     [[NSNotificationCenter defaultCenter] 
      addObserver:self 
-     selector:@selector(movieFinishedCallback:) 
+     selector:@selector(movieExitedFullScreen:) 
      name:MPMoviePlayerDidExitFullscreenNotification
      object:player];
     
     [[NSNotificationCenter defaultCenter] 
      addObserver:self 
-     selector:@selector(movieExitedFullScreen:) 
+     selector:@selector(movieFinishedCallback:) 
      name:MPMoviePlayerPlaybackDidFinishNotification
      object:player];
     
@@ -160,6 +165,11 @@
     [player.view removeFromSuperview];
 }
 
+-(void) dealloc {
+    [cells release];
+    [webcasts release];
+    [super dealloc];
+}
 //
 //
 //- (NSDictionary *)getWebcastsForModule:(NSString *)courseID {

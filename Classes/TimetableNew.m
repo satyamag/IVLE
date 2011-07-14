@@ -32,7 +32,7 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
+	[self.view setAutoresizesSubviews:YES];
 	//this block of code basically initializes all the module events in IVLE into the array "moduleEventsList"
 	IVLE *ivleInstance = [IVLE instance];
 	UIImage *bgImage_announcements = [UIImage imageNamed:@"module_info_announcement_bg.png"];
@@ -360,6 +360,9 @@
 		cell.eventTitle.text = [currentEvent courseID];
 		cell.eventType.image = [UIImage imageNamed:@"timetable_events.png"];
 		cell.eventDate.text = [NSString stringWithFormat:@"%@ - %@ \t Venue: %@", [currentEvent startTime], [currentEvent endTime], [currentEvent venue]];
+        
+        cell.eventTitle.textColor = kWorkbinFontColor;
+        cell.eventDate.textColor = kWorkbinFontColor;
 	}
 	
 	return cell;
