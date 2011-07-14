@@ -203,8 +203,6 @@
 		A57D09C31347725A00449B3C /* Map.m in Sources */ = {isa = PBXBuildFile; fileRef = A57D09C11347725A00449B3C /* Map.m */; };
 		A57D09C41347725A00449B3C /* Map.xib in Resources */ = {isa = PBXBuildFile; fileRef = A57D09C21347725A00449B3C /* Map.xib */; };
 		A57D09EB1347737B00449B3C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57D09EA1347737B00449B3C /* MapKit.framework */; };
-		A57D0A8F1347795000449B3C /* ForumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0CC311134049C000010800 /* ForumTableViewController.m */; };
-		A57D0A901347795200449B3C /* ForumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0CC2F91340462F00010800 /* ForumViewController.m */; };
 		A57D0BC91347AE7B00449B3C /* ModulesAnnouncements.m in Sources */ = {isa = PBXBuildFile; fileRef = A57D0BC71347AE7B00449B3C /* ModulesAnnouncements.m */; };
 		A57D0BCA1347AE7B00449B3C /* ModulesAnnouncements.xib in Resources */ = {isa = PBXBuildFile; fileRef = A57D0BC81347AE7B00449B3C /* ModulesAnnouncements.xib */; };
 		A57D0C8D1347B66A00449B3C /* ModulesAnnouncementsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A57D0C8C1347B66A00449B3C /* ModulesAnnouncementsCell.m */; };
@@ -220,7 +218,6 @@
 		A5E3D1FE1355848700C0A15A /* IVLEAPICache.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E3D1FD1355848700C0A15A /* IVLEAPICache.m */; };
 		A5E3D4521356B49B00C0A15A /* ModulesWorkbinWebview.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E3D4501356B49B00C0A15A /* ModulesWorkbinWebview.m */; };
 		A5E3D4531356B49B00C0A15A /* ModulesWorkbinWebview.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E3D4511356B49B00C0A15A /* ModulesWorkbinWebview.xib */; };
-		BF0CC2FC1340462F00010800 /* ForumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF0CC2FA1340462F00010800 /* ForumViewController.xib */; };
 		BF484B7B1352556B0074F299 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF484B7A1352556B0074F299 /* EventKit.framework */; };
 		BF779B001348783C00CC2119 /* TimetableAddClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF779AF91348783C00CC2119 /* TimetableAddClassViewController.m */; };
 		BF779B011348783C00CC2119 /* TimetableAddClassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF779AFA1348783C00CC2119 /* TimetableAddClassViewController.xib */; };
@@ -228,6 +225,17 @@
 		BF779B041348783C00CC2119 /* TimetablePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF779AFF1348783C00CC2119 /* TimetablePickerViewController.xib */; };
 		BFC65CF4133E7C5500F4C7F2 /* Timetable.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC65CF2133E7C5500F4C7F2 /* Timetable.m */; };
 		BFC65D87133E99CD00F4C7F2 /* Timetable.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFC65D86133E99CD00F4C7F2 /* Timetable.xib */; };
+		BFD23AFC13CD411A00ED0019 /* Forum.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD23AFA13CD411A00ED0019 /* Forum.m */; };
+		BFD23AFD13CD411A00ED0019 /* Forum.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFD23AFB13CD411A00ED0019 /* Forum.xib */; };
+		BFD23B1313CD470300ED0019 /* ForumMainThreadTable.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD23B1113CD470300ED0019 /* ForumMainThreadTable.m */; };
+		BFD23B1413CD470300ED0019 /* ForumMainThreadTable.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFD23B1213CD470300ED0019 /* ForumMainThreadTable.xib */; };
+		BFD23B1913CD476400ED0019 /* ForumSubThreadTable.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD23B1713CD476400ED0019 /* ForumSubThreadTable.m */; };
+		BFD23B1A13CD476400ED0019 /* ForumSubThreadTable.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFD23B1813CD476400ED0019 /* ForumSubThreadTable.xib */; };
+		BFD23B1F13CD47B800ED0019 /* ForumTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD23B1D13CD47B800ED0019 /* ForumTableCell.m */; };
+		BFD23B2013CD47B800ED0019 /* ForumTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFD23B1E13CD47B800ED0019 /* ForumTableCell.xib */; };
+		BFEE434813CED42600265434 /* ForumPostNew.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEE434613CED42600265434 /* ForumPostNew.m */; };
+		BFEE434913CED42600265434 /* ForumPostNew.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFEE434713CED42600265434 /* ForumPostNew.xib */; };
+		BFEE434F13CEDB2700265434 /* ForumPostHeadingSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEE434E13CEDB2700265434 /* ForumPostHeadingSelect.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -575,11 +583,6 @@
 		A5E3D44F1356B49B00C0A15A /* ModulesWorkbinWebview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModulesWorkbinWebview.h; sourceTree = "<group>"; };
 		A5E3D4501356B49B00C0A15A /* ModulesWorkbinWebview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModulesWorkbinWebview.m; sourceTree = "<group>"; };
 		A5E3D4511356B49B00C0A15A /* ModulesWorkbinWebview.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ModulesWorkbinWebview.xib; path = Classes/ModulesWorkbinWebview.xib; sourceTree = "<group>"; };
-		BF0CC2F81340462F00010800 /* ForumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForumViewController.h; sourceTree = "<group>"; };
-		BF0CC2F91340462F00010800 /* ForumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForumViewController.m; sourceTree = "<group>"; };
-		BF0CC2FA1340462F00010800 /* ForumViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ForumViewController.xib; path = Classes/ForumViewController.xib; sourceTree = "<group>"; };
-		BF0CC310134049C000010800 /* ForumTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForumTableViewController.h; sourceTree = "<group>"; };
-		BF0CC311134049C000010800 /* ForumTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForumTableViewController.m; sourceTree = "<group>"; };
 		BF484B7A1352556B0074F299 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		BF779AF81348783C00CC2119 /* TimetableAddClassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimetableAddClassViewController.h; sourceTree = "<group>"; };
 		BF779AF91348783C00CC2119 /* TimetableAddClassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimetableAddClassViewController.m; sourceTree = "<group>"; };
@@ -590,6 +593,23 @@
 		BFC65CF1133E7C5500F4C7F2 /* Timetable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timetable.h; sourceTree = "<group>"; };
 		BFC65CF2133E7C5500F4C7F2 /* Timetable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timetable.m; sourceTree = "<group>"; };
 		BFC65D86133E99CD00F4C7F2 /* Timetable.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Timetable.xib; sourceTree = "<group>"; };
+		BFD23AF913CD411A00ED0019 /* Forum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Forum.h; sourceTree = "<group>"; };
+		BFD23AFA13CD411A00ED0019 /* Forum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Forum.m; sourceTree = "<group>"; };
+		BFD23AFB13CD411A00ED0019 /* Forum.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Forum.xib; sourceTree = "<group>"; };
+		BFD23B1013CD470300ED0019 /* ForumMainThreadTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForumMainThreadTable.h; sourceTree = "<group>"; };
+		BFD23B1113CD470300ED0019 /* ForumMainThreadTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForumMainThreadTable.m; sourceTree = "<group>"; };
+		BFD23B1213CD470300ED0019 /* ForumMainThreadTable.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForumMainThreadTable.xib; sourceTree = "<group>"; };
+		BFD23B1613CD476400ED0019 /* ForumSubThreadTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForumSubThreadTable.h; sourceTree = "<group>"; };
+		BFD23B1713CD476400ED0019 /* ForumSubThreadTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForumSubThreadTable.m; sourceTree = "<group>"; };
+		BFD23B1813CD476400ED0019 /* ForumSubThreadTable.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForumSubThreadTable.xib; sourceTree = "<group>"; };
+		BFD23B1C13CD47B800ED0019 /* ForumTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForumTableCell.h; sourceTree = "<group>"; };
+		BFD23B1D13CD47B800ED0019 /* ForumTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForumTableCell.m; sourceTree = "<group>"; };
+		BFD23B1E13CD47B800ED0019 /* ForumTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForumTableCell.xib; sourceTree = "<group>"; };
+		BFEE434513CED42600265434 /* ForumPostNew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForumPostNew.h; sourceTree = "<group>"; };
+		BFEE434613CED42600265434 /* ForumPostNew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForumPostNew.m; sourceTree = "<group>"; };
+		BFEE434713CED42600265434 /* ForumPostNew.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForumPostNew.xib; sourceTree = "<group>"; };
+		BFEE434D13CEDB2700265434 /* ForumPostHeadingSelect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForumPostHeadingSelect.h; sourceTree = "<group>"; };
+		BFEE434E13CEDB2700265434 /* ForumPostHeadingSelect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForumPostHeadingSelect.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1220,10 +1240,23 @@
 		BF35E7ED1340D0B8000E7F05 /* Forum */ = {
 			isa = PBXGroup;
 			children = (
-				BF0CC2F81340462F00010800 /* ForumViewController.h */,
-				BF0CC2F91340462F00010800 /* ForumViewController.m */,
-				BF0CC310134049C000010800 /* ForumTableViewController.h */,
-				BF0CC311134049C000010800 /* ForumTableViewController.m */,
+				BFD23AF913CD411A00ED0019 /* Forum.h */,
+				BFD23AFA13CD411A00ED0019 /* Forum.m */,
+				BFD23AFB13CD411A00ED0019 /* Forum.xib */,
+				BFD23B1013CD470300ED0019 /* ForumMainThreadTable.h */,
+				BFD23B1113CD470300ED0019 /* ForumMainThreadTable.m */,
+				BFD23B1213CD470300ED0019 /* ForumMainThreadTable.xib */,
+				BFD23B1613CD476400ED0019 /* ForumSubThreadTable.h */,
+				BFD23B1713CD476400ED0019 /* ForumSubThreadTable.m */,
+				BFD23B1813CD476400ED0019 /* ForumSubThreadTable.xib */,
+				BFD23B1C13CD47B800ED0019 /* ForumTableCell.h */,
+				BFD23B1D13CD47B800ED0019 /* ForumTableCell.m */,
+				BFD23B1E13CD47B800ED0019 /* ForumTableCell.xib */,
+				BFEE434513CED42600265434 /* ForumPostNew.h */,
+				BFEE434613CED42600265434 /* ForumPostNew.m */,
+				BFEE434713CED42600265434 /* ForumPostNew.xib */,
+				BFEE434D13CEDB2700265434 /* ForumPostHeadingSelect.h */,
+				BFEE434E13CEDB2700265434 /* ForumPostHeadingSelect.m */,
 			);
 			name = Forum;
 			sourceTree = "<group>";
@@ -1314,6 +1347,7 @@
 				A5D3F10E1338733D001B33BB /* ModulesWorkbin.xib in Resources */,
 				BFC65D87133E99CD00F4C7F2 /* Timetable.xib in Resources */,
 				BF0CC2FC1340462F00010800 /* ForumViewController.xib in Resources */,
+				5C851027133F7D1C00034274 /* CAPCalculator.xib in Resources */,
 				5CECE71713420FA9008E2635 /* CAPGradeChooserViewController.xib in Resources */,
 				A51E189713436A42006D7B5D /* IVLEMain.xib in Resources */,
 				5C636A8613441756009D5BB8 /* CAPSemChooserViewController.xib in Resources */,
@@ -1390,6 +1424,11 @@
 				4A9FAFA813CE126E00DF7801 /* WebcastController.xib in Resources */,
 				4A9FAFD913CF6EB400DF7801 /* HomePageModuleAnnouncementCellPortrait.xib in Resources */,
 				4A9FAFDB13CF744600DF7801 /* home_page_announcements_bg_portrait.png in Resources */,
+				BFD23AFD13CD411A00ED0019 /* Forum.xib in Resources */,
+				BFD23B1413CD470300ED0019 /* ForumMainThreadTable.xib in Resources */,
+				BFD23B1A13CD476400ED0019 /* ForumSubThreadTable.xib in Resources */,
+				BFD23B2013CD47B800ED0019 /* ForumTableCell.xib in Resources */,
+				BFEE434913CED42600265434 /* ForumPostNew.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1428,8 +1467,6 @@
 				5C636AB713441C00009D5BB8 /* Constants.m in Sources */,
 				5CCBA7BE1346FB04002D38A5 /* S7GraphView.m in Sources */,
 				A57D09C31347725A00449B3C /* Map.m in Sources */,
-				A57D0A8F1347795000449B3C /* ForumTableViewController.m in Sources */,
-				A57D0A901347795200449B3C /* ForumViewController.m in Sources */,
 				A57D0BC91347AE7B00449B3C /* ModulesAnnouncements.m in Sources */,
 				A57D0C8D1347B66A00449B3C /* ModulesAnnouncementsCell.m in Sources */,
 				A57D0E621347CE8A00449B3C /* ModulesInfo.m in Sources */,
@@ -1532,6 +1569,12 @@
 				04E1689913CC97EA00492C48 /* IVLEAPIHandler.m in Sources */,
 				4A3F117213CCAD690052002F /* TimeTableCell.m in Sources */,
 				047E247413CDACDD00AE6185 /* ModuleEvent2.m in Sources */,
+				BFD23AFC13CD411A00ED0019 /* Forum.m in Sources */,
+				BFD23B1313CD470300ED0019 /* ForumMainThreadTable.m in Sources */,
+				BFD23B1913CD476400ED0019 /* ForumSubThreadTable.m in Sources */,
+				BFD23B1F13CD47B800ED0019 /* ForumTableCell.m in Sources */,
+				BFEE434813CED42600265434 /* ForumPostNew.m in Sources */,
+				BFEE434F13CEDB2700265434 /* ForumPostHeadingSelect.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
