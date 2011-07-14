@@ -93,7 +93,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-	tableView.allowsSelection = NO;
 	tableView.backgroundColor = [UIColor clearColor];
     return 1;
 }
@@ -113,7 +112,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"HELLO");
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
     NSString *videoURL = [[webcasts objectAtIndex:[indexPath row]] valueForKeyPath:@"MP4"];
