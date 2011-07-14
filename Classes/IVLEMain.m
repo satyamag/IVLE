@@ -70,10 +70,33 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setUpHomePageComponents:) name:kNotificationSetupHomePageComponents object:nil];
 //	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backToLogin:) name:kNotificationLoginScreen object:nil];
 	
-	if ([IVLE instance].authenticationToken == nil) {
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	NSString *path = [documentsDirectory stringByAppendingPathComponent:@"authToken.txt"];
+	NSError *error;
+	NSString *stringFromFileAtPath = [[NSString alloc]
+									  initWithContentsOfFile:path
+                                      encoding:NSUTF8StringEncoding
+                                      error:&error];
+	if (stringFromFileAtPath == nil) {
 		[self performSelector:@selector(displayLogin) withObject:nil afterDelay:0.0];
 	}
+	else {
+		[[IVLE instance] setAuthToken:stringFromFileAtPath];
+		[[ModulesFetcher sharedInstance] setUserID:[[IVLE instance] getAndSetUserName]];
+		NSDictionary *tokenValidity = [[IVLE instance] validate];
+		if ([tokenValidity objectForKey:@"Token"] != nil) {
+			
+			[[IVLE instance] setAuthToken:[tokenValidity objectForKey:@"Token"]];
+			[[ModulesFetcher sharedInstance] setUserID:[[IVLE instance] getAndSetUserName]];
+		}
+		[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetupHomePageComponents object:nil];
+	}
 
+	
+	/*if ([IVLE instance].authenticationToken == nil) {
+		[self performSelector:@selector(displayLogin) withObject:nil afterDelay:0.0];
+	}*/
 }
 	
 //- (void) memoryManagementOfViewControllers: (id) mainScreen  {

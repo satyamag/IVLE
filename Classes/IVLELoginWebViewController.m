@@ -91,6 +91,18 @@
 //				NSLog(@"token: %@", token);
                 [ivleInstance setAuthToken:token];
                 
+				//save token to file
+				NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+				NSString *documentsDirectory = [paths objectAtIndex:0];
+				NSString *path = [documentsDirectory stringByAppendingPathComponent:@"authToken.txt"];
+				NSString *string = [IVLE instance].authenticationToken;
+				BOOL ok = [string writeToFile:path atomically:YES
+									 encoding:NSUTF8StringEncoding error:&error];
+				if (!ok) {
+					// an error occurred
+					NSLog(@"Error writing file at %@\n%@",
+						  path, [error localizedFailureReason]);
+				}
                 
                 [[ModulesFetcher sharedInstance] setUserID:[ivleInstance getAndSetUserName]];
                 [self dismissModalViewControllerAnimated:YES];

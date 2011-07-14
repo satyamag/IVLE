@@ -355,8 +355,10 @@
 	}
 	else if ([[[currentDisplayEvents objectAtIndex:indexPath.row] class] isEqual:[ModuleEvent2 class]]) {
 		
-		cell.eventTitle.text = [[currentDisplayEvents objectAtIndex:indexPath.row] courseID];
+		ModuleEvent2 *currentEvent = [currentDisplayEvents objectAtIndex:indexPath.row];
+		cell.eventTitle.text = [currentEvent courseID];
 		cell.eventType.image = [UIImage imageNamed:@"timetable_events.png"];
+		cell.eventDate.text = [NSString stringWithFormat:@"%@ - %@ \t Venue: %@", [currentEvent startTime], [currentEvent endTime], [currentEvent venue]];
 	}
 	
 	return cell;
