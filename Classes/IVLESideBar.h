@@ -12,7 +12,7 @@
 #import "ModuleHeader.h"
 #import "ModuleHeaderInfo.h"
 #import "LeftSideBarCellView.h"
-#import "ForumViewController.h"
+#import "Forum.h"
 #import "IVLE.h"
 #import "Timetable.h"
 #import "ModulesWorkbin.h"

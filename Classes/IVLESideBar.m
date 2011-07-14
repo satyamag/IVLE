@@ -307,7 +307,7 @@ NSInteger openSectionIndex;
 	
 	else if ([nibName compare:@"ForumViewController"] == NSOrderedSame) {
         
-		ForumViewController *fvc = [[ForumViewController alloc] initWithNibName:nibName bundle:nil];
+		Forum *fvc = [[Forum alloc] initWithNibName:@"Forum" bundle:nil];
 		leftBar = [NSArray arrayWithObject:fvc];
         [fvc release];
 	}
