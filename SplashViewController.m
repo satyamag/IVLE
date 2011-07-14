@@ -17,13 +17,13 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Overriden to allow any orientation.
-    return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft) || (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
+    return YES;//(interfaceOrientation == UIInterfaceOrientationLandscapeLeft) || (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
 
 - (void)loadView {
 	// Init the view
-	CGRect appFrame = [[UIScreen mainScreen] applicationFrame];
+	/*CGRect appFrame = [[UIScreen mainScreen] applicationFrame];
 	UIView *view = [[UIView alloc] initWithFrame:appFrame];
 	view.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
 	self.view = view;
@@ -36,6 +36,7 @@
 
 	
 	timer = [NSTimer scheduledTimerWithTimeInterval:2.5 target:self selector:@selector(fadeScreen) userInfo:nil repeats:NO];
+	 */
 }
 
 -(void) onTimer{

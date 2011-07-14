@@ -53,31 +53,41 @@
 }
 
 -(void) initializeEventsArray {
-    int viewX = 0, viewY = 0;
-    //UIBarButtonItem *addUserEvent = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addEventButtonClicked)];
-    
-    ivleInterface = [[IVLE instance] retain];
-    
-    //add ivle events
-    eventsArray = [[[ivleInterface studentEvents:NO] objectForKey:@"Results"] retain];
-    eventsViewControllerArray = [[NSMutableArray alloc] init];
 	
-    for (int i = 0; i < [eventsArray count]; i++) {
-        
-        NSDictionary *currentEvent = [eventsArray objectAtIndex:i];
-        
-        EventsView *eventsVC = [[EventsView alloc] initWithEvent:currentEvent];
-        [eventsVC setDelegate:self];
-        [eventsVC.view setFrame:CGRectMake(viewX, viewY, 256, 240)];
-        [eventsViewControllerArray addObject:eventsVC];
-        [eventsVC release];
-        
-        viewX += 256;
-        if (viewX == 256 * 4) {
-            viewX = 0;
-            viewY += 240;
-        }
-    }
+	int viewX = 0, viewY = 0;
+	//UIBarButtonItem *addUserEvent = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addEventButtonClicked)];
+	
+	ivleInterface = [[IVLE instance] retain];
+	
+	//add ivle events
+	eventsArray = [[[ivleInterface studentEvents:NO] objectForKey:@"Results"] retain];
+	eventsViewControllerArray = [[NSMutableArray alloc] init];
+	
+	for (int i = 0; i < [eventsArray count]; i++) {
+		
+		NSDictionary *currentEvent = [eventsArray objectAtIndex:i];
+		
+		EventsView *eventsVC = [[EventsView alloc] initWithEvent:currentEvent];
+		[eventsVC setDelegate:self];
+		[eventsVC.view setFrame:CGRectMake(viewX, viewY, 256, 240)];
+		[eventsViewControllerArray addObject:eventsVC];
+		[eventsVC release];
+		
+		if ([[UIDevice currentDevice] orientation] == UIInterfaceOrientationLandscapeLeft || [[UIDevice currentDevice] orientation] == UIInterfaceOrientationLandscapeRight) {
+			viewX += 256;
+			if (viewX == 256 * 4) {
+				viewX = 0;
+				viewY += 240;
+			}
+		}		
+		else {
+			viewX += 256;
+			if (viewX == 256 * 3) {
+				viewX = 0;
+				viewY += 240;
+			}
+		}
+	}
 }
 - (IBAction)homeButtonClicked {
 	
@@ -85,7 +95,7 @@
 }
 
 - (IBAction)addEventButtonClicked {
-
+	
 	//Popover view controller
 	Map *mapVC = [[Map alloc] initWithAddEventMode:YES];
 	
@@ -121,6 +131,34 @@
 
 #pragma mark -
 #pragma mark Memory handling functions
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+	
+	int viewX = 0, viewY = 0;
+	
+	for (int i = 0; i < [eventsViewControllerArray count]; i++) {
+		
+		EventsView *currentEvent = [eventsViewControllerArray objectAtIndex:i];
+		
+		[currentEvent.view setFrame:CGRectMake(viewX, viewY, 256, 240)];
+		
+		if ([[UIDevice currentDevice] orientation] == UIInterfaceOrientationLandscapeLeft || [[UIDevice currentDevice] orientation] == UIInterfaceOrientationLandscapeRight) {
+			viewX += 256;
+			if (viewX == 256 * 4) {
+				viewX = 0;
+				viewY += 240;
+			}
+		}		
+		else {
+			viewX += 256;
+			if (viewX == 256 * 3) {
+				viewX = 0;
+				viewY += 240;
+			}
+		}
+	}
+	
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Overriden to allow any orientation.

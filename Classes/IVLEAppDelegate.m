@@ -22,8 +22,7 @@
 //	viewController = [[SplashViewController alloc] init];
     // Override point for customization after app launch    
  //   [window addSubview:[viewController view]];
-	
-    
+	    
     IVLEMain *home = [[[IVLEMain alloc] init] autorelease];
     UINavigationController *IVLEHomeNavigator = [[[UINavigationController alloc] initWithRootViewController:home] autorelease];
     IVLEHomeNavigator.navigationBar.tintColor = kNavBarColor;
@@ -72,7 +71,6 @@
     [self.window addSubview:self.tabBarController.view];
     [self.window makeKeyAndVisible];
     
-//    [window makeKeyAndVisible];
 	return YES;
 }
 

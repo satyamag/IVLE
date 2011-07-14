@@ -134,12 +134,12 @@
 					</object>
 					<object class="IBUIView" id="357042651">
 						<reference key="NSNextResponder" ref="766721923"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">289</int>
 						<object class="NSMutableArray" key="NSSubviews">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBUIScrollView" id="465291273">
 								<reference key="NSNextResponder" ref="357042651"/>
-								<int key="NSvFlags">268</int>
+								<int key="NSvFlags">291</int>
 								<string key="NSFrame">{{0, 20}, {512, 78}}</string>
 								<reference key="NSSuperview" ref="357042651"/>
 								<reference key="NSNextKeyView" ref="7726330"/>
@@ -151,7 +151,7 @@
 							</object>
 							<object class="IBUIView" id="7726330">
 								<reference key="NSNextResponder" ref="357042651"/>
-								<int key="NSvFlags">292</int>
+								<int key="NSvFlags">289</int>
 								<object class="NSMutableArray" key="NSSubviews">
 									<bool key="EncodedWithXMLCoder">YES</bool>
 									<object class="IBUIPageControl" id="872671191">
@@ -160,7 +160,6 @@
 										<object class="NSPSMatrix" key="NSFrameMatrix"/>
 										<string key="NSFrame">{{242, 0}, {38, 36}}</string>
 										<reference key="NSSuperview" ref="7726330"/>
-										<reference key="NSNextKeyView"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 										<int key="IBUIContentHorizontalAlignment">0</int>
@@ -186,7 +185,7 @@
 					</object>
 					<object class="IBUITableView" id="196893359">
 						<reference key="NSNextResponder" ref="766721923"/>
-						<int key="NSvFlags">274</int>
+						<int key="NSvFlags">310</int>
 						<string key="NSFrame">{{-7, 0}, {511, 748}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSNextKeyView" ref="357042651"/>
@@ -202,7 +201,7 @@
 					</object>
 					<object class="IBUITableView" id="219615885">
 						<reference key="NSNextResponder" ref="766721923"/>
-						<int key="NSvFlags">274</int>
+						<int key="NSvFlags">283</int>
 						<string key="NSFrame">{{512, 148}, {512, 600}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="IBUIBackgroundColor" ref="1017733461"/>
@@ -367,9 +366,9 @@
 							<reference ref="328870181"/>
 							<reference ref="442068815"/>
 							<reference ref="337574742"/>
-							<reference ref="357042651"/>
 							<reference ref="196893359"/>
 							<reference ref="219615885"/>
+							<reference ref="357042651"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -476,7 +475,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>IVLEMain</string>
 					<string>UIResponder</string>
-					<string>{{-191, 59}, {1039, 687}}</string>
+					<string>{{0, 68}, {1039, 687}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -500,7 +499,7 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABEAAAAxB7AAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABEAAAAwwoAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">

@@ -39,7 +39,7 @@
 			</object>
 			<object class="IBUITableViewCell" id="845656726">
 				<reference key="NSNextResponder"/>
-				<int key="NSvFlags">292</int>
+				<int key="NSvFlags">294</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="IBUIView" id="792778533">
@@ -49,7 +49,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBUIImageView" id="944432973">
 								<reference key="NSNextResponder" ref="792778533"/>
-								<int key="NSvFlags">292</int>
+								<int key="NSvFlags">294</int>
 								<string key="NSFrame">{{1, 0}, {704, 50}}</string>
 								<reference key="NSSuperview" ref="792778533"/>
 								<reference key="NSNextKeyView" ref="1043689502"/>
@@ -62,7 +62,7 @@
 							</object>
 							<object class="IBUILabel" id="1043689502">
 								<reference key="NSNextResponder" ref="792778533"/>
-								<int key="NSvFlags">292</int>
+								<int key="NSvFlags">294</int>
 								<string key="NSFrame">{{10, 7}, {634, 21}}</string>
 								<reference key="NSSuperview" ref="792778533"/>
 								<reference key="NSNextKeyView" ref="621054941"/>
@@ -87,7 +87,7 @@
 							</object>
 							<object class="IBUILabel" id="621054941">
 								<reference key="NSNextResponder" ref="792778533"/>
-								<int key="NSvFlags">292</int>
+								<int key="NSvFlags">294</int>
 								<string key="NSFrame">{{10, 21}, {471, 21}}</string>
 								<reference key="NSSuperview" ref="792778533"/>
 								<reference key="NSNextKeyView" ref="806405951"/>
@@ -109,8 +109,8 @@
 							</object>
 							<object class="IBUIImageView" id="806405951">
 								<reference key="NSNextResponder" ref="792778533"/>
-								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{674, 22}, {20, 20}}</string>
+								<int key="NSvFlags">297</int>
+								<string key="NSFrame">{{674, 15}, {20, 20}}</string>
 								<reference key="NSSuperview" ref="792778533"/>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -238,6 +238,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>-2.CustomClassName</string>
 					<string>11.IBPluginDependency</string>
+					<string>11.IBViewBoundsToFrameTransform</string>
 					<string>2.CustomClassName</string>
 					<string>2.IBEditorWindowLastContentRect</string>
 					<string>2.IBPluginDependency</string>
@@ -249,8 +250,11 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>UIResponder</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABEKIAAwiAAAA</bytes>
+					</object>
 					<string>TimeTableCell</string>
-					<string>{{12, 595}, {704, 50}}</string>
+					<string>{{100, 633}, {704, 50}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

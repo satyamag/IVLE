@@ -105,6 +105,7 @@
 	calendar = [[TKCalendarMonthView alloc] init];
 	calendar.delegate = self;
 	calendar.dataSource = self;
+	//calendar.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 	[self.view addSubview:calendar];
 	self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"modules_workbin_3rd_column.png"]];
 	currentEventsTable.backgroundColor = [UIColor colorWithPatternImage:bgImage_announcements];

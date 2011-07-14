@@ -229,7 +229,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		047E23C413CD65A500AE6185 /* GradeBookCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GradeBookCell.xib; sourceTree = "<group>"; };
+		047E23C413CD65A500AE6185 /* GradeBookCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = GradeBookCell.xib; path = Classes/GradeBookCell.xib; sourceTree = "<group>"; };
 		047E247213CDACDD00AE6185 /* ModuleEvent2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleEvent2.h; sourceTree = "<group>"; };
 		047E247313CDACDD00AE6185 /* ModuleEvent2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModuleEvent2.m; sourceTree = "<group>"; };
 		047F5F8113C753E8007C1B64 /* TimetableNew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimetableNew.h; sourceTree = "<group>"; };
@@ -373,10 +373,10 @@
 		4A0999B313CB8084001DA864 /* GradeBookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeBookCell.m; sourceTree = "<group>"; };
 		4A0999B513CB80A3001DA864 /* GradeBookController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeBookController.h; sourceTree = "<group>"; };
 		4A0999B613CB80A3001DA864 /* GradeBookController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeBookController.m; sourceTree = "<group>"; };
-		4A0999B713CB80A3001DA864 /* GradeBookController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GradeBookController.xib; sourceTree = "<group>"; };
+		4A0999B713CB80A3001DA864 /* GradeBookController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GradeBookController.xib; path = Classes/GradeBookController.xib; sourceTree = "<group>"; };
 		4A0999BC13CB80FD001DA864 /* WebcastsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebcastsCell.h; sourceTree = "<group>"; };
 		4A0999BD13CB80FD001DA864 /* WebcastsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebcastsCell.m; sourceTree = "<group>"; };
-		4A0999BF13CB811A001DA864 /* WebcastsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebcastsCell.xib; sourceTree = "<group>"; };
+		4A0999BF13CB811A001DA864 /* WebcastsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WebcastsCell.xib; path = Classes/WebcastsCell.xib; sourceTree = "<group>"; };
 		4A17101413531EB400EF11E1 /* IVLELoginNew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IVLELoginNew.h; path = ../IVLELoginNew.h; sourceTree = "<group>"; };
 		4A17101513531EB400EF11E1 /* IVLELoginNew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IVLELoginNew.m; path = ../IVLELoginNew.m; sourceTree = "<group>"; };
 		4A17101813531EB400EF11E1 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SplashViewController.h; path = ../SplashViewController.h; sourceTree = "<group>"; };
@@ -415,9 +415,9 @@
 		4A8A676D13BBA567003DEDDB /* IVLELoginWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IVLELoginWebViewController.xib; sourceTree = "<group>"; };
 		4A996E9313C62B3B00DA8BC5 /* ModulesWorkbinCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModulesWorkbinCell.h; sourceTree = "<group>"; };
 		4A996E9413C62B3B00DA8BC5 /* ModulesWorkbinCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModulesWorkbinCell.m; sourceTree = "<group>"; };
-		4A996E9613C62BBD00DA8BC5 /* ModulesWorkbinCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModulesWorkbinCell.xib; sourceTree = "<group>"; };
-		4A9FAFA513CDF40200DF7801 /* GradeBookFirstCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GradeBookFirstCell.xib; sourceTree = "<group>"; };
-		4A9FAFA713CE126E00DF7801 /* WebcastController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebcastController.xib; sourceTree = "<group>"; };
+		4A996E9613C62BBD00DA8BC5 /* ModulesWorkbinCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ModulesWorkbinCell.xib; path = Classes/ModulesWorkbinCell.xib; sourceTree = "<group>"; };
+		4A9FAFA513CDF40200DF7801 /* GradeBookFirstCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GradeBookFirstCell.xib; path = Classes/GradeBookFirstCell.xib; sourceTree = "<group>"; };
+		4A9FAFA713CE126E00DF7801 /* WebcastController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WebcastController.xib; path = Classes/WebcastController.xib; sourceTree = "<group>"; };
 		4AA3EA9413C7459900B39A97 /* pdf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pdf.png; sourceTree = "<group>"; };
 		4AA3EA9513C7459900B39A97 /* xlsx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xlsx.png; sourceTree = "<group>"; };
 		4AA3EA9613C7459900B39A97 /* xls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xls.png; sourceTree = "<group>"; };
@@ -838,9 +838,6 @@
 				4A0999B313CB8084001DA864 /* GradeBookCell.m */,
 				4A0999B513CB80A3001DA864 /* GradeBookController.h */,
 				4A0999B613CB80A3001DA864 /* GradeBookController.m */,
-				4A0999B713CB80A3001DA864 /* GradeBookController.xib */,
-				047E23C413CD65A500AE6185 /* GradeBookCell.xib */,
-				4A9FAFA513CDF40200DF7801 /* GradeBookFirstCell.xib */,
 			);
 			name = GradeBook;
 			sourceTree = "<group>";
@@ -910,7 +907,6 @@
 				A5E3D4501356B49B00C0A15A /* ModulesWorkbinWebview.m */,
 				4A996E9313C62B3B00DA8BC5 /* ModulesWorkbinCell.h */,
 				4A996E9413C62B3B00DA8BC5 /* ModulesWorkbinCell.m */,
-				4A996E9613C62BBD00DA8BC5 /* ModulesWorkbinCell.xib */,
 			);
 			name = Workbin;
 			sourceTree = "<group>";
@@ -944,8 +940,6 @@
 				04CEC4DA13C2ABE00057CEDB /* WebcastController.m */,
 				4A0999BC13CB80FD001DA864 /* WebcastsCell.h */,
 				4A0999BD13CB80FD001DA864 /* WebcastsCell.m */,
-				4A0999BF13CB811A001DA864 /* WebcastsCell.xib */,
-				4A9FAFA713CE126E00DF7801 /* WebcastController.xib */,
 			);
 			name = Webcasts;
 			sourceTree = "<group>";
@@ -1119,12 +1113,19 @@
 		A57D0BCB1347AE8900449B3C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				4A996E9613C62BBD00DA8BC5 /* ModulesWorkbinCell.xib */,
+				4A0999BF13CB811A001DA864 /* WebcastsCell.xib */,
+				4A9FAFA713CE126E00DF7801 /* WebcastController.xib */,
+				4A0999B713CB80A3001DA864 /* GradeBookController.xib */,
+				047E23C413CD65A500AE6185 /* GradeBookCell.xib */,
+				4A9FAFA513CDF40200DF7801 /* GradeBookFirstCell.xib */,
 				BF0CC2FA1340462F00010800 /* ForumViewController.xib */,
 				A57D0E611347CE8A00449B3C /* ModulesInfo.xib */,
 				A57D0CBC1347B7AD00449B3C /* ModulesAnnouncementsCell.xib */,
 				A57D0BC81347AE7B00449B3C /* ModulesAnnouncements.xib */,
 				A5D3F10C1338733D001B33BB /* ModulesWorkbin.xib */,
 				A5E3D4511356B49B00C0A15A /* ModulesWorkbinWebview.xib */,
+				4A1716511355474E00EF11E1 /* IVLESideBar.xib */,
 			);
 			name = Modules;
 			sourceTree = "<group>";
@@ -1168,7 +1169,6 @@
 			isa = PBXGroup;
 			children = (
 				4A8A676D13BBA567003DEDDB /* IVLELoginWebViewController.xib */,
-				4A1716511355474E00EF11E1 /* IVLESideBar.xib */,
 				4AD36BCF1349602A00EBB733 /* TableViewCell.xib */,
 				4A2924A21357A9E800635DD2 /* HomePageModuleAnnouncementCell.xib */,
 				A51E189513436A42006D7B5D /* IVLEMain.xib */,

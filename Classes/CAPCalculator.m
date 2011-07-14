@@ -291,6 +291,8 @@
 	UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 0, 50, 50)];
 	[headerLabel setTextAlignment:UITextAlignmentCenter];
 	[headerLabel setBackgroundColor:[UIColor clearColor]];
+	headerLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	headerLabel.adjustsFontSizeToFitWidth = YES;
 	
 	if ([moduleObjects count] != 0) {
 		
