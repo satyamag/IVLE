@@ -11,6 +11,8 @@
 
 @implementation WebcastsCell
 
+@synthesize webcastDate,webcastTitle,webcastDuration,thumbnail;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];

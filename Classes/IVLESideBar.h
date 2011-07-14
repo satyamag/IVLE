@@ -22,6 +22,7 @@
 #import "Events.h"
 #import "Constants.h"
 #import "GradeBookController.h"
+#import "WebcastController.h"
 
 #import "Map.h"
 

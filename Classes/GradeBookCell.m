@@ -11,7 +11,8 @@
 
 @implementation GradeBookCell
 
-@synthesize averageMedianMarks, category, gradeDescription, highestLowest, itemName, marksObtained, maxMarks, percentile, remark;
+@synthesize averageMedianMarks,  highestLowest, itemName, marksObtained, maxMarks, percentile, remark;
+//category, gradeDescription,
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

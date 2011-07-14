@@ -115,7 +115,7 @@
 	
 	IVLE *ivleInterface = [IVLE instance];
 	
-	NSLog(@"%@", [ivleInterface validate]);
+	//NSLog(@"%@", [ivleInterface validate]);
 	
 	NSArray *eventsArray = [[ivleInterface studentEvents:YES] objectForKey:@"Results"];
 	
@@ -251,13 +251,14 @@
 			[announcements addObjectsFromArray:[[[IVLE instance] announcements:[module valueForKey:@"ID"] withDuration:0 withTitle:NO] valueForKey:@"Results"]];
 		}
 	}
+    
+    NSSortDescriptor *sortDescriptor;
+    sortDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"CreatedDate" ascending:NO] autorelease];
+    NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+    [announcements sortUsingDescriptors:sortDescriptors];
 	
 	if ([announcements count] > 20) {
-		
-		NSSortDescriptor *sortDescriptor;
-		sortDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"CreatedDate" ascending:NO] autorelease];
-		NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
-		[announcements sortUsingDescriptors:sortDescriptors];
+        
 		NSRange range = NSMakeRange(20, [announcements count]-20);
 		[announcements removeObjectsInRange:range];
 	}
@@ -497,7 +498,7 @@
 
 
 - (void)dealloc {
-	NSLog(@"main dealloc");
+	//NSLog(@"main dealloc");
 	[timetable release];
 	[recentAnnouncements release];
 	[timetableCells release];

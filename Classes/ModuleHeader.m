@@ -70,7 +70,7 @@ static UIImage *backgroundImageSelected;
         [self addSubview:disclosureButton];
 		
 		titleLabel.backgroundColor = [UIColor clearColor];
-        NSLog(@"%f",self.frame.size.height);
+        //NSLog(@"%f",self.frame.size.height);
 		self.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
              
     }
