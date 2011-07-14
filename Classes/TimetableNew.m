@@ -71,7 +71,7 @@
 		}
 	}
 	*/
-	NSLog(@"%@", moduleEventsList);
+	//NSLog(@"%@", moduleEventsList);
 	
 	//create a calendar (Tapku)
 	calendar = [[TKCalendarMonthView alloc] init];

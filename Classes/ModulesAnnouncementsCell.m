@@ -46,7 +46,7 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
 	
-	NSLog(@"Webview loading!");
+	//NSLog(@"Webview loading!");
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)aWebView {

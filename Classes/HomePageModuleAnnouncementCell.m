@@ -47,13 +47,13 @@
 
 -(void) webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
 
-    NSLog(@"%@",@"OH NOEZ I HAZ FAIL");
+    //NSLog(@"%@",@"OH NOEZ I HAZ FAIL");
 }
 
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
 	
-	NSLog(@"%@",@"OH KAY I HAZ STARTAD LOAZING");
+	//NSLog(@"%@",@"OH KAY I HAZ STARTAD LOAZING");
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {

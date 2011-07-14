@@ -11,6 +11,15 @@
 
 @interface WebcastsCell : UITableViewCell {
     
+    IBOutlet UIImageView *thumbnail;
+    IBOutlet UILabel *webcastTitle;
+    IBOutlet UILabel *webcastDuration;
+    IBOutlet UILabel *webcastDate;
 }
+
+@property (nonatomic, retain) UILabel *webcastTitle;
+@property (nonatomic, retain) UILabel *webcastDuration;
+@property (nonatomic, retain) UILabel *webcastDate;
+@property (nonatomic, retain) UIImageView *thumbnail;
 
 @end

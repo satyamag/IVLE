@@ -75,7 +75,7 @@ NSInteger openSectionIndex;
 	
 	NSDictionary *moduleDict = [ivle modules:0 withAllInfo:NO];
 	
-		NSLog(@"%@", moduleDict);
+		//NSLog(@"%@", moduleDict);
 	int i;
 	for (i=0; i<[[moduleDict valueForKey:@"Results"] count]; i++) {
 		NSArray *module = [[moduleDict valueForKey:@"Results"] objectAtIndex:i];
@@ -110,7 +110,7 @@ NSInteger openSectionIndex;
                                                                                   @"ModulesAnnouncements",@"Announcements",
                                                                                   @"ForumViewController",@"Forum",
                                                                                   @"ModulesWorkbin",@"Workbin",
-                                                                                  @"WebcastsController",@"Webcasts",
+                                                                                  @"WebcastController",@"Webcasts",
                                                                                   @"GradebookController", @"Gradebook",nil] retain];
     
 	moduleActiveLinksImageAssociation =[[[NSDictionary alloc] initWithObjectsAndKeys: @"information.png",@"Information",
@@ -324,6 +324,13 @@ NSInteger openSectionIndex;
 		GradeBookController *gradeBook = [[GradeBookController alloc] initWithNibName:nibName bundle:nil];
 		leftBar = [NSArray arrayWithObject:gradeBook];
 		[gradeBook release];
+	}
+    
+    else if ([nibName compare:@"WebcastController"] == NSOrderedSame) {
+		
+		WebcastController *webcast = [[WebcastController alloc] initWithNibName:nibName bundle:nil];
+		leftBar = [NSArray arrayWithObject:webcast];
+		[webcast release];
 	}
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRefreshRightScreen object:leftBar];
