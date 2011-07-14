@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "IVLE.h"
 
 @interface ModuleEvent2 : NSObject {
 
 	NSString *courseID, *academicYear, *dayText, *startTime, *endTime, *venue, *lessonType, *weekText, *weekCode;
 	NSNumber *semester, *classNumber, *dayCode;
+	NSMutableArray *classDates;
 }
 
 @property (nonatomic, retain) NSString *courseID;
@@ -27,7 +28,8 @@
 @property (nonatomic, retain) NSNumber *semester;
 @property (nonatomic, retain) NSNumber *classNumber;
 @property (nonatomic, retain) NSNumber *dayCode;
+@property (nonatomic, retain) NSMutableArray *classDates;
 
-- (void)createModuleEvent:(NSDictionary *)moduleTimetableDetails;
+- (void)createModuleEvent:(NSDictionary *)moduleTimetableDetails StartDate:(NSDate *)startDate EndDate:(NSDate *)endDate;
 
 @end
