@@ -13,8 +13,6 @@
 
 @synthesize timer,splashImageView;
 
-
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Overriden to allow any orientation.
     return YES;//(interfaceOrientation == UIInterfaceOrientationLandscapeLeft) || (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
@@ -23,20 +21,20 @@
 
 - (void)loadView {
 	// Init the view
-	/*CGRect appFrame = [[UIScreen mainScreen] applicationFrame];
+	CGRect appFrame = [[UIScreen mainScreen] applicationFrame];
 	UIView *view = [[UIView alloc] initWithFrame:appFrame];
 	view.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
 	self.view = view;
 	[view release];
 	
 	splashImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"IVLE_splash_screen_white.png"]];
-	//splashImageView.frame = CGRectMake(0, 0, 1024, 748);
+	splashImageView.frame = CGRectMake(0, 0, 1024, 748);
 	[self.view addSubview:splashImageView];
 	
 
 	
 	timer = [NSTimer scheduledTimerWithTimeInterval:2.5 target:self selector:@selector(fadeScreen) userInfo:nil repeats:NO];
-	 */
+	 
 }
 
 -(void) onTimer{
@@ -82,6 +80,5 @@
 - (void)dealloc {
     [super dealloc];
 }
-
 
 @end

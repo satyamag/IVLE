@@ -36,12 +36,6 @@
 
 /* Return the authetication token */
 
-/*Login into ivle. 
- user: username
- password: password
- domain: NUSSTU/NUSSTF*/
-//-(NSDictionary*)login:(NSString*)user withPassword:(NSString*)password withDomain:(NSString*)domain;
-
 -(void) setAuthToken:(NSString *)authToken;
 
 -(NSString*) getAndSetUserName;

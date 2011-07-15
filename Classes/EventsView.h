@@ -62,5 +62,4 @@
 // REQUIRES: none
 // EFFECTS:  returns a new instance of eventView for the given event
 
-
 @end

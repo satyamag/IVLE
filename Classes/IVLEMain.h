@@ -26,8 +26,6 @@
 
 @interface IVLEMain : UIViewController <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>{
 	
-	
-	
 	IBOutlet UITableView *recentAnnouncements, *recentTimetable;
 	NSMutableArray *announcementCells;
 	NSMutableArray *timetableCells;
@@ -46,30 +44,10 @@
 }
 @property (nonatomic, retain) NSMutableArray *announcements;
 @property (nonatomic, retain) NSMutableArray *announcementCells;
-//
-//- (IBAction)modulesClicked;
-//- (IBAction)timetableClicked;
-//- (IBAction)mapClicked;
-//- (IBAction)capClicked;
-//- (IBAction)eventsClicked;
+
+// to change the small dot in UIPageControl
 - (IBAction)changePage:(id)sender;
 
-/* reloads the view with a split view controller
- leftBar: master of split view controller
- rightBar: detail of split view controller */
-
-//- (void)refreshMainScreenWith:(id)leftBar withRight:(id)rightBar;
-//
-///* reloads the view with one single view
-// mainScreen: view to load */
-//
-//- (void)refreshMainScreenWith:(id)mainScreen;
-//
-///* displays the Splash Screen */
-//
-//- (void)refreshScreenToSplashScreen;
-
 /* displays the login screen */
-
 -(void) displayLogin;
 @end

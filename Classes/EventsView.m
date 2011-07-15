@@ -20,7 +20,6 @@
 
 @end
 
-
 @implementation EventsView
 
 @synthesize eventTitle, organization, delegate;

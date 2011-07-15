@@ -45,19 +45,6 @@ static IVLE *sharedSingleton;
 	return authenticationToken;
 }
 
-/*
--(NSDictionary*)login:(NSString*)user{
-	
-	NSDictionary *dict = [handler postURL:@"https://ivle.nus.edu.sg/api/login/" withParameters:[NSString stringWithFormat:@"apiKey=%@", kAPIKey]];
-	//NSLog(@"%@", [[dict valueForKey:@"Login_JSONResult"] valueForKey:@"Token"]);
-	self.authenticationToken = [[dict valueForKey:@"Login_JSONResult"] valueForKey:@"Token"];
-//	if (self.authenticationToken == nil || [self.authenticationToken isEqualToString:@""]) {
-//		NSAssert(0, @"Problem logging in");
-//	}
-	self.userId = [user uppercaseString];
-	return 	dict;
-}*/
-
 -(void) setAuthToken:(NSString *)authToken {
     self.authenticationToken = authToken;
 }
@@ -208,10 +195,7 @@ static IVLE *sharedSingleton;
 }
 
 - (NSDictionary *)webcasts:(NSString *)courseID withDuration:(NSInteger)duration withTitleOnly:(BOOL)title {
-	
-/*	NSString *temp = [NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Webcasts?APIKey=%@&AuthToken=%@&CourseID=%@&Duration=%d&MediaChannelID=%@&TitleOnly=%@&output=json", kAPIKey, authenticationToken, courseID, duration, mediaID, [self booleanToSystemBoolean:title]];
-	NSLog(@"%@", temp);*/
-	
+		
 	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Webcasts?APIKey=%@&AuthToken=%@&CourseID=%@&Duration=%d&TitleOnly=%@&output=json", kAPIKey, authenticationToken, courseID, duration, [self booleanToSystemBoolean:title]]];
 }
 

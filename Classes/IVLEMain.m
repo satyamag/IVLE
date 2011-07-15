@@ -21,9 +21,7 @@
 
 @end
 
-
 @implementation IVLEMain
-
 
 @synthesize announcementCells;
 @synthesize announcements;
@@ -45,7 +43,6 @@
 		UIImage *blackboardImage = [UIImage imageNamed:imageName];
 		[self.view setBackgroundColor:[UIColor colorWithPatternImage:blackboardImage]];
 		
-		//added by SJ, memory managemment
 		currentActiveLeftViewController = nil;
 		currentActiveMainViewController = nil;
 		
@@ -67,11 +64,9 @@
 	
 	self.view.frame = CGRectMake(0,0,1024, 768);
 	[recentTimetable setBackgroundColor:[UIColor colorWithPatternImage:bgImage]];
-	
-	
+		
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshScreen:) name:kNotificationRefreshScreen object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setUpHomePageComponents:) name:kNotificationSetupHomePageComponents object:nil];
-	//	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backToLogin:) name:kNotificationLoginScreen object:nil];
 	
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -95,10 +90,8 @@
 		}
 		[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetupHomePageComponents object:nil];
 	}
+
 	[self.view setAutoresizesSubviews:YES];
-	/*if ([IVLE instance].authenticationToken == nil) {
-	 [self performSelector:@selector(displayLogin) withObject:nil afterDelay:0.0];
-	 }*/
 }
 
 -(void) setUpHomePageComponents:(NSNotification*)notification {
@@ -119,9 +112,6 @@
 	
 	IVLELoginWebViewController *login = [[IVLELoginWebViewController alloc]init];
 	
-	
-	//	[self memoryManagementOfViewControllers:login];
-	//	login.view.frame= CGRectMake(0, 50, 1024, 718);
 	login.wantsFullScreenLayout = YES;
 	login.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 	login.modalPresentationStyle = UIModalPresentationFormSheet;
@@ -140,11 +130,7 @@
 #pragma mark PrivateMethods
 
 - (NSDate *)convertJSONDateToNSDateForDate:(NSString *)aDateInJSON {
-	
-	/*
-	 * This will convert DateTime (.NET) object serialized as JSON by WCF to a NSDate object.
-	 */
-	
+		
 	// Input string is something like: "/Date(1292851800000+0100)/" where
 	// 1292851800000 is milliseconds since 1970 and +0100 is the timezone
 	NSString *inputString = aDateInJSON;
@@ -160,28 +146,6 @@
 	NSDate *convertedDate = [[NSDate dateWithTimeIntervalSince1970:
 							  [[inputString substringWithRange:NSMakeRange(6, 10)] intValue]]
 							 dateByAddingTimeInterval:offset];
-	/*
-	 // You can just stop here if all you care is a NSDate object from inputString,
-	 // or see below on how to get a nice string representation from that date:
-	 
-	 // static is nice if you will use same formatter again and again (for example in table cells)
-	 static NSDateFormatter *dateFormatter = nil;
-	 if (dateFormatter == nil) {
-	 dateFormatter = [[NSDateFormatter alloc] init];
-	 [dateFormatter setDateStyle:NSDateFormatterShortStyle];
-	 [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
-	 
-	 // If you're okay with the default NSDateFormatterShortStyle then comment out two lines below
-	 // or if you want four digit year, then this will do it:
-	 NSString *fourDigitYearFormat = [[dateFormatter dateFormat]
-	 stringByReplacingOccurrencesOfString:@"yy"
-	 withString:@"yyyy"];
-	 [dateFormatter setDateFormat:fourDigitYearFormat];
-	 }
-	 
-	 // There you have it:
-	 NSString *outputString = [dateFormatter stringFromDate:date];
-	 */
 	return convertedDate;
 }
 
@@ -216,8 +180,7 @@
 		NSRange range = NSMakeRange(20, [announcements count]-20);
 		[announcements removeObjectsInRange:range];
 	}
-    
-    
+        
 	announcementCells = [[[NSMutableArray alloc] init] retain];
 	
 	for (int i=0; i<[announcements count]; i++) {
@@ -541,7 +504,7 @@
 
 
 - (void)dealloc {
-	//NSLog(@"main dealloc");
+
 	[recentTimetable release];
 	[recentAnnouncements release];
 	[timetableCells release];
