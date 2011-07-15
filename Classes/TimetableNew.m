@@ -18,21 +18,12 @@
 
 @implementation TimetableNew
 
-/*
- // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
- - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
- self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
- if (self) {
- // get all module IDs and it's timetables		
- }
- return self;
- }
- */
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-    [super viewDidLoad];
+    
+	[super viewDidLoad];
 	[self.view setAutoresizesSubviews:YES];
+	
 	//this block of code basically initializes all the module events in IVLE into the array "moduleEventsList"
 	IVLE *ivleInstance = [IVLE instance];
 	UIImage *bgImage_announcements = [UIImage imageNamed:@"module_info_announcement_bg.png"];
@@ -46,9 +37,17 @@
 		[moduleEventsList removeAllObjects];
 	}
 	
-	NSArray *tempEventsList = [[ivleInstance MyOrganizerIVLE:@"1/1/2011" withEndDate:@"20/12/2011"] objectForKey:@"Results"];
-	
 	//first add events from MyOrganizer
+	NSCalendar *aCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+	NSCalendarUnit unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit| NSWeekCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+	NSDate *date = [NSDate date];
+	NSDateComponents *dateComponents = [aCalendar components:unitFlags fromDate:date];
+	NSInteger year = [dateComponents year];
+	NSString *startDate = [NSString stringWithFormat:@"1/1/%d", year];
+	NSString *endDate = [NSString stringWithFormat:@"31/12/%d", year];
+	
+	NSArray *tempEventsList = [[ivleInstance MyOrganizerIVLE:startDate withEndDate:endDate] objectForKey:@"Results"];
+	
 	for (int i = 0; i < tempEventsList.count; i++) {
 		
 		ModuleEvent *newModuleEvent = [[ModuleEvent alloc] init];
@@ -57,48 +56,29 @@
 		[newModuleEvent release];
 	}
 	
-	//NSLog(@"%@", [ivleInstance timetableStudent:@"2010/2011" forSemester:@"3"]);
-	NSArray *timetableStudent = [[ivleInstance timetableStudent:@"2010/2011" forSemester:@"3"] objectForKey:@"Results"];
-
-	for (int i = 0; i < timetableStudent.count; i++) {
-		
-		NSDictionary *currentEvent = [timetableStudent objectAtIndex:i];
-		//NSLog(@"%@", currentEvent);
-		ModuleEvent2 *newModuleEvent = [[ModuleEvent2 alloc] init];
-		NSDictionary *semInfo = [[[ivleInstance MyOrganizerAcadSemesterInfo:[currentEvent objectForKey:@"AcadYear"] ForSem:[currentEvent objectForKey:@"Semester"]] objectForKey:@"Results"] objectAtIndex:0];
-		//NSLog(@"%@", semInfo);
-		NSDate *startDate = [self convertJSONDateToNSDateForDate:[semInfo objectForKey:@"SemesterStartDate"]];
-		NSDate *endDate = [self convertJSONDateToNSDateForDate:[semInfo objectForKey:@"SemesterEndDate"]];
-		[newModuleEvent createModuleEvent:currentEvent StartDate:startDate EndDate:endDate];
-		[moduleEventsList addObject:newModuleEvent];
-		[newModuleEvent release];
-	}
-	/*
-	//then add stuff from course timetable
-	NSArray *modulesList = [NSArray arrayWithArray:[[ivleInstance modules:0 withAllInfo:NO] objectForKey:@"Results"]];
-	
-	NSMutableArray *moduleIDsList = [NSMutableArray arrayWithObjects:nil];
-	
-	for (int i = 0; i < [modulesList count]; i++) {
-		
-		[moduleIDsList addObject:[[modulesList objectAtIndex:i] objectForKey:@"ID"]];
-		NSArray *moduleEvents = [[ivleInstance timetableStudentModule:[moduleIDsList objectAtIndex:i]] objectForKey:@"Results"];
-		NSLog(@"%@", moduleEvents);
-		for (int j = 0; j < moduleEvents.count; j++) {
+	//then add events from time table
+	for (int j = year - 1; j < year + 1; j++) {
+		for (int k = 1; k <= 4; k++) {
 			
-			NSDictionary *currentEvent = [moduleEvents objectAtIndex:j];
-			NSLog(@"%@", currentEvent);
-			ModuleEvent2 *newModuleEvent = [[ModuleEvent2 alloc] init];
-			NSDictionary *semInfo = [[[ivleInstance MyOrganizerAcadSemesterInfo:[currentEvent objectForKey:@"AcadYear"] ForSem:[currentEvent objectForKey:@"Semester"]] objectForKey:@"Results"] objectAtIndex:0];
-			NSLog(@"%@", semInfo);
-			NSDate *startDate = [self convertJSONDateToNSDateForDate:[semInfo objectForKey:@"SemesterStartDate"]];
-			NSDate *endDate = [self convertJSONDateToNSDateForDate:[semInfo objectForKey:@"SemesterEndDate"]];
-			[newModuleEvent createModuleEvent:currentEvent StartDate:startDate EndDate:endDate];
-			[moduleEventsList addObject:newModuleEvent];
-			[newModuleEvent release];
+			NSString *acadSemester = [NSString stringWithFormat:@"%d/%d", j, j+1];
+			NSString *semesterNumber = [NSString stringWithFormat:@"%d", k];
+			
+			NSArray *timetableStudent = [[ivleInstance timetableStudent:acadSemester forSemester:semesterNumber] objectForKey:@"Results"];
+			
+			for (int i = 0; i < timetableStudent.count; i++) {
+				
+				NSDictionary *currentEvent = [timetableStudent objectAtIndex:i];
+				ModuleEvent2 *newModuleEvent = [[ModuleEvent2 alloc] init];
+				NSDictionary *semInfo = [[[ivleInstance MyOrganizerAcadSemesterInfo:[currentEvent objectForKey:@"AcadYear"] ForSem:[currentEvent objectForKey:@"Semester"]] objectForKey:@"Results"] objectAtIndex:0];
+				NSDate *startDate = [self convertJSONDateToNSDateForDate:[semInfo objectForKey:@"SemesterStartDate"]];
+				NSDate *endDate = [self convertJSONDateToNSDateForDate:[semInfo objectForKey:@"SemesterEndDate"]];
+				[newModuleEvent createModuleEvent:currentEvent StartDate:startDate EndDate:endDate];
+				[moduleEventsList addObject:newModuleEvent];
+				[newModuleEvent release];
+			}
 		}
 	}
-	*/
+	
 	//NSLog(@"%@", moduleEventsList);
 	
 	//create a calendar (Tapku)
@@ -357,7 +337,7 @@
 	else if ([[[currentDisplayEvents objectAtIndex:indexPath.row] class] isEqual:[ModuleEvent2 class]]) {
 		
 		ModuleEvent2 *currentEvent = [currentDisplayEvents objectAtIndex:indexPath.row];
-		cell.eventTitle.text = [currentEvent courseID];
+		cell.eventTitle.text = [NSString stringWithFormat:@"%@ \t %@", [currentEvent courseID], [currentEvent lessonType]];
 		cell.eventType.image = [UIImage imageNamed:@"timetable_events.png"];
 		cell.eventDate.text = [NSString stringWithFormat:@"%@ - %@ \t Venue: %@", [currentEvent startTime], [currentEvent endTime], [currentEvent venue]];
         

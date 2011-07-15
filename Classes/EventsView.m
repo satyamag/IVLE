@@ -59,7 +59,7 @@
 		//NSLog(@"%@", [event objectForKey:@"Description"]);
 		[description setUserInteractionEnabled:NO];
 		[description setScalesPageToFit:YES];
-		[description setBackgroundColor:[UIColor clearColor]];
+		[description setBackgroundColor:[UIColor colorWithWhite:1 alpha:0.8]];
 		
 		[self.view addSubview:eventTitle];
 		[self.view addSubview:organization];
@@ -72,6 +72,7 @@
 		[tap setNumberOfTapsRequired:1];
 		[self.view addGestureRecognizer:tap];
 		[tap release];
+		
 	}
 	
 	return self;

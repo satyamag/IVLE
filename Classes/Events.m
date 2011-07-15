@@ -33,7 +33,13 @@
 	
 	//setup scroll view
     [self initializeEventsArray];
-	[scrollView setContentSize:CGSizeMake(600, 240 * ([eventsArray count] / 4) + 240)];
+	if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationPortrait || [[UIDevice currentDevice] orientation] == UIDeviceOrientationPortraitUpsideDown) {
+		[scrollView setContentSize:CGSizeMake(600, 240 * ceil([eventsArray count] / 3) + 240)];
+	}
+	else {
+		[scrollView setContentSize:CGSizeMake(600, 240 * ceil([eventsArray count] / 4) + 240)];
+	}
+	
 	[scrollView setDirectionalLockEnabled:YES];
 	[scrollView setClipsToBounds:YES];
 	[scrollView setAlwaysBounceHorizontal:NO];
