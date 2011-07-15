@@ -8,6 +8,14 @@
 
 #import "LeftSideBarCellView.h"
 
+@interface LeftSideBarCellView (PrivateMethods)
+
+-(UIButton *) getCellButtonRight;
+
+-(UIButton *) getCellButtonLeft;
+
+@end
+
 
 @implementation LeftSideBarCellView
 

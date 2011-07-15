@@ -219,11 +219,8 @@
 		A5E3D4521356B49B00C0A15A /* ModulesWorkbinWebview.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E3D4501356B49B00C0A15A /* ModulesWorkbinWebview.m */; };
 		A5E3D4531356B49B00C0A15A /* ModulesWorkbinWebview.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E3D4511356B49B00C0A15A /* ModulesWorkbinWebview.xib */; };
 		BF484B7B1352556B0074F299 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF484B7A1352556B0074F299 /* EventKit.framework */; };
-		BF779B001348783C00CC2119 /* TimetableAddClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF779AF91348783C00CC2119 /* TimetableAddClassViewController.m */; };
 		BF779B011348783C00CC2119 /* TimetableAddClassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF779AFA1348783C00CC2119 /* TimetableAddClassViewController.xib */; };
-		BF779B031348783C00CC2119 /* TimetablePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF779AFE1348783C00CC2119 /* TimetablePickerViewController.m */; };
 		BF779B041348783C00CC2119 /* TimetablePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF779AFF1348783C00CC2119 /* TimetablePickerViewController.xib */; };
-		BFC65CF4133E7C5500F4C7F2 /* Timetable.m in Sources */ = {isa = PBXBuildFile; fileRef = BFC65CF2133E7C5500F4C7F2 /* Timetable.m */; };
 		BFC65D87133E99CD00F4C7F2 /* Timetable.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFC65D86133E99CD00F4C7F2 /* Timetable.xib */; };
 		BFD23AFC13CD411A00ED0019 /* Forum.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD23AFA13CD411A00ED0019 /* Forum.m */; };
 		BFD23AFD13CD411A00ED0019 /* Forum.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFD23AFB13CD411A00ED0019 /* Forum.xib */; };
@@ -584,14 +581,8 @@
 		A5E3D4501356B49B00C0A15A /* ModulesWorkbinWebview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModulesWorkbinWebview.m; sourceTree = "<group>"; };
 		A5E3D4511356B49B00C0A15A /* ModulesWorkbinWebview.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ModulesWorkbinWebview.xib; path = Classes/ModulesWorkbinWebview.xib; sourceTree = "<group>"; };
 		BF484B7A1352556B0074F299 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
-		BF779AF81348783C00CC2119 /* TimetableAddClassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimetableAddClassViewController.h; sourceTree = "<group>"; };
-		BF779AF91348783C00CC2119 /* TimetableAddClassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimetableAddClassViewController.m; sourceTree = "<group>"; };
 		BF779AFA1348783C00CC2119 /* TimetableAddClassViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TimetableAddClassViewController.xib; path = Classes/TimetableAddClassViewController.xib; sourceTree = "<group>"; };
-		BF779AFD1348783C00CC2119 /* TimetablePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimetablePickerViewController.h; sourceTree = "<group>"; };
-		BF779AFE1348783C00CC2119 /* TimetablePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimetablePickerViewController.m; sourceTree = "<group>"; };
 		BF779AFF1348783C00CC2119 /* TimetablePickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TimetablePickerViewController.xib; path = Classes/TimetablePickerViewController.xib; sourceTree = "<group>"; };
-		BFC65CF1133E7C5500F4C7F2 /* Timetable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timetable.h; sourceTree = "<group>"; };
-		BFC65CF2133E7C5500F4C7F2 /* Timetable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timetable.m; sourceTree = "<group>"; };
 		BFC65D86133E99CD00F4C7F2 /* Timetable.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Timetable.xib; sourceTree = "<group>"; };
 		BFD23AF913CD411A00ED0019 /* Forum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Forum.h; sourceTree = "<group>"; };
 		BFD23AFA13CD411A00ED0019 /* Forum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Forum.m; sourceTree = "<group>"; };
@@ -1269,12 +1260,6 @@
 				047F5F8713C75A59007C1B64 /* ModuleEvent.m */,
 				047E247213CDACDD00AE6185 /* ModuleEvent2.h */,
 				047E247313CDACDD00AE6185 /* ModuleEvent2.m */,
-				BFC65CF1133E7C5500F4C7F2 /* Timetable.h */,
-				BFC65CF2133E7C5500F4C7F2 /* Timetable.m */,
-				BF779AF81348783C00CC2119 /* TimetableAddClassViewController.h */,
-				BF779AF91348783C00CC2119 /* TimetableAddClassViewController.m */,
-				BF779AFD1348783C00CC2119 /* TimetablePickerViewController.h */,
-				BF779AFE1348783C00CC2119 /* TimetablePickerViewController.m */,
 				4A3F117013CCAD680052002F /* TimeTableCell.h */,
 				4A3F117113CCAD680052002F /* TimeTableCell.m */,
 			);
@@ -1451,7 +1436,6 @@
 				58595613132FB83900F4DDFF /* CJSONSerializer.m in Sources */,
 				A5D3F10D1338733D001B33BB /* ModulesWorkbin.m in Sources */,
 				A5D3F2A5133C451C001B33BB /* IVLESideBar.m in Sources */,
-				BFC65CF4133E7C5500F4C7F2 /* Timetable.m in Sources */,
 				A5628459133F7EB100EBAB06 /* CoreDataTimetableClassInfo.m in Sources */,
 				A562845A133F7EB100EBAB06 /* CoreDataTimetable.m in Sources */,
 				5C851026133F7D1C00034274 /* CAPCalculator.m in Sources */,
@@ -1488,8 +1472,6 @@
 				5CD7B2AD134875AC006A68B9 /* TagChunk.m in Sources */,
 				5CD7B2AE134875AC006A68B9 /* TxtChunk.m in Sources */,
 				5CD7B2AF134875AC006A68B9 /* URLParser.m in Sources */,
-				BF779B001348783C00CC2119 /* TimetableAddClassViewController.m in Sources */,
-				BF779B031348783C00CC2119 /* TimetablePickerViewController.m in Sources */,
 				5CD7B4721348B5E4006A68B9 /* ModuleList.m in Sources */,
 				4AD36BD71349602A00EBB733 /* LeftSideBarCellView.m in Sources */,
 				4AD36D3A13499D3900EBB733 /* ModulesInfoCell.m in Sources */,

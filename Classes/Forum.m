@@ -56,7 +56,7 @@
 		
 		[self.mainNC pushViewController:newTable animated:YES];
 		
-		[newTable.tableView selectRowAtIndexPath:[indexPath row] animated:YES scrollPosition:UITableViewScrollPositionNone];
+		[newTable.tableView selectRowAtIndexPath:(NSIndexPath *)[indexPath row] animated:YES scrollPosition:UITableViewScrollPositionNone];
 		
 		[newTable release];
 	}

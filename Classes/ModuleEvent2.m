@@ -49,9 +49,6 @@
 	// Its massively important to do this assigning via the NSCalendar and NSDateComponents because of daylight saving has been removed 
 	// with the timezone that was set above. If you just used "startDate" directly (ie, NSDate *date = startDate;) as the first 
 	// iterating date then times would go up and down based on daylight savings.
-	NSDateComponents *comp = [cal components:(NSMonthCalendarUnit | NSMinuteCalendarUnit | NSYearCalendarUnit | 
-											  NSDayCalendarUnit | NSWeekdayCalendarUnit | NSHourCalendarUnit | NSSecondCalendarUnit) 
-									fromDate:startDate];
 	
 	startDate = [self setStartDate:startDate];
 	
@@ -100,6 +97,8 @@
 	else if ([dayText isEqualToString:@"Sunday"]) {
 		return [NSDate dateWithTimeInterval:86400*6 sinceDate:aDate];
 	}
+	
+	return nil;
 }
 
 - (void)setWeekOffset {

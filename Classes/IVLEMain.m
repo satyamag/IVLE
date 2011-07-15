@@ -91,6 +91,7 @@
 		[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetupHomePageComponents object:nil];
 	}
 
+	[stringFromFileAtPath release];
 	[self.view setAutoresizesSubviews:YES];
 }
 
@@ -360,6 +361,7 @@
 		}
 	}
 	
+	[dateFormat release];
 	[timetableCells release];
 	timetableCells = [eventsOnThisDate retain];
 	

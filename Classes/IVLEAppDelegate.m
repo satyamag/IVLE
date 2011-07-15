@@ -38,12 +38,6 @@
     eventController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Events" image:[UIImage imageNamed:@"events.png"] tag:3];
     eventController.title = @"Events";
     
-    Timetable *timeTableController = [[[Timetable alloc] init] autorelease];
-    UINavigationController *timeTableNavigator = [[[UINavigationController alloc] initWithRootViewController:timeTableController] autorelease];
-    timeTableNavigator.navigationBar.tintColor = kNavBarColor;
-    timeTableController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Calendar" image:[UIImage imageNamed:@"timetable.png"] tag:4];
-    timeTableController.title = @"Calendar";
-	 
 	TimetableNew *timeTableControllerNew = [[[TimetableNew alloc] init] autorelease];
 	UINavigationController *timeTableNavigatorNew = [[[UINavigationController alloc] initWithRootViewController:timeTableControllerNew] autorelease];
 	timeTableNavigatorNew.navigationBar.tintColor = kNavBarColor;
