@@ -37,6 +37,16 @@
 
 }
 
+//-(void) viewWillAppear:(BOOL)animated {
+//    
+//    //[[UIDevice currentDevice] setOrientation:UIInterfaceOrientationLandscapeRight];
+//    
+//    [UIApplication sharedApplication].statusBarOrientation = UIInterfaceOrientationLandscapeRight;
+//    //-- Rotate the view
+//    CGAffineTransform toLandscape = CGAffineTransformMakeRotation(90.0 * M_PI / 180.0);
+//    toLandscape = CGAffineTransformTranslate(toLandscape, +90.0, +90.0 );
+//    [self.view setTransform:toLandscape];
+//}
 
 - (void) viewDidLoad {
 
