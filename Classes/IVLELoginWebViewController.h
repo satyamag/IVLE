@@ -13,13 +13,9 @@
 @interface IVLELoginWebViewController : UIViewController <UIWebViewDelegate>{
 	
 	UIWebView *webView;
-    
-
 }
 
-
 @property (nonatomic, retain) IBOutlet UIWebView *webView;
-
 
 -(void)checkForAccessToken:(NSString *)urlString;
 

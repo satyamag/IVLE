@@ -14,7 +14,6 @@
 #import "LeftSideBarCellView.h"
 #import "Forum.h"
 #import "IVLE.h"
-#import "Timetable.h"
 #import "ModulesWorkbin.h"
 #import "ModulesInfo.h"
 #import "ModulesAnnouncements.h"
