@@ -21,7 +21,7 @@
 - (void)displayThreadContent:(UIWebView *)content;
 //sent new content to the Forum controller to update the content in the textfield
 
-- (void)updateSubThreadTableView:(NSArray *)children;
+- (void)updateSubThreadTableView:(NSArray *)children andPreviousTable:(id)previousTable;
 //update the subthread table view with this newTable
 
 @end
@@ -33,13 +33,16 @@
 	NSMutableArray *cells;
     
     ForumTableCell *selectedCell;
+    ForumSubThreadTable *previousTable;
 	
 	id <ForumSubThreadTableDelegate> delegate;
 }
 
 @property (nonatomic, retain) NSArray *tableDataSource;
 @property (nonatomic, retain) NSMutableArray *cells;
+@property (nonatomic, retain) ForumSubThreadTable *previousTable;
 @property (nonatomic, retain) ForumTableCell *selectedCell;
 @property (nonatomic, assign) id <ForumSubThreadTableDelegate> delegate;
 
+-(void) updateContentView;
 @end

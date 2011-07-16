@@ -33,14 +33,14 @@
 
 }
 
-- (void)updateSubThreadTableView:(NSArray *)children {
+- (void)updateSubThreadTableView:(NSArray *)children andPreviousTable:(id)previousTable{
 
 	//update the subthreadtable view with this new table
 	if (children != nil) {
 		
 		//prepare to push in new main thread table view
 		ForumSubThreadTable *newForumTable = [[ForumSubThreadTable alloc] init];
-		
+		[newForumTable setPreviousTable:(ForumSubThreadTable*)previousTable];
 		//set the new tableview delegate as the forum class
 		[newForumTable setDelegate:self];
 		
@@ -54,6 +54,14 @@
 
 }
 
+- (void)updateMainThreadTableView:(id)newForumTable {
+    
+    ForumMainThreadTable *table = (ForumMainThreadTable*) newForumTable;
+    table.view.frame = CGRectMake(0, 0, self.mainThreadTable.frame.size.width, self.mainThreadTable.frame.size.height);
+    [self.mainThreadTable addSubview:table.view];
+}
+
+
 - (void)updateMainThreadTableView:(NSArray *)tableDataSource andIndexPath:(NSIndexPath *)indexPath{
 
 	if (tableDataSource != nil) {
@@ -66,11 +74,13 @@
 		
 		newTable.tableDataSource = tableDataSource;
 		
-		[self.mainNC pushViewController:newTable animated:YES];
-		
+//		[self.mainNC pushViewController:newTable animated:YES];
+		newTable.view.frame = CGRectMake(0, 0, self.mainThreadTable.frame.size.width, self.mainThreadTable.frame.size.height);
+        
+        [self.mainThreadTable addSubview:newTable.view];
+        
 		[newTable.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
 		
-		[newTable release];
 	}
 }
 
@@ -107,24 +117,26 @@
 	[mainTable setDelegate:self];
 	
 	//set up navigation controller for the main thread tableview
-	mainNC = [[UINavigationController alloc] init];
+//	mainNC = [[UINavigationController alloc] init];
 	
-	[mainNC pushViewController:mainTable animated:NO];
-	mainNC.navigationBar.barStyle = UIBarStyleBlack;
+//	[mainNC pushViewController:mainTable animated:NO];
+//	mainNC.navigationBar.tintColor = kNavBarColor;
 	
 
 	
 	//set the navigation controller's view frame into the IBOutlet view frame
 
-	mainNC.view.frame = CGRectMake(0, 0, self.mainThreadTable.frame.size.width, self.mainThreadTable.frame.size.height);
-	[self.mainThreadTable addSubview:mainNC.view];
+//	mainNC.view.frame = CGRectMake(0, 0, self.mainThreadTable.frame.size.width, self.mainThreadTable.frame.size.height);
+    
+    mainTable.view.frame = CGRectMake(0, 0, self.mainThreadTable.frame.size.width, self.mainThreadTable.frame.size.height);
+	[self.mainThreadTable addSubview:mainTable.view];
 	
 	contentDisplay.backgroundColor = [UIColor clearColor];
 	mainThreadTable.backgroundColor = [UIColor clearColor];
     contentDisplay.backgroundColor = [UIColor colorWithPatternImage:bgImage_announcements];
     self.view.backgroundColor = [UIColor colorWithPatternImage:bgImage_announcements];
     self.subThreadTable.backgroundColor = [UIColor colorWithPatternImage:bgImage_subthread_table];
-	self.title = @"Forum";
+//	self.title = @"Forum";
 
 	NSLog(@"done loading forum!!!");
 }

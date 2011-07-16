@@ -11,7 +11,7 @@
 
 @implementation ForumSubThreadTable
 
-@synthesize tableDataSource, cells, delegate, selectedCell;
+@synthesize tableDataSource, cells, delegate, selectedCell, previousTable;
 
 #pragma mark -
 #pragma mark help methods
@@ -73,7 +73,86 @@
     cells = [[NSMutableArray alloc] init];	
 
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    UISwipeGestureRecognizer *rightSwipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeRight:)];
+    rightSwipeGesture.direction = UISwipeGestureRecognizerDirectionRight;
+    
+    UISwipeGestureRecognizer *leftSwipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeLeft:)];
+    leftSwipeGesture.direction = UISwipeGestureRecognizerDirectionLeft;
+    
+    [self.tableView addGestureRecognizer:rightSwipeGesture];
+    [self.tableView addGestureRecognizer:leftSwipeGesture];
 	
+}
+
+-(void) updateContentView {
+    
+    if (selectedCell) {
+        selectedCell.titleText.textColor = kWorkbinFontColor;
+        selectedCell.metaText.textColor = kWorkbinFontColor;
+    }
+    
+    UIWebView *content = [[tableDataSource objectAtIndex:0] objectForKey:@"PostBody"];
+    [[self delegate] displayThreadContent:content]; 
+}
+
+-(void)didSwipeRight:(UIGestureRecognizer *)gestureRecognizer {
+    
+
+    int parentSubViewCount = [[self.view superview].subviews count];
+    if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+        if (parentSubViewCount > 1) {
+            if (previousTable) {
+                [previousTable updateContentView];
+            }
+            [self.view removeFromSuperview];
+            
+        }
+    }
+}
+
+-(void)didSwipeLeft:(UIGestureRecognizer *)gestureRecognizer {
+    
+    CGPoint swipeLocation = [gestureRecognizer locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:swipeLocation];
+    
+    
+    if (selectedCell) {
+        selectedCell.titleText.textColor = kWorkbinFontColor;
+        selectedCell.metaText.textColor = kWorkbinFontColor;
+    }
+    selectedCell = (ForumTableCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+    selectedCell.titleText.textColor = kWorkbinFontCompColor;
+    selectedCell.metaText.textColor = kWorkbinFontCompColor;
+    
+    UIWebView *content = [[tableDataSource objectAtIndex:indexPath.row] objectForKey:@"PostBody"];
+    [[self delegate] displayThreadContent:content];
+    
+    NSArray *children = [[tableDataSource objectAtIndex:indexPath.row] objectForKey:@"Threads"];
+    if ([children count] != 0) {
+        
+        if ([children count] == 1) {
+            //call delegate to update sub thread table
+            //[self.view removeFromSuperview];
+            [[self delegate] updateSubThreadTableView:children andPreviousTable:self];
+        }
+        else {
+            //[self.view removeFromSuperview];
+            [[self delegate] updateSubThreadTableView:[NSArray arrayWithObjects:[children objectAtIndex:0], nil]andPreviousTable:self];
+            NSMutableArray *mainThreadChildren = [[NSMutableArray alloc] init];
+            for (int i=1; i<[children count]; i++) {
+                [mainThreadChildren addObject:[children objectAtIndex:i]];
+            }
+            [[self delegate] updateMainThreadTableView:mainThreadChildren andIndexPath:indexPath];
+            [mainThreadChildren release];
+        }
+        
+        
+    }
+	
+    
+    
+	//[self.delegate updateMainThreadTableView:self.tableDataSource andCells:self.cells andIndexPath:indexPath];
 }
 
 
@@ -162,12 +241,12 @@
         
         if ([children count] == 1) {
             //call delegate to update sub thread table
-            [self.view removeFromSuperview];
-            [[self delegate] updateSubThreadTableView:children];
+            //[self.view removeFromSuperview];
+            [[self delegate] updateSubThreadTableView:children andPreviousTable:self];
         }
         else {
-            [self.view removeFromSuperview];
-            [[self delegate] updateSubThreadTableView:[NSArray arrayWithObjects:[children objectAtIndex:0], nil]];
+            //[self.view removeFromSuperview];
+            [[self delegate] updateSubThreadTableView:[NSArray arrayWithObjects:[children objectAtIndex:0], nil]andPreviousTable:self];
             [[self delegate] updateMainThreadTableView:children andIndexPath:indexPath];
         }
         
