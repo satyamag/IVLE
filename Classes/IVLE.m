@@ -8,7 +8,6 @@
 
 #import "IVLE.h"
 
-
 @implementation IVLE
 static IVLE *sharedSingleton;
 
@@ -16,6 +15,7 @@ static IVLE *sharedSingleton;
 @synthesize userName;
 @synthesize selectedWorkbinID;
 @synthesize selectedCourseID;
+@synthesize handler;
 
 -(id)init{
 	self = [super init];
@@ -23,11 +23,8 @@ static IVLE *sharedSingleton;
 	handler = [[IVLEAPIHandler alloc] init];
 	authenticationToken = nil;
 	
-	
 	return self;
 }
-
-
 
 + (IVLE *)instance
 {
@@ -259,6 +256,7 @@ static IVLE *sharedSingleton;
 
 - (void)dealloc{
 	sharedSingleton = nil;
+	
 	[super dealloc];
 }
 

@@ -7,7 +7,7 @@
 //
 
 #import "IVLEAPIHandler.h"
-
+#import "Reachability.h"
 
 @implementation IVLEAPIHandler
 
@@ -17,6 +17,9 @@
 @synthesize allowCoreDataCache;
 @synthesize userName;
 @synthesize cache;
+@synthesize internetActive;
+@synthesize hostActive;
+
 - (id)init{
 	self = [super init];
 	
@@ -25,8 +28,101 @@
 	self.incomingData = nil;
 	
 	self.cache = nil;
-
+	
+	internetActive = NO;
+	hostReachable = NO;
+	//	check for internet connection
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkNetworkStatus:) name:kReachabilityChangedNotification object:nil];
+	
+	internetReachable = [[Reachability reachabilityForInternetConnection] retain];
+	[internetReachable startNotifier];
+	
+	// check if a pathway to a random host exists
+	hostReachable = [[Reachability reachabilityWithHostName: @"www.apple.com"] retain];
+	[hostReachable startNotifier];
+	
+	// now patiently wait for the notification
+	
 	return self;
+}
+
+- (void) checkNetworkStatus:(NSNotification *)notice
+{
+	// called after network status changes
+	
+	NetworkStatus internetStatus = [internetReachable currentReachabilityStatus];
+	switch (internetStatus)
+	
+	{
+		case NotReachable:
+		{
+#if kShouldPrintInternetReachability
+			NSLog(@"The internet is down.");
+#endif
+			internetActive = NO;
+			[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationInternetInactive object:nil];
+			break;
+			
+		}
+		case ReachableViaWiFi:
+		{
+#if kShouldPrintInternetReachability
+			NSLog(@"The internet is working via WIFI.");
+#endif
+			internetActive = YES;
+			[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationInternetActive object:nil];
+			
+			break;
+			
+		}
+		case ReachableViaWWAN:
+		{
+#if kShouldPrintInternetReachability
+			NSLog(@"The internet is working via WWAN.");
+#endif
+			internetActive = YES;
+			[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationInternetActive object:nil];
+			
+			break;
+			
+		}
+	}
+	
+	NetworkStatus hostStatus = [hostReachable currentReachabilityStatus];
+	switch (hostStatus)
+	
+	{
+		case NotReachable:
+		{
+#if kShouldPrintInternetReachability
+			NSLog(@"A gateway to the host server is down.");
+#endif
+			hostActive = NO;
+			
+			break;
+			
+		}
+		case ReachableViaWiFi:
+		{
+#if kShouldPrintInternetReachability
+			NSLog(@"A gateway to the host server is working via WIFI.");
+#endif
+			hostActive = YES;
+			
+			break;
+			
+		}
+		case ReachableViaWWAN:
+		{
+#if kShouldPrintInternetReachability
+			NSLog(@"A gateway to the host server is working via WWAN.");
+#endif
+			hostActive = YES;
+			
+			break;
+			
+		}
+	}
 }
 
 - (NSDictionary*)postURL:(NSString*)url withParameters:(NSString*)parameters{
@@ -121,9 +217,26 @@
 - (NSString*) getUserName:(NSString*)url {
    
     self.incomingData = nil;
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
-    NSURLConnection *connection = [[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
-    [self checkForWriteInDictionary:connection];
+	
+	NSMutableURLRequest *request;
+	NSURLConnection *connection;
+	
+	if (internetActive) {
+#if shouldPrintInternetReachability
+		NSLog(@"Internet reachable");
+#endif
+		request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+		connection = [[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
+		
+		[self checkForWriteInDictionary:connection];
+	}
+	else {
+#if shouldPrintInternetReachability
+		NSLog(@"Internet not reachable");
+#endif
+		self.userName = @"Dummy";
+	}
+
     return self.userName; 
 }
 
@@ -161,11 +274,24 @@
 	if (kDebugURL) {
 		NSLog(@"URL: %@", url);
 	}
-	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
-	NSURLConnection *connection = [[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
 	
-	[self checkForWriteInDictionary:connection];
+	NSMutableURLRequest *request;
+	NSURLConnection *connection;
 	
+	if (internetActive) {
+#if shouldPrintInternetReachability
+		NSLog(@"Internet reachable");
+#endif
+		request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+		connection = [[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
+		
+		[self checkForWriteInDictionary:connection];
+	}
+	else {
+#if shouldPrintInternetReachability
+		NSLog(@"Internet not reachable");
+#endif
+	}
 	return [NSDictionary dictionaryWithDictionary:self.dictionary];
 }
 
@@ -181,7 +307,7 @@
 }
 
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
-	//NSLog(@"Connection Error:%@, A blank dictionary is returned", [error localizedDescription]);
+	NSLog(@"Connection Error:%@, A blank dictionary is returned", [error localizedDescription]);
 	self.dictionary = nil;
 	dictionaryWritten = YES;
 }
@@ -250,5 +376,11 @@
 	
 }
 
+- (void)dealloc {
+	
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	
+	[super dealloc];
+}
 
 @end

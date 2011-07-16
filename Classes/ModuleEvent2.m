@@ -71,7 +71,7 @@
 		[classDates addObject:currentDate];
 	}
 	
-	NSLog(@"%@", classDates);
+	//NSLog(@"%@", classDates);
 }
 
 - (NSDate *)setStartDate:(NSDate *)aDate {

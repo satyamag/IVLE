@@ -67,6 +67,8 @@
 		
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshScreen:) name:kNotificationRefreshScreen object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setUpHomePageComponents:) name:kNotificationSetupHomePageComponents object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadAppContent:) name:kNotificationInternetActive object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doNotLoadAppContent:) name:kNotificationInternetInactive object:nil];
 	
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -76,11 +78,13 @@
 									  initWithContentsOfFile:path
                                       encoding:NSUTF8StringEncoding
                                       error:&error];
+	
 	if (stringFromFileAtPath == nil) {
 		[self performSelector:@selector(displayLogin) withObject:nil afterDelay:0.0];
 	}
 	else {
 		[[IVLE instance] setAuthToken:stringFromFileAtPath];
+		
 		[[ModulesFetcher sharedInstance] setUserID:[[IVLE instance] getAndSetUserName]];
 		NSDictionary *tokenValidity = [[IVLE instance] validate];
 		if ([tokenValidity objectForKey:@"Token"] != nil) {
@@ -88,14 +92,33 @@
 			[[IVLE instance] setAuthToken:[tokenValidity objectForKey:@"Token"]];
 			[[ModulesFetcher sharedInstance] setUserID:[[IVLE instance] getAndSetUserName]];
 		}
-		[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetupHomePageComponents object:nil];
 	}
-
+	
 	[stringFromFileAtPath release];
 	[self.view setAutoresizesSubviews:YES];
 }
 
+- (void)loadAppContent:(NSNotification *)notification {
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetupHomePageComponents object:nil];
+}
+
+- (void)doNotLoadAppContent:(NSNotification *)notification {
+	
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cellular Data is Turned Off" 
+													message:@"Turn on cellular data or use Wi-Fi to access data." 
+												   delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+	[self.view addSubview:alert];
+	[alert show];
+	[alert release];
+}
+
 -(void) setUpHomePageComponents:(NSNotification*)notification {
+	
+	UIActivityIndicatorView *loading = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+	loading.center = self.view.center;
+	[loading startAnimating];
+	[self.view addSubview:loading];
 	
     [self setUpAnnouncementsView];
 	[self setUpEventsView];
@@ -107,6 +130,9 @@
 	[rightHandSideView addSubview:eventsScrollView];
 	[self.view addSubview:rightHandSideView];
 	[self setUpTimeTableView];
+	
+	[loading stopAnimating];
+	[loading release];
 }
 
 - (void)displayLogin{
@@ -298,7 +324,7 @@
     }
 
     CGFloat pageWidth = 512;//_scrollView.frame.size.width;
-	NSLog(@"%f", _scrollView.contentOffset.x);
+	//NSLog(@"%f", _scrollView.contentOffset.x);
     int page = floor((_scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
     eventsPageControl.currentPage = page;
 }

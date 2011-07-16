@@ -14,9 +14,15 @@
 
 #define kDebugReceivedData 0
 #define kDebugURL 0
+#define kShouldPrintInternetReachability 0
+
+#define kNotificationInternetActive @"InternetActive"
+#define kNotificationInternetInactive @"InternetInactive"
 
 #define kAPIKey @"Xi6BSlJ5TeMKFi95VF9B9"
 #define kAPICacheMinutes 10
+
+@class Reachability;
 
 @interface IVLEAPIHandler : NSObject {
 	NSDictionary *dictionary;
@@ -27,6 +33,11 @@
 	BOOL allowCoreDataCache;
     NSString *userName;
 	IVLEAPICache *cache;
+	
+	Reachability *internetReachable;
+	Reachability *hostReachable;
+	
+	BOOL internetActive, hostActive;
 }
 
 @property (nonatomic, retain) NSDictionary *dictionary;
@@ -35,6 +46,11 @@
 @property (nonatomic, assign) BOOL allowCoreDataCache;
 @property (nonatomic, retain) NSString* userName;
 @property (nonatomic, retain) IVLEAPICache *cache;
+@property (nonatomic, assign) BOOL internetActive;
+@property (nonatomic, assign) BOOL hostActive;
+
+/* To check the network status */
+- (void) checkNetworkStatus:(NSNotification *)notice;
 
 /* Post URL with a string of parameters denoted by p1=value&p2=value2
  REQUIRES: valid parameters format and url*/

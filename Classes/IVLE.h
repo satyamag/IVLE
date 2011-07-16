@@ -13,7 +13,10 @@
 
 #define kNotificationRefreshScreen @"RefreshScreen"
 #define kNotificationRefreshRightScreen @"RefreshRightScreen"
+#define kNotificationInternetActive @"InternetActive"
+#define kNotificationInternetInactive @"InternetInactive"
 #define kDebugMemoryManagement 1
+
 @interface IVLE : NSObject {
 	IVLEAPIHandler *handler;
 	NSString *authenticationToken;
@@ -22,15 +25,15 @@
 	
 	NSString *selectedCourseID;
 	NSString *selectedWorkbinID;
-	
 }
-
+@property (nonatomic, retain) IVLEAPIHandler *handler;
 @property (nonatomic, retain) NSString *authenticationToken;
 @property (nonatomic, retain) NSString *userName;
 
 @property (nonatomic, retain) NSString *selectedCourseID;
 
 @property (nonatomic, retain) NSString *selectedWorkbinID;
+
 /* Returns an instance of the IVLE object. Adopted Singleton Pattern*/
 + (IVLE *)instance;
 
