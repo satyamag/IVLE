@@ -16,10 +16,20 @@
 #pragma mark -
 #pragma mark ForumMainThreadTableDelegate
 
-- (void)displayThreadContent:(UIWebView *)content{
+- (void)displayThreadContent:(NSString *)content{
 	
 	//control the contentDisplay view and subThreadTable view here
-	self.contentDisplay = content;
+    
+    NSString *formatedContent = [NSString stringWithFormat:@"<html> \n"
+     "<head> \n"
+     "<style type=\"text/css\"> \n"
+     "body {font-family: \"%@\"; font-size: %@; text-align: %@}\n"
+     "</style> \n"
+     "</head> \n"
+     "<body><div id='foo'>%@</div></body> \n"
+     "</html>", @"HelveticaNeue", [NSNumber numberWithInt:kWebViewFontSize],@"justify",content];
+    
+	[self.contentDisplay loadHTMLString:formatedContent baseURL:nil];
 
 }
 
@@ -36,13 +46,15 @@
 		
 		//update the data source
 		newForumTable.tableDataSource = children;
-		
+        
+		newForumTable.view.frame = CGRectMake(1, 1, self.subThreadTable.frame.size.width, self.subThreadTable.frame.size.height);
 		[self.subThreadTable addSubview:newForumTable.view];
+        
 	}
 
 }
 
-- (void)updateMainThreadTableView:(NSArray *)tableDataSource andCells:(NSMutableArray *)cells andIndexPath:(NSIndexPath *)indexPath{
+- (void)updateMainThreadTableView:(NSArray *)tableDataSource andIndexPath:(NSIndexPath *)indexPath{
 
 	if (tableDataSource != nil) {
 		
@@ -56,10 +68,21 @@
 		
 		[self.mainNC pushViewController:newTable animated:YES];
 		
-		[newTable.tableView selectRowAtIndexPath:(NSIndexPath *)[indexPath row] animated:YES scrollPosition:UITableViewScrollPositionNone];
+		[newTable.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
 		
 		[newTable release];
 	}
+}
+
+-(void) clearSubThreadView {
+    
+    for (UIView *view in self.subThreadTable.subviews) {
+        [view removeFromSuperview];
+    }
+}
+
+-(void) clearContentView {
+    [self.contentDisplay loadHTMLString:@"<html><head></head><body></body></html>" baseURL:nil];
 }
 
 
@@ -67,43 +90,7 @@
 #pragma mark - 
 #pragma mark view lifecycle
 
- // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization.
-		
-		NSLog(@"!!!!!!!!Start loading forum!!!");
-		
-		ForumMainThreadTable *mainTable = [[ForumMainThreadTable alloc] init];
-		[mainTable setDelegate:self];
-		
-		NSLog(@"im here 1");
-		
-		//set up navigation controller for the main thread tableview
-		mainNC = [[UINavigationController alloc] init];
-		[mainNC pushViewController:mainTable animated:NO];
-		mainNC.navigationBar.barStyle = UIBarStyleBlack;
-		
-		NSLog(@"im here 2");
-		
-		//set the navigation controller's view frame into the IBOutlet view frame
-		mainNC.view.frame = CGRectMake(0, 0, self.mainThreadTable.frame.size.width, self.mainThreadTable.frame.size.height);
-		[self.mainThreadTable addSubview:mainNC.view];
-		
-		NSLog(@"im here 3");
-		
-		contentDisplay.backgroundColor = [UIColor clearColor];
-		mainThreadTable.backgroundColor = [UIColor clearColor];
-		//self.view.backgroundColor = [UIColor clearColor];
-		//self.title = @"Forum";
-    }
-	NSLog(@"done loading forum");
-	
-    return self;
-}
-*/
+
 
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -113,7 +100,9 @@
 	// Custom initialization.
 	
 	NSLog(@"Start loading forum!!!!");
-	
+	UIImage *bgImage_announcements = [UIImage imageNamed:@"module_info_announcement_bg.png"];
+    UIImage *bgImage_subthread_table = [UIImage imageNamed:@"subthreads_table.png"];
+
 	ForumMainThreadTable *mainTable = [[ForumMainThreadTable alloc] init];
 	[mainTable setDelegate:self];
 	
@@ -126,12 +115,15 @@
 
 	
 	//set the navigation controller's view frame into the IBOutlet view frame
+
 	mainNC.view.frame = CGRectMake(0, 0, self.mainThreadTable.frame.size.width, self.mainThreadTable.frame.size.height);
 	[self.mainThreadTable addSubview:mainNC.view];
 	
 	contentDisplay.backgroundColor = [UIColor clearColor];
 	mainThreadTable.backgroundColor = [UIColor clearColor];
-	self.view.backgroundColor = [UIColor clearColor];
+    contentDisplay.backgroundColor = [UIColor colorWithPatternImage:bgImage_announcements];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:bgImage_announcements];
+    self.subThreadTable.backgroundColor = [UIColor colorWithPatternImage:bgImage_subthread_table];
 	self.title = @"Forum";
 
 	NSLog(@"done loading forum!!!");

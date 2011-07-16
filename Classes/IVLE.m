@@ -116,6 +116,9 @@ static IVLE *sharedSingleton;
 	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Module_Weblinks?APIKey=%@&AuthToken=%@&CourseID=%@&Duration=%d&output=json", kAPIKey, authenticationToken, courseID, duration]];
 }
 
+
+// ------------------- FORUM API CALLS -------------------------------------
+
 -(NSDictionary*)forum:(NSString*)forumID withDuration:(NSInteger)duration withThreads:(BOOL)thread{
 	if (thread == YES) {
 		NSAssert(0, @"Are you insane? This will load ALL data in the forum");
@@ -123,17 +126,17 @@ static IVLE *sharedSingleton;
 	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Forum?APIKey=%@&AuthToken=%@&ForumID=%@&Duration=%d&IncludeThreads=%@&output=json", kAPIKey, authenticationToken, forumID, duration, [self booleanToSystemBoolean:thread]]];  
 }
 
--(NSDictionary*)forumHeadingMainThreads:(NSString*)headingID withDuration:(NSInteger)duration{
-	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Forum_HeadingThreads?APIKey=%@&AuthToken=%@&HeadingID=%@&Duration=%d&output=json", kAPIKey, authenticationToken, headingID, duration]];
+-(NSDictionary*)forumHeadingMainThreads:(NSString*)headingID withDuration:(NSInteger)duration withMainTopics:(BOOL)thread{
+	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Forum_HeadingThreads?APIKey=%@&AuthToken=%@&HeadingID=%@&Duration=%d&GetMainTopicsOnly=%@&output=json", kAPIKey, authenticationToken, headingID, duration, [self booleanToSystemBoolean:thread]]];
 }
 
 -(NSDictionary*)forumHeadings:(NSString*)forumID withDuration:(NSInteger)duration withThreads:(BOOL)thread{
 	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Forum_Headings?APIKey=%@&AuthToken=%@&ForumID=%@&Duration=%d&IncludeThreads=%@&output=json", kAPIKey, authenticationToken, forumID, duration, [self booleanToSystemBoolean:thread]]];
 }
 
--(NSDictionary*)forumHeadingThreads:(NSString*)headingID withDuration:(NSInteger)duration{
-	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Forum_HeadingThreads?APIKey=%@&AuthToken=%@&HeadingID=%@&Duration=%d&output=json", kAPIKey, authenticationToken, headingID, duration]]; 
-}
+//-(NSDictionary*)forumHeadingThreads:(NSString*)headingID withDuration:(NSInteger)duration{
+//	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Forum_HeadingThreads?APIKey=%@&AuthToken=%@&HeadingID=%@&Duration=%d&output=json", kAPIKey, authenticationToken, headingID, duration]]; 
+//}
 
 - (NSDictionary *)forumThreads:(NSString *)threadID withDuration:(NSInteger)duration withThreads:(BOOL)thread {
 	return [handler getURL:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Forum_Threads?APIKey=%@&AuthToken=%@&ThreadID=%@&Duration=%d&GetSubThreads=%@&output=json", kAPIKey, authenticationToken, threadID, duration, [self booleanToSystemBoolean:thread]]];
@@ -154,6 +157,8 @@ static IVLE *sharedSingleton;
 - (NSDictionary *)forumReplyThread:(NSString *)threadID withTitle:(NSString*)title withReply:(NSString*)reply{
 	return [handler postURL:@"https://ivle.nus.edu.sg/api/Lapi.svc/Forum_ReplyThread_JSON" withParameters:[NSString stringWithFormat:@"APIKey=%@&AuthToken=%@&ThreadID=%@&Title=%@&Reply=%@", kAPIKey, authenticationToken, threadID, title, reply]];
 }
+
+// --------------------------- WORKBIN API CALLS ---------------------------------------
 
 -(NSDictionary*)workbin:(NSString*)courseID withDuration:(NSInteger)duration withWorkbinID:(NSString*)workbinID withTitle:(BOOL)title{
 	if (workbinID != nil) {

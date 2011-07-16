@@ -102,7 +102,7 @@
 
 /*	Display forum main topic
  REQUIRES: Valid token, valid headingID */
--(NSDictionary*)forumHeadingMainThreads:(NSString*)headingID withDuration:(NSInteger)duration;
+-(NSDictionary*)forumHeadingMainThreads:(NSString*)headingID withDuration:(NSInteger)duration withMainTopics:(BOOL)thread;
 
 /*	Display forum based on headingID with/without all the threads
  REQUIRES: Valid token, valid forumID */
@@ -110,7 +110,7 @@
 
 /*	Display forum threads based on headingID 
  REQUIRES: Valid token, valid headingID */
--(NSDictionary*)forumHeadingThreads:(NSString*)headingID withDuration:(NSInteger)duration;
+//-(NSDictionary*)forumHeadingThreads:(NSString*)headingID withDuration:(NSInteger)duration;
 
 /*	Display workbin items and structure based on workbinID
  REQUIRES: Valid token, valid courseID */

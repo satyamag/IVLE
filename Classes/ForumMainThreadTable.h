@@ -21,6 +21,9 @@
 - (void)updateSubThreadTableView:(NSArray *)children;
 //update the subthread table view with this newTable
 
+-(void) clearSubThreadView;
+-(void) clearContentView;
+
 @end
 
 @interface ForumMainThreadTable : UITableViewController<ForumPostNewDelegate> {
@@ -33,6 +36,9 @@
 	
 	NSMutableArray *headingNames;
 	NSMutableArray *headingIDs;
+    
+    ForumTableCell *selectedCell;
+    NSString *currentHeading;
 	
 	id <ForumMainThreadTableDelegate> delegate;
 }
@@ -42,7 +48,9 @@
 @property (nonatomic, readwrite) NSInteger currentLevel;
 @property (nonatomic, assign) NSString *currentTitle;
 @property (nonatomic, retain) NSMutableArray *headingNames;
+@property (nonatomic, retain) NSString *currentHeading;
 @property (nonatomic, retain) NSMutableArray *headingIDs;
+@property (nonatomic, retain) ForumTableCell *selectedCell;
 @property (nonatomic, assign) id <ForumMainThreadTableDelegate> delegate;
 
 @end

@@ -15,22 +15,31 @@
 
 @required
 
-- (void)updateMainThreadTableView:(NSArray *)tableDataSource andCells:(NSMutableArray *)cells andIndexPath:(NSIndexPath *)indexPath;
+- (void)updateMainThreadTableView:(NSArray *)tableDataSource andIndexPath:(NSIndexPath *)indexPath;
+//update the subthread table view with this newTable
+
+- (void)displayThreadContent:(UIWebView *)content;
+//sent new content to the Forum controller to update the content in the textfield
+
+- (void)updateSubThreadTableView:(NSArray *)children;
 //update the subthread table view with this newTable
 
 @end
 
 
-@interface ForumSubThreadTable : UITableViewController {
+@interface ForumSubThreadTable : UITableViewController <UITableViewDelegate, UIWebViewDelegate> {
 
 	NSArray *tableDataSource;
 	NSMutableArray *cells;
+    
+    ForumTableCell *selectedCell;
 	
 	id <ForumSubThreadTableDelegate> delegate;
 }
 
 @property (nonatomic, retain) NSArray *tableDataSource;
 @property (nonatomic, retain) NSMutableArray *cells;
+@property (nonatomic, retain) ForumTableCell *selectedCell;
 @property (nonatomic, assign) id <ForumSubThreadTableDelegate> delegate;
 
 @end

@@ -8,20 +8,23 @@
 
 #import <UIKit/UIKit.h>
 #import "ForumPostHeadingSelect.h"
+#import "Constants.h"
 
 @protocol ForumPostNewDelegate
 
 -(void)postNewThreadWithHeading:(NSString *)headingName title:(NSString *)titleName body:(NSString *)postBody;
 
+-(NSString*) getHeadingName;
 @end
 
 
-@interface ForumPostNew : UIViewController<UITableViewDataSource, UITableViewDelegate, ForumPostHeadingSelectDelegate> {
+@interface ForumPostNew : UIViewController {
 	
-	IBOutlet UITableView *headingTableView;
+//	IBOutlet UITableView *headingTableView;
 	IBOutlet UITextField *postTitle;
 	IBOutlet UITextView *postBody;
-	
+	IBOutlet UILabel *heading;
+    
 	NSString *headingName;
 	NSArray *headingList;
 	
@@ -29,7 +32,8 @@
 
 }
 
-@property (nonatomic, retain) IBOutlet UITableView *headingTableView;
+//@property (nonatomic, retain) IBOutlet UITableView *headingTableView;
+@property (nonatomic, retain) IBOutlet UILabel *heading;
 @property (nonatomic, retain) IBOutlet UITextField *postTitle;
 @property (nonatomic, retain) IBOutlet UITextView *postBody;
 @property (nonatomic, retain) NSString *headingName;

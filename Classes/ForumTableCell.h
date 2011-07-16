@@ -12,19 +12,14 @@
 @interface ForumTableCell : UITableViewCell {
 	
 	IBOutlet UILabel *titleText;
-    IBOutlet UILabel *meta;
-	IBOutlet UIWebView *descriptionText;
-    IBOutlet UIImageView *backgroundImage;
+    IBOutlet UILabel *metaText;
     IBOutlet UIImageView *readIndicator;
-	BOOL finishedLoading;
-
+    IBOutlet UIImageView *staffIndicator;
 }
 
 @property (nonatomic, retain) UILabel *titleText;
-@property (nonatomic, retain) UILabel *meta;
-@property (nonatomic, retain) UIWebView *descriptionText;
-@property (nonatomic, retain) UIImageView *backgroundImage;
+@property (nonatomic, retain) UILabel *metaText;
 @property (nonatomic, retain) UIImageView *readIndicator;
-@property (nonatomic, assign) BOOL finishedLoading;
+@property (nonatomic, retain) UIImageView *staffIndicator;
 
 @end

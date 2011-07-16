@@ -116,7 +116,8 @@
 		4A3F117613CCC27A0052002F /* ivle_events.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A3F117513CCC2790052002F /* ivle_events.png */; };
 		4A3F117813CCC28B0052002F /* personal_events.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A3F117713CCC28A0052002F /* personal_events.png */; };
 		4A3F117A13CCC2A30052002F /* timetable_events.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A3F117913CCC2A20052002F /* timetable_events.png */; };
-		4A5B53B013D01BAA0066C06E /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A5B53AF13D01BAA0066C06E /* Entitlements.plist */; };
+		4A6DFC6A13D1A03600CE1DBF /* teacher.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A6DFC6913D1A03600CE1DBF /* teacher.png */; };
+		4A6DFC6C13D1B1C600CE1DBF /* subthreads_table.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A6DFC6B13D1B1C600CE1DBF /* subthreads_table.png */; };
 		4A7D12DC13CA53A7009E8BE3 /* webcasts.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A7D12DB13CA53A7009E8BE3 /* webcasts.png */; };
 		4A7D12DE13CA65B2009E8BE3 /* module_info_announcement_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A7D12DD13CA65B2009E8BE3 /* module_info_announcement_bg.png */; };
 		4A8A676C13BBA2DD003DEDDB /* IVLELoginWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8A676B13BBA2DD003DEDDB /* IVLELoginWebViewController.m */; };
@@ -416,7 +417,8 @@
 		4A3F117513CCC2790052002F /* ivle_events.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ivle_events.png; sourceTree = "<group>"; };
 		4A3F117713CCC28A0052002F /* personal_events.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personal_events.png; sourceTree = "<group>"; };
 		4A3F117913CCC2A20052002F /* timetable_events.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timetable_events.png; sourceTree = "<group>"; };
-		4A5B53AF13D01BAA0066C06E /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Entitlements.plist; path = Classes/Entitlements.plist; sourceTree = "<group>"; };
+		4A6DFC6913D1A03600CE1DBF /* teacher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = teacher.png; sourceTree = "<group>"; };
+		4A6DFC6B13D1B1C600CE1DBF /* subthreads_table.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subthreads_table.png; sourceTree = "<group>"; };
 		4A7D12DB13CA53A7009E8BE3 /* webcasts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = webcasts.png; sourceTree = "<group>"; };
 		4A7D12DD13CA65B2009E8BE3 /* module_info_announcement_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = module_info_announcement_bg.png; sourceTree = "<group>"; };
 		4A8A676A13BBA2DD003DEDDB /* IVLELoginWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IVLELoginWebViewController.h; sourceTree = "<group>"; };
@@ -441,6 +443,7 @@
 		4AAA711613CB1AB300CB0E91 /* new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new.png; sourceTree = "<group>"; };
 		4AAA711913CB28CB00CB0E91 /* home_page_announcements_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_page_announcements_bg.png; sourceTree = "<group>"; };
 		4AAA711B13CB6AA400CB0E91 /* gradebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gradebook.png; sourceTree = "<group>"; };
+		4AB546E713D0B5D100128FFC /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		4AD36BCF1349602A00EBB733 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		4AD36BD01349602A00EBB733 /* LeftSideBarCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeftSideBarCellView.m; path = ../LeftSideBarCellView.m; sourceTree = "<group>"; };
 		4AD36BD11349602A00EBB733 /* LeftSideBarCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftSideBarCellView.h; path = ../LeftSideBarCellView.h; sourceTree = "<group>"; };
@@ -780,13 +783,13 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				4A5B53AF13D01BAA0066C06E /* Entitlements.plist */,
 				BF28D7E5133E6AD300EE060D /* Art Set */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				4AB546E713D0B5D100128FFC /* Entitlements.plist */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -1198,6 +1201,8 @@
 		BF28D7E5133E6AD300EE060D /* Art Set */ = {
 			isa = PBXGroup;
 			children = (
+				4A6DFC6B13D1B1C600CE1DBF /* subthreads_table.png */,
+				4A6DFC6913D1A03600CE1DBF /* teacher.png */,
 				4A9FAFDA13CF744600DF7801 /* home_page_announcements_bg_portrait.png */,
 				4A3F117913CCC2A20052002F /* timetable_events.png */,
 				4A3F117713CCC28A0052002F /* personal_events.png */,
@@ -1414,7 +1419,8 @@
 				BFD23B1A13CD476400ED0019 /* ForumSubThreadTable.xib in Resources */,
 				BFD23B2013CD47B800ED0019 /* ForumTableCell.xib in Resources */,
 				BFEE434913CED42600265434 /* ForumPostNew.xib in Resources */,
-				4A5B53B013D01BAA0066C06E /* Entitlements.plist in Resources */,
+				4A6DFC6A13D1A03600CE1DBF /* teacher.png in Resources */,
+				4A6DFC6C13D1B1C600CE1DBF /* subthreads_table.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1587,6 +1593,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "~/Documents/iOS workspace/IVLE/Entitlements.plist";
 				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1605,6 +1612,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "~/Documents/iOS workspace/IVLE/Entitlements.plist";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1619,6 +1627,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "~/Documents/iOS workspace/IVLE/Entitlements.plist";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = IVLE_Prefix.pch;

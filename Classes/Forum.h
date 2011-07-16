@@ -25,5 +25,7 @@
 @property (nonatomic, retain) IBOutlet UIWebView *contentDisplay;
 @property (nonatomic, retain) UINavigationController *mainNC;
 
+
+- (void)displayThreadContent:(NSString *)content;
 @end
 

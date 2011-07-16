@@ -11,7 +11,7 @@
 
 @implementation ForumSubThreadTable
 
-@synthesize tableDataSource, cells, delegate;
+@synthesize tableDataSource, cells, delegate, selectedCell;
 
 #pragma mark -
 #pragma mark help methods
@@ -28,7 +28,7 @@
 
 - (NSArray *)getMainThreadsForHeading:(NSString *)headingID {
 	
-	NSArray *headingMainThreads = [[[IVLE instance] forumHeadingMainThreads:headingID withDuration:0] objectForKey:@"Results"];
+	NSArray *headingMainThreads = [[[IVLE instance] forumHeadingMainThreads:headingID withDuration:0 withMainTopics:YES] objectForKey:@"Results"];
 	NSLog(@"-----getting main threads for heading %@", headingMainThreads);
 	return headingMainThreads;
 }
@@ -70,45 +70,9 @@
     [super viewDidLoad];
 
 	self.tableView.backgroundColor = [UIColor clearColor];
+    cells = [[NSMutableArray alloc] init];	
 
-	//init the cells
-	for (int i=0; i<[tableDataSource count]; i++) {
-		
-		NSDictionary *info = [tableDataSource objectAtIndex:i];
-		
-		ForumTableCell *cell;
-		
-		NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ForumTableCell" 
-													 owner:self
-												   options:nil];
-		cell = [nib objectAtIndex:0];
-		
-		cell.titleText.text = [info objectForKey:@"PostTitle"];
-		cell.meta.text = [[info objectForKey:@"Poster"] objectForKey:@"Name"];
-		
-		NSString *formatedContent = [NSString stringWithFormat:@"<html> \n"
-									 "<head> \n"
-									 "<style type=\"text/css\"> \n"
-									 "body {font-family: \"%@\"; font-size: %@; text-align: %@}\n"
-									 "</style> \n"
-									 "</head> \n"
-									 "<body><div id='foo'>%@</div></body> \n"
-									 "</html>", @"HelveticaNeue", [NSNumber numberWithInt:kWebViewFontSize],@"justify",[info valueForKey:@"PostBody"]];
-		
-		[cell.descriptionText loadHTMLString:formatedContent baseURL:nil];
-		
-		do {
-			[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
-		} while (!cell.finishedLoading);
-		NSAssert(cell.finishedLoading, @"cell not finish loading");
-		cell.descriptionText.backgroundColor = [UIColor clearColor];
-		
-		[self.cells addObject:cell];
-		
-	}
-	
-	UIImage *bgImage_announcements = [UIImage imageNamed:@"module_info_announcement_bg.png"];
-	self.view.backgroundColor = [UIColor colorWithPatternImage:bgImage_announcements];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 	
 }
 
@@ -138,22 +102,42 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-	return [self.cells objectAtIndex:[indexPath row]];
+    NSDictionary *info = [tableDataSource objectAtIndex:[indexPath row]];
+    
+    ForumTableCell *cell;
+    
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ForumTableCell" 
+                                                 owner:self
+                                               options:nil];
+    cell = [nib objectAtIndex:0];
+    
+    cell.titleText.text = [info objectForKey:@"PostTitle"];
+    cell.titleText.text = [info objectForKey:@"PostTitle"];
+    
+    NSRange range = NSMakeRange (6, 10);
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[[info objectForKey:@"PostDate"] substringWithRange:range] intValue]];
+    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+    [formatter setDateStyle:kCFDateFormatterMediumStyle];
+    
+    cell.metaText.text = [NSString stringWithFormat:@"%@, %@", [[[info objectForKey:@"Poster"] objectForKey:@"Name"] capitalizedString], [formatter stringFromDate:date]];
+    
+    if ([[info objectForKey:@"isPosterStaff"] intValue] == 1) {
+        cell.staffIndicator.image = [UIImage imageNamed:@"teacher.png"];
+    }
+    
+    if ([[info objectForKey:@"isRead"] intValue] == 0) {
+        cell.readIndicator.image = [UIImage imageNamed:@"new.png"];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cells addObject:cell];
+	return cell;
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	
-	ForumTableCell *cell = [cells objectAtIndex:[indexPath row]];
-	CGFloat height = cell.descriptionText.frame.size.height + (cell.descriptionText.frame.origin.y-cell.titleText.frame.origin.y);
-    CGFloat x = cell.backgroundImage.frame.origin.x;
-    CGFloat y = cell.backgroundImage.frame.origin.y;
-    CGFloat width = cell.backgroundImage.frame.size.width;
-    
-    
-    cell.backgroundImage.frame = CGRectMake(x, y, width, cell.descriptionText.frame.size.height);
-	return height;
+	return 50.0;
 	
 }
 
@@ -161,9 +145,38 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
-	[self.view removeFromSuperview];
-	[self.delegate updateMainThreadTableView:self.tableDataSource andCells:self.cells andIndexPath:indexPath];
+    
+    if (selectedCell) {
+        selectedCell.titleText.textColor = kWorkbinFontColor;
+        selectedCell.metaText.textColor = kWorkbinFontColor;
+    }
+    selectedCell = (ForumTableCell*)[tableView cellForRowAtIndexPath:indexPath];
+    selectedCell.titleText.textColor = kWorkbinFontCompColor;
+    selectedCell.metaText.textColor = kWorkbinFontCompColor;
+    
+    UIWebView *content = [[tableDataSource objectAtIndex:indexPath.row] objectForKey:@"PostBody"];
+    [[self delegate] displayThreadContent:content];
+    
+    NSArray *children = [[tableDataSource objectAtIndex:indexPath.row] objectForKey:@"Threads"];
+    if ([children count] != 0) {
+        
+        if ([children count] == 1) {
+            //call delegate to update sub thread table
+            [self.view removeFromSuperview];
+            [[self delegate] updateSubThreadTableView:children];
+        }
+        else {
+            [self.view removeFromSuperview];
+            [[self delegate] updateSubThreadTableView:[NSArray arrayWithObjects:[children objectAtIndex:0], nil]];
+            [[self delegate] updateMainThreadTableView:children andIndexPath:indexPath];
+        }
+        
+        
+    }
+	
+    
+    
+	//[self.delegate updateMainThreadTableView:self.tableDataSource andCells:self.cells andIndexPath:indexPath];
 }
 
 
