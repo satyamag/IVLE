@@ -8,7 +8,6 @@
 
 #import "IVLEAPIHandler.h"
 
-
 @implementation IVLEAPIHandler
 
 @synthesize dictionary;
@@ -17,6 +16,7 @@
 @synthesize allowCoreDataCache;
 @synthesize userName;
 @synthesize cache;
+
 - (id)init{
 	self = [super init];
 	
@@ -25,7 +25,7 @@
 	self.incomingData = nil;
 	
 	self.cache = nil;
-
+	
 	return self;
 }
 
@@ -79,7 +79,7 @@
 	self.cache.data = nil;
 	self.cache.urlWithoutAuthToken = urlWithoutAuthToken;
 	self.cache.date = [NSDate date];
-
+	
 }
 - (NSData*)getFile:(NSString*)url{
 	
@@ -108,7 +108,7 @@
 	}
 	
 	[self createCacheInCoreData: urlWithoutAuthToken];
-
+	
 	requestIsData = YES;
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
 	NSURLConnection *connection = [[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
@@ -119,11 +119,19 @@
 }
 
 - (NSString*) getUserName:(NSString*)url {
-   
+	
     self.incomingData = nil;
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
-    NSURLConnection *connection = [[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
-    [self checkForWriteInDictionary:connection];
+	
+	NSMutableURLRequest *request;
+	NSURLConnection *connection;
+	
+	
+	request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+	connection = [[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
+	
+	[self checkForWriteInDictionary:connection];
+	
+	
     return self.userName; 
 }
 
@@ -132,9 +140,9 @@
 	self.incomingData = nil;
 	allowCoreDataCache = YES;
 	NSString *urlWithoutAuthToken= [self removeAuthTokenFrom: url];
-
+	
 	NSArray *array = [[ModulesFetcher sharedInstance] fetchManagedObjectsForEntity:@"IVLEAPICache" 
-											 withPredicate:[NSPredicate predicateWithFormat:@"urlWithoutAuthToken == %@",urlWithoutAuthToken]]; 
+																	 withPredicate:[NSPredicate predicateWithFormat:@"urlWithoutAuthToken == %@",urlWithoutAuthToken]]; 
 	
 	if ([array count]) {
 		IVLEAPICache *cacheGet = [array lastObject];
@@ -143,7 +151,7 @@
 		if (cacheGet.data == nil) {
 			//NSLog(@"clear invalid cache");
 			[[[ModulesFetcher sharedInstance] managedObjectContext] deleteObject:cacheGet];
-		
+			
 		} else if([cacheGet.date timeIntervalSinceNow]*-1 > 60*kAPICacheMinutes){
 			
 			//NSLog(@"clear expired cache");
@@ -161,8 +169,12 @@
 	if (kDebugURL) {
 		NSLog(@"URL: %@", url);
 	}
-	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
-	NSURLConnection *connection = [[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
+	
+	NSMutableURLRequest *request;
+	NSURLConnection *connection;
+	
+	request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+	connection = [[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
 	
 	[self checkForWriteInDictionary:connection];
 	
@@ -181,7 +193,7 @@
 }
 
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
-	//NSLog(@"Connection Error:%@, A blank dictionary is returned", [error localizedDescription]);
+	NSLog(@"Connection Error:%@, A blank dictionary is returned", [error localizedDescription]);
 	self.dictionary = nil;
 	dictionaryWritten = YES;
 }
@@ -195,7 +207,7 @@
 		self.incomingData = [NSMutableData data];
 	}
 	[self.incomingData appendData:data];
-
+	
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection{
@@ -204,7 +216,7 @@
 		requestIsData = NO;
 		if (kDebugReceivedData) {
 			NSLog(@"Data transfer completed, JSON parsing started.");
-
+			
 			NSLog(@"kDebugReceivedData(DATA):%@", incomingData);
 			NSLog(@"--------------------------------------");
 			
@@ -227,7 +239,7 @@
 			NSLog(@"--------------------------------------");
 			
 		}
-	//	self.incomingData = nil;
+		//	self.incomingData = nil;
 		
 		[jsonString release];
 	}
@@ -246,9 +258,13 @@
 		}
 		//NSLog(@"cd saved");
 	}
-
+	
 	
 }
 
+- (void)dealloc {
+	
+	[super dealloc];
+}
 
 @end

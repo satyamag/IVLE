@@ -11,6 +11,8 @@
 		047E247413CDACDD00AE6185 /* ModuleEvent2.m in Sources */ = {isa = PBXBuildFile; fileRef = 047E247313CDACDD00AE6185 /* ModuleEvent2.m */; };
 		047F5F8413C753E9007C1B64 /* TimetableNew.m in Sources */ = {isa = PBXBuildFile; fileRef = 047F5F8213C753E9007C1B64 /* TimetableNew.m */; };
 		047F5F8813C75A59007C1B64 /* ModuleEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 047F5F8713C75A59007C1B64 /* ModuleEvent.m */; };
+		04C31F3C13D12AFF009C2380 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C31F3B13D12AFF009C2380 /* SystemConfiguration.framework */; };
+		04C31F5813D12BA3009C2380 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C31F5713D12BA3009C2380 /* Reachability.m */; };
 		04CEC4B013C2A7280057CEDB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04CEC4AF13C2A7280057CEDB /* MediaPlayer.framework */; };
 		04CEC4DB13C2ABE00057CEDB /* WebcastController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CEC4DA13C2ABE00057CEDB /* WebcastController.m */; };
 		04E1685F13CC972F00492C48 /* NSArray+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E167FB13CC972D00492C48 /* NSArray+TKCategory.m */; };
@@ -245,6 +247,9 @@
 		047F5F8213C753E9007C1B64 /* TimetableNew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimetableNew.m; sourceTree = "<group>"; };
 		047F5F8613C75A59007C1B64 /* ModuleEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleEvent.h; sourceTree = "<group>"; };
 		047F5F8713C75A59007C1B64 /* ModuleEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModuleEvent.m; sourceTree = "<group>"; };
+		04C31F3B13D12AFF009C2380 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		04C31F5613D12BA3009C2380 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		04C31F5713D12BA3009C2380 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		04CEC4AF13C2A7280057CEDB /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		04CEC4D913C2ABE00057CEDB /* WebcastController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebcastController.h; sourceTree = "<group>"; };
 		04CEC4DA13C2ABE00057CEDB /* WebcastController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebcastController.m; sourceTree = "<group>"; };
@@ -622,6 +627,7 @@
 				A5E3CAB61351A32300C0A15A /* CoreLocation.framework in Frameworks */,
 				BF484B7B1352556B0074F299 /* EventKit.framework in Frameworks */,
 				04CEC4B013C2A7280057CEDB /* MediaPlayer.framework in Frameworks */,
+				04C31F3C13D12AFF009C2380 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -764,6 +770,8 @@
 				5CECE71213420F49008E2635 /* CAP calculator */,
 				BF779AEF1348777000CC2119 /* Timetable */,
 				A5E3CBEE1352BAD700C0A15A /* Map */,
+				04C31F5613D12BA3009C2380 /* Reachability.h */,
+				04C31F5713D12BA3009C2380 /* Reachability.m */,
 				5C636AB513441C00009D5BB8 /* Constants.h */,
 				5C636AB613441C00009D5BB8 /* Constants.m */,
 				5CECE43313419CB2008E2635 /* ModulesFetcher.h */,
@@ -825,6 +833,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04C31F3B13D12AFF009C2380 /* SystemConfiguration.framework */,
 				04CEC4AF13C2A7280057CEDB /* MediaPlayer.framework */,
 				5C636BA613443165009D5BB8 /* QuartzCore.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
@@ -1564,6 +1573,7 @@
 				BFD23B1F13CD47B800ED0019 /* ForumTableCell.m in Sources */,
 				BFEE434813CED42600265434 /* ForumPostNew.m in Sources */,
 				BFEE434F13CEDB2700265434 /* ForumPostHeadingSelect.m in Sources */,
+				04C31F5813D12BA3009C2380 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

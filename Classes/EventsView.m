@@ -72,9 +72,30 @@
 		[self.view addGestureRecognizer:tap];
 		[tap release];
 		
+		//UI initialization
+		//[self.view setBackgroundColor:[UIColor grayColor]];
 	}
 	
 	return self;
+}
+
+-(UIImage *)resizeImage:(UIImage *)image width:(int)width height:(int)height {
+	
+	CGImageRef imageRef = [image CGImage];
+	CGImageAlphaInfo alphaInfo = CGImageGetAlphaInfo(imageRef);
+	
+	//if (alphaInfo == kCGImageAlphaNone)
+	alphaInfo = kCGImageAlphaNoneSkipLast;
+	
+	CGContextRef bitmap = CGBitmapContextCreate(NULL, width, height, CGImageGetBitsPerComponent(imageRef), 4 * width, CGImageGetColorSpace(imageRef), alphaInfo);
+	CGContextDrawImage(bitmap, CGRectMake(0, 0, width, height), imageRef);
+	CGImageRef ref = CGBitmapContextCreateImage(bitmap);
+	UIImage *result = [UIImage imageWithCGImage:ref];
+	
+	CGContextRelease(bitmap);
+	CGImageRelease(ref);
+	
+	return result;	
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.

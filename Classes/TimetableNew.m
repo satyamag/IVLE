@@ -283,7 +283,7 @@
 
 - (void) calendarMonthView:(TKCalendarMonthView*)monthView monthDidChange:(NSDate*)d {
 	
-	NSLog(@"%@", d);
+	//NSLog(@"%@", d);
 }
 
 #pragma mark -

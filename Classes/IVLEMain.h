@@ -22,6 +22,7 @@
 #import "WebcastController.h"
 #import "TimeTableCell.h"
 
+@class Reachability;
 
 @interface IVLEMain : UIViewController <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>{
 	
@@ -40,9 +41,21 @@
 	UISplitViewController* splitVC;
 	
 	IBOutlet UIView *rightHandSideView, *pageControlView;
+	
+	Reachability *internetReachable;
+	Reachability *hostReachable;
+	
+	BOOL internetActive, hostActive;
+	
+	UIAlertView *alert;
 }
 @property (nonatomic, retain) NSMutableArray *announcements;
 @property (nonatomic, retain) NSMutableArray *announcementCells;
+@property (nonatomic, assign) BOOL internetActive;
+@property (nonatomic, assign) BOOL hostActive;
+
+/* To check the network status */
+- (void) checkNetworkStatus:(NSNotification *)notice;
 
 // to change the small dot in UIPageControl
 - (IBAction)changePage:(id)sender;

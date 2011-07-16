@@ -7,6 +7,7 @@
 //
 
 #import "IVLEMain.h"
+#import "Reachability.h"
 
 #define kNotificationSetWelcomeMessage @"setWelcomeMessage"
 #define kCourseID @"aefeaca4-f40a-4c82-9c8e-95f92c7ed0da"
@@ -25,6 +26,8 @@
 
 @synthesize announcementCells;
 @synthesize announcements;
+@synthesize internetActive;
+@synthesize hostActive;
 
 #pragma mark -
 #pragma mark Initializers
@@ -33,6 +36,20 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+		
+		internetActive = YES;
+		hostActive = YES;
+		//	check for internet connection
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkNetworkStatus:) name:kReachabilityChangedNotification object:nil];
+		
+		internetReachable = [[Reachability reachabilityForInternetConnection] retain];
+		[internetReachable startNotifier];
+		
+		// check if a pathway to a random host exists
+		hostReachable = [[Reachability reachabilityWithHostName: @"www.apple.com"] retain];
+		[hostReachable startNotifier];
+		
+		// now patiently wait for the notification
         
         NSString *imageName;
         if ([UIDevice currentDevice].orientation!=UIDeviceOrientationLandscapeLeft && [UIDevice currentDevice].orientation!=UIDeviceOrientationLandscapeRight) {
@@ -51,6 +68,88 @@
     return self;
 }
 
+- (void) checkNetworkStatus:(NSNotification *)notice
+{
+	// called after network status changes
+	
+	NetworkStatus internetStatus = [internetReachable currentReachabilityStatus];
+	switch (internetStatus)
+	
+	{
+		case NotReachable:
+		{
+#if kShouldPrintInternetReachability
+			NSLog(@"The internet is down.");
+#endif
+			internetActive = NO;
+			[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationInternetInactive object:nil];
+			break;
+			
+		}
+		case ReachableViaWiFi:
+		{
+#if kShouldPrintInternetReachability
+			NSLog(@"The internet is working via WIFI.");
+#endif
+			internetActive = YES;
+			
+			break;
+			
+		}
+		case ReachableViaWWAN:
+		{
+#if kShouldPrintInternetReachability
+			NSLog(@"The internet is working via WWAN.");
+#endif
+			internetActive = YES;
+			
+			break;
+			
+		}
+	}
+	
+	NetworkStatus hostStatus = [hostReachable currentReachabilityStatus];
+	switch (hostStatus)
+	
+	{
+		case NotReachable:
+		{
+#if kShouldPrintInternetReachability
+			NSLog(@"A gateway to the host server is down.");
+#endif
+			hostActive = NO;
+			alert = [[UIAlertView alloc] initWithTitle:@"Cellular Data is Turned Off" 
+											   message:@"Turn on cellular data or use Wi-Fi to access data." 
+											  delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+			[self.view addSubview:alert];
+			[alert show];
+			
+			break;
+			
+		}
+		case ReachableViaWiFi:
+		{
+#if kShouldPrintInternetReachability
+			NSLog(@"A gateway to the host server is working via WIFI.");
+#endif
+			hostActive = YES;
+			
+			break;
+			
+		}
+		case ReachableViaWWAN:
+		{
+#if kShouldPrintInternetReachability
+			NSLog(@"A gateway to the host server is working via WWAN.");
+#endif
+			hostActive = YES;
+			
+			break;
+			
+		}
+	}
+}
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	
@@ -67,7 +166,7 @@
 		
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshScreen:) name:kNotificationRefreshScreen object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setUpHomePageComponents:) name:kNotificationSetupHomePageComponents object:nil];
-	
+
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDirectory = [paths objectAtIndex:0];
 	NSString *path = [documentsDirectory stringByAppendingPathComponent:@"authToken.txt"];
@@ -76,26 +175,58 @@
 									  initWithContentsOfFile:path
                                       encoding:NSUTF8StringEncoding
                                       error:&error];
-	if (stringFromFileAtPath == nil) {
-		[self performSelector:@selector(displayLogin) withObject:nil afterDelay:0.0];
+	
+	if (!internetActive && stringFromFileAtPath == nil) {
+		
+		/*alert = [[UIAlertView alloc] initWithTitle:@"Cellular Data is Turned Off" 
+														message:@"Turn on cellular data or use Wi-Fi to access data." 
+													   delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+		[self.view addSubview:alert];
+		[alert show];
+		 */
 	}
 	else {
-		[[IVLE instance] setAuthToken:stringFromFileAtPath];
-		[[ModulesFetcher sharedInstance] setUserID:[[IVLE instance] getAndSetUserName]];
-		NSDictionary *tokenValidity = [[IVLE instance] validate];
-		if ([tokenValidity objectForKey:@"Token"] != nil) {
-			
-			[[IVLE instance] setAuthToken:[tokenValidity objectForKey:@"Token"]];
-			[[ModulesFetcher sharedInstance] setUserID:[[IVLE instance] getAndSetUserName]];
+		if (stringFromFileAtPath == nil) {
+			[self performSelector:@selector(displayLogin) withObject:nil afterDelay:0.0];
 		}
-		[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetupHomePageComponents object:nil];
+		else {
+			[[IVLE instance] setAuthToken:stringFromFileAtPath];
+			
+			[[ModulesFetcher sharedInstance] setUserID:[[IVLE instance] getAndSetUserName]];
+			NSDictionary *tokenValidity = [[IVLE instance] validate];
+			if ([tokenValidity objectForKey:@"Token"] != nil) {
+				
+				[[IVLE instance] setAuthToken:[tokenValidity objectForKey:@"Token"]];
+				[[ModulesFetcher sharedInstance] setUserID:[[IVLE instance] getAndSetUserName]];
+			}
+			
+			[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetupHomePageComponents object:nil];
+		}
 	}
-
+	
 	[stringFromFileAtPath release];
 	[self.view setAutoresizesSubviews:YES];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+	
+	UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+	spinner.frame = CGRectMake(1024/2-spinner.frame.size.width/2, 768/2-spinner.frame.size.height/2, spinner.frame.size.width, spinner.frame.size.height);
+	[spinner startAnimating];
+	[[self.view superview] addSubview:spinner];
+	self.view.userInteractionEnabled = NO;
+	
+	self.view.userInteractionEnabled = YES;
+	[spinner removeFromSuperview];
+	[spinner release];
+}
+
 -(void) setUpHomePageComponents:(NSNotification*)notification {
+	
+	UIActivityIndicatorView *loading = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+	loading.center = self.view.center;
+	[loading startAnimating];
+	[self.view addSubview:loading];
 	
     [self setUpAnnouncementsView];
 	[self setUpEventsView];
@@ -107,6 +238,9 @@
 	[rightHandSideView addSubview:eventsScrollView];
 	[self.view addSubview:rightHandSideView];
 	[self setUpTimeTableView];
+	
+	[loading stopAnimating];
+	[loading release];
 }
 
 - (void)displayLogin{
@@ -298,7 +432,7 @@
     }
 
     CGFloat pageWidth = 512;//_scrollView.frame.size.width;
-	NSLog(@"%f", _scrollView.contentOffset.x);
+	//NSLog(@"%f", _scrollView.contentOffset.x);
     int page = floor((_scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
     eventsPageControl.currentPage = page;
 }
@@ -366,20 +500,6 @@
 	timetableCells = [eventsOnThisDate retain];
 	
 	[recentTimetable reloadData];
-}
-
--(void) viewDidAppear:(BOOL)animated {
-	
-	UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-	spinner.frame = CGRectMake(1024/2-spinner.frame.size.width/2, 768/2-spinner.frame.size.height/2, spinner.frame.size.width, spinner.frame.size.height);
-	[spinner startAnimating];
-	[[self.view superview] addSubview:spinner];
-	self.view.userInteractionEnabled = NO;
-	
-	self.view.userInteractionEnabled = YES;
-	[spinner removeFromSuperview];
-	[spinner release];
-	
 }
 
 #pragma mark -
@@ -507,9 +627,13 @@
 
 - (void)dealloc {
 
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	
 	[recentTimetable release];
 	[recentAnnouncements release];
 	[timetableCells release];
+	
+	[alert release];
 	
     [super dealloc];
 }

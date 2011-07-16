@@ -14,6 +14,7 @@
 
 #define kDebugReceivedData 0
 #define kDebugURL 0
+#define kShouldPrintInternetReachability 0
 
 #define kAPIKey @"Xi6BSlJ5TeMKFi95VF9B9"
 #define kAPICacheMinutes 10
