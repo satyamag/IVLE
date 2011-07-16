@@ -73,7 +73,7 @@
 		[tap release];
 		
 		//UI initialization
-		[self.view setBackgroundColor:[UIColor grayColor]];
+		//[self.view setBackgroundColor:[UIColor grayColor]];
 	}
 	
 	return self;
