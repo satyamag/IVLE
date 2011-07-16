@@ -36,6 +36,20 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+		
+		internetActive = YES;
+		hostActive = YES;
+		//	check for internet connection
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkNetworkStatus:) name:kReachabilityChangedNotification object:nil];
+		
+		internetReachable = [[Reachability reachabilityForInternetConnection] retain];
+		[internetReachable startNotifier];
+		
+		// check if a pathway to a random host exists
+		hostReachable = [[Reachability reachabilityWithHostName: @"www.apple.com"] retain];
+		[hostReachable startNotifier];
+		
+		// now patiently wait for the notification
         
         NSString *imageName;
         if ([UIDevice currentDevice].orientation!=UIDeviceOrientationLandscapeLeft && [UIDevice currentDevice].orientation!=UIDeviceOrientationLandscapeRight) {
@@ -50,20 +64,6 @@
 		currentActiveMainViewController = nil;
 		
 		splitVC = [[UISplitViewController alloc] init];        
-		
-		internetActive = NO;
-		hostReachable = NO;
-		//	check for internet connection
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkNetworkStatus:) name:kReachabilityChangedNotification object:nil];
-		
-		internetReachable = [[Reachability reachabilityForInternetConnection] retain];
-		[internetReachable startNotifier];
-		
-		// check if a pathway to a random host exists
-		hostReachable = [[Reachability reachabilityWithHostName: @"www.apple.com"] retain];
-		[hostReachable startNotifier];
-		
-		// now patiently wait for the notification
     }
     return self;
 }
@@ -118,6 +118,11 @@
 			NSLog(@"A gateway to the host server is down.");
 #endif
 			hostActive = NO;
+			alert = [[UIAlertView alloc] initWithTitle:@"Cellular Data is Turned Off" 
+											   message:@"Turn on cellular data or use Wi-Fi to access data." 
+											  delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+			[self.view addSubview:alert];
+			[alert show];
 			
 			break;
 			
@@ -161,9 +166,7 @@
 		
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshScreen:) name:kNotificationRefreshScreen object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setUpHomePageComponents:) name:kNotificationSetupHomePageComponents object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadAppContent:) name:kNotificationInternetActive object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doNotLoadAppContent:) name:kNotificationInternetInactive object:nil];
-	
+
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDirectory = [paths objectAtIndex:0];
 	NSString *path = [documentsDirectory stringByAppendingPathComponent:@"authToken.txt"];
@@ -175,13 +178,12 @@
 	
 	if (!internetActive && stringFromFileAtPath == nil) {
 		
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cellular Data is Turned Off" 
+		/*alert = [[UIAlertView alloc] initWithTitle:@"Cellular Data is Turned Off" 
 														message:@"Turn on cellular data or use Wi-Fi to access data." 
 													   delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
 		[self.view addSubview:alert];
 		[alert show];
-		[alert release];
-		[alert release];
+		 */
 	}
 	else {
 		if (stringFromFileAtPath == nil) {
@@ -207,26 +209,6 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-	
-	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString *documentsDirectory = [paths objectAtIndex:0];
-	NSString *path = [documentsDirectory stringByAppendingPathComponent:@"authToken.txt"];
-	NSError *error;
-	NSString *stringFromFileAtPath = [[NSString alloc]
-									  initWithContentsOfFile:path
-                                      encoding:NSUTF8StringEncoding
-                                      error:&error];
-	
-	if (!internetActive && stringFromFileAtPath == nil) {
-		
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cellular Data is Turned Off" 
-														message:@"Turn on cellular data or use Wi-Fi to access data." 
-													   delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-		[self.view addSubview:alert];
-		[alert show];
-		[alert release];
-		[alert release];
-	}
 	
 	UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
 	spinner.frame = CGRectMake(1024/2-spinner.frame.size.width/2, 768/2-spinner.frame.size.height/2, spinner.frame.size.width, spinner.frame.size.height);
@@ -650,6 +632,8 @@
 	[recentTimetable release];
 	[recentAnnouncements release];
 	[timetableCells release];
+	
+	[alert release];
 	
     [super dealloc];
 }

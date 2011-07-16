@@ -46,6 +46,8 @@
 	Reachability *hostReachable;
 	
 	BOOL internetActive, hostActive;
+	
+	UIAlertView *alert;
 }
 @property (nonatomic, retain) NSMutableArray *announcements;
 @property (nonatomic, retain) NSMutableArray *announcementCells;
