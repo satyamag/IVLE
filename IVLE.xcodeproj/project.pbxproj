@@ -94,7 +94,6 @@
 		4A0999B913CB80A3001DA864 /* GradeBookController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0999B713CB80A3001DA864 /* GradeBookController.xib */; };
 		4A0999BE13CB80FD001DA864 /* WebcastsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0999BD13CB80FD001DA864 /* WebcastsCell.m */; };
 		4A0999C013CB811A001DA864 /* WebcastsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0999BF13CB811A001DA864 /* WebcastsCell.xib */; };
-		4A17101D13531EB400EF11E1 /* IVLELoginNew.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A17101513531EB400EF11E1 /* IVLELoginNew.m */; };
 		4A17102013531EB400EF11E1 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A17101913531EB400EF11E1 /* SplashViewController.m */; };
 		4A1716541355474F00EF11E1 /* IVLESideBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A1716511355474E00EF11E1 /* IVLESideBar.xib */; };
 		4A1716581355476400EF11E1 /* Events.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A1716571355476400EF11E1 /* Events.xib */; };
@@ -399,8 +398,6 @@
 		4A0999BC13CB80FD001DA864 /* WebcastsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebcastsCell.h; sourceTree = "<group>"; };
 		4A0999BD13CB80FD001DA864 /* WebcastsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebcastsCell.m; sourceTree = "<group>"; };
 		4A0999BF13CB811A001DA864 /* WebcastsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WebcastsCell.xib; path = Classes/WebcastsCell.xib; sourceTree = "<group>"; };
-		4A17101413531EB400EF11E1 /* IVLELoginNew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IVLELoginNew.h; path = ../IVLELoginNew.h; sourceTree = "<group>"; };
-		4A17101513531EB400EF11E1 /* IVLELoginNew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IVLELoginNew.m; path = ../IVLELoginNew.m; sourceTree = "<group>"; };
 		4A17101813531EB400EF11E1 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SplashViewController.h; path = ../SplashViewController.h; sourceTree = "<group>"; };
 		4A17101913531EB400EF11E1 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SplashViewController.m; path = ../SplashViewController.m; sourceTree = "<group>"; };
 		4A1716511355474E00EF11E1 /* IVLESideBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IVLESideBar.xib; sourceTree = "<group>"; };
@@ -905,8 +902,6 @@
 			children = (
 				4A8A676A13BBA2DD003DEDDB /* IVLELoginWebViewController.h */,
 				4A8A676B13BBA2DD003DEDDB /* IVLELoginWebViewController.m */,
-				4A17101413531EB400EF11E1 /* IVLELoginNew.h */,
-				4A17101513531EB400EF11E1 /* IVLELoginNew.m */,
 				4A17101813531EB400EF11E1 /* SplashViewController.h */,
 				4A17101913531EB400EF11E1 /* SplashViewController.m */,
 			);
@@ -1523,7 +1518,6 @@
 				A5E3CC5D1352C1AE00C0A15A /* ModuleHeaderInfo.m in Sources */,
 				A5E3CC5E1352C1B200C0A15A /* ModuleHeader.m in Sources */,
 				5CF0A2991352E2360053E9F1 /* EventsData.m in Sources */,
-				4A17101D13531EB400EF11E1 /* IVLELoginNew.m in Sources */,
 				4A17102013531EB400EF11E1 /* SplashViewController.m in Sources */,
 				A5E3D1FE1355848700C0A15A /* IVLEAPICache.m in Sources */,
 				A5E3D4521356B49B00C0A15A /* ModulesWorkbinWebview.m in Sources */,

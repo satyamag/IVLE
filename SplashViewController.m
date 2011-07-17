@@ -25,17 +25,7 @@
 	UIView *view = [[UIView alloc] initWithFrame:appFrame];
 	view.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
 	self.view = view;
-	[view release];
-    
-//    if (UIInterfaceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
-//        splashImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"IVLE_splash_screen_white.png"]];
-//        splashImageView.frame = CGRectMake(0, 0, 1024, 748);
-//    }
-//    else {
-//        splashImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"IVLE_splash_screen_white_portrait.png"]];
-//        splashImageView.frame = CGRectMake(0, 0, 748, 1024);
-//    }
-	
+	[view release];	
 	
 	splashImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"IVLE_splash_screen_white_portrait.png"]];
     splashImageView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;

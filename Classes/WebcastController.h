@@ -21,16 +21,5 @@
 }
 
 @property (nonatomic, retain) NSMutableArray *cells;
-//@property (nonatomic, retain) NSArray *webcasts;
-
-//// MODIFIES:  none
-//// REQUIRES: valid courseID
-//// EFFECTS:  returns a dictionary of webcasts for particular module
-//- (NSDictionary *)getWebcastsForModule:(NSString *)courseID;
-//
-//// MODIFIES:  none
-//// REQUIRES: valid courseID and mediaID
-//// EFFECTS:  returns URL of the webcast to be played (Note: play url by creating a MPMoviePLayer object)
-//- (NSURL *)getWebcastVideoForModule:(NSString *)courseID AndMediaID:(NSString *)mediaID;
 
 @end

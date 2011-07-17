@@ -43,13 +43,9 @@
 	//UILabel *eventTitle, *createdDate, *expiryDate, *ID, *URL, *isRead, *creatorName, *creatorGUID, *creatorID, *creatorEmail;
 	
 	UIWebView *description;
-	
 	NSDictionary *event;
-	
 	BOOL viewZoomed;
-	
 	CGRect defaultFrame;
-	
 	id <EventsViewDelegate> delegate;
 }
 

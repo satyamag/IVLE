@@ -14,7 +14,6 @@
 #import "CAP.h"
 #import "CAPCalculator.h"
 #import "Forum.h"
-#import "IVLELoginNew.h"
 #import "Constants.h"
 #import "HomePageModuleAnnouncementCell.h"
 #import "IVLEAppDelegate.h"

@@ -2,7 +2,7 @@
 //  ForumTableCell.m
 //  IVLE
 //
-//  Created by QIN HUAJUN on 7/13/11.
+//  Created by Satyam Agarwala on 7/13/11.
 //  Copyright 2011 National University of Singapore. All rights reserved.
 //
 

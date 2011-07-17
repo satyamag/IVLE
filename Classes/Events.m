@@ -117,10 +117,7 @@
 #pragma mark Events view delegate
 
 - (void)setZoomForEventView:(UIView *)aView {
-	
-	
-	//CGPoint newCenter = CGPointMake(512, 329 + scrollView.contentOffset.y);
-	//[aView setCenter:newCenter];
+
 	[aView setFrame:CGRectMake(10, 10 + scrollView.contentOffset.y, scrollView.bounds.size.width - 20, scrollView.bounds.size.height - 20)];
 	
 }
@@ -165,11 +162,6 @@
 	}
 	
 }
-
-//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-//    // Overriden to allow any orientation.
-//    return YES;
-//}
 
 
 - (void)didReceiveMemoryWarning {

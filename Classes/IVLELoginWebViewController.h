@@ -19,7 +19,5 @@
 
 -(void)checkForAccessToken:(NSString *)urlString;
 
-
-
 @end
 

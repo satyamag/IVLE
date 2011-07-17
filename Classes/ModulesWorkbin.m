@@ -163,10 +163,10 @@
 	[[sender superview] removeFromSuperview];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Overriden to allow any orientation.
-    return YES;//interfaceOrientation == UIInterfaceOrientationLandscapeLeft;
-}
+//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+//    // Overriden to allow any orientation.
+//    return YES;//interfaceOrientation == UIInterfaceOrientationLandscapeLeft;
+//}
 
 
 - (void)didReceiveMemoryWarning {

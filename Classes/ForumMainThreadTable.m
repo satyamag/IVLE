@@ -2,7 +2,7 @@
 //  ForumMainThreadTable.m
 //  IVLE
 //
-//  Created by QIN HUAJUN on 7/13/11.
+//  Created by Satyam Agarwala on 7/13/11.
 //  Copyright 2011 National University of Singapore. All rights reserved.
 //
 
@@ -19,9 +19,7 @@
 - (NSArray *)getSubThreadsForMainThreads:(NSString *)threadID {
 	
 	NSArray *thisThread = [[[IVLE instance] forumThreads:threadID withDuration:0 withThreads:YES] objectForKey:@"Results"];
-	NSLog(@"-----getting sub threads for main thread 1, this should display the main thread target %@",thisThread);
 	NSArray *subThreads = [[thisThread objectAtIndex:0] objectForKey:@"Threads"];
-	NSLog(@"-----getting sub threads for main thread 2, this should display the sub threads %@",subThreads);
 	
 	return subThreads;
 }
@@ -29,23 +27,10 @@
 - (NSArray *)getMainThreadsForHeading:(NSString *)headingID {
 	
 	NSArray *headingMainThreads = [[[IVLE instance] forumHeadingMainThreads:headingID withDuration:0 withMainTopics:YES] objectForKey:@"Results"];
-	NSLog(@"-----getting main threads for heading %@", headingMainThreads);
 	return headingMainThreads;
 }
 
 - (NSArray *)getHeadingsForForum:(NSString *)forumID {
-
-	/*
-	NSLog(@"getting headings %@",[[IVLE instance] forum:nil withDuration:0 withThreads:NO]);
-	
-	NSDictionary *forum = [[IVLE instance] forum:nil withDuration:0 withThreads:NO];
-	NSArray *forumResults = [forum objectForKey:@"Results"];
-	NSDictionary *currentForum = [forumResults objectAtIndex:0];
-	NSArray *headings = [currentForum objectForKey:@"Headings"];
-	
-	return headings;
-	 */
-	NSLog(@"-----getting forumHeadings %@",[[IVLE instance] forumHeadings:forumID withDuration:0 withThreads:NO]);
 	
 	NSDictionary *forumHeadings = [[IVLE instance] forumHeadings:forumID withDuration:0 withThreads:NO];
 	NSArray *result = [forumHeadings objectForKey:@"Results"];
@@ -55,8 +40,6 @@
 
 - (NSArray *)getForumsForModule:(NSString *)courseID {
 
-	NSLog(@"-----getting forums %@",[[IVLE instance] forums:courseID withDuration:0 withThreads:NO withTitle:NO]);
-	
 	NSDictionary *forums = [[IVLE instance] forums:courseID withDuration:0 withThreads:NO withTitle:NO];
 	NSArray *forumsResults = [forums objectForKey:@"Results"];	
 	return forumsResults;
@@ -143,14 +126,7 @@
 	//activity spinner
 	UIActivityIndicatorView *spinner;
 	spinner = [self createSpinner];
-	
-	NSLog(@"print data source");
-	//NSLog(@"%@",self.tableDataSource);
-	//NSLog(@"%@", indexPath.row);
-	NSLog(@"data at row indexpath %@",[self.tableDataSource objectAtIndex:indexPath.row]);
-	//NSLog(@"now test sub threads");
-	//NSLog(@"%@",[self getSubThreadsForMainThreads:@"2f74c3d3-e112-4dd0-8160-901cfab60558"]);
-	
+
 	NSDictionary *dictionary = [self.tableDataSource objectAtIndex:indexPath.row];
 	NSArray *children; //for the next level tableDataSource
 	
@@ -170,7 +146,6 @@
 				[headingNames addObject:[[children objectAtIndex:j] objectForKey:@"Title"]];
 				[headingIDs addObject:[[children objectAtIndex:j] objectForKey:@"ID"]];
 			}
-			NSLog(@"Names: %@ and IDs: %@", self.headingNames, self.headingIDs);
 		}
 		else if (currentLevel == 1) {
 			children = [self getMainThreadsForHeading:[dictionary objectForKey:@"ID"]];
@@ -205,10 +180,6 @@
 			
 			
 			//[newForumTable release];
-		}
-		else {
-			
-			NSLog(@"No headings or main threads!");
 		}
         
         
@@ -245,7 +216,6 @@
             
 		}
 		else {
-			NSLog(@"No more sub threads!");
             [[self delegate] clearSubThreadView];
 			[[self delegate] updateSubThreadTableView:nil andPreviousTable:nil];
 		} 
@@ -369,14 +339,7 @@
 	//activity spinner
 	UIActivityIndicatorView *spinner;
 	spinner = [self createSpinner];
-	
-	NSLog(@"print data source");
-	//NSLog(@"%@",self.tableDataSource);
-	//NSLog(@"%@", indexPath.row);
-	NSLog(@"data at row indexpath %@",[self.tableDataSource objectAtIndex:indexPath.row]);
-	//NSLog(@"now test sub threads");
-	//NSLog(@"%@",[self getSubThreadsForMainThreads:@"2f74c3d3-e112-4dd0-8160-901cfab60558"]);
-	
+
 	NSDictionary *dictionary = [self.tableDataSource objectAtIndex:indexPath.row];
 	NSArray *children; //for the next level tableDataSource
 	
@@ -396,7 +359,6 @@
 				[headingNames addObject:[[children objectAtIndex:j] objectForKey:@"Title"]];
 				[headingIDs addObject:[[children objectAtIndex:j] objectForKey:@"ID"]];
 			}
-			NSLog(@"Names: %@ and IDs: %@", self.headingNames, self.headingIDs);
 		}
 		else if (currentLevel == 1) {
 			children = [self getMainThreadsForHeading:[dictionary objectForKey:@"ID"]];
@@ -429,10 +391,6 @@
 			newForumTable.tableDataSource = children;
 			
 //			[newForumTable release];
-		}
-		else {
-			
-			NSLog(@"No headings or main threads!");
 		}
 
 
@@ -469,7 +427,6 @@
 
 		}
 		else {
-			NSLog(@"No more sub threads!");
             [[self delegate] clearSubThreadView];
 			[[self delegate] updateSubThreadTableView:nil andPreviousTable:nil];
 		} 

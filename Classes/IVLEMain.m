@@ -573,13 +573,6 @@
 #pragma mark -
 #pragma mark Memory handling functions
 
-//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-//    // Overriden to allow any orientation.
-//	
-//    //return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft) || (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
-//	return YES;
-//}
-
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.

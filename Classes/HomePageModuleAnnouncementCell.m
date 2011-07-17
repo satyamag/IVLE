@@ -45,15 +45,6 @@
 }
 
 
--(void) webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-
-}
-
-
-- (void)webViewDidStartLoad:(UIWebView *)webView {
-	
-}
-
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
 	NSString *output = [webView stringByEvaluatingJavaScriptFromString:@"document.getElementById(\"foo\").offsetHeight;"];
 	CGRect frame;

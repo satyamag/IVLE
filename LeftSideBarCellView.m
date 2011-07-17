@@ -29,27 +29,6 @@
 }
 
 
-
-
-/*
--(void) setCellButtonRightTag:(NSInteger)buttonTag {
-	cellButtonRight.tag = buttonTag;
-}
-
--(void) setCellButtonLeftTag:(NSInteger)buttonTag {
-	cellButtonLeft.tag = buttonTag;
-}
-
--(void) setCellButtonRightTarget:(NSInteger)buttonTag {
-	cellButtonRight.tag = buttonTag;
-}
-
--(void) setCellButtonLeftTarget:(NSInteger)buttonTag {
-	cellButtonLeft.tag = buttonTag;
-}
-
- */
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
 
     [super setSelected:selected animated:animated];

@@ -2,7 +2,7 @@
 //  Forum.m
 //  IVLE
 //
-//  Created by QIN HUAJUN on 7/13/11.
+//  Created by Satyam Agarwala on 7/13/11.
 //  Copyright 2011 National University of Singapore. All rights reserved.
 //
 
@@ -59,8 +59,6 @@
     
     
     ForumMainThreadTable *table = (ForumMainThreadTable*) newForumTable;
-    NSLog(@"HEADING ID --------------------------- %@",headingID);
-    NSLog(@"HEADING NAME ------------------------- %@",headingName);
     if (table.currentLevel == 2) {
         currentHeadingID = [NSString stringWithString:headingID];
         currentHeadingName =  [NSString stringWithString:headingName];
@@ -138,7 +136,7 @@
 	
     [self disablePostingNewThread];
     [self disableReply];
-	NSLog(@"Start loading forum!!!!");
+
 	UIImage *bgImage_announcements = [UIImage imageNamed:@"module_info_announcement_bg.png"];
     UIImage *bgImage_subthread_table = [UIImage imageNamed:@"subthreads_table.png"];
 
@@ -154,15 +152,12 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:bgImage_announcements];
     self.subThreadTable.backgroundColor = [UIColor colorWithPatternImage:bgImage_subthread_table];
 
-	NSLog(@"done loading forum!!!");
 }
 
 - (IBAction)postNewThread:(id)sender{
 	
-    UIButton *button = (UIButton*)sender;
-    NSLog(@"%d",button.tag);
-    
-	NSLog(@"post new threads here");
+    UIButton *button = (UIButton*)sender;    
+
 	ForumPostNew *postWindow = [[ForumPostNew alloc] initWithNibName:@"ForumPostNew" bundle:nil];
 	[postWindow setDelegate:self];
     
@@ -187,23 +182,15 @@
 
 -(void)postNewThreadWithHeading:(NSString *)headingName title:(NSString *)titleName body:(NSString *)postBody{
     
-	NSLog(@"start posting threads to the server");
 	if (currentHeadingID) {
 		[[IVLE instance] forumPostNewThread:currentHeadingID withTitle:titleName withReply:postBody];
-	}
-	else {
-		NSLog(@"Heading ID not found for heading: %@", headingName);
 	}
 }
 
 -(void)postNewReplyWithTitle:(NSString *)titleName body:(NSString *)postBody{
     
-	NSLog(@"start posting threads to the server");
 	if (currentPostID) {
 		[[IVLE instance] forumReplyThread:currentPostID withTitle:titleName withReply:postBody];
-	}
-	else {
-		NSLog(@"Post ID not found for heading: %@", titleName);
 	}
 }
 

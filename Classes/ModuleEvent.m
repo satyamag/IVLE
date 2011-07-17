@@ -32,21 +32,7 @@
 
 - (void)createModuleEvent:(NSDictionary *)moduleTimetableDetails {
 	
-	//NSLog(@"%@", moduleTimetableDetails);
-	
-	/*courseID = [[NSString alloc] initWithString:[moduleTimetableDetails objectForKey:@"CourseID"]];
-	 academicYear = [[NSString alloc] initWithString:[moduleTimetableDetails objectForKey:@"AcadYear"]];
-	 dayText = [[NSString alloc] initWithString:[moduleTimetableDetails objectForKey:@"DayText"]];
-	 startTime = [[NSString alloc] initWithString:[moduleTimetableDetails objectForKey:@"StartTime"]];
-	 endTime = [[NSString alloc] initWithString:[moduleTimetableDetails objectForKey:@"EndTime"]];
-	 venue = [[NSString alloc] initWithString:[moduleTimetableDetails objectForKey:@"Venue"]];
-	 lessonType = [[NSString alloc] initWithString:[moduleTimetableDetails objectForKey:@"LessonType"]];
-	 weekText = [[NSString alloc] initWithString:[moduleTimetableDetails objectForKey:@"WeekText"]];
-	 weekCode = [[NSString alloc] initWithString:[moduleTimetableDetails objectForKey:@"WeekCode"]];
-	 semester = [[NSNumber alloc] initWithInt:[[moduleTimetableDetails objectForKey:@"Semester"] intValue]];
-	 classNumber = [[NSNumber alloc] initWithInt:[[moduleTimetableDetails objectForKey:@"ClassNo"] intValue]];
-	 dayCode = [[NSNumber alloc] initWithInt:[[moduleTimetableDetails objectForKey:@"DayCode"] intValue]];
-	 */
+
 	if ([self isValidString:[moduleTimetableDetails objectForKey:@"Date"]]) {
 		
 		//date = [[NSDate alloc] init];
