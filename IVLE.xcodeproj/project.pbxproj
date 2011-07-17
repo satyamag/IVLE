@@ -87,6 +87,8 @@
 		4A00F00F13C0DD83002D6C4E /* forums.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A00F00D13C0DD83002D6C4E /* forums.png */; };
 		4A00F01013C0DD83002D6C4E /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A00F00E13C0DD83002D6C4E /* map.png */; };
 		4A00F01213C0DDE1002D6C4E /* calculator.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A00F01113C0DDE0002D6C4E /* calculator.png */; };
+		4A03D79113D317790059FEA1 /* IVLE_splash_screen_white_portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A03D79013D317790059FEA1 /* IVLE_splash_screen_white_portrait.png */; };
+		4A03D79313D319590059FEA1 /* IVLE_splash_screen_white_universal.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A03D79213D319590059FEA1 /* IVLE_splash_screen_white_universal.png */; };
 		4A0999B413CB8084001DA864 /* GradeBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0999B313CB8084001DA864 /* GradeBookCell.m */; };
 		4A0999B813CB80A3001DA864 /* GradeBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0999B613CB80A3001DA864 /* GradeBookController.m */; };
 		4A0999B913CB80A3001DA864 /* GradeBookController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0999B713CB80A3001DA864 /* GradeBookController.xib */; };
@@ -123,6 +125,7 @@
 		4A6DFC7F13D2C60C00CE1DBF /* post_new_thread_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A6DFC7E13D2C60B00CE1DBF /* post_new_thread_background.png */; };
 		4A6DFC8113D2CE5B00CE1DBF /* post_new_thread_background_BLUE.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A6DFC8013D2CE5A00CE1DBF /* post_new_thread_background_BLUE.png */; };
 		4A6DFC8313D2CFBA00CE1DBF /* reply.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A6DFC8213D2CFB900CE1DBF /* reply.png */; };
+		4A6DFC8E13D30C5400CE1DBF /* IVLETabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6DFC8D13D30C3300CE1DBF /* IVLETabBarController.m */; };
 		4A7D12DC13CA53A7009E8BE3 /* webcasts.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A7D12DB13CA53A7009E8BE3 /* webcasts.png */; };
 		4A7D12DE13CA65B2009E8BE3 /* module_info_announcement_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A7D12DD13CA65B2009E8BE3 /* module_info_announcement_bg.png */; };
 		4A8A676C13BBA2DD003DEDDB /* IVLELoginWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8A676B13BBA2DD003DEDDB /* IVLELoginWebViewController.m */; };
@@ -386,6 +389,8 @@
 		4A00F00D13C0DD83002D6C4E /* forums.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forums.png; sourceTree = "<group>"; };
 		4A00F00E13C0DD83002D6C4E /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		4A00F01113C0DDE0002D6C4E /* calculator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calculator.png; sourceTree = "<group>"; };
+		4A03D79013D317790059FEA1 /* IVLE_splash_screen_white_portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IVLE_splash_screen_white_portrait.png; sourceTree = "<group>"; };
+		4A03D79213D319590059FEA1 /* IVLE_splash_screen_white_universal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IVLE_splash_screen_white_universal.png; sourceTree = "<group>"; };
 		4A0999B213CB8084001DA864 /* GradeBookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeBookCell.h; sourceTree = "<group>"; };
 		4A0999B313CB8084001DA864 /* GradeBookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeBookCell.m; sourceTree = "<group>"; };
 		4A0999B513CB80A3001DA864 /* GradeBookController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeBookController.h; sourceTree = "<group>"; };
@@ -430,6 +435,8 @@
 		4A6DFC7E13D2C60B00CE1DBF /* post_new_thread_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = post_new_thread_background.png; sourceTree = "<group>"; };
 		4A6DFC8013D2CE5A00CE1DBF /* post_new_thread_background_BLUE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = post_new_thread_background_BLUE.png; sourceTree = "<group>"; };
 		4A6DFC8213D2CFB900CE1DBF /* reply.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reply.png; sourceTree = "<group>"; };
+		4A6DFC8C13D30C2D00CE1DBF /* IVLETabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IVLETabBarController.h; sourceTree = "<group>"; };
+		4A6DFC8D13D30C3300CE1DBF /* IVLETabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IVLETabBarController.m; sourceTree = "<group>"; };
 		4A7D12DB13CA53A7009E8BE3 /* webcasts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = webcasts.png; sourceTree = "<group>"; };
 		4A7D12DD13CA65B2009E8BE3 /* module_info_announcement_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = module_info_announcement_bg.png; sourceTree = "<group>"; };
 		4A8A676A13BBA2DD003DEDDB /* IVLELoginWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IVLELoginWebViewController.h; sourceTree = "<group>"; };
@@ -1184,6 +1191,8 @@
 			children = (
 				1D3623240D0F684500981E51 /* IVLEAppDelegate.h */,
 				1D3623250D0F684500981E51 /* IVLEAppDelegate.m */,
+				4A6DFC8C13D30C2D00CE1DBF /* IVLETabBarController.h */,
+				4A6DFC8D13D30C3300CE1DBF /* IVLETabBarController.m */,
 				4AC6370B13C1A31F00E4E6CE /* Homepage */,
 				04E1689313CC97EA00492C48 /* API */,
 				4AC6370913C1A2D100E4E6CE /* Login */,
@@ -1216,6 +1225,8 @@
 		BF28D7E5133E6AD300EE060D /* Art Set */ = {
 			isa = PBXGroup;
 			children = (
+				4A03D79213D319590059FEA1 /* IVLE_splash_screen_white_universal.png */,
+				4A03D79013D317790059FEA1 /* IVLE_splash_screen_white_portrait.png */,
 				4A6DFC8213D2CFB900CE1DBF /* reply.png */,
 				4A6DFC8013D2CE5A00CE1DBF /* post_new_thread_background_BLUE.png */,
 				4A6DFC7E13D2C60B00CE1DBF /* post_new_thread_background.png */,
@@ -1442,6 +1453,8 @@
 				4A6DFC7F13D2C60C00CE1DBF /* post_new_thread_background.png in Resources */,
 				4A6DFC8113D2CE5B00CE1DBF /* post_new_thread_background_BLUE.png in Resources */,
 				4A6DFC8313D2CFBA00CE1DBF /* reply.png in Resources */,
+				4A03D79113D317790059FEA1 /* IVLE_splash_screen_white_portrait.png in Resources */,
+				4A03D79313D319590059FEA1 /* IVLE_splash_screen_white_universal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1586,6 +1599,7 @@
 				BFEE434813CED42600265434 /* ForumPostNew.m in Sources */,
 				BFEE434F13CEDB2700265434 /* ForumPostHeadingSelect.m in Sources */,
 				04C31F5813D12BA3009C2380 /* Reachability.m in Sources */,
+				4A6DFC8E13D30C5400CE1DBF /* IVLETabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

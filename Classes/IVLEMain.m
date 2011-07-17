@@ -437,7 +437,7 @@
 	
 	timetableCells = [[NSMutableArray alloc] init];
 	
-	NSArray *timetableStudent = [[[IVLE instance] timetableStudent:@"2010/2011" forSemester:@"3"] objectForKey:@"Results"];
+	NSArray *timetableStudent = [[[IVLE instance] timetableStudent:@"2010/2011" forSemester:@"4"] objectForKey:@"Results"];
 	
 	for (int i = 0; i < timetableStudent.count; i++) {
 		
@@ -573,12 +573,12 @@
 #pragma mark -
 #pragma mark Memory handling functions
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Overriden to allow any orientation.
-	
-    //return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft) || (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
-	return YES;
-}
+//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+//    // Overriden to allow any orientation.
+//	
+//    //return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft) || (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
+//	return YES;
+//}
 
 
 - (void)didReceiveMemoryWarning {

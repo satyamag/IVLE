@@ -14,8 +14,8 @@
 #define kMapNUSLatitude 1.297809
 #define kMapNUSLongitude 103.777488
 #define kMapNUSSpan 0.008
-#define kMapPopOverWidth 250
-#define kMapPopOverHeight 400
+#define kMapPopOverWidth 400
+#define kMapPopOverHeight 370
 
 @interface Map : UIViewController <MKMapViewDelegate, NewEventDelegate, UIPopoverControllerDelegate> {
 	IBOutlet MKMapView *mapView;

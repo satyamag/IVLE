@@ -57,7 +57,7 @@
 	} else {
 		closeButton.alpha = 0.0;
 		closeButton.enabled = NO;
-        NSArray *result = [[[IVLE instance] userEventsGet:24] valueForKey:@"result"];
+        NSArray *result = [[[IVLE instance] userEventsGet:168] valueForKey:@"result"];
 		for (int i=0; i < [result count]; i++) {
 			annotationLastAdded = [[MKPointAnnotation alloc] init];
 			annotationLastAdded.coordinate = CLLocationCoordinate2DMake([[[result objectAtIndex:i] valueForKey:@"latitude"] floatValue], [[[result objectAtIndex:i] valueForKey:@"longitude"] floatValue] );
@@ -82,11 +82,18 @@
 		[mapView addAnnotation:annotationLastAdded];
 		//	[mapView selectAnnotation:point animated:FALSE];
 		//[point release];
+        
 		NewEvent *eventPopOver = [[NewEvent alloc] init];
 		eventPopOver.delegate = self;
+        eventPopOver.navigationController.navigationBar.tintColor = kNavBarColor;
+        UIImage *bgImage_announcements = [UIImage imageNamed:@"modules_workbin_3rd_column.png"];
+        eventPopOver.view.backgroundColor = [UIColor colorWithPatternImage:bgImage_announcements];
+        
 		popAddEvents = [[UIPopoverController alloc] initWithContentViewController:eventPopOver];
 		popAddEvents.popoverContentSize = CGSizeMake(kMapPopOverWidth, kMapPopOverHeight);
 		popAddEvents.delegate = self;
+        
+        
 		[mapView setCenterCoordinate:coord animated:YES];
 		
 		//	[mapView setRegion:region animated:YES];
@@ -98,7 +105,7 @@
 	
 	//	NSLog(@"%@ %@ %@ %@ %@ %@ %@", title, description, contact, dateTime, organizer, price, venue, agenda);
 	//call api to store event
-	NSDictionary *event = [[IVLE instance] userEventsCreate:organizer withContact:contact withTitle:title withDescription:description withPrice:price atLocation:[mapView centerCoordinate]];
+	[[IVLE instance] userEventsCreate:organizer withContact:contact withTitle:title withDescription:description withPrice:price atLocation:[mapView centerCoordinate]];
 	//[self dismissModalViewControllerAnimated:YES];
 	
 	//	NSLog(@"%@", [[[[[IVLE instance] userEventsGet:1] valueForKey:@"result"] lastObject] valueForKey:@"title"]);
@@ -138,10 +145,10 @@
 	pinView.canShowCallout = YES;
 	return pinView;
 }
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Overriden to allow any orientation.
-    return YES;
-}
+//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+//    // Overriden to allow any orientation.
+//    return YES;
+//}
 
 
 - (void)didReceiveMemoryWarning {

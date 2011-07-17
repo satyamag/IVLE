@@ -15,7 +15,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Overriden to allow any orientation.
-    return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft) || (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
+    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
 }
 
 
@@ -26,9 +26,19 @@
 	view.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
 	self.view = view;
 	[view release];
+    
+//    if (UIInterfaceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
+//        splashImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"IVLE_splash_screen_white.png"]];
+//        splashImageView.frame = CGRectMake(0, 0, 1024, 748);
+//    }
+//    else {
+//        splashImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"IVLE_splash_screen_white_portrait.png"]];
+//        splashImageView.frame = CGRectMake(0, 0, 748, 1024);
+//    }
 	
-	splashImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"IVLE_splash_screen_white.png"]];
-	splashImageView.frame = CGRectMake(0, 0, 1024, 748);
+	
+	splashImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"IVLE_splash_screen_white_portrait.png"]];
+    splashImageView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
 	[self.view addSubview:splashImageView];
 	
 
@@ -59,7 +69,8 @@
 	[UIView setAnimationDuration:0.15];        // sets animation duration
 	self.view.alpha = 1.0;   // fades the view to 1.0 alpha over 0.75 seconds
 	[UIView commitAnimations];   // commits the animation block.  This Block is done.
-	[splashImageView removeFromSuperview];
+	//[splashImageView removeFromSuperview];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSplashOver object:nil];
 }
 
 - (void)didReceiveMemoryWarning {

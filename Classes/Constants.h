@@ -30,6 +30,7 @@ const int kSemPopoverY = -50;
 #define kNotificationClearTopBarButtons @"clearTopBarButtons"
 #define kNotificationReLoginSuccessful @"reloginSuccessful"
 #define kNotificationSetupHomePageComponents @"setupHomePageComponents"
+#define kNotificationSplashOver @"splashOver"
 
 #define kNavBarColor  [UIColor colorWithRed:32.0/255.0 green:107.0/255.0 blue:174.0/255.0 alpha:1.0]
 #define kWorkbinFontColor [UIColor colorWithRed:90.0/255.0 green:90.0/255.0 blue:90.0/255.0 alpha:1.0]

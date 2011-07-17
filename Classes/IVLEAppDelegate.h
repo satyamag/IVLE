@@ -19,13 +19,17 @@
 #import "CAPCalculator.h"
 #import "TimetableNew.h"
 
+@class IVLETabBarController;
+
+#import "Constants.h"
+
 #define CoreDataSJNo
 #define CoreDataWriteNo
-@interface IVLEAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
+@interface IVLEAppDelegate : NSObject <UIApplicationDelegate> {
     
     UIWindow *window;
-	
-	SplashViewController *viewController;
+	IVLETabBarController *tabBarController;
+	SplashViewController *splashViewController;
 
 }
 
@@ -33,8 +37,7 @@
 
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 	
--(void)restartApplication;
-
+-(void) splashOver;
 -(void) switchToTab:(int)index;
 
 
