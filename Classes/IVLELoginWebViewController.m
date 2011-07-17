@@ -20,7 +20,7 @@
 	NSString *redirectUrlString = @"http://ivle.nus.edu.sg/api/login/login_result.ashx";
 	NSString *authFormatString = @"https://ivle.nus.edu.sg/api/login/?apikey=%@";
 
-	 NSString *urlString = [NSString stringWithFormat:authFormatString, kAPIKey, redirectUrlString];
+	NSString *urlString = [NSString stringWithFormat:authFormatString, kAPIKey, redirectUrlString];
 	NSURL *url = [NSURL URLWithString:urlString];
 	NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
@@ -78,7 +78,7 @@
 						  path, [error localizedFailureReason]);
 				}
                 
-                [[ModulesFetcher sharedInstance] setUserID:[ivleInstance getAndSetUserName]];
+                [[ModulesFetcher sharedInstance] setUserID:[ivleInstance getAndSetUserName:YES]];
                 [self dismissModalViewControllerAnimated:YES];
                 [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetupHomePageComponents object:nil];
 			}        

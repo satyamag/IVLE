@@ -46,13 +46,17 @@ static IVLE *sharedSingleton;
     self.authenticationToken = authToken;
 }
 
--(NSString*) getAndSetUserName {
+-(NSString*) getAndSetUserName:(BOOL)isOnline {
     
-    NSString *user = [handler getUserName:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/UserName_Get?APIKey=%@&Token=%@&output=json", kAPIKey, authenticationToken]];
-    self.userName = [NSString stringWithString:user];
-    return [user stringByReplacingOccurrencesOfString:@" " withString:@""];
-
-    
+	if (isOnline) {
+		NSString *user = [handler getUserName:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/UserName_Get?APIKey=%@&Token=%@&output=json", kAPIKey, authenticationToken]];
+		self.userName = [NSString stringWithString:user];
+		return [user stringByReplacingOccurrencesOfString:@" " withString:@""];		
+	}
+    else {
+		self.userName = @"u0803813";
+		return self.userName;
+	}
 }
 
 - (NSDictionary *)validate {
