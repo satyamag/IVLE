@@ -147,19 +147,19 @@
 	if ([array count]) {
 		IVLEAPICache *cacheGet = [array lastObject];
 		NSError *error;
-		//NSLog(@"cache date%f", [cacheGet.date timeIntervalSinceNow]*-1);
+		NSLog(@"cache date%f", [cacheGet.date timeIntervalSinceNow]*-1);
 		if (cacheGet.data == nil) {
-			//NSLog(@"clear invalid cache");
+			NSLog(@"clear invalid cache");
 			[[[ModulesFetcher sharedInstance] managedObjectContext] deleteObject:cacheGet];
 			
 		} else if([cacheGet.date timeIntervalSinceNow]*-1 > 60*kAPICacheMinutes){
 			
-			//NSLog(@"clear expired cache");
+			NSLog(@"clear expired cache");
 			[[[ModulesFetcher sharedInstance] managedObjectContext] deleteObject:cacheGet];
 		}
 		else{
 			
-			//NSLog(@"LOADED FROM COREDATA");
+			NSLog(@"LOADED FROM COREDATA");
 			return [[CJSONDeserializer deserializer] deserializeAsDictionary:cacheGet.data error:&error];
 		}
 	}

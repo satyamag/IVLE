@@ -41,7 +41,7 @@
 
 -(void) setAuthToken:(NSString *)authToken;
 
--(NSString*) getAndSetUserName;
+-(NSString*) getAndSetUserName:(BOOL)isOnline;
 
 - (NSDictionary *)validate;
 

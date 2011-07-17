@@ -19,6 +19,8 @@
 - (void) setUpAnnouncementsView;
 - (void) setUpHomePageComponents;
 - (void) updateAnnouncementsTable;
+- (void) loadAppContent:(NSString *)authToken;
+- (void) doNotLoadAppContent;
 
 @end
 
@@ -39,6 +41,7 @@
 		
 		internetActive = YES;
 		hostActive = YES;
+		
 		//	check for internet connection
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkNetworkStatus:) name:kReachabilityChangedNotification object:nil];
 		
@@ -50,7 +53,7 @@
 		[hostReachable startNotifier];
 		
 		// now patiently wait for the notification
-        
+			
         NSString *imageName;
         if ([UIDevice currentDevice].orientation!=UIDeviceOrientationLandscapeLeft && [UIDevice currentDevice].orientation!=UIDeviceOrientationLandscapeRight) {
             imageName= @"home_page_announcements_bg_portrait.png";
@@ -72,6 +75,15 @@
 {
 	// called after network status changes
 	
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	NSString *path = [documentsDirectory stringByAppendingPathComponent:@"authToken.txt"];
+	NSError *error;
+	NSString *stringFromFileAtPath = [[NSString alloc]
+									  initWithContentsOfFile:path
+									  encoding:NSUTF8StringEncoding
+									  error:&error];
+	
 	NetworkStatus internetStatus = [internetReachable currentReachabilityStatus];
 	switch (internetStatus)
 	
@@ -82,9 +94,15 @@
 			NSLog(@"The internet is down.");
 #endif
 			internetActive = NO;
-			[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationInternetInactive object:nil];
-			break;
 			
+			if (stringFromFileAtPath == nil) {
+				[self doNotLoadAppContent];
+			}
+			else {
+				[self loadAppContent:stringFromFileAtPath];
+			}
+
+			break;			
 		}
 		case ReachableViaWiFi:
 		{
@@ -92,6 +110,9 @@
 			NSLog(@"The internet is working via WIFI.");
 #endif
 			internetActive = YES;
+			
+			[self loadAppContent:stringFromFileAtPath];
+			
 			
 			break;
 			
@@ -102,47 +123,6 @@
 			NSLog(@"The internet is working via WWAN.");
 #endif
 			internetActive = YES;
-			
-			break;
-			
-		}
-	}
-	
-	NetworkStatus hostStatus = [hostReachable currentReachabilityStatus];
-	switch (hostStatus)
-	
-	{
-		case NotReachable:
-		{
-#if kShouldPrintInternetReachability
-			NSLog(@"A gateway to the host server is down.");
-#endif
-			hostActive = NO;
-			alert = [[UIAlertView alloc] initWithTitle:@"Cellular Data is Turned Off" 
-											   message:@"Turn on cellular data or use Wi-Fi to access data." 
-											  delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-			[self.view addSubview:alert];
-			[alert show];
-			
-			break;
-			
-		}
-		case ReachableViaWiFi:
-		{
-#if kShouldPrintInternetReachability
-			NSLog(@"A gateway to the host server is working via WIFI.");
-#endif
-			hostActive = YES;
-			
-			break;
-			
-		}
-		case ReachableViaWWAN:
-		{
-#if kShouldPrintInternetReachability
-			NSLog(@"A gateway to the host server is working via WWAN.");
-#endif
-			hostActive = YES;
 			
 			break;
 			
@@ -167,45 +147,40 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshScreen:) name:kNotificationRefreshScreen object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setUpHomePageComponents:) name:kNotificationSetupHomePageComponents object:nil];
 
-	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString *documentsDirectory = [paths objectAtIndex:0];
-	NSString *path = [documentsDirectory stringByAppendingPathComponent:@"authToken.txt"];
-	NSError *error;
-	NSString *stringFromFileAtPath = [[NSString alloc]
-									  initWithContentsOfFile:path
-                                      encoding:NSUTF8StringEncoding
-                                      error:&error];
+	[self.view setAutoresizesSubviews:YES];
+}
+
+- (void)loadAppContent:(NSString *)authToken {
 	
-	if (!internetActive && stringFromFileAtPath == nil) {
-		
-		/*alert = [[UIAlertView alloc] initWithTitle:@"Cellular Data is Turned Off" 
-														message:@"Turn on cellular data or use Wi-Fi to access data." 
-													   delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-		[self.view addSubview:alert];
-		[alert show];
-		 */
+	if (authToken == nil) {
+		[self performSelector:@selector(displayLogin) withObject:nil afterDelay:0.0];
 	}
 	else {
-		if (stringFromFileAtPath == nil) {
-			[self performSelector:@selector(displayLogin) withObject:nil afterDelay:0.0];
-		}
-		else {
-			[[IVLE instance] setAuthToken:stringFromFileAtPath];
+		[[IVLE instance] setAuthToken:authToken];
+		
+		[[ModulesFetcher sharedInstance] setUserID:[[IVLE instance] getAndSetUserName:internetActive]];
+		
+		if (internetActive) {
 			
-			[[ModulesFetcher sharedInstance] setUserID:[[IVLE instance] getAndSetUserName]];
 			NSDictionary *tokenValidity = [[IVLE instance] validate];
 			if ([tokenValidity objectForKey:@"Token"] != nil) {
 				
 				[[IVLE instance] setAuthToken:[tokenValidity objectForKey:@"Token"]];
-				[[ModulesFetcher sharedInstance] setUserID:[[IVLE instance] getAndSetUserName]];
+				[[ModulesFetcher sharedInstance] setUserID:[[IVLE instance] getAndSetUserName:YES]];
 			}
-			
-			[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetupHomePageComponents object:nil];
 		}
+		
+		[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSetupHomePageComponents object:nil];
 	}
+}
+
+- (void)doNotLoadAppContent {
 	
-	[stringFromFileAtPath release];
-	[self.view setAutoresizesSubviews:YES];
+	alert = [[UIAlertView alloc] initWithTitle:@"Cellular Data is Turned Off" 
+									   message:@"Turn on cellular data or use Wi-Fi to access data." 
+									  delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+	[self.view addSubview:alert];
+	[alert show];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

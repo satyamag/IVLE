@@ -46,13 +46,47 @@ static IVLE *sharedSingleton;
     self.authenticationToken = authToken;
 }
 
--(NSString*) getAndSetUserName {
+-(NSString*) getAndSetUserName:(BOOL)isOnline {
     
-    NSString *user = [handler getUserName:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/UserName_Get?APIKey=%@&Token=%@&output=json", kAPIKey, authenticationToken]];
-    self.userName = [NSString stringWithString:user];
-    return [user stringByReplacingOccurrencesOfString:@" " withString:@""];
-
-    
+	if (isOnline) {
+		NSString *user = [handler getUserName:[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/UserName_Get?APIKey=%@&Token=%@&output=json", kAPIKey, authenticationToken]];
+		self.userName = [NSString stringWithString:user];
+		
+		//save token to file
+		NSError *error;
+		NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+		NSString *documentsDirectory = [paths objectAtIndex:0];
+		NSString *path = [documentsDirectory stringByAppendingPathComponent:@"UserName.txt"];
+		NSString *string = self.userName;
+		BOOL ok = [string writeToFile:path atomically:YES
+							 encoding:NSUTF8StringEncoding error:&error];
+		if (!ok) {
+			// an error occurred
+			NSLog(@"Error writing file at %@\n%@",
+				  path, [error localizedFailureReason]);
+		}
+		
+		
+		return [user stringByReplacingOccurrencesOfString:@" " withString:@""];		
+	}
+    else {
+		NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+		NSString *documentsDirectory = [paths objectAtIndex:0];
+		NSString *path = [documentsDirectory stringByAppendingPathComponent:@"UserName.txt"];
+		NSError *error;
+		NSString *stringFromFileAtPath = [[NSString alloc]
+										  initWithContentsOfFile:path
+										  encoding:NSUTF8StringEncoding
+										  error:&error];
+		
+		if(stringFromFileAtPath != nil) {
+			self.userName = stringFromFileAtPath;
+			return [self.userName stringByReplacingOccurrencesOfString:@" " withString:@""];		
+		}
+		
+		return @"Offline";
+	}
+	return @"Offline";
 }
 
 - (NSDictionary *)validate {
