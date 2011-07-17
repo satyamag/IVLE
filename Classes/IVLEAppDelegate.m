@@ -50,20 +50,23 @@
     mapController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Map" image:[UIImage imageNamed:@"map.png"] tag:5];
     mapController.title = @"Map";
     
-    CAPCalculator *capController = [[[CAPCalculator alloc] init] autorelease];
-    UINavigationController *capNavigator = [[[UINavigationController alloc] initWithRootViewController:capController] autorelease];
-    capNavigator.navigationBar.tintColor = kNavBarColor;
-    capController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Cap Calculator" image:[UIImage imageNamed:@"calculator.png"] tag:6];
-    capController.title = @"CAP System";
+//    CAPCalculator *capController = [[[CAPCalculator alloc] init] autorelease];
+//    UINavigationController *capNavigator = [[[UINavigationController alloc] initWithRootViewController:capController] autorelease];
+//    capNavigator.navigationBar.tintColor = kNavBarColor;
+//    capController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Cap Calculator" image:[UIImage imageNamed:@"calculator.png"] tag:6];
+//    capController.title = @"CAP System";
     
-    NSArray *arrayOfViewControllers = [NSArray arrayWithObjects:IVLEHomeNavigator, workbinNavigator, eventsNavigator, timeTableNavigatorNew, mapNavigator, capNavigator, nil];
+    NSArray *arrayOfViewControllers = [NSArray arrayWithObjects:IVLEHomeNavigator, workbinNavigator, eventsNavigator, timeTableNavigatorNew, mapNavigator, nil];
+    
     
     [self.tabBarController setViewControllers:arrayOfViewControllers];
-    [self.window addSubview:self.tabBarController.view];
+    [self.window addSubview:self.tabBarController.view];    
+    
     [self.window makeKeyAndVisible];
     
 	return YES;
 }
+
 
 - (void)restartApplication{
 	[viewController.view removeFromSuperview];

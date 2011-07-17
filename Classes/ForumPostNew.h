@@ -13,7 +13,7 @@
 @protocol ForumPostNewDelegate
 
 -(void)postNewThreadWithHeading:(NSString *)headingName title:(NSString *)titleName body:(NSString *)postBody;
-
+-(void)postNewReplyWithTitle:(NSString *)titleName body:(NSString *)postBody;
 -(NSString*) getHeadingName;
 @end
 
@@ -27,6 +27,8 @@
     
 	NSString *headingName;
 	NSArray *headingList;
+    
+    BOOL isReply;
 	
 	id <ForumPostNewDelegate> delegate;
 
@@ -38,6 +40,7 @@
 @property (nonatomic, retain) IBOutlet UITextView *postBody;
 @property (nonatomic, retain) NSString *headingName;
 @property (nonatomic, retain) NSArray *headingList;
+@property (nonatomic, assign) BOOL isReply;
 @property (nonatomic, assign) id <ForumPostNewDelegate> delegate;
 
 @end

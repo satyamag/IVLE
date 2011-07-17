@@ -62,67 +62,7 @@
 	return forumsResults;
 }
 
-//-(void) prepareCellsForMainSubThreads{
-//    
-//    NSArray *posts = self.tableDataSource;
-//    NSEnumerator *e = [posts objectEnumerator];
-//    NSDictionary *cellInformation;
-//    while ((cellInformation = (NSDictionary*)[e nextObject])) {
-//        
-//       
-//        
-//    }
-//    
-//}
 
--(NSString*) getHeadingName{
-    return currentHeading;
-}
-
-- (void)postNewThread{
-	
-	NSLog(@"post new threads here");
-	ForumPostNew *postWindow = [[ForumPostNew alloc] initWithNibName:@"ForumPostNew" bundle:nil];
-	[postWindow setDelegate:self];
-	NSLog(@"test headingnames: %@",self.headingNames);
-    
-    postWindow.heading.text = [NSString stringWithString:self.currentHeading];
-	postWindow.headingList = self.headingNames;
-	
-	UINavigationController *navi = [[UINavigationController alloc] init];
-	[navi pushViewController:postWindow animated:NO];
-	[postWindow release];
-	
-	navi.wantsFullScreenLayout = YES;
-	navi.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-	navi.modalPresentationStyle = UIModalPresentationFormSheet;
-	[self presentModalViewController:navi animated:NO];
-	
-}
-
--(void)postNewThreadWithHeading:(NSString *)headingName title:(NSString *)titleName body:(NSString *)postBody{
-
-	NSLog(@"start posting threads to the server");
-	NSString *headingID;
-	for(int k=0; k<[self.headingNames count]; k++){
-		if ([[self.headingNames objectAtIndex:k] isEqualToString:headingName]) {
-			headingID = [headingIDs objectAtIndex:k];
-		}
-	}
-	
-	NSLog(@"got heading id already");
-	NSLog(@"%@", self.headingIDs);
-	NSLog(@"heading ID is: %@",headingID);
-	
-	if (headingID != nil) {
-		[[IVLE instance] forumPostNewThread:headingID withTitle:titleName withReply:postBody];
-	}
-	else {
-		NSLog(@"Heading ID not found for heading: %@", headingName);
-	}
-
-	
-}
 
 
 #pragma mark -
@@ -140,36 +80,19 @@
 		
 		tableDataSource = [[NSArray alloc] init];
 		cells = [[NSMutableArray alloc] init];
-		currentTitle = [[NSString alloc] init];
-		
-		self.title = @"Forums";
         
 		//initialize table data source
 		tableDataSource = [[self getForumsForModule:[IVLE instance].selectedCourseID] retain];
         
 	}
-	else if (currentLevel == 2) {
-		self.title = currentTitle;
-        currentHeading = [NSString stringWithString:currentTitle];
-        
+	else if (currentLevel == 2) {        
         [self.delegate clearSubThreadView];
+        [[self delegate] disableReply];
 	}
     
-//    else if(currentLevel > 2) {
-//        [self.delegate clearSubThreadView];
-//    }
-	
 	if (currentLevel > 1) {
 		
-		//add a "post" button in the navigation view controller
-//		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:[self retain] action:@selector(postNewThread)];
-//        
-//        // change the back button and add an event handler
-//        self.navigationItem.leftBarButtonItem =
-//        [[UIBarButtonItem alloc] initWithTitle:@"Back"
-//                                         style:UIBarButtonItemStyleBordered
-//                                        target:self
-//                                        action:@selector(handleBack:)];
+        [self.delegate enablePostingNewThread];
     }
     
     UISwipeGestureRecognizer *rightSwipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeRight:)];
@@ -199,7 +122,12 @@
     
     if (currentLevel == 3) {
         [self.delegate clearSubThreadView];
+        [[self delegate] disableReply];
         [self.delegate clearContentView];
+    }
+    
+    if (currentLevel == 2) {
+        [self.delegate disablePostingNewThread];
     }
     
     [self.view removeFromSuperview];
@@ -211,10 +139,6 @@
     
     CGPoint swipeLocation = [gestureRecognizer locationInView:self.tableView];
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:swipeLocation];
-    
-    
-    
-    
     
 	//activity spinner
 	UIActivityIndicatorView *spinner;
@@ -274,7 +198,7 @@
 			newForumTable.tableDataSource = children;
             
 			//push the new table view on the stack of the navigation controller
-            [[self delegate] updateMainThreadTableView:newForumTable];
+            [[self delegate] updateMainThreadTableView:newForumTable andHeadingID:[dictionary objectForKey:@"ID"] andHeadingName:[dictionary objectForKey:@"Title"]];
 			//[self.navigationController pushViewController:newForumTable animated:YES];
 			
 			//update the data source
@@ -300,8 +224,10 @@
         selectedCell.metaText.textColor = kWorkbinFontCompColor;
         
 		//update the content display view
-		UIWebView *content = [[tableDataSource objectAtIndex:indexPath.row] objectForKey:@"PostBody"];
-		[[self delegate] displayThreadContent:content];
+		NSString *content = [[tableDataSource objectAtIndex:indexPath.row] objectForKey:@"PostBody"];
+        NSString *threadID = [[tableDataSource objectAtIndex:indexPath.row] objectForKey:@"ID"];
+		[[self delegate] displayThreadContent:content andPostID:threadID];
+        [[self delegate] enableReply];
 		
 		//update the subthread table view
 		if (currentLevel == 2) {
@@ -331,21 +257,6 @@
 	self.view.userInteractionEnabled = YES;}
 
 
-
-- (void) handleBack:(id)sender
-{
-    // do your custom handler code here
-    
-    // make sure you do this!
-    // pop the controller
-
-    if (currentLevel == 3) {
-        [self.delegate clearSubThreadView];
-        [self.delegate clearContentView];
-    }
-    
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -511,7 +422,7 @@
 			newForumTable.headingIDs = self.headingIDs;
 			
 			//push the new table view on the stack of the navigation controller
-            [[self delegate] updateMainThreadTableView:newForumTable];
+            [[self delegate] updateMainThreadTableView:newForumTable andHeadingID:[dictionary objectForKey:@"ID"] andHeadingName:[dictionary objectForKey:@"Title"]];
 //			[self.navigationController pushViewController:newForumTable animated:YES];
 			
 			//update the data source
@@ -537,8 +448,10 @@
         selectedCell.metaText.textColor = kWorkbinFontCompColor;
         
 		//update the content display view
-		UIWebView *content = [[tableDataSource objectAtIndex:indexPath.row] objectForKey:@"PostBody"];
-		[[self delegate] displayThreadContent:content];
+		NSString *content = [[tableDataSource objectAtIndex:indexPath.row] objectForKey:@"PostBody"];
+        NSString *threadID = [[tableDataSource objectAtIndex:indexPath.row] objectForKey:@"ID"];
+		[[self delegate] displayThreadContent:content andPostID:threadID];
+        [[self delegate] enableReply];
 		
 		//update the subthread table view
 		if (currentLevel == 2) {

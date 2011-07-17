@@ -10,22 +10,31 @@
 #import "ForumMainThreadTable.h"
 #import "ForumSubThreadTable.h"
 
-@interface Forum : UIViewController <ForumMainThreadTableDelegate, ForumSubThreadTableDelegate> {
+@interface Forum : UIViewController <ForumMainThreadTableDelegate, ForumSubThreadTableDelegate, ForumPostNewDelegate> {
 	
 	IBOutlet UIView *mainThreadTable;
 	IBOutlet UIView *subThreadTable;
 	IBOutlet UIWebView *contentDisplay;
-	
-	UINavigationController *mainNC;
+	IBOutlet UILabel *postThreadLabel;
+    IBOutlet UIButton *postThreadButton;
+    IBOutlet UIButton *postReplyButton;
+    IBOutlet UILabel *postReplyLabel;
+    IBOutlet UIImageView *postReplyImage;
+    
+    NSString *currentHeadingID;
+    NSString *currentPostID;
+    NSString *currentHeadingName;
 	
 }
 
 @property (nonatomic, retain) IBOutlet UIView *mainThreadTable;
 @property (nonatomic, retain) IBOutlet UIView *subThreadTable;
 @property (nonatomic, retain) IBOutlet UIWebView *contentDisplay;
-@property (nonatomic, retain) UINavigationController *mainNC;
+@property (nonatomic, retain) NSString *currentHeadingID;
+@property (nonatomic, retain) NSString *currentHeadingName;
+@property (nonatomic, retain) NSString *currentPostID;
 
 
-- (void)displayThreadContent:(NSString *)content;
+- (IBAction)postNewThread:(id)sender;
 @end
 

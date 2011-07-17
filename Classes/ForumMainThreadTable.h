@@ -15,20 +15,25 @@
 
 @required
 
-- (void)displayThreadContent:(UIWebView *)content;
+- (void)displayThreadContent:(NSString *)content andPostID:(NSString*)postID;
 //sent new content to the Forum controller to update the content in the textfield
 
-- (void)updateMainThreadTableView:(id)newForumTable;
+- (void)updateMainThreadTableView:(id)newForumTable andHeadingID:(NSString*)headingID andHeadingName:(NSString*)headingName;
 
 - (void)updateSubThreadTableView:(NSArray *)children andPreviousTable:(id)previousTable;
 //update the subthread table view with this newTable
 
 -(void) clearSubThreadView;
 -(void) clearContentView;
+-(void) enablePostingNewThread;
+-(void) disablePostingNewThread;
+
+-(void) enableReply;
+-(void) disableReply;
 
 @end
 
-@interface ForumMainThreadTable : UITableViewController<ForumPostNewDelegate> {
+@interface ForumMainThreadTable : UITableViewController {
 
 	NSArray *tableDataSource;
 	NSMutableArray *cells;

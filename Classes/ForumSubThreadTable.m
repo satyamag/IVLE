@@ -92,8 +92,9 @@
         selectedCell.metaText.textColor = kWorkbinFontColor;
     }
     
-    UIWebView *content = [[tableDataSource objectAtIndex:0] objectForKey:@"PostBody"];
-    [[self delegate] displayThreadContent:content]; 
+    NSString *content = [[tableDataSource objectAtIndex:0] objectForKey:@"PostBody"];
+    NSString *threadID = [[tableDataSource objectAtIndex:0] objectForKey:@"ID"];
+    [[self delegate] displayThreadContent:content andPostID:threadID]; 
 }
 
 -(void)didSwipeRight:(UIGestureRecognizer *)gestureRecognizer {
@@ -125,8 +126,9 @@
     selectedCell.titleText.textColor = kWorkbinFontCompColor;
     selectedCell.metaText.textColor = kWorkbinFontCompColor;
     
-    UIWebView *content = [[tableDataSource objectAtIndex:indexPath.row] objectForKey:@"PostBody"];
-    [[self delegate] displayThreadContent:content];
+    NSString *content = [[tableDataSource objectAtIndex:indexPath.row] objectForKey:@"PostBody"];
+    NSString *threadID = [[tableDataSource objectAtIndex:indexPath.row] objectForKey:@"ID"];
+    [[self delegate] displayThreadContent:content andPostID:threadID];
     
     NSArray *children = [[tableDataSource objectAtIndex:indexPath.row] objectForKey:@"Threads"];
     if ([children count] != 0) {
@@ -233,8 +235,9 @@
     selectedCell.titleText.textColor = kWorkbinFontCompColor;
     selectedCell.metaText.textColor = kWorkbinFontCompColor;
     
-    UIWebView *content = [[tableDataSource objectAtIndex:indexPath.row] objectForKey:@"PostBody"];
-    [[self delegate] displayThreadContent:content];
+    NSString *content = [[tableDataSource objectAtIndex:indexPath.row] objectForKey:@"PostBody"];
+    NSString *threadID = [[tableDataSource objectAtIndex:indexPath.row] objectForKey:@"ID"];
+    [[self delegate] displayThreadContent:content andPostID:threadID];
     
     NSArray *children = [[tableDataSource objectAtIndex:indexPath.row] objectForKey:@"Threads"];
     if ([children count] != 0) {

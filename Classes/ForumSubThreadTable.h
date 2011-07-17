@@ -18,7 +18,7 @@
 - (void)updateMainThreadTableView:(NSArray *)tableDataSource andIndexPath:(NSIndexPath *)indexPath;
 //update the subthread table view with this newTable
 
-- (void)displayThreadContent:(UIWebView *)content;
+- (void)displayThreadContent:(NSString *)content andPostID:(NSString*)postID;
 //sent new content to the Forum controller to update the content in the textfield
 
 - (void)updateSubThreadTableView:(NSArray *)children andPreviousTable:(id)previousTable;

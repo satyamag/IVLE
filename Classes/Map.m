@@ -57,7 +57,7 @@
 	} else {
 		closeButton.alpha = 0.0;
 		closeButton.enabled = NO;
-		NSArray * result = [[[IVLE instance] userEventsGet:24] valueForKey:@"result"];
+        NSArray *result = [[[IVLE instance] userEventsGet:24] valueForKey:@"result"];
 		for (int i=0; i < [result count]; i++) {
 			annotationLastAdded = [[MKPointAnnotation alloc] init];
 			annotationLastAdded.coordinate = CLLocationCoordinate2DMake([[[result objectAtIndex:i] valueForKey:@"latitude"] floatValue], [[[result objectAtIndex:i] valueForKey:@"longitude"] floatValue] );
@@ -98,7 +98,7 @@
 	
 	//	NSLog(@"%@ %@ %@ %@ %@ %@ %@", title, description, contact, dateTime, organizer, price, venue, agenda);
 	//call api to store event
-	[[IVLE instance] userEventsCreate:organizer withContact:contact withTitle:title withDescription:description withPrice:price atLocation:[mapView centerCoordinate]];
+	NSDictionary *event = [[IVLE instance] userEventsCreate:organizer withContact:contact withTitle:title withDescription:description withPrice:price atLocation:[mapView centerCoordinate]];
 	//[self dismissModalViewControllerAnimated:YES];
 	
 	//	NSLog(@"%@", [[[[[IVLE instance] userEventsGet:1] valueForKey:@"result"] lastObject] valueForKey:@"title"]);

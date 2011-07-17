@@ -12,7 +12,7 @@
 
 @implementation ForumPostNew
 
-@synthesize  postTitle, postBody, headingName, headingList, delegate, heading;
+@synthesize  postTitle, postBody, headingName, headingList, delegate, heading, isReply;
 
 -(BOOL)checkInputValidation {
 	
@@ -56,7 +56,14 @@
 - (void)done {
 
 	if ([self checkInputValidation] == TRUE) {
-		[[self delegate] postNewThreadWithHeading:headingName title:[postTitle text] body:[postBody text]];
+        
+        if (isReply) {
+            [[self delegate] postNewReplyWithTitle:[postTitle text] body:[postBody text]];
+        }
+        else {
+           [[self delegate] postNewThreadWithHeading:headingName title:[postTitle text] body:[postBody text]]; 
+        }
+		
 
 		//dismiss the modal view
 		[self dismissModalViewControllerAnimated:YES];
@@ -69,25 +76,19 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
- // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization.
-    }
-    return self;
-}
-*/
-
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
 	self.title = @"Post New Thread";
+    
+    if (isReply) {
+        self.postTitle.text = @"Re:";
+    }
     headingName = [[self delegate] getHeadingName];
     self.heading.text = headingName;
+
+    
     self.navigationController.navigationBar.tintColor = kNavBarColor;
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
@@ -97,13 +98,6 @@
 	NSLog(@"%@", self.headingList);
 }
 
-
-//- (void)updateHeadingName:(NSString *)newHeading{
-//
-//	self.headingName = newHeading;
-//	NSLog(@"heading name: %@",self.headingName);
-//	[headingTableView reloadData];
-//}
 
 
 #pragma mark -
@@ -121,37 +115,6 @@
 }
 
 
-// Customize the appearance of table view cells.
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//	static NSString *CellIdentifier = @"Cell";
-//	
-//	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//	if (cell == nil) {
-//		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-//	}
-//	
-//	// Configure the cell...
-//	cell.textLabel.text = self.headingName;
-//	cell.textLabel.font = [UIFont systemFontOfSize:14];
-//	cell.backgroundColor = [UIColor colorWithWhite:1 alpha:0.9];
-//	
-//	return cell;
-//}
-
-//#pragma mark -
-//#pragma mark Table view delegate
-//
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//
-//	ForumPostHeadingSelect *headingSelect = [[ForumPostHeadingSelect alloc] init];
-//	headingSelect.headingInfo = self.headingList;
-//	[headingSelect setDelegate:self];
-//	[self.navigationController pushViewController:headingSelect animated:YES];
-//    
-//	[headingSelect release];
-//}	
-//
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Overriden to allow any orientation.
