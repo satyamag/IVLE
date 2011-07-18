@@ -10,6 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "IVLEAPIHandler.h"
 #import "IVLEAPICache.h"
+#import "Constants.h"
 
 #define kNotificationRefreshScreen @"RefreshScreen"
 #define kNotificationRefreshRightScreen @"RefreshRightScreen"

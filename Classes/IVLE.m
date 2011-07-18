@@ -204,12 +204,12 @@ static IVLE *sharedSingleton;
 }
 
 - (NSDictionary *)userEventsCreate:(NSString*)user withContact:(NSString*)hp withTitle:(NSString*)title withDescription:(NSString*)description withPrice:(NSString*)price atLocation:(CLLocationCoordinate2D)coordinates{
-	return [handler postURL:@"http://localhost/map.php" withParameters:[NSString stringWithFormat:@"user=%@&contact=%@&title=%@&description=%@&price=%@&latitude=%f&longitude=%f", user, hp, title, description, price, coordinates]];
+	return [handler postURL:@"http://%@/map.php" withParameters:[NSString stringWithFormat:@"user=%@&contact=%@&title=%@&description=%@&price=%@&latitude=%f&longitude=%f", kMapServerHost ,user, hp, title, description, price, coordinates]];
 }
 
 - (NSDictionary *)userEventsGet:(NSInteger)hour{
 	//time is used to prevent cache.
-	return [handler getURL:[NSString stringWithFormat:@"http://localhost/map.php?duration=%d&time=%.0f", hour, [NSDate timeIntervalSinceReferenceDate]]];
+	return [handler getURL:[NSString stringWithFormat:@"http://%@/map.php?duration=%d&time=%.0f",kMapServerHost, hour, [NSDate timeIntervalSinceReferenceDate]]];
 }
 
 - (NSDictionary *)studentEvents:(BOOL)title {
