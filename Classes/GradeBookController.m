@@ -20,7 +20,7 @@
 	if (self) {
 		
 		gradebookResults = [[[[IVLE instance] gradebookViewItems:[IVLE instance].selectedCourseID] objectForKey:@"Results"] retain];
-		//UIImage *bgImage_announcements = [UIImage imageNamed:@"module_info_announcement_bg.png"];
+		UIImage *bgImage_announcements = [UIImage imageNamed:@"module_info_announcement_bg.png"];
 		//NSLog(@"%@", gradebookResults);
 	
 		self.cells = [NSMutableArray array];
@@ -46,7 +46,7 @@
 			
 			[self.cells addObject:cell];
 		}
-		//self.view.backgroundColor = [UIColor colorWithPatternImage:bgImage_announcements];
+		self.view.backgroundColor = [UIColor colorWithPatternImage:bgImage_announcements];
     }
     return self;
 }

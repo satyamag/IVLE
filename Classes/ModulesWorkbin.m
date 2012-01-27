@@ -148,14 +148,31 @@
 }
 
 - (void)btnClicked:(id)sender{
-	if ([sender tag] == -1) {
-		workbinDatasource = [[self stackPop] retain];
-		selectedFolderID = 0;
-		[self redrawButtons];
-	}else {
-		selectedFolderID = [sender tag];
-	}
-	[table reloadData];
+    int i = [stack count];
+    
+//    if (i > 0) {
+//        if ([sender tag] == -1) {
+//            workbinDatasource = [[self stackPop] retain];
+//            selectedFolderID = 0;
+//            [self redrawButtons];
+//        }else {
+//            selectedFolderID = [sender tag];
+//        }
+//        [table reloadData];
+//    }
+    
+    
+    if ([sender tag] == -1 && i > 0) {
+        workbinDatasource = [[self stackPop] retain];
+        selectedFolderID = 0;
+        [self redrawButtons];
+    }else {
+        if ([sender tag] >= 0) {
+             selectedFolderID = [sender tag];
+        }
+       
+    }
+    [table reloadData];
 	
 }
 

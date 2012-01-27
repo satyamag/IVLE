@@ -109,14 +109,14 @@ NSInteger openSectionIndex;
                                                                                   @"ForumViewController",@"Forum",
                                                                                   @"ModulesWorkbin",@"Workbin",
                                                                                   @"WebcastController",@"Webcasts",
-                                                                                  @"GradebookController", @"Gradebook",nil] retain];
+                                                                                  @"GradeBookController", @"GradeBook",nil] retain];
     
 	moduleActiveLinksImageAssociation =[[[NSDictionary alloc] initWithObjectsAndKeys: @"information.png",@"Information",
                                                                                       @"announcements.png",@"Announcements",
                                                                                       @"forum.png",@"Forum",
                                                                                       @"workbin.png",@"Workbin",
                                                                                       @"webcasts.png",@"Webcasts",
-                                                                                      @"gradebook.png",@"Gradebook",nil] retain];
+                                                                                      @"gradebook.png",@"GradeBook",nil] retain];
 
 	UIImage *backgroundImage = [UIImage imageNamed:@"modules_workbin_3rd_column.png"];
 	[self.view setBackgroundColor:[UIColor colorWithPatternImage:backgroundImage]];
@@ -175,7 +175,7 @@ NSInteger openSectionIndex;
     
     NSDictionary* gradebook = [[ivle gradebookViewItems:courseID] objectForKey:@"Results"];
     if ([gradebook count] > 0) {
-        [activeLinks addObject:@"Gradebook"];
+        [activeLinks addObject:@"GradeBook"];
     }
     
     return activeLinks;
@@ -317,7 +317,7 @@ NSInteger openSectionIndex;
         [workbin release];           
 	}
 	
-	else if ([nibName compare:@"GradebookController"] == NSOrderedSame) {
+	else if ([nibName compare:@"GradeBookController"] == NSOrderedSame) {
 		
 		GradeBookController *gradeBook = [[GradeBookController alloc] initWithNibName:nibName bundle:nil];
 		leftBar = [NSArray arrayWithObject:gradeBook];
