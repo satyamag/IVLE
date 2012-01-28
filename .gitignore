@@ -6,7 +6,8 @@
 *.mode1v3
 *.mode2v3
 *.perspectivev3
-*.xcuserstate
+*/*.xcodeproj/xcuserdata/*.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist
+*/*.xcodeproj/project.xcworkspace/xcuserdata/*.xcuserdatad/UserInterfaceState.xcuserstate
 project.xcworkspace/
 xcuserdata/
 
