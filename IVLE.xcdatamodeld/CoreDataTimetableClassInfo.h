@@ -14,13 +14,13 @@
 {
 }
 
-@property (nonatomic, retain) NSDate * startTime;
-@property (nonatomic, retain) NSString * moduleCode;
-@property (nonatomic, retain) NSDate * endTime;
-@property (nonatomic, retain) NSString * classType;
-@property (nonatomic, retain) NSString * classLocation;
-@property (nonatomic, retain) NSString * eventIdentifier;
-@property (nonatomic, retain) CoreDataTimetableDay * belongsToTimetableDay;
+@property (nonatomic, strong) NSDate * startTime;
+@property (nonatomic, strong) NSString * moduleCode;
+@property (nonatomic, strong) NSDate * endTime;
+@property (nonatomic, strong) NSString * classType;
+@property (nonatomic, strong) NSString * classLocation;
+@property (nonatomic, strong) NSString * eventIdentifier;
+@property (nonatomic, strong) CoreDataTimetableDay * belongsToTimetableDay;
 
 
 @end

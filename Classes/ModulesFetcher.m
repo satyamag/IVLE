@@ -32,7 +32,7 @@ static id master = nil;
 }
 
 - (void)setUserID:(NSString*)user{
-	userID = [user retain];
+	userID = user;
 }
 
 - (void)checkRep{
@@ -70,11 +70,8 @@ static id master = nil;
     // nil for section name key path means "no sections".
 	fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[self managedObjectContext] sectionNameKeyPath:nil cacheName:@"Root"];
 	
-	[fetchRequest release];
-	[sortDescriptor release];
-	[sortDescriptors release];
 	
-	return [fetchedResultsController autorelease];
+	return fetchedResultsController;
 }
 
 - (NSArray *)fetchManagedObjectsForEntity:(NSString*)entityName withPredicate:(NSPredicate*)predicate
@@ -87,7 +84,6 @@ static id master = nil;
 	request.predicate = predicate;
 	
 	NSArray	*results = [context executeFetchRequest:request error:nil];
-	[request release];
 	
 	return results;
 }
@@ -187,12 +183,5 @@ static id master = nil;
 	return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
-- (void)dealloc {
-    [managedObjectContext release];
-    [managedObjectModel release];
-    [persistentStoreCoordinator release];
-	
-    [super dealloc];
-}
 
 @end

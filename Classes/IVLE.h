@@ -27,13 +27,13 @@
 	NSString *selectedCourseID;
 	NSString *selectedWorkbinID;
 }
-@property (nonatomic, retain) IVLEAPIHandler *handler;
-@property (nonatomic, retain) NSString *authenticationToken;
-@property (nonatomic, retain) NSString *userName;
+@property (nonatomic, strong) IVLEAPIHandler *handler;
+@property (nonatomic, strong) NSString *authenticationToken;
+@property (nonatomic, strong) NSString *userName;
 
-@property (nonatomic, retain) NSString *selectedCourseID;
+@property (nonatomic, strong) NSString *selectedCourseID;
 
-@property (nonatomic, retain) NSString *selectedWorkbinID;
+@property (nonatomic, strong) NSString *selectedWorkbinID;
 
 /* Returns an instance of the IVLE object. Adopted Singleton Pattern*/
 + (IVLE *)instance;

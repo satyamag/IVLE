@@ -25,7 +25,6 @@
 	UIView *view = [[UIView alloc] initWithFrame:appFrame];
 	view.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
 	self.view = view;
-	[view release];	
 	
 	splashImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"IVLE_splash_screen_white_portrait.png"]];
     splashImageView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
@@ -78,8 +77,5 @@
 }
 
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 @end

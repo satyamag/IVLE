@@ -16,8 +16,8 @@
 	IBOutlet UIButton *cellButtonRight;
 }
 
-@property (nonatomic, retain) IBOutlet UIButton *cellButtonRight;
-@property (nonatomic, retain) IBOutlet UIButton *cellButtonLeft;
+//@property (nonatomic, retain) IBOutlet UIButton *cellButtonRight;
+//@property (nonatomic, retain) IBOutlet UIButton *cellButtonLeft;
 
 /*Set button label for left button
  text: button label*/
@@ -68,10 +68,10 @@
 
 /*Returns pointer for left buton */
 
--(UIButton*) getCellButtonLeft;
-
-/*Returns pointer for right buton */
-
--(UIButton*) getCellButtonRight;
+//- (UIButton *) getCellButtonLeft;
+//
+///*Returns pointer for right buton */
+//
+//- (UIButton *) getCellButtonRight;
 
 @end

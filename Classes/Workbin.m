@@ -65,12 +65,6 @@
     [self.view addSubview:splitVC.view];
 }
 
-- (void)dealloc
-{
-    [splitVC release];
-    [leftBar release];
-    [super dealloc];
-}
 
 - (void)didReceiveMemoryWarning
 {

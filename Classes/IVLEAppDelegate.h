@@ -12,11 +12,9 @@
 #import "IVLEMain.h"
 #import "SplashViewController.h"
 #import "Constants.h"
-#import "CAPCalculator.h"
 #import "Events.h"
 #import "Workbin.h"
 #import "Map.h"
-#import "CAPCalculator.h"
 #import "TimetableNew.h"
 
 @class IVLETabBarController;
@@ -33,9 +31,9 @@
 
 }
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic, strong) IBOutlet UIWindow *window;
 
-@property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
+@property (nonatomic, strong) IBOutlet UITabBarController *tabBarController;
 	
 -(void) splashOver;
 -(void) switchToTab:(int)index;

@@ -16,9 +16,9 @@
 	BOOL finishedLoading;
 }
 
-@property (nonatomic, retain) UILabel *titleText;
-@property (nonatomic, retain) UIWebView *descriptionText;
-@property (nonatomic, retain) UIImageView *backgroundImage;
+@property (nonatomic, strong) UILabel *titleText;
+@property (nonatomic, strong) UIWebView *descriptionText;
+@property (nonatomic, strong) UIImageView *backgroundImage;
 @property (nonatomic, assign) BOOL finishedLoading;
 
 @end

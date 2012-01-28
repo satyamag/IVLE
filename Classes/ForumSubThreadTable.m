@@ -129,7 +129,6 @@
                 [mainThreadChildren addObject:[children objectAtIndex:i]];
             }
             [[self delegate] updateMainThreadTableView:mainThreadChildren andIndexPath:indexPath];
-            [mainThreadChildren release];
         }
         
         
@@ -180,7 +179,7 @@
     
     NSRange range = NSMakeRange (6, 10);
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[[info objectForKey:@"PostDate"] substringWithRange:range] intValue]];
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:kCFDateFormatterMediumStyle];
     
     cell.metaText.text = [NSString stringWithFormat:@"%@, %@", [[[info objectForKey:@"Poster"] objectForKey:@"Name"] capitalizedString], [formatter stringFromDate:date]];
@@ -261,11 +260,6 @@
 }
 
 
-- (void)dealloc {
-	[tableDataSource release];
-	[cells release];
-    [super dealloc];
-}
 
 
 @end

@@ -30,12 +30,12 @@
 	IVLEAPICache *cache;
 }
 
-@property (nonatomic, retain) NSDictionary *dictionary;
-@property (nonatomic, retain) NSMutableData *incomingData;
+@property (nonatomic, strong) NSDictionary *dictionary;
+@property (nonatomic, strong) NSMutableData *incomingData;
 @property (nonatomic, assign) BOOL dataIsFromCoreData;
 @property (nonatomic, assign) BOOL allowCoreDataCache;
-@property (nonatomic, retain) NSString* userName;
-@property (nonatomic, retain) IVLEAPICache *cache;
+@property (nonatomic, strong) NSString* userName;
+@property (nonatomic, strong) IVLEAPICache *cache;
 
 /* Post URL with a string of parameters denoted by p1=value&p2=value2
  REQUIRES: valid parameters format and url*/

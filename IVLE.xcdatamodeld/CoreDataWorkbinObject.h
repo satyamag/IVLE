@@ -14,13 +14,13 @@
 {
 }
 
-@property (nonatomic, retain) NSString * WorkbinObjectFileID;
-@property (nonatomic, retain) NSNumber * WorkbinObjectIsFolder;
-@property (nonatomic, retain) NSData * WorkbinObjectData;
-@property (nonatomic, retain) NSString * WorkbinObjectFilename;
-@property (nonatomic, retain) CoreDataWorkbinObject * WorkbinParent;
-@property (nonatomic, retain) CoreDataWorkbin * belongsToWorkbin;
-@property (nonatomic, retain) NSSet* WorkbinChild;
+@property (nonatomic, strong) NSString * WorkbinObjectFileID;
+@property (nonatomic, strong) NSNumber * WorkbinObjectIsFolder;
+@property (nonatomic, strong) NSData * WorkbinObjectData;
+@property (nonatomic, strong) NSString * WorkbinObjectFilename;
+@property (nonatomic, strong) CoreDataWorkbinObject * WorkbinParent;
+@property (nonatomic, strong) CoreDataWorkbin * belongsToWorkbin;
+@property (nonatomic, strong) NSSet* WorkbinChild;
 
 @end
 

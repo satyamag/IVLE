@@ -25,7 +25,7 @@
 	if (self) {
 		
         
-		webcasts = [[[[[[[[IVLE instance] webcasts:[IVLE instance].selectedCourseID withDuration:0 withTitleOnly:NO] objectForKey:@"Results"] objectAtIndex:0] objectForKey:@"ItemGroups"] objectAtIndex:0] objectForKey:@"Files"] retain];
+		webcasts = [[[[[[[IVLE instance] webcasts:[IVLE instance].selectedCourseID withDuration:0 withTitleOnly:NO] objectForKey:@"Results"] objectAtIndex:0] objectForKey:@"ItemGroups"] objectAtIndex:0] objectForKey:@"Files"];
         
 		UIImage *bgImage_announcements = [UIImage imageNamed:@"module_info_announcement_bg.png"];
 		//NSLog(@"%@", webcasts);
@@ -71,8 +71,6 @@
             
 			[self.cells addObject:cell];
             
-            [player_meta release];
-            [formatter release];
 		}
 		self.view.backgroundColor = [UIColor colorWithPatternImage:bgImage_announcements];
     }
@@ -158,10 +156,5 @@
     [player.view removeFromSuperview];
 }
 
--(void) dealloc {
-    [cells release];
-    [webcasts release];
-    [super dealloc];
-}
 
 @end

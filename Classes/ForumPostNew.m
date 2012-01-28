@@ -23,7 +23,6 @@
 													   delegate:self cancelButtonTitle:@"Ok"
 											  otherButtonTitles:nil];
 		[alert show];
-		[alert release];
 		
 		return FALSE;
 	}
@@ -34,7 +33,6 @@
 													   delegate:self cancelButtonTitle:@"Ok"
 											  otherButtonTitles:nil];
 		[alert show];
-		[alert release];
 		
 		return FALSE;
 	}
@@ -137,11 +135,6 @@
 }
 
 
-- (void)dealloc {
-	[headingName release];
-	[headingList release];
-    [super dealloc];
-}
 
 
 @end

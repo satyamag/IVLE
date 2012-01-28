@@ -16,9 +16,9 @@
     IBOutlet UIImageView *backgroundImage;
 }
 
-@property (nonatomic, retain) UILabel *eventTitle;
-@property (nonatomic, retain) UILabel *eventDate;
-@property (nonatomic, retain) UIImageView *eventType;
-@property (nonatomic, retain) UIImageView *backgroundImage;
+@property (nonatomic, strong) UILabel *eventTitle;
+@property (nonatomic, strong) UILabel *eventDate;
+@property (nonatomic, strong) UIImageView *eventType;
+@property (nonatomic, strong) UIImageView *backgroundImage;
 
 @end

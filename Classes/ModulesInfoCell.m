@@ -37,9 +37,6 @@
 }
 
 
-- (void)dealloc {
-    [super dealloc];
-}
 - (void)webViewDidFinishLoad:(UIWebView *)aWebView {
 	NSString *output = [aWebView stringByEvaluatingJavaScriptFromString:@"document.getElementById(\"foo\").offsetHeight;"];
 	CGRect frame;

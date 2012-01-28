@@ -31,13 +31,13 @@
 	IBOutlet UIBarButtonItem *done;
 	IBOutlet UIBarButtonItem *cancel;
 	
-	id <NewEventDelegate> delegate;
+	id <NewEventDelegate> __unsafe_unretained delegate;
 	
 	IBOutlet UITextField *eventTitle, *contact, *dateTime, *organizer, *price, *venue, *agenda;
 	IBOutlet UITextView *description;
 }
 
-@property (nonatomic, assign) id <NewEventDelegate> delegate;
+@property (nonatomic, unsafe_unretained) id <NewEventDelegate> delegate;
 
 - (IBAction)doneButtonPressed;
 // MODIFIES:  none

@@ -30,17 +30,17 @@
     
     BOOL isReply;
 	
-	id <ForumPostNewDelegate> delegate;
+	id <ForumPostNewDelegate> __unsafe_unretained delegate;
 
 }
 
 //@property (nonatomic, retain) IBOutlet UITableView *headingTableView;
-@property (nonatomic, retain) IBOutlet UILabel *heading;
-@property (nonatomic, retain) IBOutlet UITextField *postTitle;
-@property (nonatomic, retain) IBOutlet UITextView *postBody;
-@property (nonatomic, retain) NSString *headingName;
-@property (nonatomic, retain) NSArray *headingList;
+@property (nonatomic, strong) IBOutlet UILabel *heading;
+@property (nonatomic, strong) IBOutlet UITextField *postTitle;
+@property (nonatomic, strong) IBOutlet UITextView *postBody;
+@property (nonatomic, strong) NSString *headingName;
+@property (nonatomic, strong) NSArray *headingList;
 @property (nonatomic, assign) BOOL isReply;
-@property (nonatomic, assign) id <ForumPostNewDelegate> delegate;
+@property (nonatomic, unsafe_unretained) id <ForumPostNewDelegate> delegate;
 
 @end

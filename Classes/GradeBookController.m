@@ -19,7 +19,7 @@
     
 	if (self) {
 		
-		gradebookResults = [[[[IVLE instance] gradebookViewItems:[IVLE instance].selectedCourseID] objectForKey:@"Results"] retain];
+		gradebookResults = [[[IVLE instance] gradebookViewItems:[IVLE instance].selectedCourseID] objectForKey:@"Results"];
 		UIImage *bgImage_announcements = [UIImage imageNamed:@"module_info_announcement_bg.png"];
 		//NSLog(@"%@", gradebookResults);
 	
@@ -51,10 +51,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [super dealloc];
-}
 
 - (void)didReceiveMemoryWarning
 {

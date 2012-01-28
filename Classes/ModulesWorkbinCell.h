@@ -17,8 +17,8 @@
     
 }
 
-@property (nonatomic, retain) UILabel *fileName;
-@property (nonatomic, retain) UILabel *fileSize;
-@property (nonatomic, retain) UIImageView *fileType;
+@property (nonatomic, strong) UILabel *fileName;
+@property (nonatomic, strong) UILabel *fileSize;
+@property (nonatomic, strong) UIImageView *fileType;
 
 @end

@@ -45,11 +45,11 @@
 		//	check for internet connection
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkNetworkStatus:) name:kReachabilityChangedNotification object:nil];
 		
-		internetReachable = [[Reachability reachabilityForInternetConnection] retain];
+		internetReachable = [Reachability reachabilityForInternetConnection];
 		[internetReachable startNotifier];
 		
 		// check if a pathway to a random host exists
-		hostReachable = [[Reachability reachabilityWithHostName: @"www.apple.com"] retain];
+		hostReachable = [Reachability reachabilityWithHostName: @"www.apple.com"];
 		[hostReachable startNotifier];
 		
 		// now patiently wait for the notification
@@ -193,7 +193,6 @@
 	
 	self.view.userInteractionEnabled = YES;
 	[spinner removeFromSuperview];
-	[spinner release];
 }
 
 -(void) setUpHomePageComponents:(NSNotification*)notification {
@@ -215,7 +214,6 @@
 	[self setUpTimeTableView];
 	
 	[loading stopAnimating];
-	[loading release];
 }
 
 - (void)displayLogin{
@@ -266,7 +264,7 @@
 	
 	IVLE *ivle = [IVLE instance];
 	
-	NSMutableArray* moduleIDs = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableArray* moduleIDs = [[NSMutableArray alloc] init];
 	announcements = [[NSMutableArray alloc] init];
 	
 	NSDictionary *moduleDict = [ivle modules:0 withAllInfo:NO];
@@ -281,7 +279,7 @@
 	}
     
     NSSortDescriptor *sortDescriptor;
-    sortDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"CreatedDate" ascending:NO] autorelease];
+    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"CreatedDate" ascending:NO];
     NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     [announcements sortUsingDescriptors:sortDescriptors];
 	
@@ -291,7 +289,7 @@
 		[announcements removeObjectsInRange:range];
 	}
         
-	announcementCells = [[[NSMutableArray alloc] init] retain];
+	announcementCells = [[NSMutableArray alloc] init];
 	
 	for (int i=0; i<[announcements count]; i++) {
 		
@@ -311,7 +309,7 @@
 		
 		NSRange range = NSMakeRange (6, 10);
 		NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[[[announcements objectAtIndex:i] valueForKey:@"CreatedDate"] substringWithRange:range] intValue]];
-        NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateStyle:kCFDateFormatterMediumStyle];
 		
 		cell.titleText.text = [[announcements objectAtIndex:i] valueForKeyPath:@"Title"];
@@ -380,7 +378,6 @@
 		eventTitle.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
 	
 		[eventsScrollView addSubview:eventTitle];
-		[eventTitle release];
 	}
 	
 	[eventsPageControl setNumberOfPages:5];
@@ -390,7 +387,6 @@
 	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(eventsSummaryClicked:)];
 	[tap setNumberOfTapsRequired:1];
 	[eventsScrollView addGestureRecognizer:tap];
-	[tap release];
 	
 }
 
@@ -448,7 +444,6 @@
 		NSDate *endDate = [self convertJSONDateToNSDateForDate:[semInfo objectForKey:@"SemesterEndDate"]];
 		[newModuleEvent createModuleEvent:currentEvent StartDate:startDate EndDate:endDate];
 		[timetableCells addObject:newModuleEvent];
-		[newModuleEvent release];
 	}	
 	
 	NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -470,9 +465,7 @@
 		}
 	}
 	
-	[dateFormat release];
-	[timetableCells release];
-	timetableCells = [eventsOnThisDate retain];
+	timetableCells = eventsOnThisDate;
 	
 	[recentTimetable reloadData];
 }
@@ -597,13 +590,8 @@
 
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
-	[recentTimetable release];
-	[recentAnnouncements release];
-	[timetableCells release];
 	
-	[alert release];
 	
-    [super dealloc];
 }
 
 @end

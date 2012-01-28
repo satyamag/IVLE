@@ -13,9 +13,9 @@
 {
 }
 
-@property (nonatomic, retain) NSData * data;
-@property (nonatomic, retain) NSString * urlWithoutAuthToken;
-@property (nonatomic, retain) NSDate * date;
+@property (nonatomic, strong) NSData * data;
+@property (nonatomic, strong) NSString * urlWithoutAuthToken;
+@property (nonatomic, strong) NSDate * date;
 
 @end
 

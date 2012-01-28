@@ -41,7 +41,7 @@
 	[request setHTTPMethod:@"POST"];
 	[request setHTTPBody:[parameters dataUsingEncoding:NSUTF8StringEncoding]];
 	
-	NSURLConnection *connection = [[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
+	NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 	
 	[self checkForWriteInDictionary:connection];
 	
@@ -111,7 +111,7 @@
 	
 	requestIsData = YES;
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
-	NSURLConnection *connection = [[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
+	NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 	
 	[self checkForWriteInDictionary:connection];
 	
@@ -127,7 +127,7 @@
 	
 	
 	request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
-	connection = [[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
+	connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 	
 	[self checkForWriteInDictionary:connection];
 	
@@ -174,7 +174,7 @@
 	NSURLConnection *connection;
 	
 	request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
-	connection = [[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
+	connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 	
 	[self checkForWriteInDictionary:connection];
 	
@@ -241,7 +241,6 @@
 		}
 		//	self.incomingData = nil;
 		
-		[jsonString release];
 	}
 	
 	if (allowCoreDataCache && self.cache != nil) {
@@ -262,9 +261,5 @@
 	
 }
 
-- (void)dealloc {
-	
-	[super dealloc];
-}
 
 @end

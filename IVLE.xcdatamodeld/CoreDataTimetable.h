@@ -14,7 +14,7 @@
 {
 }
 
-@property (nonatomic, retain) NSSet* TimetableDay;
+@property (nonatomic, strong) NSSet* TimetableDay;
 
 @end
 

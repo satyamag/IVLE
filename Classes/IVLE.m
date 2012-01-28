@@ -296,7 +296,6 @@ static IVLE *sharedSingleton;
 - (void)dealloc{
 	sharedSingleton = nil;
 	
-	[super dealloc];
 }
 
 

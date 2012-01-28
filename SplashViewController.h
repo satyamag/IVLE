@@ -16,8 +16,8 @@
 
 }
 
-@property(nonatomic,retain) NSTimer *timer;
-@property(nonatomic,retain) UIImageView *splashImageView;
+@property(nonatomic,strong) NSTimer *timer;
+@property(nonatomic,strong) UIImageView *splashImageView;
 
 
 @end

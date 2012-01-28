@@ -12,13 +12,13 @@
 @interface ModuleHeaderInfo : NSObject {
 	BOOL open;
 	ModuleHeader* headerView;
-	NSString *moduleName;
-	NSString *moduleID;
+	NSString *__unsafe_unretained moduleName;
+	NSString *__unsafe_unretained moduleID;
 }
 
 @property (assign) BOOL open;
-@property (retain) ModuleHeader* headerView;
-@property (assign) NSString *moduleName;
-@property (assign) NSString *moduleID;
+@property (strong) ModuleHeader* headerView;
+@property (unsafe_unretained) NSString *moduleName;
+@property (unsafe_unretained) NSString *moduleID;
 
 @end

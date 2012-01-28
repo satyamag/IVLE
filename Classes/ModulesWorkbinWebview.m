@@ -23,7 +23,7 @@
 - (id)initWithRequest:(NSURLRequest*)requestOfWorkbin{
 	self = [super init];
 	
-	request = [requestOfWorkbin retain];
+	request = requestOfWorkbin;
 	
 	return self;
 	
@@ -67,9 +67,6 @@
 }
 
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
 	

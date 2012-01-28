@@ -31,7 +31,7 @@
 	if (self) {
 		
 		//setup variables
-		event = [anEvent retain];
+		event = anEvent;
 		
 		//NSLog(@"%@", event);
 		
@@ -70,7 +70,6 @@
 		UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(eventTapped:)];
 		[tap setNumberOfTapsRequired:1];
 		[self.view addGestureRecognizer:tap];
-		[tap release];
 		
 		//UI initialization
 		//[self.view setBackgroundColor:[UIColor grayColor]];
@@ -362,19 +361,6 @@
 }
 
 
-- (void)dealloc {
-	
-	[eventTitle release];
-	[organization release];
-	[event release];
-	[agenda release];
-	[contact release];
-	[dateTime release];
-	[price release];
-	[venue release];
-	
-    [super dealloc];
-}
 
 
 @end

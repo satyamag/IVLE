@@ -13,16 +13,16 @@
 {
 }
 
-@property (nonatomic, retain) NSString * agenda;
-@property (nonatomic, retain) NSString * venue;
-@property (nonatomic, retain) NSString * contact;
-@property (nonatomic, retain) NSString * price;
-@property (nonatomic, retain) NSString * eventDateTime;
-@property (nonatomic, retain) NSString * title;
-@property (nonatomic, retain) NSString * eventDescription;
-@property (nonatomic, retain) NSNumber * isUserEvent;
-@property (nonatomic, retain) NSString * ID;
-@property (nonatomic, retain) NSString * organizer;
+@property (nonatomic, strong) NSString * agenda;
+@property (nonatomic, strong) NSString * venue;
+@property (nonatomic, strong) NSString * contact;
+@property (nonatomic, strong) NSString * price;
+@property (nonatomic, strong) NSString * eventDateTime;
+@property (nonatomic, strong) NSString * title;
+@property (nonatomic, strong) NSString * eventDescription;
+@property (nonatomic, strong) NSNumber * isUserEvent;
+@property (nonatomic, strong) NSString * ID;
+@property (nonatomic, strong) NSString * organizer;
 
 @end
 

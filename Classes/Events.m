@@ -20,7 +20,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization.
-		self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:[self retain] action:@selector(addEventButtonClicked)];
+		self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addEventButtonClicked)];
 		
 	}
     return self;
@@ -63,10 +63,10 @@
 	int viewX = 0, viewY = 0;
 	//UIBarButtonItem *addUserEvent = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addEventButtonClicked)];
 	
-	ivleInterface = [[IVLE instance] retain];
+	ivleInterface = [IVLE instance];
 	
 	//add ivle events
-	eventsArray = [[[ivleInterface studentEvents:NO] objectForKey:@"Results"] retain];
+	eventsArray = [[ivleInterface studentEvents:NO] objectForKey:@"Results"];
 	eventsViewControllerArray = [[NSMutableArray alloc] init];
 	
 	for (int i = 0; i < [eventsArray count]; i++) {
@@ -77,7 +77,6 @@
 		[eventsVC setDelegate:self];
 		[eventsVC.view setFrame:CGRectMake(viewX, viewY, 256, 240)];
 		[eventsViewControllerArray addObject:eventsVC];
-		[eventsVC release];
 		
 		if ([[UIDevice currentDevice] orientation] == UIInterfaceOrientationLandscapeLeft || [[UIDevice currentDevice] orientation] == UIInterfaceOrientationLandscapeRight) {
 			viewX += 256;
@@ -179,16 +178,6 @@
 }
 
 
-- (void)dealloc {
-	
-	[eventsViewControllerArray release];
-	[eventsArray release];
-	[ivleInterface release];
-	[buttonsArray release];
-	[mapPopover release];
-	
-    [super dealloc];
-}
 
 
 @end

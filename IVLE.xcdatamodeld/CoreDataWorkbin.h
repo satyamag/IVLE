@@ -14,8 +14,8 @@
 {
 }
 
-@property (nonatomic, retain) NSSet* contains;
-@property (nonatomic, retain) NSManagedObject * belongsToModule;
+@property (nonatomic, strong) NSSet* contains;
+@property (nonatomic, strong) NSManagedObject * belongsToModule;
 
 @end
 

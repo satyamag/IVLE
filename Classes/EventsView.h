@@ -46,13 +46,13 @@
 	NSDictionary *event;
 	BOOL viewZoomed;
 	CGRect defaultFrame;
-	id <EventsViewDelegate> delegate;
+	id <EventsViewDelegate> __unsafe_unretained delegate;
 }
 
-@property (nonatomic, retain) UILabel *eventTitle;
-@property (nonatomic, retain) UILabel *organization;
+@property (nonatomic, strong) UILabel *eventTitle;
+@property (nonatomic, strong) UILabel *organization;
 
-@property (nonatomic, assign) id <EventsViewDelegate> delegate;
+@property (nonatomic, unsafe_unretained) id <EventsViewDelegate> delegate;
 
 - (id)initWithEvent:(NSDictionary *)anEvent;
 // MODIFIES:  self

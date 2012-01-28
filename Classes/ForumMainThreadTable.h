@@ -39,7 +39,7 @@
 	NSMutableArray *cells;
 	
 	NSInteger currentLevel;
-	NSString *currentTitle;
+	NSString *__unsafe_unretained currentTitle;
 	
 	NSMutableArray *headingNames;
 	NSMutableArray *headingIDs;
@@ -47,17 +47,17 @@
     ForumTableCell *selectedCell;
     NSString *currentHeading;
 	
-	id <ForumMainThreadTableDelegate> delegate;
+	id <ForumMainThreadTableDelegate> __unsafe_unretained delegate;
 }
 
-@property (nonatomic, retain) NSArray *tableDataSource;
-@property (nonatomic, retain) NSMutableArray *cells;
+@property (nonatomic, strong) NSArray *tableDataSource;
+@property (nonatomic, strong) NSMutableArray *cells;
 @property (nonatomic, readwrite) NSInteger currentLevel;
-@property (nonatomic, assign) NSString *currentTitle;
-@property (nonatomic, retain) NSMutableArray *headingNames;
-@property (nonatomic, retain) NSString *currentHeading;
-@property (nonatomic, retain) NSMutableArray *headingIDs;
-@property (nonatomic, retain) ForumTableCell *selectedCell;
-@property (nonatomic, assign) id <ForumMainThreadTableDelegate> delegate;
+@property (nonatomic, unsafe_unretained) NSString *currentTitle;
+@property (nonatomic, strong) NSMutableArray *headingNames;
+@property (nonatomic, strong) NSString *currentHeading;
+@property (nonatomic, strong) NSMutableArray *headingIDs;
+@property (nonatomic, strong) ForumTableCell *selectedCell;
+@property (nonatomic, unsafe_unretained) id <ForumMainThreadTableDelegate> delegate;
 
 @end

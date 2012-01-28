@@ -34,7 +34,6 @@ static UIImage *backgroundImageSelected;
         // Set up the tap gesture recognizer.
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleOpen:)];
         [self addGestureRecognizer:tapGesture];
-        [tapGesture release];
 		
         delegate = aDelegate;        
         self.userInteractionEnabled = YES;
@@ -62,7 +61,7 @@ static UIImage *backgroundImageSelected;
         
         
         // Create and configure the disclosure button.
-        disclosureButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+        disclosureButton = [UIButton buttonWithType:UIButtonTypeCustom];
         disclosureButton.frame = CGRectMake(170.0, 10.0, 30.0, 30.0);
         [disclosureButton setImage:[UIImage imageNamed:@"disclosure_indicator_closed.png"] forState:UIControlStateNormal];
         [disclosureButton setImage:[UIImage imageNamed:@"disclosure_indicator_open.png"] forState:UIControlStateSelected];
@@ -126,12 +125,6 @@ static UIImage *backgroundImageSelected;
 }
 
 
-- (void)dealloc {
-    
-    [titleLabel release];
-    [disclosureButton release];
-    [super dealloc];
-}
 
 
 

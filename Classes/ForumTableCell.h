@@ -17,9 +17,9 @@
     IBOutlet UIImageView *staffIndicator;
 }
 
-@property (nonatomic, retain) UILabel *titleText;
-@property (nonatomic, retain) UILabel *metaText;
-@property (nonatomic, retain) UIImageView *readIndicator;
-@property (nonatomic, retain) UIImageView *staffIndicator;
+@property (nonatomic, strong) UILabel *titleText;
+@property (nonatomic, strong) UILabel *metaText;
+@property (nonatomic, strong) UIImageView *readIndicator;
+@property (nonatomic, strong) UIImageView *staffIndicator;
 
 @end

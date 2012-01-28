@@ -18,11 +18,11 @@
 }
 
 
-@property (nonatomic, retain) UILabel *titleLabel;
-@property (nonatomic, retain) UIButton *disclosureButton;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UIButton *disclosureButton;
 @property (nonatomic, assign) BOOL open;
 @property (nonatomic, assign) NSInteger module;
-@property (nonatomic, assign) id <ModuleHeaderDelegate> delegate;
+@property (nonatomic, unsafe_unretained) id <ModuleHeaderDelegate> delegate;
 
 -(id)initWithFrame:(CGRect)frame title:(NSString*)title module:(NSInteger)moduleNumber delegate:(id <ModuleHeaderDelegate>)aDelegate;
 -(void)toggleOpenWithUserAction:(BOOL)userAction;

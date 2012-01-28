@@ -35,14 +35,14 @@
     ForumTableCell *selectedCell;
     ForumSubThreadTable *previousTable;
 	
-	id <ForumSubThreadTableDelegate> delegate;
+	id <ForumSubThreadTableDelegate> __unsafe_unretained delegate;
 }
 
-@property (nonatomic, retain) NSArray *tableDataSource;
-@property (nonatomic, retain) NSMutableArray *cells;
-@property (nonatomic, retain) ForumSubThreadTable *previousTable;
-@property (nonatomic, retain) ForumTableCell *selectedCell;
-@property (nonatomic, assign) id <ForumSubThreadTableDelegate> delegate;
+@property (nonatomic, strong) NSArray *tableDataSource;
+@property (nonatomic, strong) NSMutableArray *cells;
+@property (nonatomic, strong) ForumSubThreadTable *previousTable;
+@property (nonatomic, strong) ForumTableCell *selectedCell;
+@property (nonatomic, unsafe_unretained) id <ForumSubThreadTableDelegate> delegate;
 
 -(void) updateContentView;
 @end

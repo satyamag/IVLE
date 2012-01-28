@@ -13,9 +13,9 @@
 {
 }
 
-@property (nonatomic, retain) NSString * Code;
-@property (nonatomic, retain) NSString * Name;
-@property (nonatomic, retain) NSNumber * Credit;
+@property (nonatomic, strong) NSString * Code;
+@property (nonatomic, strong) NSString * Name;
+@property (nonatomic, strong) NSNumber * Credit;
 
 @end
 

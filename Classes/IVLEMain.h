@@ -12,7 +12,6 @@
 #import "IVLESideBar.h"
 #import "IVLELoginWebViewController.h"
 #import "CAP.h"
-#import "CAPCalculator.h"
 #import "Forum.h"
 #import "Constants.h"
 #import "HomePageModuleAnnouncementCell.h"
@@ -48,8 +47,8 @@
 	
 	UIAlertView *alert;
 }
-@property (nonatomic, retain) NSMutableArray *announcements;
-@property (nonatomic, retain) NSMutableArray *announcementCells;
+@property (nonatomic, strong) NSMutableArray *announcements;
+@property (nonatomic, strong) NSMutableArray *announcementCells;
 @property (nonatomic, assign) BOOL internetActive;
 @property (nonatomic, assign) BOOL hostActive;
 

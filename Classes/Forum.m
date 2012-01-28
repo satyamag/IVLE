@@ -171,7 +171,6 @@
 	
 	UINavigationController *navi = [[UINavigationController alloc] init];
 	[navi pushViewController:postWindow animated:NO];
-	[postWindow release];
 	
 	navi.wantsFullScreenLayout = YES;
 	navi.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -223,9 +222,6 @@
 }
 
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 
 @end

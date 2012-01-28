@@ -17,9 +17,9 @@
     IBOutlet UILabel *webcastDate;
 }
 
-@property (nonatomic, retain) UILabel *webcastTitle;
-@property (nonatomic, retain) UILabel *webcastDuration;
-@property (nonatomic, retain) UILabel *webcastDate;
-@property (nonatomic, retain) UIImageView *thumbnail;
+@property (nonatomic, strong) UILabel *webcastTitle;
+@property (nonatomic, strong) UILabel *webcastDuration;
+@property (nonatomic, strong) UILabel *webcastDate;
+@property (nonatomic, strong) UIImageView *thumbnail;
 
 @end

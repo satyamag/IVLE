@@ -15,12 +15,12 @@
 	NSDate *date;
 }
 
-@property (nonatomic, retain) NSDate *date;
-@property (nonatomic, retain) NSString *moduleDescription;
-@property (nonatomic, retain) NSString *eventType;
-@property (nonatomic, retain) NSString *ID;
-@property (nonatomic, retain) NSString *location;
-@property (nonatomic, retain) NSString *title;
+@property (nonatomic, strong) NSDate *date;
+@property (nonatomic, strong) NSString *moduleDescription;
+@property (nonatomic, strong) NSString *eventType;
+@property (nonatomic, strong) NSString *ID;
+@property (nonatomic, strong) NSString *location;
+@property (nonatomic, strong) NSString *title;
 
 //create a new module event
 - (void)createModuleEvent:(NSDictionary *)moduleTimetableDetails;

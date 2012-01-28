@@ -39,9 +39,9 @@ NSInteger openSectionIndex;
 + (void)clear
 {
 	
-	[moduleStrings release];
+//	[moduleStrings release];
 //	[moduleHeaderInfoArray release];
-	[moduleActiveLinksAssociation release];
+//	[moduleActiveLinksAssociation release];
 	sharedSingleton = NULL;
 	moduleHeaderInfoArray = nil;
 }
@@ -69,7 +69,7 @@ NSInteger openSectionIndex;
 	
 	openSectionIndex = -1;
 	
-	moduleStrings = [[[NSMutableArray alloc] init] retain];
+	moduleStrings = [[NSMutableArray alloc] init];
 	
 	NSDictionary *moduleDict = [ivle modules:0 withAllInfo:NO];
 	
@@ -84,8 +84,8 @@ NSInteger openSectionIndex;
 	
 	if (moduleHeaderInfoArray == nil) {
 		
-		moduleHeaderInfoArray = [[[NSMutableArray alloc] init] retain];
-		moduleActiveLinks = [[[NSMutableArray alloc] init] retain];
+		moduleHeaderInfoArray = [[NSMutableArray alloc] init];
+		moduleActiveLinks = [[NSMutableArray alloc] init];
 
 		for(NSArray *module in moduleStrings) {
 			
@@ -94,29 +94,27 @@ NSInteger openSectionIndex;
 			moduleHeaderInfo.moduleName = [module valueForKey:@"CourseCode"];
 			moduleHeaderInfo.moduleID = [module valueForKey:@"ID"];
 			[moduleHeaderInfoArray addObject:moduleHeaderInfo];
-			[moduleHeaderInfo release];
 			
-            NSArray *links = [[self determineActiveLinksForModule:[module valueForKey:@"ID"]] retain];
+            NSArray *links = [self determineActiveLinksForModule:[module valueForKey:@"ID"]];
 			[moduleActiveLinks addObject:links];
-            [links release];
 
 		}
 	}
 	
 	
-	moduleActiveLinksAssociation = [[[NSDictionary alloc] initWithObjectsAndKeys: @"ModulesInfo",@"Information",
+	moduleActiveLinksAssociation = [[NSDictionary alloc] initWithObjectsAndKeys: @"ModulesInfo",@"Information",
                                                                                   @"ModulesAnnouncements",@"Announcements",
                                                                                   @"ForumViewController",@"Forum",
                                                                                   @"ModulesWorkbin",@"Workbin",
                                                                                   @"WebcastController",@"Webcasts",
-                                                                                  @"GradeBookController", @"GradeBook",nil] retain];
+                                                                                  @"GradeBookController", @"GradeBook",nil];
     
-	moduleActiveLinksImageAssociation =[[[NSDictionary alloc] initWithObjectsAndKeys: @"information.png",@"Information",
+	moduleActiveLinksImageAssociation =[[NSDictionary alloc] initWithObjectsAndKeys: @"information.png",@"Information",
                                                                                       @"announcements.png",@"Announcements",
                                                                                       @"forum.png",@"Forum",
                                                                                       @"workbin.png",@"Workbin",
                                                                                       @"webcasts.png",@"Webcasts",
-                                                                                      @"gradebook.png",@"GradeBook",nil] retain];
+                                                                                      @"gradebook.png",@"GradeBook",nil];
 
 	UIImage *backgroundImage = [UIImage imageNamed:@"modules_workbin_3rd_column.png"];
 	[self.view setBackgroundColor:[UIColor colorWithPatternImage:backgroundImage]];
@@ -134,7 +132,7 @@ NSInteger openSectionIndex;
 -(NSArray*)determineActiveLinksForModule:(NSString*)courseID {
     
     IVLE *ivle = [IVLE instance];
-    NSMutableArray *activeLinks = [[[NSMutableArray alloc] init] autorelease];
+    NSMutableArray *activeLinks = [[NSMutableArray alloc] init];
     
     //check for information
     
@@ -193,7 +191,7 @@ NSInteger openSectionIndex;
 	ModuleHeaderInfo *moduleHeaderInfo = [moduleHeaderInfoArray objectAtIndex:section];
 	if (!moduleHeaderInfo.headerView) {
 		
-		moduleHeaderInfo.headerView = [[[ModuleHeader alloc] initWithFrame:CGRectMake(0.0, 0.0, moduleList.bounds.size.width, HEADER_HEIGHT) title:moduleHeaderInfo.moduleName module:section delegate:self] autorelease];
+		moduleHeaderInfo.headerView = [[ModuleHeader alloc] initWithFrame:CGRectMake(0.0, 0.0, moduleList.bounds.size.width, HEADER_HEIGHT) title:moduleHeaderInfo.moduleName module:section delegate:self];
 		
 	}
 	return moduleHeaderInfo.headerView;
@@ -220,13 +218,11 @@ NSInteger openSectionIndex;
 
 -(UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath {
 	
-	static NSString *MyIdentifier = @"MyIdentifier";
-	MyIdentifier = @"tableCellView";
+	static NSString *MyIdentifier = @"tableCellView";
 	
 	LeftSideBarCellView *cell = (LeftSideBarCellView *)[tableView dequeueReusableCellWithIdentifier:MyIdentifier];
 	if(cell == nil) {
-		[[NSBundle mainBundle] loadNibNamed:@"TableViewCell" owner:self options:nil];
-		cell = tableCell;
+		cell = [[[NSBundle mainBundle] loadNibNamed:@"TableViewCell" owner:self options:nil] objectAtIndex:0];
 	}
 	
 	
@@ -236,9 +232,12 @@ NSInteger openSectionIndex;
 	if ((rowNumber == (ceil(linkCount/2.0)-1)) && (linkCount%2 == 1)) {
 		
 		[cell setLabelTextLeft:[[moduleActiveLinks objectAtIndex:indexPath.section] objectAtIndex:(rowNumber*2)]];
-		UIButton *leftButton = [cell getCellButtonLeft];
+		UIButton *leftButton = (UIButton*)[cell viewWithTag:1];
+        
+        
+        //UIButton *leftButton = [UIButton alloc] initWithFrame:CGRectMake(32, 58, 48, <#CGFloat height#>)
 		leftButton.tag = indexPath.section*10+(rowNumber*2);
-		[leftButton addTarget:[self retain] action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
+		[leftButton addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
 		UIImage *leftButtonImage =[UIImage imageNamed:[moduleActiveLinksImageAssociation objectForKey:[[moduleActiveLinks objectAtIndex:indexPath.section] objectAtIndex:(rowNumber*2)]]];
 		[leftButton setImage:leftButtonImage forState:UIControlStateNormal];
 		
@@ -250,14 +249,15 @@ NSInteger openSectionIndex;
 		[cell setLabelTextRight:[[moduleActiveLinks objectAtIndex:indexPath.section] objectAtIndex:(rowNumber*2+1)]];
 		
 		
-		UIButton *leftButton = [cell getCellButtonLeft];
-		UIButton *rightButton = [cell getCellButtonRight];
+		UIButton *leftButton = (UIButton*)[cell viewWithTag:1];
+		UIButton *rightButton = (UIButton*)[cell viewWithTag:2];
 		
 		leftButton.tag = indexPath.section*10+(rowNumber*2);
 		rightButton.tag	 = indexPath.section*10+(rowNumber*2+1);
 		
-		[leftButton addTarget:[self retain] action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
-		[rightButton addTarget:[self retain] action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        
+		[leftButton addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
+		[rightButton addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
 		
 		UIImage *leftButtonImage =[UIImage imageNamed:[moduleActiveLinksImageAssociation objectForKey:[[moduleActiveLinks objectAtIndex:indexPath.section] objectAtIndex:(rowNumber*2)]]];
 		UIImage *rightButtonImage = [UIImage imageNamed:[moduleActiveLinksImageAssociation objectForKey:[[moduleActiveLinks objectAtIndex:indexPath.section] objectAtIndex:(rowNumber*2+1)]]];
@@ -292,7 +292,6 @@ NSInteger openSectionIndex;
 	if ([nibName compare:@"ModulesInfo"] == NSOrderedSame) {
         ModulesInfo *info = [[ModulesInfo alloc] initWithNibName:nibName bundle:nil];
 		leftBar = [NSArray arrayWithObject:info];
-        [info release];
         
 	}
 	
@@ -300,42 +299,36 @@ NSInteger openSectionIndex;
 		
         ModulesAnnouncements *announcements = [[ModulesAnnouncements alloc] initWithNibName:nibName bundle:nil]; 
 		leftBar = [NSArray arrayWithObject:announcements];
-        [announcements release];
 	}
 	
 	else if ([nibName compare:@"ForumViewController"] == NSOrderedSame) {
         
 		Forum *fvc = [[Forum alloc] initWithNibName:@"Forum" bundle:nil];
 		leftBar = [NSArray arrayWithObject:fvc];
-        [fvc release];
 	}
 	
 	else if ([nibName compare:@"ModulesWorkbin"] == NSOrderedSame) {
 		
         ModulesWorkbin *workbin = [[ModulesWorkbin alloc] initWithNibName:nibName bundle:nil];
 		leftBar = [NSArray arrayWithObject:workbin];	
-        [workbin release];           
 	}
 	
 	else if ([nibName compare:@"GradeBookController"] == NSOrderedSame) {
 		
 		GradeBookController *gradeBook = [[GradeBookController alloc] initWithNibName:nibName bundle:nil];
 		leftBar = [NSArray arrayWithObject:gradeBook];
-		[gradeBook release];
 	}
     
     else if ([nibName compare:@"WebcastController"] == NSOrderedSame) {
 		
 		WebcastController *webcast = [[WebcastController alloc] initWithNibName:nibName bundle:nil];
 		leftBar = [NSArray arrayWithObject:webcast];
-		[webcast release];
 	}
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRefreshRightScreen object:leftBar];
 	[spinner removeFromSuperview];
 	self.view.userInteractionEnabled = YES;
 
-	[spinner release];
 	
 }
 
@@ -393,8 +386,6 @@ NSInteger openSectionIndex;
     [moduleList endUpdates];
     openSectionIndex = sectionOpened;
     
-    [indexPathsToInsert release];
-    [indexPathsToDelete release];
 }
 
 -(void)moduleHeader:(ModuleHeader*)sectionHeaderView moduleClosed:(NSInteger)sectionClosed {
@@ -414,7 +405,6 @@ NSInteger openSectionIndex;
             [indexPathsToDelete addObject:[NSIndexPath indexPathForRow:i inSection:sectionClosed]];
         }
         [moduleList deleteRowsAtIndexPaths:indexPathsToDelete withRowAnimation:UITableViewRowAnimationTop];
-        [indexPathsToDelete release];
     }
     openSectionIndex = -1;
 }
@@ -447,10 +437,9 @@ NSInteger openSectionIndex;
 
 - (void)dealloc {
 	NSLog(@"dealloc sidebar %@", self);
-	[moduleStrings release];
-	[moduleHeaderInfoArray release];
-	[moduleActiveLinksAssociation release];
-    [super dealloc];
+//	[moduleStrings release];
+//	[moduleHeaderInfoArray release];
+//	[moduleActiveLinksAssociation release];
 
 	
 }

@@ -15,9 +15,9 @@
 {
 }
 
-@property (nonatomic, retain) NSString * day;
-@property (nonatomic, retain) CoreDataTimetable * belongsToTimetable;
-@property (nonatomic, retain) NSSet* TimetableClassInfo;
+@property (nonatomic, strong) NSString * day;
+@property (nonatomic, strong) CoreDataTimetable * belongsToTimetable;
+@property (nonatomic, strong) NSSet* TimetableClassInfo;
 
 @end
 

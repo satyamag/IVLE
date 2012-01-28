@@ -19,11 +19,11 @@
 	NSArray *headingInfo;
 	NSString *selectedHeading;
 
-	id <ForumPostHeadingSelectDelegate> delegate;
+	id <ForumPostHeadingSelectDelegate> __unsafe_unretained delegate;
 }
 
-@property (nonatomic, retain) NSArray *headingInfo;
-@property (nonatomic, retain) NSString *selectedHeading;
-@property (nonatomic, assign) id <ForumPostHeadingSelectDelegate> delegate;;
+@property (nonatomic, strong) NSArray *headingInfo;
+@property (nonatomic, strong) NSString *selectedHeading;
+@property (nonatomic, unsafe_unretained) id <ForumPostHeadingSelectDelegate> delegate;;
 
 @end

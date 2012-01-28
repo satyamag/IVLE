@@ -19,10 +19,10 @@
         announcements = [[[IVLE instance] announcements:[IVLE instance].selectedCourseID withDuration:0 withTitle:NO] valueForKey:@"Results"];
 		
 		NSSortDescriptor *sortDescriptor;
-		sortDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"CreatedDate"
-													  ascending:NO] autorelease];
+		sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"CreatedDate"
+													  ascending:NO];
 		NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
-		announcements = [[announcements sortedArrayUsingDescriptors:sortDescriptors] retain];
+		announcements = [announcements sortedArrayUsingDescriptors:sortDescriptors];
 		
         UIImage *bgImage_announcements = [UIImage imageNamed:@"module_info_announcement_bg.png"];
 		self.cells = [NSMutableArray array];
@@ -41,7 +41,7 @@
             
             NSRange range = NSMakeRange (6, 10);
             NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[[[announcements objectAtIndex:i] valueForKey:@"CreatedDate"] substringWithRange:range] intValue]];
-            NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             [formatter setDateStyle:kCFDateFormatterMediumStyle];
             
             cell.meta.text = [NSString stringWithFormat:@"%@, %@", [[announcements objectAtIndex:i] valueForKeyPath:@"Creator.Name"], [formatter stringFromDate:date]];
@@ -104,17 +104,12 @@
 
 
 - (void)viewDidUnload {
-	[cells release];
-	[announcements release];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
 
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.

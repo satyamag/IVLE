@@ -105,21 +105,5 @@
 	
 }
 
-- (void)dealloc {
-	
-	[courseID release];
-	[academicYear release];
-	[dayText release];
-	[startTime release];
-	[endTime release];
-	[venue release];
-	[lessonType release];
-	[weekCode release];
-	[semester release];
-	[classNumber release];
-	[dayCode release];
-	
-	[super dealloc];
-}
 
 @end

@@ -16,6 +16,6 @@
 	NSMutableArray *cells;
 }
 
-@property (nonatomic, retain) NSMutableArray *cells;
+@property (nonatomic, strong) NSMutableArray *cells;
 
 @end

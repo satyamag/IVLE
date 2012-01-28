@@ -40,9 +40,6 @@
 }
 
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
 	

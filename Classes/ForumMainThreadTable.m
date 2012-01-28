@@ -65,7 +65,7 @@
 		cells = [[NSMutableArray alloc] init];
         
 		//initialize table data source
-		tableDataSource = [[self getForumsForModule:[IVLE instance].selectedCourseID] retain];
+		tableDataSource = [self getForumsForModule:[IVLE instance].selectedCourseID];
         
 	}
 	else if (currentLevel == 2) {        
@@ -223,7 +223,6 @@
 	}
 	
 	[spinner removeFromSuperview];
-	[spinner release];
 	self.view.userInteractionEnabled = YES;}
 
 
@@ -291,7 +290,7 @@
         
         NSRange range = NSMakeRange (6, 10);
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[[info objectForKey:@"PostDate"] substringWithRange:range] intValue]];
-        NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateStyle:kCFDateFormatterMediumStyle];
         
         cell.metaText.text = [NSString stringWithFormat:@"%@, %@", [[[info objectForKey:@"Poster"] objectForKey:@"Name"] capitalizedString], [formatter stringFromDate:date]];
@@ -434,7 +433,6 @@
 	}
 	
 	[spinner removeFromSuperview];
-	[spinner release];
 	self.view.userInteractionEnabled = YES;
 
 }
@@ -456,12 +454,6 @@
 }
 
 
-- (void)dealloc {
-	[tableDataSource release];
-	[cells release];
-	[currentTitle release];
-    [super dealloc];
-}
 
 
 @end

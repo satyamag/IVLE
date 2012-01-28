@@ -16,7 +16,7 @@
 	NSURLRequest *request;
 }
 
-@property (nonatomic, retain) IBOutlet UIWebView *web;
+@property (nonatomic, strong) IBOutlet UIWebView *web;
 
 /*webview init with request of the NSURLRequest
  REQUIRES:valid Request*/

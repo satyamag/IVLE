@@ -8,18 +8,10 @@
 
 #import "LeftSideBarCellView.h"
 
-@interface LeftSideBarCellView (PrivateMethods)
-
--(UIButton *) getCellButtonRight;
-
--(UIButton *) getCellButtonLeft;
-
-@end
-
 
 @implementation LeftSideBarCellView
 
-@synthesize cellButtonLeft,cellButtonRight;
+//@synthesize cellButtonLeft,cellButtonRight;
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
     if ((self = [super initWithFrame:frame])) {
@@ -37,9 +29,6 @@
 }
 
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 - (void)setLabelTextLeft:(NSString *)text {
 	cellTextLeft.text = text;
@@ -75,14 +64,14 @@
 	[cellButtonRight removeFromSuperview];
 }
 
--(UIButton*) getCellButtonRight {
-	
-	return cellButtonRight;
-}
-
--(UIButton*) getCellButtonLeft {
-	
-	return cellButtonLeft;
-}
+//- (UIButton *) getCellButtonRight {
+//	
+//	return cellButtonRight;
+//}
+//
+//- (UIButton *) getCellButtonLeft {
+//	
+//	return cellButtonLeft;
+//}
 
 @end

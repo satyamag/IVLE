@@ -19,10 +19,10 @@
     if (self) {
 		info = [[[IVLE instance] moduleInfo:[IVLE instance].selectedCourseID withDuration:0] valueForKey:@"Results"];
 		NSSortDescriptor *sortDescriptor;
-		sortDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"CreatedDate"
-													  ascending:NO] autorelease];
+		sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"CreatedDate"
+													  ascending:NO];
 		NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
-		info = [[info sortedArrayUsingDescriptors:sortDescriptors] retain];
+		info = [info sortedArrayUsingDescriptors:sortDescriptors];
         UIImage *bgImage_announcements = [UIImage imageNamed:@"module_info_announcement_bg.png"];
 		
 		self.cells = [NSMutableArray array];
@@ -94,17 +94,12 @@
 
 
 - (void)viewDidUnload {
-	[info release];
-	[cells release];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
 
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.

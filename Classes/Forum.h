@@ -27,12 +27,12 @@
 	
 }
 
-@property (nonatomic, retain) IBOutlet UIView *mainThreadTable;
-@property (nonatomic, retain) IBOutlet UIView *subThreadTable;
-@property (nonatomic, retain) IBOutlet UIWebView *contentDisplay;
-@property (nonatomic, retain) NSString *currentHeadingID;
-@property (nonatomic, retain) NSString *currentHeadingName;
-@property (nonatomic, retain) NSString *currentPostID;
+@property (nonatomic, strong) IBOutlet UIView *mainThreadTable;
+@property (nonatomic, strong) IBOutlet UIView *subThreadTable;
+@property (nonatomic, strong) IBOutlet UIWebView *contentDisplay;
+@property (nonatomic, strong) NSString *currentHeadingID;
+@property (nonatomic, strong) NSString *currentHeadingName;
+@property (nonatomic, strong) NSString *currentPostID;
 
 
 - (IBAction)postNewThread:(id)sender;

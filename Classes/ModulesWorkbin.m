@@ -42,11 +42,11 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[super viewDidLoad];
-    managedObjectContext = [[[ModulesFetcher sharedInstance] managedObjectContext] retain];
+    managedObjectContext = [[ModulesFetcher sharedInstance] managedObjectContext];
     
     IVLE *ivle = [IVLE instance];
     
-    stack = [[NSMutableArray array] retain];
+    stack = [NSMutableArray array];
     
     if ([IVLE instance].selectedCourseID) {
         NSDictionary *workbin = [ivle workbin:[IVLE instance].selectedCourseID withDuration:0 withWorkbinID:nil withTitle:NO];
@@ -54,9 +54,9 @@
         
         if ([[[workbin valueForKey:@"Results"] valueForKey:@"Folders"] count] > 0) {
             
-            workbinDatasource = [[[[workbin valueForKey:@"Results"] valueForKey:@"Folders"] objectAtIndex:0] retain];
+            workbinDatasource = [[[workbin valueForKey:@"Results"] valueForKey:@"Folders"] objectAtIndex:0];
             
-            currentDirectoryName = [[[[workbin valueForKey:@"Results"] valueForKey:@"Title"] objectAtIndex:0] retain];
+            currentDirectoryName = [[[workbin valueForKey:@"Results"] valueForKey:@"Title"] objectAtIndex:0];
         }
     }
     
@@ -64,13 +64,13 @@
     UIImage *bgImage_3rd_column = [UIImage imageNamed:@"modules_workbin_3rd_column.png"];
     
     
-    buttons = [[NSMutableArray array] retain];
+    buttons = [NSMutableArray array];
     [self redrawButtons];
     self.view.backgroundColor = [UIColor clearColor] ;
     directoryStructure.backgroundColor = [UIColor colorWithPatternImage:bgImage_2nd_column] ;
     table.backgroundColor = [UIColor colorWithPatternImage:bgImage_3rd_column];
     
-    supportedExtOfFiles = [[NSSet setWithObjects:@"ppt", @"pptx", @"docx", @"doc", @"pdf", @"xls", @"xlsx", nil] retain];
+    supportedExtOfFiles = [NSSet setWithObjects:@"ppt", @"pptx", @"docx", @"doc", @"pdf", @"xls", @"xlsx", nil];
 }
 
 - (void)redrawButtons{
@@ -87,7 +87,7 @@
 	
 	currentDirectoryButton.tag = -1;
 	[currentDirectoryButton setTitleColor:kWorkbinFontColor forState:UIControlStateNormal];
-	[currentDirectoryButton addTarget:[self retain] action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
+	[currentDirectoryButton addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
 	
 	[self.view addSubview:currentDirectoryButton];
 	
@@ -110,7 +110,7 @@
 		[btn setTitle:[[workbinDatasource objectAtIndex:i] valueForKey:@"FolderName"] forState:UIControlStateNormal];
 		btn.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0];
 		
-		[btn addTarget:[self retain] action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
+		[btn addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
 		[self.view addSubview:btn];
 		[buttons addObject:btn];
 		
@@ -163,7 +163,7 @@
     
     
     if ([sender tag] == -1 && i > 0) {
-        workbinDatasource = [[self stackPop] retain];
+        workbinDatasource = [self stackPop];
         selectedFolderID = 0;
         [self redrawButtons];
     }else {
@@ -200,12 +200,6 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (void)dealloc {
-	
-	[stack release];
-	[supportedExtOfFiles release];
-    [super dealloc];
-}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
@@ -275,9 +269,9 @@
 		
 		int previousDirectoryFilesCount = [[[workbinDatasource objectAtIndex:selectedFolderID] valueForKey:@"Files"] count];
 		
-		currentDirectoryName = [[[workbinDatasource objectAtIndex:selectedFolderID] valueForKey:@"FolderName"] retain];
+		currentDirectoryName = [[workbinDatasource objectAtIndex:selectedFolderID] valueForKey:@"FolderName"];
 		[self stackPush:workbinDatasource];
-		workbinDatasource = [[[workbinDatasource objectAtIndex:selectedFolderID] valueForKey:@"Folders"] retain];
+		workbinDatasource = [[workbinDatasource objectAtIndex:selectedFolderID] valueForKey:@"Folders"];
 		
 		selectedFolderID = [indexPath row] - previousDirectoryFilesCount ;
 		
@@ -289,11 +283,11 @@
 	NSArray *file = [[[workbinDatasource objectAtIndex:selectedFolderID] valueForKey:@"Files"] objectAtIndex:[indexPath row]];
 	
 	if (![supportedExtOfFiles containsObject:[[file valueForKey:@"FileName"] pathExtension]]) {
-		[[[[UIAlertView alloc] initWithTitle:@"File not supported" 
+		[[[UIAlertView alloc] initWithTitle:@"File not supported" 
 								   message:[NSString stringWithFormat:@".%@ is not supported.", [[file valueForKey:@"FileName"] pathExtension]] 
 								  delegate:nil 
 						 cancelButtonTitle:@"Ok" 
-						 otherButtonTitles:nil] autorelease] show];
+						 otherButtonTitles:nil] show];
 		return;
 	}
 	UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -307,7 +301,6 @@
 	
 	[spinner removeFromSuperview];
 	
-	[spinner release];
 	
 	webVC.wantsFullScreenLayout = YES;
 	webVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;

@@ -14,10 +14,10 @@
 {
 }
 
-@property (nonatomic, retain) NSNumber * CAPModuleMC;
-@property (nonatomic, retain) NSString * CAPModuleGrade;
-@property (nonatomic, retain) NSString * CAPModuleCode;
-@property (nonatomic, retain) Semester * belongsToSemester;
+@property (nonatomic, strong) NSNumber * CAPModuleMC;
+@property (nonatomic, strong) NSString * CAPModuleGrade;
+@property (nonatomic, strong) NSString * CAPModuleCode;
+@property (nonatomic, strong) Semester * belongsToSemester;
 
 @end
 

@@ -16,19 +16,19 @@
 	NSMutableArray *classDates;
 }
 
-@property (nonatomic, retain) NSString *courseID;
-@property (nonatomic, retain) NSString *academicYear;
-@property (nonatomic, retain) NSString *dayText;
-@property (nonatomic, retain) NSString *startTime;
-@property (nonatomic, retain) NSString *endTime;
-@property (nonatomic, retain) NSString *venue;
-@property (nonatomic, retain) NSString *lessonType;
-@property (nonatomic, retain) NSString *weekText;
-@property (nonatomic, retain) NSString *weekCode;
-@property (nonatomic, retain) NSNumber *semester;
-@property (nonatomic, retain) NSNumber *classNumber;
-@property (nonatomic, retain) NSNumber *dayCode;
-@property (nonatomic, retain) NSMutableArray *classDates;
+@property (nonatomic, strong) NSString *courseID;
+@property (nonatomic, strong) NSString *academicYear;
+@property (nonatomic, strong) NSString *dayText;
+@property (nonatomic, strong) NSString *startTime;
+@property (nonatomic, strong) NSString *endTime;
+@property (nonatomic, strong) NSString *venue;
+@property (nonatomic, strong) NSString *lessonType;
+@property (nonatomic, strong) NSString *weekText;
+@property (nonatomic, strong) NSString *weekCode;
+@property (nonatomic, strong) NSNumber *semester;
+@property (nonatomic, strong) NSNumber *classNumber;
+@property (nonatomic, strong) NSNumber *dayCode;
+@property (nonatomic, strong) NSMutableArray *classDates;
 
 - (void)createModuleEvent:(NSDictionary *)moduleTimetableDetails StartDate:(NSDate *)startDate EndDate:(NSDate *)endDate;
 

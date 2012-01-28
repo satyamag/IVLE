@@ -17,7 +17,6 @@
 #import "ModulesWorkbin.h"
 #import "ModulesInfo.h"
 #import "ModulesAnnouncements.h"
-#import "CAPCalculator.h"
 #import "Events.h"
 #import "Constants.h"
 #import "GradeBookController.h"
@@ -29,7 +28,6 @@
 
 
 	IBOutlet UITableView *moduleList;
-	IBOutlet LeftSideBarCellView *tableCell;
 }
 
 +(void) clear;

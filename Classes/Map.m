@@ -52,7 +52,6 @@
 		UILongPressGestureRecognizer *gesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
 		gesture.minimumPressDuration = 0.3;
 		[mapView addGestureRecognizer:gesture];
-		[gesture release];
 		
 	} else {
 		closeButton.alpha = 0.0;
@@ -112,7 +111,6 @@
 	
 	annotationLastAdded.title = [[[[[IVLE instance] userEventsGet:1] valueForKey:@"result"] lastObject] valueForKey:@"title"];
 	[mapView selectAnnotation:annotationLastAdded animated:YES];
-	[annotationLastAdded release];
 	[popAddEvents dismissPopoverAnimated:YES];
 }
 
@@ -124,9 +122,7 @@
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController{
 	[mapView removeAnnotation:annotationLastAdded];
-	[annotationLastAdded release];
 	//	;
-	[popoverController release];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapViewLocal viewForAnnotation:(id <MKAnnotation>)annotation {
@@ -170,7 +166,6 @@
     mapView.delegate = nil;
 	
 	//[mapView release];
-	[super dealloc];
 	
 }
 @end

@@ -65,13 +65,6 @@
 #pragma mark -
 #pragma mark Memory management
 
-- (void)dealloc {
-    
-	[splashViewController release];
-	
-    [window release];
-    [super dealloc];
-}
 
 
 @end

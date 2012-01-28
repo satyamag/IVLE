@@ -53,7 +53,6 @@
 		ModuleEvent *newModuleEvent = [[ModuleEvent alloc] init];
 		[newModuleEvent createModuleEvent:[tempEventsList objectAtIndex:i]];
 		[moduleEventsList addObject:newModuleEvent];
-		[newModuleEvent release];
 	}
 	
 	//then add events from time table
@@ -74,7 +73,6 @@
 				NSDate *endDate = [self convertJSONDateToNSDateForDate:[semInfo objectForKey:@"SemesterEndDate"]];
 				[newModuleEvent createModuleEvent:currentEvent StartDate:startDate EndDate:endDate];
 				[moduleEventsList addObject:newModuleEvent];
-				[newModuleEvent release];
 			}
 		}
 	}
@@ -232,7 +230,6 @@
 		d = [dateFormat stringFromDate:date];
 	}
 	
-	[offsetComponents release];
 	
 	//NSLog(@"%@", marks);
 	
@@ -271,7 +268,7 @@
 		}
 	}
 	
-	currentDisplayEvents = [eventsOnThisDate retain];
+	currentDisplayEvents = eventsOnThisDate;
 	[currentEventsTable reloadData];
 	
 	//present these events on some view...
@@ -326,7 +323,7 @@
 		}
 		
 		
-		NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+		NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 		[formatter setDateStyle:kCFDateFormatterMediumStyle];
 		cell.eventDate.text = [formatter stringFromDate:[[currentDisplayEvents objectAtIndex:indexPath.row] date]];
 		
@@ -366,12 +363,6 @@
 }
 
 
-- (void)dealloc {
-	
-	[moduleEventsList release];
-	
-	[super dealloc];
-}
 
 
 @end

@@ -14,12 +14,12 @@
 	IBOutlet UILabel *averageMedianMarks,  *highestLowest, *itemName, *marksObtained, *maxMarks, *percentile, *remark;
 }
 
-@property (nonatomic, retain) UILabel *averageMedianMarks;
-@property (nonatomic, retain) UILabel *highestLowest;
-@property (nonatomic, retain) UILabel *itemName;
-@property (nonatomic, retain) UILabel *marksObtained;
-@property (nonatomic, retain) UILabel *maxMarks;
-@property (nonatomic, retain) UILabel *percentile;
-@property (nonatomic, retain) UILabel *remark;
+@property (nonatomic, strong) UILabel *averageMedianMarks;
+@property (nonatomic, strong) UILabel *highestLowest;
+@property (nonatomic, strong) UILabel *itemName;
+@property (nonatomic, strong) UILabel *marksObtained;
+@property (nonatomic, strong) UILabel *maxMarks;
+@property (nonatomic, strong) UILabel *percentile;
+@property (nonatomic, strong) UILabel *remark;
 
 @end

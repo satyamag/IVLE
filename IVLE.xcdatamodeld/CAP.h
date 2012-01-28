@@ -13,7 +13,7 @@
 {
 }
 
-@property (nonatomic, retain) NSSet* contains;
+@property (nonatomic, strong) NSSet* contains;
 
 @end
 

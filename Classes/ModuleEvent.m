@@ -36,7 +36,7 @@
 	if ([self isValidString:[moduleTimetableDetails objectForKey:@"Date"]]) {
 		
 		//date = [[NSDate alloc] init];
-		date = [[self convertJSONDateToNSDateForDate:[moduleTimetableDetails objectForKey:@"Date"]] retain];
+		date = [self convertJSONDateToNSDateForDate:[moduleTimetableDetails objectForKey:@"Date"]];
 	}
 	if ([self isValidString:[moduleTimetableDetails objectForKey:@"Description"]]) {
 		
@@ -124,16 +124,5 @@
 #pragma mark -
 #pragma mark Memory handling functions
 
-- (void)dealloc {
-	
-	[date release];
-	[moduleDescription release];
-	[eventType release];
-	[ID release];
-	[location release];
-	[title release];
-	
-	[super dealloc];
-}
 
 @end

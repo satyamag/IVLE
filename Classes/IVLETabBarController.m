@@ -15,32 +15,32 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
-        IVLEMain *home = [[[IVLEMain alloc] init] autorelease];
-        UINavigationController *IVLEHomeNavigator = [[[UINavigationController alloc] initWithRootViewController:home] autorelease];
+        IVLEMain *home = [[IVLEMain alloc] init];
+        UINavigationController *IVLEHomeNavigator = [[UINavigationController alloc] initWithRootViewController:home];
         IVLEHomeNavigator.navigationBar.tintColor = kNavBarColor;
         home.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Home" image:[UIImage imageNamed:@"home.png"] tag:1];
         home.title = @"Home";
         
-        Workbin *workbinController = [[[Workbin alloc] init] autorelease];
-        UINavigationController *workbinNavigator = [[[UINavigationController alloc] initWithRootViewController:workbinController] autorelease];
+        Workbin *workbinController = [[Workbin alloc] init];
+        UINavigationController *workbinNavigator = [[UINavigationController alloc] initWithRootViewController:workbinController];
         workbinNavigator.navigationBar.tintColor = kNavBarColor;
         workbinController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Modules" image:[UIImage imageNamed:@"modules.png"] tag:2];
         workbinController.title = @"Modules";
         
-        Events *eventController = [[[Events alloc] init] autorelease];
-        UINavigationController *eventsNavigator = [[[UINavigationController alloc] initWithRootViewController:eventController] autorelease];
+        Events *eventController = [[Events alloc] init];
+        UINavigationController *eventsNavigator = [[UINavigationController alloc] initWithRootViewController:eventController];
         eventsNavigator.navigationBar.tintColor = kNavBarColor;
         eventController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Events" image:[UIImage imageNamed:@"events.png"] tag:3];
         eventController.title = @"Events";
         
-        TimetableNew *timeTableControllerNew = [[[TimetableNew alloc] init] autorelease];
-        UINavigationController *timeTableNavigatorNew = [[[UINavigationController alloc] initWithRootViewController:timeTableControllerNew] autorelease];
+        TimetableNew *timeTableControllerNew = [[TimetableNew alloc] init];
+        UINavigationController *timeTableNavigatorNew = [[UINavigationController alloc] initWithRootViewController:timeTableControllerNew];
         timeTableNavigatorNew.navigationBar.tintColor = kNavBarColor;
         timeTableControllerNew.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Calendar" image:[UIImage imageNamed:@"timetable.png"] tag:4];
         timeTableControllerNew.title = @"Calendar";
         
-        Map *mapController = [[[Map alloc] init] autorelease];
-        UINavigationController *mapNavigator = [[[UINavigationController alloc] initWithRootViewController:mapController] autorelease];
+        Map *mapController = [[Map alloc] init];
+        UINavigationController *mapNavigator = [[UINavigationController alloc] initWithRootViewController:mapController];
         mapNavigator.navigationBar.tintColor = kNavBarColor;
         mapController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Map" image:[UIImage imageNamed:@"map.png"] tag:5];
         mapController.title = @"Map";
@@ -72,9 +72,6 @@
     }
 }
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 
 @end

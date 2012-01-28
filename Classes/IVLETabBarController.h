@@ -7,11 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CAPCalculator.h"
 #import "Events.h"
 #import "Workbin.h"
 #import "Map.h"
-#import "CAPCalculator.h"
 #import "TimetableNew.h"
 #import "IVLEMain.h"
 
